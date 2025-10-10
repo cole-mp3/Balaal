@@ -1,0 +1,10 @@
+{
+    "Lua.workspace.library": [
+        "path/to/smods",
+        "path/to/lovely/dump"
+    ],
+    "Lua.diagnostics.globals": [
+        "SMODS",
+        "smods"
+    ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "jamod",
+  "name": "The Jamod",
+  "author": ["jabong"],
+  "description": "help me",
+  "prefix": "jabong",
+  "main_file": "jamod.lua",
+  "version": "0.0.1"
+}
