@@ -1,4 +1,0 @@
-smods.back {
-key="fantastic"
-
-}
