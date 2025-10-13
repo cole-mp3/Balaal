@@ -6,7 +6,7 @@ return {
             },
         },
         other = {
-            jabong_stone_seal ={
+            stone_seal ={
                 name = "Stone Seal",
                 text = {
                     "{C:blue}#50#{} extra chips, ",
