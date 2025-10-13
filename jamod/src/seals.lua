@@ -1,4 +1,4 @@
-smods.atlas {
+SMODS.atlas {
     key = "satlas",
     px = 66,
     py = 66,
@@ -8,7 +8,7 @@ smods.atlas {
     
     }
 }
-smods.seal {
+SMODS.seal {
     key = 'stone_seal',
     atlas = 'satlas',
     pos = { x = 5, y = 4 },
