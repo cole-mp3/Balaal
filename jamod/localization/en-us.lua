@@ -2,10 +2,22 @@ return {
     descriptions = {
         Back = {
             fantastic = {
-                name = "Fantastic Deck"
+                name = "Fantastic Deck",
+                text = {
+                    "Idk lol"
+                }
             },
         },
-    other = {
+    Edition = {
+            fractured = {
+                name = "fractured",
+                text = {
+                    "I also dk lolololol"
+                }
+            }
+
+    },
+    Other = {
             stone_seal ={
                 name = "Stone Seal",
                 text = {

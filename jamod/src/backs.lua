@@ -5,11 +5,11 @@ SMODS.Atlas ({
     path = "datlas.png",
 })
 SMODS.Back {
-    key = 'fantastic',
-   
+    key = 'fantastic', 
     apply = function (self, back)
-    add_joker("j_burnt_joker", nil, true, false)
-
+        SMODS.add_card{ -- For a random one
+        set = "Joker", 
+    }
     end,
     atlas = 'datlas',
      pos = {x = 380, y = 0},
