@@ -1,22 +1,12 @@
-SMODS.Atlas {
+SMODS.Atlas ({
     key = "satlas",
-    path = "satlas.png",
     px = 142,
-    py = 150
-}
+    py = 150,
+    path = "satlas.png",
+})
 SMODS.Seal {
     key = 'stone_seal',
-    name = 'Stone Seal',
      badge_colour = HEX("1d4fd7"),
-      loc_txt = {
-        -- Badge name (displayed on card description when seal is applied)
-        label = 'Stone Seal',
-        -- Tooltip description
-        name = 'Stone Seal',
-        text = {
-            '{C:chips}+#30#{} Chips',
-        }
-    },
     config = { extra = { chips = 50 } },
     loc_vars = function(self, info_queue)
          return { vars = { self.ability.extra.chips } }

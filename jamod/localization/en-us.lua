@@ -1,11 +1,11 @@
 return {
     descriptions = {
         Back = {
-            b_jabong_fantastic = {
-
+            fantastic = {
+                name = "Fantastic Deck"
             },
         },
-        other = {
+    other = {
             stone_seal ={
                 name = "Stone Seal",
                 text = {
