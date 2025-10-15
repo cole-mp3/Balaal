@@ -55,7 +55,8 @@ SMODS.Consumable {
 }
 SMODS.Atlas ({
     key = "rsatlas",
+    path = "crads/rsatlas.png",
     px = 142,
-    py = 150,
-    path = "rsatlas.png",
+    py = 150
+    
 })

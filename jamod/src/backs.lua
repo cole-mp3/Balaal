@@ -1,18 +1,20 @@
 SMODS.Atlas ({
     key = "datlas",
+    path = "deccs/datlas.png",
     px = 70,
-    py = 95,
-    path = "datlas.png",
+    py = 95
+   
 })
 SMODS.Back {
-    key = 'fantastic', 
+    key = 'fantastic',
+    atlas = 'datlas',
+     pos = {x = 380, y = 0},
     apply = function (self, back)
         SMODS.add_card{ -- For a random one
         set = "Joker", 
     }
     end,
-    atlas = 'datlas',
-     pos = {x = 380, y = 0},
+    
 }
 SMODS.Back {
     key = 'slamo', 

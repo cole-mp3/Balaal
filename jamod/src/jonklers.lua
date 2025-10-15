@@ -1,8 +1,9 @@
 SMODS.Atlas {
 key = "Jatlas",
+path = "Jonklers/jatlas.png",
     px = 70,
-    py = 94,
-    path = "jatlas.png"
+    py = 94
+    
 }
 SMODS.Joker {
      key = "toker ",
@@ -34,7 +35,7 @@ SMODS.Atlas{
     key = "vejoke",
     px = 70,
     py = 94,
-    path = "vegeta.png"
+    path = "vegeta/vegeta.png"
 }
 SMODS.Joker{
  key = "vegeta",

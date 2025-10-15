@@ -1,8 +1,9 @@
 SMODS.Atlas ({
     key = "satlas",
+    path = "Seels/satlas.png",
     px = 142,
-    py = 150,
-    path = "satlas.png",
+    py = 150
+    
 })
 SMODS.Seal {
     key = 'stone_seal',
