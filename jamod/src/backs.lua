@@ -1,10 +1,10 @@
-SMODS.Atlas ({
+SMODS.Atlas {
     key = "datlas",
     path = "deccs/datlas.png",
     px = 70,
     py = 95
    
-})
+}
 SMODS.Back {
     key = 'fantastic',
     atlas = 'datlas',
