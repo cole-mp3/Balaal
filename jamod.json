@@ -1,7 +1,7 @@
 {
   "id": "jamod",
   "name": "The Jamod",
-  "author": ["jabong"],
+  "author": ["jabong, RandomizedAlias"],
   "description": "help me",
   "prefix": "jabong",
   "main_file": "jamod.lua",

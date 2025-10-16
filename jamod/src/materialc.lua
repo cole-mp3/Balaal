@@ -1,4 +1,6 @@
 SMODS.ConsumableType({
+    primary_colour = G.C.SET.Tarot,
+    secondary_colour = G.C.SECONDARY_SET.Tarot,
     key = 'jabong_Material', -- The prefix is not added automatically so it's recommended to add it yourself
     default = 'c_jabong_RandS',
     cards = {

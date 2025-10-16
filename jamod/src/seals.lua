@@ -10,14 +10,14 @@ SMODS.Seal {
      badge_colour = HEX("1d4fd7"),
     config = { extra = { chips = 50 } },
     loc_vars = function(self, info_queue)
-         return { vars = { self.ability.extra.chips } }
+        return { vars = { self.config.extra.chips } }
     end,
     atlas = "satlas",
     pos = {x=0, y=0},
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
             return {
-                chips = self.ability.extra.chips
+                chips = self.config.extra.chips
             }
         end
     end,
