@@ -5,6 +5,15 @@ path = "Jonklers/jatlas.png",
     py = 94
     
 }
+
+SMODS.ObjectType ({
+    key = "halfjokes",
+    default  = "j_joker"
+    cards ={}
+    inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
 SMODS.Joker {
      key = "toker ",
      atlas = "Jatlas",
@@ -26,6 +35,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
+                 message = "wow cool this works",
                 mult = card.ability.extra.mult
             }
         end
@@ -58,6 +68,7 @@ SMODS.Joker{
         end
         if context.joker_main and G.GAME.current_round.hands_left == 0 then
             return {
+                message = "Smort",
                 xmult = card.ability.extra.xmult
             }
         end
@@ -69,6 +80,7 @@ SMODS.Joker {
     atlas = "Jatlas",
     pos = { x = 1, y = 0 },
     rarity = 2,
+    pools = {["halfjokes"] = true},
     blueprint_compat = true,
     cost = 4,
     discovered = true,
@@ -85,9 +97,11 @@ SMODS.Joker {
         return { vars = { numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
+        if context.repetition and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_buskin', 1, card.ability.extra.odds) then
             return {
-                repetitions = card.ability.extra.repetitions
+                message = "ain!"
+                repetitions = card.ability.extra.repetitions,
+                sound = 'jabong_damn'
             }
         end
     end
@@ -97,6 +111,7 @@ SMODS.Joker {
     atlas = "Jatlas",
     pos = { x = 1, y = 0 },
     rarity = 2,
+    pools = {["halfjokes"] = true},
     blueprint_compat = true,
     cost = 4,
     discovered = true,
@@ -113,9 +128,10 @@ SMODS.Joker {
         return { vars = { numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and not context.other_card:is_face() then
+        if context.repetition and context.cardarea == G.play and not context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_sock', 1, card.ability.extra.odds) then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
+                message = "Ag"
             }
         end
     end
