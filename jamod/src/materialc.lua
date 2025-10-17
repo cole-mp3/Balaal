@@ -42,7 +42,7 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
             G.E_MANAGER:add_event(Event({func = function()
-                play_sound('damn')
+                play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
                 return true end }))
             
@@ -58,7 +58,49 @@ SMODS.Consumable {
 SMODS.Atlas ({
     key = "rsatlas",
     path = "crads/rsatlas.png",
-    px = 142,
-    py = 150
+    px = 71,
+    py = 95
     
 })
+SMODS.Atlas ({
+    key = "hyperen"
+    px = 71,
+    py = 95,
+    path = "crads/hyperize.png",
+})
+SMODS.Consumable {
+    set = 'Spectral',
+    key = 'hyperize',
+    config = {
+        -- How many cards can be selected.
+        max_highlighted = 1,
+    },
+     loc_vars = function(self, info_queue, card)
+        -- Description vars
+        return {vars = {(card.ability or self.config).max_highlighted}}
+    end,
+    loc_txt = {
+        name = 'Hyperize',
+        text = {
+            "Select {C:attention}#1#{} card to",
+            "{C:attention}Hyper Enhance{}."
+            "MUST HAVE AN ENHANCEMENT."
+            "{C:inactive}does nothing yet :( {}"
+        }
+    },
+    cost = 6,
+    atlas = "hyperen",
+    pos = {x=0, y=0},
+    use = function(self, card, area, copier)
+        for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
+            G.E_MANAGER:add_event(Event({func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true end }))
+            
+        
+            delay(0.5)
+        end
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
+    end
+}

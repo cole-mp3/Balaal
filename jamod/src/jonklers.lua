@@ -45,13 +45,13 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 2,
     discovered = true,
-    config = { extra = { mult = 10, xmult = 2, suit = 'hearts',suit2 = 'spades' }, },
+    config = { extra = { mult = 10, xmult = 2, suit = 'hearts' }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
      if context.individual and context.cardarea == G.play and
-            context.other_card:is_suit(card.ability.extra.suit) or context.other_card:is_suit(card.ability.extra.suit2) then
+            context.other_card:is_suit(card.ability.extra.suit) then
             return {
                 mult = card.ability.extra.mult
             }
@@ -63,4 +63,60 @@ SMODS.Joker{
         end
     end,
 
+}
+SMODS.Joker {
+    key = "buskin",
+    atlas = "Jatlas",
+    pos = { x = 1, y = 0 },
+    rarity = 2,
+    blueprint_compat = true,
+    cost = 4,
+    discovered = true,
+    config = { extra = { odds = 2, repetitions = 1}, },
+    loc_txt = {
+        name = "Buskin",
+        text = {
+            "{C:green,s:1.1} #1# in #2#{} chance to "
+            "{C:attention}Retrigger{} all face cards once."
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_space')
+        return { vars = { numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "sock",
+    atlas = "Jatlas",
+    pos = { x = 1, y = 0 },
+    rarity = 2,
+    blueprint_compat = true,
+    cost = 4,
+    discovered = true,
+    config = { extra = { odds = 2, repetitions = 1 }, },
+    loc_txt = {
+        name = "Sock",
+        text = {
+            "{C:green,s:1.1} #1# in #2#{} chance to "
+            "{C:attention}Retrigger{} all numbered cards once."
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_space')
+        return { vars = { numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and not context.other_card:is_face() then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end
 }

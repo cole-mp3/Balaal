@@ -6,7 +6,7 @@ return {
                 text = {
                     "{X:red,C:white}X#1#{} Mult, and",
                     "{C:red}+#1#{} Mult if played cards",
-                    "Are {C:hearts}Hearts{} or {C:spades}Spades{}."
+                    "Are {C:hearts}Hearts{}."
                 }
             },
         },
@@ -26,15 +26,6 @@ return {
                 }
             },
         },
-    Edition = {
-            e_jabong_fractured = {
-                name = "fractured",
-                text = {
-                    "I also dk lolololol"
-                }
-            }
-
-    },
     Other = {
             jabong_stone_seal ={
                 name = "Stone Seal",
@@ -44,5 +35,5 @@ return {
                 },
             }
         }
-    }
+    },
 }

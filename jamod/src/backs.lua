@@ -8,7 +8,7 @@ SMODS.Atlas {
 SMODS.Back {
     key = 'fantastic',
     atlas = 'datlas',
-     pos = {x = 380, y = 0},
+     pos = {x = 4, y = 0},
     apply = function (self, back)
         SMODS.add_card{ -- For a random one
         set = "Joker", 
@@ -19,7 +19,7 @@ SMODS.Back {
 SMODS.Back {
     key = 'slamo', 
      atlas = 'datlas',
-     pos = {x = 1, y = 1},
+     pos = {x = 0, y = 0},
     config = { dollars = 20, hands = -1, discards = -1 },
     loc_vars = function(self, info_queue, back)
         return { vars = { self.config.dollars, self.config.hands, self.config.discards } }
