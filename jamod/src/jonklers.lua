@@ -3,7 +3,6 @@ key = "Jatlas",
 path = "Jonklers/jatlas.png",
     px = 70,
     py = 94
-    
 }
 
 SMODS.ObjectType ({
@@ -15,7 +14,7 @@ SMODS.ObjectType ({
 	end,
 })
 SMODS.Joker {
-     key = "toker ",
+    key = "toker",
      atlas = "Jatlas",
     pos = { x = 0, y = 0 },
     rarity = 1,
@@ -55,7 +54,7 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 2,
     discovered = true,
-    config = { extra = { mult = 10, xmult = 2, suit = 'hearts' }, },
+    config = { extra = { mult = 10, xmult = 2, suit = "hearts" }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.mult } }
     end,

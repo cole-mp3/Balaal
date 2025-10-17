@@ -3,7 +3,6 @@ SMODS.Atlas ({
     path = "Seels/satlas.png",
     px = 142,
     py = 150
-    
 })
 SMODS.Seal {
     key = 'stone_seal',
@@ -15,11 +14,12 @@ SMODS.Seal {
     atlas = "satlas",
     pos = {x=0, y=0},
     calculate = function(self, card, context)
-        if context.main_scoring and context.cardarea == G.play then
-            return {
-                chips = self.config.extra.chips
-            }
-        end
+            if context.main_scoring and context.cardarea == G.play then
+                return {
+                    chips = self.config.extra.chips
+                }
+            end
+            return {}
     end,
 
 

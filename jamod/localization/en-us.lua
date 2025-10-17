@@ -26,7 +26,7 @@ return {
                 }
             },
         },
-    Other = {
+        Other = {
             jabong_stone_seal ={
                 name = "Stone Seal",
                 text = {

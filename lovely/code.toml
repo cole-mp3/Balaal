@@ -1,0 +1,17 @@
+# Lovely patch to prevent nil index errors when clicking cards
+# This patch ensures loc_vars always returns a valid table for the RandS consumable
+
+[[patches]]
+target = "jamod/src/materialc.lua"
+pattern = "loc_vars = function(self, info_queue, card)"
+replace = "loc_vars = function(self, info_queue, card)
+    local ability = card and card.ability or self.config or {}
+    local seal_key = ability.extra or 'stone_seal'
+    if G.P_SEALS and G.P_SEALS[seal_key] then
+        info_queue[#info_queue+1] = G.P_SEALS[seal_key]
+    else
+        info_queue[#info_queue+1] = {name = tostring(seal_key or 'nil'), text = {'Seal not found'}}
+    end
+    local max_highlighted = ability.max_highlighted or 1
+    return {vars = {max_highlighted}}
+end"

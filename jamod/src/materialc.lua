@@ -63,7 +63,7 @@ SMODS.Atlas ({
     
 })
 SMODS.Atlas ({
-    key = "hyperen"
+    key = "hyperen",
     px = 71,
     py = 95,
     path = "crads/hyperize.png",
@@ -83,8 +83,8 @@ SMODS.Consumable {
         name = 'Hyperize',
         text = {
             "Select {C:attention}#1#{} card to",
-            "{C:attention}Hyper Enhance{}."
-            "MUST HAVE AN ENHANCEMENT."
+            "{C:attention}Hyper Enhance{}.",
+            "MUST HAVE AN ENHANCEMENT.",
             "{C:inactive}does nothing yet :( {}"
         }
     },
