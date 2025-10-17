@@ -33,7 +33,7 @@ SMODS.Consumable {
         name = 'Rock And Stone',
         text = {
             "Select {C:attention}#1#{} card to",
-            "apply {C:attention}Stoe Seal{} to."
+            "apply {C:attention}Stone Seal{} to."
         }
     },
     cost = 4,
