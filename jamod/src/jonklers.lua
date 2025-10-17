@@ -8,8 +8,8 @@ path = "Jonklers/jatlas.png",
 
 SMODS.ObjectType ({
     key = "halfjokes",
-    default  = "j_joker"
-    cards ={}
+    default  = "j_joker",
+    cards = {},
     inject = function(self)
 		SMODS.ObjectType.inject(self)
 	end,
@@ -88,7 +88,7 @@ SMODS.Joker {
     loc_txt = {
         name = "Buskin",
         text = {
-            "{C:green,s:1.1} #1# in #2#{} chance to "
+            "{C:green,s:1.1} #1# in #2#{} chance to ",
             "{C:attention}Retrigger{} all face cards once."
         },
     },
@@ -99,7 +99,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_buskin', 1, card.ability.extra.odds) then
             return {
-                message = "ain!"
+                message = "ain!",
                 repetitions = card.ability.extra.repetitions,
                 sound = 'jabong_damn'
             }
@@ -119,7 +119,7 @@ SMODS.Joker {
     loc_txt = {
         name = "Sock",
         text = {
-            "{C:green,s:1.1} #1# in #2#{} chance to "
+            "{C:green,s:1.1} #1# in #2#{} chance to ",
             "{C:attention}Retrigger{} all numbered cards once."
         },
     },
