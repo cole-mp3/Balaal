@@ -99,7 +99,9 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_buskin', 1, card.ability.extra.odds) then
             return {
-                repetitions = card.ability.extra.repetitions
+                message = "'Gain!"
+                repetitions = card.ability.extra.repetitions,
+                sound = 'jabong_damn'
             }
         end
     end
@@ -128,7 +130,8 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and not context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_sock', 1, card.ability.extra.odds) then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
+                message = "Again!"
             }
         end
     end
