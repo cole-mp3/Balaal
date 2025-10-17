@@ -22,3 +22,5 @@ To Do:
 - [ ] etc.
 KNOWN ISSUES:
 - [ ] Hovering over rock and stone crashes the game. Stone seal still works though
+- [ ] en-us.lua Doesnt Work.
+- [ ] Vegeta isnt... vegetaing
