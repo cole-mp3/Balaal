@@ -12,7 +12,8 @@ To Do:
 - [ ] Add even more Jokers
 - [ ] vegeta
 - [ ] Maybe get shaders to work properly
-- [ ] Add new gimmicks (you'll only know when you play the mod)
+- [ ] Fishing
+    - the endgame for this is to have it be its own inventory (stated below), but for simple devving an testing in early stage, putting fish in the consumables slot is fine.
 - [ ] fix bugs, there are wayyy too many
 - [ ] add an actual inventory
 - [ ] skip tags
