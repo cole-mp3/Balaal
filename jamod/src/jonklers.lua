@@ -5,6 +5,15 @@ path = "Jonklers/jatlas.png",
     py = 94
     
 }
+
+SMODS.ObjectType ({
+    key = "halfjokes",
+    default  = "j_joker"
+    cards ={}
+    inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
 SMODS.Joker {
      key = "toker ",
      atlas = "Jatlas",
@@ -69,6 +78,7 @@ SMODS.Joker {
     atlas = "Jatlas",
     pos = { x = 1, y = 0 },
     rarity = 2,
+    pools = {["halfjokes"] = true},
     blueprint_compat = true,
     cost = 4,
     discovered = true,
@@ -97,6 +107,7 @@ SMODS.Joker {
     atlas = "Jatlas",
     pos = { x = 1, y = 0 },
     rarity = 2,
+    pools = {["halfjokes"] = true},
     blueprint_compat = true,
     cost = 4,
     discovered = true,
