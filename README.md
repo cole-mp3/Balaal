@@ -20,3 +20,5 @@ To Do:
 - [ ] proper spritework
 - [ ] them creds
 - [ ] etc.
+KNOWN ISSUES:
+- [ ] Hovering over rock and stone crashes the game. Stone seal still works though

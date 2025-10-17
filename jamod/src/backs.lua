@@ -3,7 +3,6 @@ SMODS.Atlas {
     path = "deccs/datlas.png",
     px = 70,
     py = 95
-   
 }
 SMODS.Back {
     key = 'fantastic',

@@ -2,7 +2,7 @@
 -- thank you yaha mouse
 
 function create_UIBox_custom_video1(name, buttonname)
-  local file_path = SMODS.Mods["jamod"].path.."/resources/"..name..".ogv"
+  local file_path = SMODS.Mods["jamod-web"].path.."/resources/"..name..".ogv"
   local file = NFS.read(file_path)
   love.filesystem.write("temp.ogv", file)
   local video_file = love.graphics.newVideo('temp.ogv')

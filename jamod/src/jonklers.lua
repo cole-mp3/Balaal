@@ -3,7 +3,6 @@ key = "Jatlas",
 path = "Jonklers/jatlas.png",
     px = 70,
     py = 94
-    
 }
 
 SMODS.ObjectType ({
