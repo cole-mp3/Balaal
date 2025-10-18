@@ -1,0 +1,12 @@
+Please put all your ideas here so we can all know what we're 
+MAINLY working on, and then compile a todolist.
+
+---General stuff:
+    - Jokers
+    - Inventory (eventually, not exactly important)   
+---Jabon Gratis (feel free to help as much as you want on these,
+my code fucking sucks):
+ - Fishing
+ - Half Jokers
+ - some spritework
+ ---
