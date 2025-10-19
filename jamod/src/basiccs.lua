@@ -1,3 +1,4 @@
+-- Basic consumables
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
@@ -96,6 +97,7 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({func = function()
                 play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
+                -- i still have to code this in
                 return true end }))
             
         
