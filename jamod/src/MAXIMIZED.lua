@@ -6,6 +6,7 @@
 }) ]]--
  --I DO want to put the above in game, but i have to mmake a config and credits tab first
  --cuz its prolly copyrighted and I dont want problems.
+ --this would play when you get a maximized joker (unless anyone wants to make music for it)
 SMODS.ObjectType ({
     key = "maximized",
     default  = "j_jabong_everyman",
@@ -21,7 +22,7 @@ SMODS.ObjectType ({
     pools = {
         ["Joker"] = true
     },
-    default_weight = 0.01,
+    default_weight = 0.00,
     badge_colour = HEX('00008B'),
     loc_txt = {
         name = "MAXIMIZED"
