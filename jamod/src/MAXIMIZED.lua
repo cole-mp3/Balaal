@@ -1,4 +1,11 @@
-
+--[[SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
+    key = "sawanomusic",
+    path = "vigilante.ogg",
+}) ]]--
+ --I DO want to put the above in game, but i have to mmake a config and credits tab first
+ --cuz its prolly copyrighted and I dont want problems.
 SMODS.ObjectType ({
     key = "maximized",
     default  = "j_jabong_everyman",
