@@ -7,6 +7,7 @@
  --I DO want to put the above in game, but i have to mmake a config and credits tab first
  --cuz its prolly copyrighted and I dont want problems.
  --this would play when you get a maximized joker (unless anyone wants to make music for it)
+ 
 SMODS.ObjectType ({
     key = "maximized",
     default  = "j_jabong_everyman",
