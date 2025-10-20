@@ -1,7 +1,7 @@
 
 SMODS.ObjectType ({
     key = "maximized",
-    default  = "j_joker",
+    default  = "j_jabong_everyman",
     cards ={},
     inject = function(self)
 		SMODS.ObjectType.inject(self)
@@ -42,7 +42,7 @@ SMODS.Joker {
     }
     config = { extra = {repetitions = 1}}
     loc_vars = function(self, info_queue, card)
-      return {}
+      return {vars = self.config.extra.repetitions}
     end,
     calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play then
