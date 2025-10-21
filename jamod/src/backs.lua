@@ -7,7 +7,7 @@ SMODS.Atlas {
 SMODS.Back {
     key = 'fantastic',
     atlas = 'datlas',
-     pos = {x = 4, y = 0},
+     pos = {x = 3, y = 0},
     apply = function (self, back)
         SMODS.add_card{ -- For a random one
         set = "Joker", 

@@ -9,6 +9,14 @@ return {
                     "Are {C:hearts}Hearts{}."
                 }
             },
+            j_jabong_banshee = {
+                name = "Banshee Norn"
+                text = {
+                    "This card gains {X:red, C:white}^#1#{}"
+                    "Mult every time a card is scored."
+                    "Currently ^#1#"
+                }
+            }
         },
         Back = {
             b_jabong_fantastic = {

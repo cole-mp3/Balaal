@@ -1,5 +1,3 @@
-logo = "balal.png"
-
 SMODS.Atlas({
 	key = "modicon",
 	path = "ModIcon.png",
@@ -7,10 +5,14 @@ SMODS.Atlas({
 	py = 32
 })
 
-SMODS.Atlas {
+logo = "balal.png"
+
+
+
+SMODS.Atlas ({
 		key = "balal",
 		path = logo,
 		px = 333,
 		py = 216,
 		prefix_config = { key = false }
-	}
+	})

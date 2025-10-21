@@ -54,9 +54,9 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 2,
     discovered = true,
-    config = { extra = { mult = 10, xmult = 2, suit = "hearts" }, },
+    config = { extra = { mult = 10, Xmult = 2, suit = "hearts" }, },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, card.ability.extra.mult } }
+        return { vars = { card.ability.extra.Xmult, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
      if context.individual and context.cardarea == G.play and
@@ -68,7 +68,7 @@ SMODS.Joker{
         if context.joker_main and G.GAME.current_round.hands_left == 0 then
             return {
                 message = "Smort",
-                xmult = card.ability.extra.xmult
+                Xmult = card.ability.extra.Xmult
             }
         end
     end,
