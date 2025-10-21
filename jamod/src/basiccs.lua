@@ -4,11 +4,12 @@ SMODS.Atlas {
     path = 'crads/gundam.png',
     px = 71,
     py = 95
+    -- is that fucking amuro ray
 }
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
-    key = 'jabong_Material', -- The prefix is not added automatically so it's recommended to add it yourself
+    key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {
         
@@ -109,10 +110,17 @@ SMODS.Consumable {
             G.E_MANAGER:add_event(Event({func = function()
                 play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
-                -- i still have to code this in
+                -- i still have to code this in so uhhh
+                G.FUNCS.overlay_menu{
+                 -- h o n s e
+                definition = create_UIBox_custom_video1("horsef","sample text"),
+                config = {no_esc = true}
+            }
                 return true end }))
             
-        
+       
+
+
             delay(0.5)
         end
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
