@@ -14,7 +14,7 @@ SMODS.ObjectType ({
 	end,
 })
 SMODS.Joker {
-    key = "toker",
+    key = "tongs",
      atlas = "Jatlas",
     pos = { x = 0, y = 0 },
     rarity = 1,
@@ -23,7 +23,7 @@ SMODS.Joker {
     discovered = true,
     config = { extra = { mult = 99 }, },
     loc_txt = {
-        name = "Test Joker",
+        name = "Spamtongs",
         text = {
             "{C:red,s:1.1}+#99#{} Mult",
         },
