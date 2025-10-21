@@ -20,10 +20,10 @@ SMODS.Sound({
     key = "damn",
     path = "damn.ogg",
 })
-SMODS.SOund ({
+SMODS.Sound ({
     vol = 0.6,
     pitch = 0.7,
-    key = "whatdoicallthis"
+    key = "whatdoicallthis",
     path = "nts.ogg"
 })
 
@@ -119,18 +119,18 @@ SMODS.Consumable {
     end
 }
 SMODS.Consumable {
- set = 'jabong_Material'
- key = 'coppering'
- atlas = "rsatlas" --again, placeholder here
- pos = {x = 0, y = 0}
+ set = 'jabong_Material',
+ key = 'coppering',
+ atlas = "rsatlas", --again, placeholder here
+ pos = {x = 0, y = 0},
  cost = 4,
  loc_txt = {
-    name = "Copper Age"
+    name = "Copper Age",
     text = {
-        "Select {C:attention}1{} card to turn into"
+        "Select {C:attention}1{} card to turn into",
         "A Copper Card."
     }
- }
+ },
 config = { max_highlighted = 1, mod_conv = 'm_jabong_copper' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
@@ -138,16 +138,16 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_copper' },
     end
 }
 SMODS.Consumable {
-    set = 'Spectral'
-    key = 'gundam'
-    atlas = 'newtype'
-    pos = {x = 0,y = 0}
+    set = 'Spectral',
+    key = 'gundam',
+    atlas = 'newtype',
+    pos = {x = 0,y = 0},
     loc_txt = {
-        name = 'Awakening'
+        name = 'Awakening',
         text = {
             "Creates 1 {C:attention}MAXIMIZED{} joker."
         }
-    }
+    },
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',

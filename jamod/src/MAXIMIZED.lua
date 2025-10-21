@@ -11,7 +11,7 @@
  --cuz its prolly copyrighted and I dont want problems.
  --this would play when you get a maximized joker(for now its just him) and theres 
  -- no custom music(unless anyone wants to make music for it)
- 
+--A: why not do the warning screen for copyrighted songs like Cryptid does?
 SMODS.ObjectType ({
     key = "maximized",
     default  = "j_jabong_everyman",
@@ -37,7 +37,7 @@ SMODS.ObjectType ({
     end,
 }
 SMODS.Joker {
-  key = "everyman"
+  key = "everyman",
   --this card's getting its own atlas just gimme a sec
   atlas = "Jatlas",
     pos = { x = 1, y = 0 },
@@ -46,14 +46,14 @@ SMODS.Joker {
     discovered = true,
     rarity = "jabong_Max",
     loc_txt = {
-      name = "EVERYMAN"
+      name = "EVERYMAN",
       text = {
-        "Applies an {C:attention}All Seal{} to"
-        "All played cards. Retriggers cards with any seal."
+        "Applies an {C:attention}All Seal{} to",
+        "All played cards. Retriggers cards with any seal.",
         "Also turns all cards Negative."
       }
-    }
-    config = { extra = {repetitions = 1}}
+    },
+    config = { extra = {repetitions = 1}},
     loc_vars = function(self, info_queue, card)
       return {vars = self.config.extra.repetitions}
     end,
@@ -69,14 +69,14 @@ SMODS.Joker {
   end,
 }
 SMODS.Joker {
-  key = 'banshee'
+  key = 'banshee',
   atlas = "Jatlas",
     pos = { x = 1, y = 1 },
     blueprint_compat = true,
      cost = 50,
     discovered = true,
     rarity = "jabong_Max",
-    config = {extra = {Emult = 1, Emult_mod = 1}}
+    config = {extra = {Emult = 1, Emult_mod = 1}},
     loc_vars = function(self, info_queue, card)
       return {vars = card.ability.extra.Emult, card.ability.extra.Emult_mod}
     end,
