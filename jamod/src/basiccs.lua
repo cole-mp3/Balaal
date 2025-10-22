@@ -207,7 +207,7 @@ SMODS.Voucher {
         text = {
             "{C:attention}MAXIMIZED{} jokers acn appear in the shop."
         }
-    }
+    },
     config = { extra = { rate = 4 } },
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
@@ -218,5 +218,4 @@ SMODS.Voucher {
             end
         }))
     end
-}
 }
