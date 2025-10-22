@@ -189,3 +189,34 @@ SMODS.DrawStep {
     conditions = { vortex = false, facing = 'front' },
 }
 }
+
+-- vouchers(I dont wanna make another lua file)
+SMODS.Atlas {
+    key = 'vouch',
+    path = 'voucers.png',
+    px = 71,
+    py=95
+}
+
+SMODS.Voucher {
+    key = 'mindscape',
+    atlas = 'vouch',
+    pos = {x = 1, y = 0},
+    loc_txt = {
+        name = "mindscape"
+        text = {
+            "{C:attention}MAXIMIZED{} jokers acn appear in the shop."
+        }
+    }
+    config = { extra = { rate = 4 } },
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                -- convinced the  below doesnt work i have to test that
+                G.GAME.jabong_maximized_rate = card.ability.extra.rate
+                return true
+            end
+        }))
+    end
+}
+}
