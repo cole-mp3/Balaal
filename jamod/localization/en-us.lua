@@ -10,10 +10,10 @@ return {
                 }
             },
             j_jabong_banshee = {
-                name = "Banshee Norn"
+                name = "Banshee Norn",
                 text = {
-                    "This card gains {X:red, C:white}^#1#{}"
-                    "Mult every time a card is scored."
+                    "This card gains {X:red, C:white}^#1#{}",
+                    "Mult every time a card is scored.",
                     "Currently ^#1#"
                 }
             }
