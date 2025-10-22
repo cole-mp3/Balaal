@@ -203,7 +203,7 @@ SMODS.Voucher {
     atlas = 'vouch',
     pos = {x = 1, y = 0},
     loc_txt = {
-        name = "mindscape"
+        name = "mindscape",
         text = {
             "{C:attention}MAXIMIZED{} jokers acn appear in the shop."
         }
