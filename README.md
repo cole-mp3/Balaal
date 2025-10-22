@@ -13,7 +13,7 @@ To Do:
 - [ ] vegeta
 - [ ] Maybe get shaders to work properly
 - [ ] Fishing
-    - the endgame for this is to have it be its own inventory (stated below), but for simple devving an testing in early stage, putting fish in the consumables slot is fine.
+   - [ ] inventory was already done so nvm
 - [ ] fix bugs, there are wayyy too many
 - [ ] add an actual inventory
 - [ ] skip tags
@@ -21,7 +21,7 @@ To Do:
 - [ ] proper spritework
 - [ ] them creds
 - [ ] etc.
-KNOWN ISSUES:
+## KNOWN ISSUES:
 - [ ] Hovering over rock and stone crashes the game. Stone seal still works though
 - [ ] en-us.lua Doesnt Work.
 - [ ] Vegeta isnt... vegetaing
