@@ -1,7 +1,7 @@
 SMODS.Atlas {
     key = "datlas",
     path = "deccs/datlas.png",
-    px = 70,
+    px = 72,
     py = 95
 }
 SMODS.Back {
@@ -25,8 +25,7 @@ SMODS.Back {
     end,
     apply = function (self, back)
         G.GAME.win_ante = 9
-        SMODS.add_card{ key = "c_fool" }
-        SMODS.add_card{ key = "c_fool" }
+        SMODS.add_card{ key = "c_soul" }
         SMODS.add_card{ key = "c_soul" }
     end,
 

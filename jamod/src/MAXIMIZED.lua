@@ -4,14 +4,15 @@
     key = "sawanomusic",
     path = "vigilante.ogg",
     select_music_track = function()
-        if jokerExists("j_jabong_everyman") and string.len(G.GAME.blind.name) > 0 then    
+        if jokerExists("j_jabong_everyman") then    
     end,
 }) ]]--
  --I DO want to put the above in game, but i have to mmake a config and credits tab first
  --cuz its prolly copyrighted and I dont want problems.
- --this would play when you get a maximized joker(for now its just him) and theres 
- -- no custom music(unless anyone wants to make music for it)
---A: why not do the warning screen for copyrighted songs like Cryptid does?
+ --this would play when you get a maximized joker(I have to figure that out so for now only everyman can) 
+ -- and theres no custom music(unless anyone wants to make music for it)
+--  A: ^why not do the warning screen for copyrighted songs like Cryptid does?
+--       ^ No, cuz just a screen won't do. you'd need a disable option. so config comes first.
 SMODS.ObjectType ({
     key = "maximized",
     default  = "j_jabong_everyman",
