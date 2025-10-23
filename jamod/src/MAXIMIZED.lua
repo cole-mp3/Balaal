@@ -2,6 +2,7 @@
 local function jokerExists(joker_key)
     -- Replace this with actual logic to check if a joker exists
     -- For now, always return false
+      -- ^ alias who the fuck wrote this you dont know how to code
     return false
 end
 
@@ -93,6 +94,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         local G = _G -- Ensure G is defined as the global environment
+          -- ^dude im telling you this probably doesnt work
         if context.individual and context.cardarea == G.play and not context.blueprint then
 
             card.ability.extra.Emult = card.ability.extra.Emult + card.ability.extra.Emult_mod
