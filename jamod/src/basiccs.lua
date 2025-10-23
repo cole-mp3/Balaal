@@ -168,32 +168,13 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_whatdoicallthis')
-                SMODS.add_card({ set = 'jabong_maximized'})
+               local card = create_card("Joker", G.jokers, nil, "jabong_Max", nil, nil, nil)
                 card:juice_up(0.3, 0.5)
                 return true
             end
         }))
         delay(0.6)
     end,
-SMODS.DrawStep {
-    key = 'jabong_gundam',
-    order = 50,
-    func = function(card)
-        if card.config.center.key == "c_jabong_gundam" and (card.config.center.discovered or card.bypass_discovery_center) then
-            local scale_mod = 0.05 + 0.05 * math.sin(1.8 * G.TIMERS.REAL) +
-                0.07 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) * math.pi * 14) *
-                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
-            local rotate_mod = 0.1 * math.sin(1.219 * G.TIMERS.REAL) +
-                0.07 * math.sin((G.TIMERS.REAL) * math.pi * 5) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
-
-            G.shared_soul.role.draw_major = card
-            G.shared_soul:draw_shader('dissolve', 0, nil, nil, card.children.center, scale_mod, rotate_mod, nil,
-                0.1 + 0.03 * math.sin(1.8 * G.TIMERS.REAL), nil, 0.6)
-            G.shared_soul:draw_shader('dissolve', nil, nil, nil, card.children.center, scale_mod, rotate_mod)
-        end
-    end,
-    conditions = { vortex = false, facing = 'front' },
-}
 }
 
 -- vouchers(I dont wanna make another lua file)
