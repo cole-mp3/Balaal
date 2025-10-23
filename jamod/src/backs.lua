@@ -1,7 +1,7 @@
 SMODS.Atlas {
     key = "datlas",
     path = "deccs/datlas.png",
-    px = 72,
+    px = 73,
     py = 95
 }
 SMODS.Back {

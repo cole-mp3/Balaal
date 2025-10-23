@@ -156,6 +156,7 @@ SMODS.Consumable {
     key = 'gundam',
     atlas = 'newtype',
     pos = {x = 0,y = 0},
+    soul_pos = {x = 1, y = 0}
     loc_txt = {
         name = 'Awakening',
         text = {
@@ -189,6 +190,7 @@ SMODS.Voucher {
     key = 'mindscape',
     atlas = 'vouch',
     pos = {x = 1, y = 0},
+   
     loc_txt = {
         name = "mindscape",
         text = {
