@@ -66,7 +66,7 @@ SMODS.Joker {
     },
     config = { extra = {repetitions = 1}},
     loc_vars = function(self, info_queue, card)
-      return {vars = self.config.extra.repetitions}
+      return {vars = {self.config.extra.repetitions}}
     end,
     calculate = function(self, card, context)
     local G = _G -- Ensure G is defined as the global environment
@@ -90,7 +90,7 @@ SMODS.Joker {
     rarity = "jabong_Max",
     config = {extra = {Emult = 1, Emult_mod = 1}},
     loc_vars = function(self, info_queue, card)
-      return {vars = card.ability.extra.Emult, card.ability.extra.Emult_mod}
+      return {vars = {card.ability.extra.Emult, card.ability.extra.Emult_mod}}
     end,
     calculate = function(self, card, context)
         local G = _G -- Ensure G is defined as the global environment
