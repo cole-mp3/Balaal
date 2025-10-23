@@ -130,7 +130,7 @@ SMODS.Joker {
         if context.repetition and context.cardarea == G.play and not context.other_card:is_face() and SMODS.pseudorandom_probability(card, 'jabong_sock', 1, card.ability.extra.odds) then
             return {
                 repetitions = card.ability.extra.repetitions,
-                message = "Ag"
+                message = "Ag",
                 sound = 'jabong_oh'
             }
         end
