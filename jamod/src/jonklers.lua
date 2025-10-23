@@ -136,3 +136,57 @@ SMODS.Joker {
         end
     end
 }
+SMODS.Atlas {
+    key = 'lildude',
+    path = 'Jonklers/weenic.png',
+    px = 71,
+    py  = 95
+}
+SMODS.Joker{
+    key = "weenic",
+    atlas = 'lildude'
+    rarity = 3,
+    pos = {x = 0, y = 0}
+    blueprint_compat = true,
+    cost = 4,
+    discovered = true,
+    config = { extra = {chips = 0, chip_mod = 8, xmult = 1, xmult_gain = 0.1 }, },
+    loc_txt = {
+        name = 'Weenic',
+        text = {
+            "This card gains {C:blue}+#1#{} Chips for every scored card",
+            "with a rank below a 6, and gains {X:red, C:white}X#1#{} Mult per card",
+            "scored that has a rank above 6."
+            "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.xmult, card.ability.extra.xmult_gain } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() <= 6 and not context.blueprint then
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.CHIPS,
+                message_card = card
+            }
+        end
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() >= 6 and not context.blueprint then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.RED,
+                message_card = card
+            }
+        end
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}
