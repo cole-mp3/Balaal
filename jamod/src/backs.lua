@@ -15,6 +15,11 @@ SMODS.Back {
     end,
     
 }
+-- Ensure G is defined or required before usage
+if not G then
+    G = require("game_globals") -- Replace "game_globals" with the actual module name if different
+end
+
 SMODS.Back {
     key = 'slamo', 
      atlas = 'datlas',

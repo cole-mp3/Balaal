@@ -38,7 +38,7 @@ SMODS.ObjectType ({
         ["Joker"] = true
     },
     default_weight = 0.00,
-    badge_colour = HEX('00008B'),
+    badge_colour = {r = 0, g = 0, b = 139}, -- RGB for #00008B
     loc_txt = {
         name = "MAXIMIZED"
     },
@@ -68,12 +68,13 @@ SMODS.Joker {
       return {vars = self.config.extra.repetitions}
     end,
     calculate = function(self, card, context)
+    local G = _G -- Ensure G is defined as the global environment
     if context.individual and context.cardarea == G.play then
             context.other_card:set_seal("jabong_canofall",true,true)
             context.other_card:set_edition("e_negative",true,true)              
     end
-    if context.repetition and context.cardarea == G.play then
-     repetitions = card.ability.extra.repetitions    
+    if context.repetition and context.cardarea == G.playing_area then
+     repetitions = card.ability.extra.repetitions
     end
 
   end,
@@ -91,13 +92,14 @@ SMODS.Joker {
       return {vars = card.ability.extra.Emult, card.ability.extra.Emult_mod}
     end,
     calculate = function(self, card, context)
+        local G = _G -- Ensure G is defined as the global environment
         if context.individual and context.cardarea == G.play and not context.blueprint then
 
             card.ability.extra.Emult = card.ability.extra.Emult + card.ability.extra.Emult_mod
 
             return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS,
+                message = "Upgrade!", -- Replace with localized string if needed
+                colour = {r = 0, g = 255, b = 255}, -- Replace with the actual color value for CHIP
                 message_card = card
             }
         end
