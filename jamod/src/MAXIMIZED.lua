@@ -1,12 +1,13 @@
---[[SMODS.Sound({
+SMODS.Sound({
     vol = 0.6,
     pitch = 0.7,
     key = "sawanomusic",
     path = "vigilante.ogg",
     select_music_track = function()
-        if jokerExists("j_jabong_everyman") then    
+         if jokerExists("j_jabong_everyman") or if jokerExists("j_jabong_banshee") then
+          return true end
     end,
-}) ]]--
+  })
  --I DO want to put the above in game, but i have to mmake a config and credits tab first
  --cuz its prolly copyrighted and I dont want problems.
  --this would play when you get a maximized joker(I have to figure that out so for now only everyman can) 

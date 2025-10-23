@@ -21,6 +21,12 @@ SMODS.Sound({
     key = "damn",
     path = "damn.ogg",
 })
+SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
+    key = "oh",
+    path = "oh.ogg",
+})
 SMODS.Sound ({
     vol = 0.6,
     pitch = 0.7,
