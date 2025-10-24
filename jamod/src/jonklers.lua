@@ -56,7 +56,7 @@ cost = 2,
 discovered = true,
 config = { extra = { mult = 10, Xmult = 2, suit = "Hearts" }, },
 loc_vars = function(self, info_queue, card)
-return { vars = { card.ability.extra.Xmult, card.ability.extra.mult } }
+return { vars = { card.ability.extra.xmult, card.ability.extra.mult } }
 end,
 calculate = function(self, card, context)
 if context.individual and context.cardarea == G.play and
@@ -68,7 +68,7 @@ end
 if context.joker_main and G.GAME.current_round.hands_left >= 0 then
 return {
 message = "Smort",
-Xmult = card.ability.extra.Xmult
+Xmult = card.ability.extra.xmult
 }
 end
 end,
@@ -197,10 +197,10 @@ SMODS.Atlas{
 SMODS.Joker{
     key = "zam",
     atlas = 'bigzamn',
-    rarity = 4,
     pos = {x = 0, y = 0},
+    rarity = 4,
     blueprint_compat = true,
-    cost = 4,
+    cost = 10,
     discovered = true,
     config = { extra = {chips = 0, chip_mod = 150, xmult = 1, xmult_gain = 2, dollars = 10 }, },
     loc_txt = {
@@ -236,3 +236,103 @@ SMODS.Joker{
         end
     end,
 }
+SMODS.Joker{
+    key = "vexcube",
+    atlas = "Jatlas",
+    pos = {x = 3, y = 1}
+    rarity = 1,
+    blueprint_compat = false,
+    cost = 1,
+    discovered = true,
+    loc_txt = {
+        Name = "Vex Cube"
+        text = {
+            "{C:deactivated}Does Nothing.{}"
+        }
+    }
+}
+SMODS.Joker {
+    key = "Oracle",
+    atlas = 'Jatlas',
+    pos = {x = 2, y = 1},
+    rarity = 3,
+    blueprint_compat = true,
+    cost = 10,
+    discovered = true,
+    loc_txt = {
+        name = "Oracle",
+        text = {
+            "Creates 2 {C:attention}Vex Cube{} jokers on blind selection."
+            "This card gains {X:red,C:white}X#1#{} mult per vex cube sold."
+            "{C:deactivated}Currently{}{X:red,C:white}X#1#{}{C:deactivated}.{}"
+        }
+    },
+    config = { extra = {creates = 2, xmult = 1 xmult_gain = 1 }, },
+    loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.creates } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+            local jokers_to_create = math.min(card.ability.extra.creates,
+                G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
+            G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    for _ = 1, jokers_to_create do
+                        SMODS.add_card {
+                            key = "j_jabong_vexcube"
+                            edition = random_edition 
+                        }
+                        G.GAME.joker_buffer = 0
+                    end
+                    return true
+                end
+            }))
+            return {
+                message = localize('k_plus_joker'),
+                colour = G.C.BLUE,
+            }
+        if context.selling_card and not context.blueprint then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.ENHANCEMENT,
+                message_card = card
+                
+            }
+        end
+        if context.joker_main then
+        xmult = card.ability.extra.xmult
+        end
+    end,
+   
+}
+SMODS.Joker {
+    key = "screaming",
+    atlas = 'Jatlas',
+    pos = {x = 2, y = 1},
+    rarity = 4,
+    blueprint_compat = false,
+    cost = 4,
+    discovered = true,
+    loc_txt = {
+        name = "*screaming*"
+        text = {
+            "All cards are considered 2s.",
+            "{C:deactivated}It wouldve been aces but funny.{}"
+        }
+    }
+}
+local scree_ref = Card.get_id
+		override_screaming = false
+		function Card:get_id()
+			local id = scree_ref(self)
+			if id == nil then
+				id = 2
+			end
+			if next(find_joker("j_jabong_screaming")) and not override_screaming then
+				if id >= nil  then
+					id = 2
+			end
+        end
+		

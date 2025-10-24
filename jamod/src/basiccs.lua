@@ -169,9 +169,10 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_whatdoicallthis')
-                SMODS.add_card{ 
-                    set = "Joker" 
-}
+                SSMODS.add_card {
+                            set = 'Joker',
+                            rarity = 'jabong_Max',
+                        }
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -180,12 +181,13 @@ SMODS.Consumable {
     end,
 }
 
+
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {
     key = 'vouch',
     path = 'voucers.png',
-    px = 71,
-    py=95
+    px = 69,
+    py=90
 }
 
 SMODS.Voucher {
