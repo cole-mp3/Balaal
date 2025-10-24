@@ -20,8 +20,8 @@ SMODS.Atlas{
   py = 190
 }
 SMODS.Joker {
-  key = 'gojoker'
-  atlas = 'gojo'
+  key = 'gojoker',
+  atlas = 'gojo',
   pos = {x = 0, y = 0},
   rarity = 3,
   blueprint_compat = true,
@@ -35,8 +35,8 @@ SMODS.Joker {
     if context.joker_main then
     return {
     message = "I cant think of an effect",
-    mult = card.ability.extra.mult
-    emult = 10
+    mult = card.ability.extra.mult,
+    emult = 10,
   }
     end
   end
