@@ -144,7 +144,7 @@ SMODS.Atlas {
 }
 SMODS.Joker{
     key = "weenic",
-    atlas = 'lildude'
+    atlas = 'lildude',
     pos = {x = 0, y = 0},
     rarity = 3,
     blueprint_compat = true,
@@ -184,15 +184,15 @@ SMODS.Joker{
         end
         if context.joker_main then
             return {
-                chips = card.ability.extra.chips
+                chips = card.ability.extra.chips,
                 xmult = card.ability.extra.xmult
             }
         end
     end,
 }
 SMODS.Atlas{
-    key = 'bigzamn'
-    path = "Jonklers/zam.png"
+    key = 'bigzamn',
+    path = "Jonklers/zam.png",
     px = 71,
     py = 95
 }
@@ -209,7 +209,7 @@ SMODS.Joker{
         name = 'Big Zam',
         text = {
             "This card gains {C:blue}+#1#{} Chips and {X:red, C:white}X#1#{} Mult for every scored card.",
-            "Played cards give {C:money}$10{} when  scored."
+            "Played cards give {C:money}$10{} when  scored.",
             "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
         },
     },
@@ -232,7 +232,7 @@ SMODS.Joker{
         end
         if context.joker_main then
             return {
-                chips = card.ability.extra.chips
+                chips = card.ability.extra.chips,
                 xmult = card.ability.extra.xmult
             }
         end
@@ -241,7 +241,7 @@ SMODS.Joker{
 SMODS.Joker{
     key = "vexcube",
     atlas = "Jatlas",
-    pos = {x = 3, y = 1}
+    pos = {x = 3, y = 1},
     rarity = 1,
     blueprint_compat = false,
     cost = 1,
@@ -264,12 +264,12 @@ SMODS.Joker {
     loc_txt = {
         name = "Oracle",
         text = {
-            "Creates 2 {C:attention}Vex Cube{} jokers on blind selection."
-            "This card gains {X:red,C:white}X#1#{} mult per vex cube sold."
-            "{C:deactivated}Currently{}{X:red,C:white}X#1#{}{C:deactivated}.{}"
+            "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
+            "This card gains {X:red,C:white}X#1#{} mult per vex cube sold.",
+            "{C:deactivated}Currently{}{X:red,C:white}X#1#{}{C:deactivated}.{}",
         }
     },
-    config = { extra = {creates = 2, xmult = 1 xmult_gain = 1 }, },
+    config = { extra = {creates = 2, xmult = 1, xmult_gain = 1 }, },
     loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.creates } }
     end,
@@ -294,6 +294,7 @@ SMODS.Joker {
                 message = localize('k_plus_joker'),
                 colour = G.C.BLUE,
             }
+        end
         if context.selling_card and not context.blueprint then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
             return {
@@ -343,4 +344,5 @@ local scree_ref = Card.get_id
 					id = 2
 			end
         end
+    end
 		
