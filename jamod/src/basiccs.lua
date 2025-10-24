@@ -212,3 +212,17 @@ SMODS.Voucher {
         }))
     end
 }
+sMODS.Consumable {
+ set = 'jabong_Material',
+ key = 'slamize',
+ atlas = "rsatlas", --again, again placeholder here
+ pos = {x = 0, y = 0},
+ cost = 4,
+ loc_txt = {
+    name = "slamize",
+    text = {
+        "Select {C:attention}1{} card to turn into",
+        "A slamo."
+    },
+}
+}

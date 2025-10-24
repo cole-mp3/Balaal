@@ -305,7 +305,7 @@ SMODS.Joker {
             }
         end
         if context.joker_main then
-        xmult = card.ability.extra.xmult
+            xmult = card.ability.extra.xmult
         end
     end,
    
@@ -316,33 +316,3 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-SMODS.Joker {
-    key = "screaming",
-    atlas = 'sccre',
-    pos = {x = 2, y = 1},
-    rarity = 4,
-    blueprint_compat = false,
-    cost = 4,
-    discovered = true,
-    loc_txt = {
-        name = "*screaming*",
-        text = {
-            "All cards are considered 2s.",
-            "{C:deactivated}It wouldve been aces but funny.{}"
-        }
-    }
-}
-local scree_ref = Card.get_id
-		override_screaming = false
-		function Card:get_id()
-			local id = scree_ref(self)
-			if id == nil then
-				id = 2
-			end
-			if next(find_joker("j_jabong_screaming")) and not override_screaming then
-				if id >= nil  then
-					id = 2
-			end
-        end
-    end
-		

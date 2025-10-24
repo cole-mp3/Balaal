@@ -27,5 +27,15 @@ SMODS.Back {
     localize { type = 'name_text', key = self.config.consumables[1], set = 'Spectral' }
  } }
     end,
+     apply = function()
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = #G.playing_cards, 1, -1 do
+                    G.playing_cards[i]:set_ability(G.P_CENTERS.m_jabong_slamo)
+                end
+                return true
+            end
+        }))
+    end
     
 }
