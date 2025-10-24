@@ -180,7 +180,26 @@ SMODS.Consumable {
         delay(0.6)
     end,
 }
-
+SMODS.Consumable {
+ set = 'jabong_Material',
+ key = 'slamize',
+ atlas = "rsatlas", --again, again placeholder here
+ pos = {x = 0, y = 0},
+ cost = 4,
+ loc_txt = {
+    name = "slamize",
+    text = {
+        "Select {C:attention}1{} card to turn into",
+        "A slamo."
+    },
+    
+},
+config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end
+}
 
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {
@@ -212,17 +231,4 @@ SMODS.Voucher {
         }))
     end
 }
-sMODS.Consumable {
- set = 'jabong_Material',
- key = 'slamize',
- atlas = "rsatlas", --again, again placeholder here
- pos = {x = 0, y = 0},
- cost = 4,
- loc_txt = {
-    name = "slamize",
-    text = {
-        "Select {C:attention}1{} card to turn into",
-        "A slamo."
-    },
-}
-}
+
