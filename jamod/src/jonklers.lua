@@ -309,16 +309,22 @@ SMODS.Joker {
     end,
    
 }
+SMODS.Atlas {
+    key = "sccre",
+    path = "Jonklers/scre.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
     key = "screaming",
-    atlas = 'Jatlas',
+    atlas = 'sccre',
     pos = {x = 2, y = 1},
     rarity = 4,
     blueprint_compat = false,
     cost = 4,
     discovered = true,
     loc_txt = {
-        name = "*screaming*"
+        name = "*screaming*",
         text = {
             "All cards are considered 2s.",
             "{C:deactivated}It wouldve been aces but funny.{}"
