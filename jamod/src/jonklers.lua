@@ -193,6 +193,8 @@ SMODS.Joker{
 SMODS.Atlas{
     key = 'bigzamn'
     path = "Jonklers/zam.png"
+    px = 71,
+    py = 95
 }
 SMODS.Joker{
     key = "zam",
@@ -245,7 +247,7 @@ SMODS.Joker{
     cost = 1,
     discovered = true,
     loc_txt = {
-        Name = "Vex Cube"
+        Name = "Vex Cube",
         text = {
             "{C:deactivated}Does Nothing.{}"
         }
@@ -280,8 +282,8 @@ SMODS.Joker {
                 func = function()
                     for _ = 1, jokers_to_create do
                         SMODS.add_card {
-                            key = "j_jabong_vexcube"
-                            edition = random_edition 
+                            key = "j_jabong_vexcube",
+                            edition = negative 
                         }
                         G.GAME.joker_buffer = 0
                     end
