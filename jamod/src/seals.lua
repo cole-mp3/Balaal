@@ -30,40 +30,4 @@ SMODS.Seal {
 
 
 }
-SMODS.Seal {
-    key = 'canofall',
-    badge_colour = HEX("8B0000"),
-    config = {extra = {repetitions = 2, chips = 50, xmult = 1.5, mult = 20, xchips = 2.5,  }},
-    loc_vars = function(self, info_queue)
-        return { vars = { self.config.extra.chips, self.config.extra.xmult, self.config.extra.mult, self.config.extra.xchips, self.config.extra.repetitions } }
-    end,
-    atlas = "alls",
-    pos = {x=0, y=0},
-    calculate = function(self, card, context)
-        if context.main_scoring and context.cardarea == G.play then
-            return {
-                chips = self.config.extra.chips,
-                mult = self.config.extra.mult,
-                xmult = self.config.extra.xmult,
-                xchips = self.config.extra.xchips,
-            }
-        end
-        return {}
-    end,
-    calculate = function(self, card, context)
-        if (context.main_scoring and context.cardarea == G.play) or (context.repetition and context.cardarea) then
-            local result = {
-                chips = self.config.extra.chips,
-                mult = self.config.extra.mult,
-                xmult = self.config.extra.xmult,
-                xchips = self.config.extra.xchips,
-            }
-            if context.repetition and card and card.ability and card.ability.extra and card.ability.extra.repetitions then
-                result.repetitions = card.ability.extra.repetitions
-            end
-            return result
-        end
-        return {}
-    end,
-}
-
+-- all seal is getting a recode.

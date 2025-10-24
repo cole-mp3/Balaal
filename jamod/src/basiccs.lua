@@ -169,7 +169,9 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_whatdoicallthis')
-               local card = create_card("Joker", G.jokers, nil, "jabong_Max", nil, nil, nil)
+                SMODS.add_card{ 
+                    set = "Joker" 
+}
                 card:juice_up(0.3, 0.5)
                 return true
             end

@@ -15,24 +15,17 @@ SMODS.Back {
     end,
     
 }
--- Ensure G is defined or required before usage
-if not G then
-    G = require("game_globals") -- Replace "game_globals" with the actual module name if different
-end
+
 
 SMODS.Back {
     key = 'slamo', 
      atlas = 'datlas',
      pos = {x = 0, y = 0},
-    config = { dollars = 20, hands = -1, discards = -1 },
+    config = { dollars = 20, hands = -1, discards = -1, consumables = {'c_soul','c_soul'} },
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.dollars, self.config.hands, self.config.discards } }
+        return { vars = { self.config.dollars, self.config.hands, self.config.discards, 
+    localize { type = 'name_text', key = self.config.consumables[1], set = 'Spectral' }
+ } }
     end,
-    apply = function (self, back)
-        G.GAME.win_ante = 9
-        SMODS.add_card{ key = "c_soul" }
-        SMODS.add_card{ key = "c_soul" }
-    end,
-
-   
+    
 }
