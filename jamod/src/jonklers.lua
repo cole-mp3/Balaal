@@ -145,8 +145,8 @@ SMODS.Atlas {
 SMODS.Joker{
     key = "weenic",
     atlas = 'lildude'
+    pos = {x = 0, y = 0},
     rarity = 3,
-    pos = {x = 0, y = 0}
     blueprint_compat = true,
     cost = 4,
     discovered = true,
@@ -156,7 +156,7 @@ SMODS.Joker{
         text = {
             "This card gains {C:blue}+#1#{} Chips for every scored card",
             "with a rank below a 6, and gains {X:red, C:white}X#1#{} Mult per card",
-            "scored that has a rank above 6."
+            "scored that has a rank above 6.",
             "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
         },
     },
@@ -196,7 +196,7 @@ SMODS.Atlas{
 }
 SMODS.Joker{
     key = "zam",
-    atlas = 'bigzamn'
+    atlas = 'bigzamn',
     rarity = 4,
     pos = {x = 0, y = 0},
     blueprint_compat = true,
