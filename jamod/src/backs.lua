@@ -1,7 +1,7 @@
 SMODS.Atlas {
     key = "datlas",
     path = "deccs/datlas.png",
-    px = 73,
+    px = 71,
     py = 95
 }
 SMODS.Back {
@@ -10,7 +10,8 @@ SMODS.Back {
      pos = {x = 3, y = 0},
     apply = function (self, back)
         SMODS.add_card{ -- For a random one
-        set = "Joker", 
+        
+
     }
     end,
     

@@ -208,7 +208,7 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
 SMODS.Atlas {
     key = 'vouch',
     path = 'voucers.png',
-    px = 69,
+    px = 60,
     py=90
 }
 

@@ -23,7 +23,7 @@ SMODS.Joker {
   key = 'gojoker',
   atlas = 'gojo',
   pos = {x = 0, y = 0},
-  rarity = 3,
+  rarity = 'jabong_Max',
   blueprint_compat = true,
   cost = 4,
   discovered = true,

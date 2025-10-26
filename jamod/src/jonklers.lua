@@ -155,7 +155,7 @@ SMODS.Joker{
         name = 'Weenic',
         text = {
             "This card gains {C:blue}+#1#{} Chips for every scored card",
-            "with a rank below a 6, and gains {X:red, C:white}X#1#{} Mult per card",
+            "with a rank below a 6, and gains {X:red,C:white}X#1#{} Mult per card",
             "scored that has a rank above 6.",
             "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
         },
@@ -208,7 +208,7 @@ SMODS.Joker{
     loc_txt = {
         name = 'Big Zam',
         text = {
-            "This card gains {C:blue}+#1#{} Chips and {X:red, C:white}X#1#{} Mult for every scored card.",
+            "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
             "Played cards give {C:money}$10{} when  scored.",
             "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
         },
@@ -251,12 +251,16 @@ SMODS.Joker{
         text = {
             "{C:deactivated}Does Nothing.{}"
         }
-    }
+    },
+    in_pool = function(self, args)
+    return false
+end,
 }
 SMODS.Joker {
     key = "Oracle",
     atlas = 'Orcl',
-    pos = {x = 2, y = 1},
+    pos = {x = 0, y = 0},
+    soul_pos = {x = 1, y = 0},
     rarity = 3,
     blueprint_compat = true,
     cost = 10,
@@ -319,8 +323,8 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = "Orcl",
     path = "Jonklers/Oracle.png",
-    px = 142,
-    py = 190
+    px = 71,
+    py = 95
 }
 SMODS.Joker {
   key = 'intelligence',
