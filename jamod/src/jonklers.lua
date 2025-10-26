@@ -255,7 +255,7 @@ SMODS.Joker{
 }
 SMODS.Joker {
     key = "Oracle",
-    atlas = 'Jatlas',
+    atlas = 'Orcl',
     pos = {x = 2, y = 1},
     rarity = 3,
     blueprint_compat = true,
@@ -283,7 +283,7 @@ SMODS.Joker {
                     for _ = 1, jokers_to_create do
                         SMODS.add_card {
                             key = "j_jabong_vexcube",
-                            edition = negative 
+                            edition = 'e_negative' 
                         }
                         G.GAME.joker_buffer = 0
                     end
@@ -315,4 +315,33 @@ SMODS.Atlas {
     path = "Jonklers/scre.png",
     px = 71,
     py = 95
+}
+SMODS.Atlas {
+    key = "Orcl",
+    path = "Jonklers/Oracle.png",
+    px = 142,
+    py = 190
+}
+SMODS.Joker {
+  key = 'intelligence',
+atlas = 'rsatlas',
+pos = {x = 0, y = 0},
+rarity = 4,
+blueprint_compat = true,
+cost = 20, 
+discovered = true,
+config = { extra = {xmult = 100,}, },
+loc_vars = function(self, info_queue, card)
+return { vars = { card.ability.extra.xmult } }
+end,
+calculate = function(self, card, context)
+if context.joker_main then
+return {
+message = "Briefcase!",
+xmult = card.ability.extra.xmult,
+emult = 100,
+}
+end
+end
+
 }

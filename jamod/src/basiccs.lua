@@ -6,6 +6,12 @@ SMODS.Atlas {
     py = 95
     -- is that fucking amuro ray
 }
+SMODS.Atlas {
+    key = 'copperizing',
+    path = 'crads/coper.png',
+    px = 142,
+    py = 190
+}
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
@@ -117,11 +123,7 @@ SMODS.Consumable {
                 play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
                 -- i still have to code this in so uhhh
-                G.FUNCS.overlay_menu{
-                 -- h o n s e
-                definition = create_UIBox_custom_video1("horsef","sample text"),
-                config = {no_esc = true}
-            }
+               
                 return true end }))
             
        
@@ -135,7 +137,7 @@ SMODS.Consumable {
 SMODS.Consumable {
  set = 'jabong_Material',
  key = 'coppering',
- atlas = "rsatlas", --again, placeholder here
+ atlas = "copperizing", --again, placeholder here
  pos = {x = 0, y = 0},
  cost = 4,
  loc_txt = {
@@ -169,19 +171,20 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_whatdoicallthis')
-                SSMODS.add_card {
-                            set = 'Joker',
-                            rarity = 'jabong_Max',
-                        }
+                SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
+                
                 card:juice_up(0.3, 0.5)
                 return true
             end
         }))
         delay(0.6)
     end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
 }
 SMODS.Consumable {
- set = 'jabong_Material',
+ set = 'Tarot',
  key = 'slamize',
  atlas = "rsatlas", --again, again placeholder here
  pos = {x = 0, y = 0},
