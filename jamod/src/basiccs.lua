@@ -9,8 +9,8 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = 'copperizing',
     path = 'crads/coper.png',
-    px = 142,
-    py = 190
+    px = 71,
+    py = 95
 }
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
