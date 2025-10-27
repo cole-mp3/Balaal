@@ -340,48 +340,21 @@ loc_vars = function(self, info_queue, card)
 return { vars = { card.ability.extra.xmult } }
 end,
 calculate = function(self, card, context)
-if context.joker_main then
-return {
-message = "Briefcase!",
-xmult = card.ability.extra.xmult,
-emult = 100,
-}
-end
+    if context.joker_main then
+        return {
+            message = "Briefcase!",
+            xmult = card.ability.extra.xmult,
+            emult = 100,
+        }
+    end
+
 end
 
 }
-SMODS.Joker {
-    key = "ika",
-    atlas = 'sccre',
-    pos = {x = 0, y = 0},
-    rarity = 4,
-    blueprint_compat = true,
-    cost = 20, 
-    discovered = true,
-    config = { extra = {xmult = 10, repetitions = 1}, },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.repetitions } }
-    end,
-    calculate = function(self, card, context)
-        local is_neg = card.edition and card.edition.key == "e_negative"
-        if context.individual and context.cardarea == G.play and not ontext.other_card:is_neg() then
-            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
-                card.ability.extra.mult
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.RED
-            }
-        end
-        if context.repetition and context.cardarea == G.play and is_neg then
-            repetitions = card.ability.extra.repetitions,
-            message = "Again!",
-        end
-    end,
 
-}
 SMODS.Atlas {
     key = 'rocks',
-    path = "Jonklers/rockbs.png"
+    path = "Jonklers/rockbs.png",
     px = 71,
     py = 95
 }
@@ -396,10 +369,11 @@ SMODS.Joker {
     pos = { x = 0, y = 0 },
     config = { extra = { repetitions = 1 } },
     calculate = function(self, card, context)
-        local is_stone = SMODS.has_enhancement(card, "m_stone")
-        if context.repetition and context.cardarea == G.play and context.other_card:is_stone() then
+  
+        if context.repetition and context.cardarea == G.play then
             return {
                 repetitions = card.ability.extra.repetitions
             }
         end
+    end,
 }

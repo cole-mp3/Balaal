@@ -32,13 +32,7 @@ SMODS.Seal {
                     chips = self.config.extra.chips
                 }
             end
-            return {}
     end,
-    if context.check_enhancement then
-    return {
-        m_stone = true
-    }
-    end
 
 
 }

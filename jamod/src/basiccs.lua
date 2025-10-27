@@ -42,7 +42,7 @@ SMODS.Sound ({
 
 SMODS.Consumable {
     key = 'rockstone',
-    set = 'jabong_material',
+    set = 'jabong_Material',
     atlas = "rsatlas",
     pos = { x = 0, y = 0 },
     loc_txt = {
@@ -177,6 +177,36 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_whatdoicallthis')
                 SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
+                
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+}
+SMODS.Consumable {
+    set = 'Spectral',
+    key = 'mssummon',
+    atlas = 'newtype',
+    pos = {x = 0,y = 0},
+    soul_pos = {x = 1, y = 0},
+    loc_txt = {
+        name = 'Hangar',
+        text = {
+            "Creates 1 {C:attention}Mobile Suit{} "
+        }
+    },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('jabong_whatdoicallthis')
+                SMODS.add_card({ set = 'jabong_mobilesuit'})
                 
                 card:juice_up(0.3, 0.5)
                 return true

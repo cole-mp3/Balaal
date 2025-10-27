@@ -4,18 +4,6 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-SMODS.Back {
-    key = 'fantastic',
-    atlas = 'datlas',
-     pos = {x = 3, y = 0},
-    apply = function (self, back)
-        SMODS.add_card{ -- For a random one
-        
-
-    }
-    end,
-    
-}
 
 
 SMODS.Back {

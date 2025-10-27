@@ -33,27 +33,24 @@ return {
                 "{C:red}SELF DESTRUCTS{} if blind's color is red or blue."
             }
           },
-        j_jabong_ika ={
-            name = "Ikaruga",
-            text = {
-                "All {C:attention}Non-Negative{} cards gain {X:red,C:white}X#1#{} Mult whne scored.",
-                "Retriggers all {C:attention}negaive{} cards once."
-            },
-          },
+        
           j_jabong_rockandbuskin = {
             name = "Rock and Buskin(obsidian)",
             text = {
                 "Retriggers all {C:attention}Stone{} cards."
             },
           },
+        
+          j_jabong_drei = {
+            name = "Throne Drei",
+            text = {
+                "{X:red,C:white}X4{} mult after the hand scores.",
+                "{E:1}^^20{} mult if this was the last hand"
+            },
+          },
         },
         Back = {
-            b_jabong_fantastic = {
-                name = "Fantastic Deck",
-                text = {
-                    "Idk lol"
-                }
-            },
+           
             b_jabong_slamo = {
                 name = "Slamo Deck",
                 text = {
@@ -63,7 +60,13 @@ return {
             },
         },
         Other = {
-         
+               jabong_mobilesuitcredit = {
+                            name = "Mobile Suit",
+                            text = {
+                                "This card is from",
+                                "{C:Attention,E:2,S:1.1}Mobile Suit Gundam!{}"
+                            },
+                        },
         }
     },
 }

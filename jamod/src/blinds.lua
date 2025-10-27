@@ -21,3 +21,4 @@ SMODS.Blind {
         end
     end
 }
+--G.GAME.blind.config.blind.boss_colour

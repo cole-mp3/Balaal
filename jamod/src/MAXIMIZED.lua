@@ -82,13 +82,13 @@ SMODS.Joker {
  
 }
 SMODS.Atlas {
-    key = "throne"
-    path = "Jonklers/drei.png"
+    key = "throne",
+    path = "Jonklers/drei.png",
     px = 142,
     py = 190
 }
 SMODS.Joker {
-    key = "drei"
+    key = "drei",
     atlas = 'throne',
     pos = {x = 0, y = 0},
     rarity = 'jabong_Max',
@@ -104,31 +104,29 @@ SMODS.Joker {
     }
     end,
    calculate = function(self, card, context)
-if context.joker_main then
-return {
-message = "gn particless :)",
-xmult = card.ability.extra.xmult
-eemult = 20,
-}
-end
+    if context.joker_main and G.GAME.current_round.hands_left == 0  then
+        return {
+            message = "gn particless :)",
+            xmult = card.ability.extra.xmult,
+            eemult = 20,
+        }
+    end
+    if context.joker_main and not G.GAME.current_round.hands_left == 0 then
+        return {
+            message = "Still Charged!",
+            xmult = card.ability.extra.xmult,
+        }
+    end
 end 
 
         
 }
-SMODS.Joker {
-    key = "GM"
-    atlas = 'sccre',
-    pos = {x = 0, y = 0},
-    rarity = 'jabong_Max',
-    blueprint_compat = true,
-    cost = 25,
-    discovered = true,
-}
+
 SMODS.ObjectType ({
-    key = "jabong_mobilesuit"
+    key = "jabong_mobilesuit",
     default = "j_ice_cream",
     cards = {
         j_jabong_drei = true,
-        j_jabong_GM = true,
+      
     },
 })
