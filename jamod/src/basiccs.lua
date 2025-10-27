@@ -45,6 +45,12 @@ SMODS.Consumable {
     set = 'jabong_material',
     atlas = "rsatlas",
     pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Rock And Stone",
+        text = {
+            "Adds a {C:attention}Stone Seal{} to one selected card."
+        },
+    },
     config = { extra = { seal = 'jabong_stone_seal' }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
