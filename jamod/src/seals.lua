@@ -19,6 +19,13 @@ SMODS.Seal {
     end,
     atlas = "satlas",
     pos = {x=0, y=0},
+    loc_txt = {
+                name = "Stone Seal",
+                text = {
+                    "{C:blue}#50#{} extra chips,",
+                    "Considered a {C:attention}Stone Card{}."
+                },
+    },
     calculate = function(self, card, context)
             if context.main_scoring and context.cardarea == G.play then
                 return {
@@ -27,6 +34,11 @@ SMODS.Seal {
             end
             return {}
     end,
+    if context.check_enhancement then
+    return {
+        m_stone = true
+    }
+    end
 
 
 }

@@ -1,3 +1,4 @@
+-- THIS IS THE PLACEHOLDER ATLAS!!!!!!!!!!!!!!!!!!!!
 SMODS.Atlas {
 key = "Jatlas",
 path = "Jonklers/jatlas.png",
@@ -150,14 +151,14 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 4,
     discovered = true,
-    config = { extra = {chips = 0, chip_mod = 8, xmult = 1, xmult_gain = 0.1 }, },
+    config = { extra = {chips = 0, xmult = 1, chip_mod = 8,  xmult_gain = 0.1 }, },
     loc_txt = {
         name = 'Weenic',
         text = {
-            "This card gains {C:blue}+#1#{} Chips for every scored card",
-            "with a rank below a 6, and gains {X:red,C:white}X#1#{} Mult per card",
+            "This card gains {C:blue}+8{} Chips for every scored card",
+            "with a rank below a 6, and gains {X:red,C:white}X0.1{} Mult per card",
             "scored that has a rank above 6.",
-            "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
+            "{C:deactivated}(Currently{} {C:blue}X#1#{} and {C:red}+#1#{}{C:deactivated}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -204,7 +205,7 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 10,
     discovered = true,
-    config = { extra = {chips = 0, chip_mod = 150, xmult = 1, xmult_gain = 2, dollars = 10 }, },
+    config = { extra = {chip_mod = 150, xmult_gain = 2, chips = 0, xmult = 1,  dollars = 10 }, },
     loc_txt = {
         name = 'Big Zam',
         text = {
@@ -348,4 +349,57 @@ emult = 100,
 end
 end
 
+}
+SMODS.Joker {
+    key = "ika",
+    atlas = 'sccre',
+    pos = {x = 0, y = 0},
+    rarity = 4,
+    blueprint_compat = true,
+    cost = 20, 
+    discovered = true,
+    config = { extra = {xmult = 10, repetitions = 1}, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.repetitions } }
+    end,
+    calculate = function(self, card, context)
+        local is_neg = card.edition and card.edition.key == "e_negative"
+        if context.individual and context.cardarea == G.play and not ontext.other_card:is_neg() then
+            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
+                card.ability.extra.mult
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.RED
+            }
+        end
+        if context.repetition and context.cardarea == G.play and is_neg then
+            repetitions = card.ability.extra.repetitions,
+            message = "Again!",
+        end
+    end,
+
+}
+SMODS.Atlas {
+    key = 'rocks',
+    path = "Jonklers/rockbs.png"
+    px = 71,
+    py = 95
+}
+
+SMODS.Joker {
+    key = "rockandbuskin",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'rocks',
+    pos = { x = 0, y = 0 },
+    config = { extra = { repetitions = 1 } },
+    calculate = function(self, card, context)
+        local is_stone = SMODS.has_enhancement(card, "m_stone")
+        if context.repetition and context.cardarea == G.play and context.other_card:is_stone() then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
 }

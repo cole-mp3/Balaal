@@ -76,8 +76,59 @@ SMODS.Joker {
             }
         end
         if context.joker_main then
-            message = "lamo you thought"
+            message = "no effect, stupid!"
         end
     end,
  
 }
+SMODS.Atlas {
+    key = "throne"
+    path = "Jonklers/drei.png"
+    px = 142,
+    py = 190
+}
+SMODS.Joker {
+    key = "drei"
+    atlas = 'throne',
+    pos = {x = 0, y = 0},
+    rarity = 'jabong_Max',
+    blueprint_compat = true,
+    cost = 25,
+    discovered = true,
+    config = { extra = { xmult = 4, } },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+        }
+    }
+    end,
+   calculate = function(self, card, context)
+if context.joker_main then
+return {
+message = "gn particless :)",
+xmult = card.ability.extra.xmult
+eemult = 20,
+}
+end
+end 
+
+        
+}
+SMODS.Joker {
+    key = "GM"
+    atlas = 'sccre',
+    pos = {x = 0, y = 0},
+    rarity = 'jabong_Max',
+    blueprint_compat = true,
+    cost = 25,
+    discovered = true,
+}
+SMODS.ObjectType ({
+    key = "jabong_mobilesuit"
+    default = "j_ice_cream",
+    cards = {
+        j_jabong_drei = true,
+        j_jabong_GM = true,
+    },
+})

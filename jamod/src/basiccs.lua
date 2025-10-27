@@ -41,45 +41,44 @@ SMODS.Sound ({
 })
 
 SMODS.Consumable {
-    set = 'jabong_Material',
-    key = 'RandS',
-    config = {
-        -- How many cards can be selected.
-        max_highlighted = 1,
-        -- the key of the seal to change to
-        extra = 'stone_seal',
-    },
-     loc_vars = function(self, info_queue, card)
-        -- Handle creating a tooltip with seal args.
-        info_queue[#info_queue+1] = G.P_SEALS[(card.ability or self.config).extra]
-        -- Description vars
-        return {vars = {(card.ability or self.config).max_highlighted}}
-    end,
-    loc_txt = {
-        name = 'Rock And Stone',
-        text = {
-            "Select {C:attention}#1#{} card to",
-            "apply {C:attention}Stone Seal{} to."
-        }
-    },
-    cost = 4,
+    key = 'rockstone',
+    set = 'jabong_material',
     atlas = "rsatlas",
-    pos = {x=0, y=0},
+    pos = { x = 0, y = 0 },
+    config = { extra = { seal = 'jabong_stone_seal' }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
-            G.E_MANAGER:add_event(Event({func = function()
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
                 play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
-                return true end }))
-            
-            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                G.hand.highlighted[i]:set_seal(card.ability.extra, nil, true)
-                return true end }))
-            
-            delay(0.5)
-        end
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
-    end
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:set_seal(card.ability.extra.seal, nil, true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
 }
 SMODS.Atlas ({
     key = "rsatlas",

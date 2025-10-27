@@ -32,7 +32,20 @@ return {
                 "{X:red,C:white}X#1#{} Mult and {X:enhancement,C:white}X#1#{} Mult.",
                 "{C:red}SELF DESTRUCTS{} if blind's color is red or blue."
             }
-        }
+          },
+        j_jabong_ika ={
+            name = "Ikaruga",
+            text = {
+                "All {C:attention}Non-Negative{} cards gain {X:red,C:white}X#1#{} Mult whne scored.",
+                "Retriggers all {C:attention}negaive{} cards once."
+            },
+          },
+          j_jabong_rockandbuskin = {
+            name = "Rock and Buskin(obsidian)",
+            text = {
+                "Retriggers all {C:attention}Stone{} cards."
+            },
+          },
         },
         Back = {
             b_jabong_fantastic = {
@@ -50,13 +63,7 @@ return {
             },
         },
         Other = {
-            jabong_stone_seal ={
-                name = "Stone Seal",
-                text = {
-                    "{C:blue}#50#{} extra chips, ",
-                    "Considered a {C:attention}Stone Card{}."
-                },
-            }
+         
         }
     },
 }

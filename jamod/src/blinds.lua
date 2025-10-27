@@ -15,7 +15,7 @@ SMODS.Blind {
         if not G.GAME.blind.disabled then
             G.FUNCS.overlay_menu{
                  -- h o n s e
-                definition = create_UIBox_custom_video1("spop","sample text"),
+                definition = create_UIBox_custom_video1("spop","please watch to the end. its funny"),
                 config = {no_esc = true}
             }
         end
