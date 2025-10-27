@@ -45,7 +45,8 @@ return {
             name = "Throne Drei",
             text = {
                 "{X:red,C:white}X4{} mult after the hand scores.",
-                "{E:1}^^20{} mult if this was the last hand"
+                "MAXIMIZED EFFECT:",
+                "{E:1,S:1.1}^^20{} mult every 4 blinds."
             },
           },
         },

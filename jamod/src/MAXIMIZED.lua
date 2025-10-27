@@ -118,10 +118,37 @@ SMODS.Joker {
         }
     end
 end 
-
-        
 }
-
+SMODS.Joker {
+    key = "Aerial",
+    atlas = 'throne',
+    pos = {x = 0, y = 0},
+    rarity = 'jabong_Max',
+    blueprint_compat = true,
+    cost = 15,
+    discovered = true,
+    config = { extra = { xmult_gain = 50, xmult = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+                card.ability.extra.xmult_gain,
+        }
+    }
+    end,
+    calculate = function(self, card, context)
+        if SMODS.last_hand_oneshot then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+             message = "Upgrade!"
+        end
+        if context.joker_main then
+            return {
+               
+                xmult = card.ability.extra.xmult,
+            }
+        end
+    end
+}
 SMODS.ObjectType ({
     key = "jabong_mobilesuit",
     default = "j_ice_cream",
