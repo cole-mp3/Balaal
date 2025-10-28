@@ -61,7 +61,12 @@ end
 
 recheckTwitch("blease")
 
-
+SMODS.Atlas {
+    key = 'azte'
+    path = "Jonklers/azte.png"
+    px = 142,
+    py = 190
+}
 SMODS.Joker{
     -- im so sorry my man but this was too funny
     key = 'cross',
@@ -76,8 +81,9 @@ SMODS.Joker{
                     "{C:inactive}PATCH NOOOTES!!!!!!!{}"
                 }
     },
-    atlas = 'sccre',
-    pos = {x=0, y=0},
+    atlas = 'azte',
+    pos = {x = 0, y = 0},
+    soul_pos = {x = 1, y = 0},
     rarity = 3,
     cost = 7,
     unlocked = true,

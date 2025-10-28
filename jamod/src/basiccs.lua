@@ -251,6 +251,7 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
 }
+
 SMODS.Consumable {
     set = 'jabong_Material',
     key = 'twine',
@@ -330,10 +331,16 @@ SMODS.Consumable {
         return true
     end
 }
+SMODS.Atlas {
+    key = 'ment',
+    path = 'crads/ment.png',
+    px = 71,
+    py = 95
+}
 SMODS.Consumable {
     set = 'Tarot',
     key = "notjudgement",
-    atlas = "rsatlas", --last placeholder i swear
+    atlas = "ment", --last placeholder i swear
     pos = {x = 0, y = 0},
     cost = 8, 
     loc_txt = {

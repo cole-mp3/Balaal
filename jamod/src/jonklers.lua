@@ -333,9 +333,15 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+SMODS.Atlas {
+    key = "teamfort",
+    path = "Jonklers/intel.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
   key = 'intelligence',
-atlas = 'rsatlas',
+atlas = 'teamfort',
 pos = {x = 0, y = 0},
 rarity = 4,
 blueprint_compat = true,

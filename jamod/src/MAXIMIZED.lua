@@ -95,25 +95,40 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 25,
     discovered = true,
-    config = { extra = { xmult = 4, } },
+    config = { extra = { xmult = 4,every = 5, loyalty_remaining = 6 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
                 card.ability.extra.xmult,
+                -- in order to balance it and beccause i cant think of any other way to do this.
+                -- Thanks to THE GOAT n' for
+                card.ability.extra.every + 1,
+                localize { type = 'variable', key = (card.ability.extra.loyalty_remaining == 0 and 'loyalty_active' or 'loyalty_inactive'), vars = { card.ability.extra.loyalty_remaining } }
         }
     }
     end,
    calculate = function(self, card, context)
-    if context.joker_main and G.GAME.current_round.hands_left == 0  then
+    if context.setting_blind  then
+        card.ability.extra.loyalty_remaining = card.ability.extra.loyalty_remaining - 1
+        message = "Charging..." 
+        if card.ability.extra.loyalty_remaining = 0 then
+            return {
+                message = "ready!",
+                colour = G.C.RED,
+            }
+        end
+    end    
+    if context.joker_main and card.ability.extra.loyalty_remaining == 0 then
         return {
-            message = "gn particless :)",
+            message = "Particles Dispersed!",
             xmult = card.ability.extra.xmult,
             eemult = 20,
+            card.ability.extra.loyalty_remaining = 5
         }
     end
-    if context.joker_main and not G.GAME.current_round.hands_left == 0 then
+    if context.joker_main and card.ability.extra.loyalty_remaining == card.ability.extra.every then
         return {
-            message = "Still Charged!",
+            message = "(still) Charging...",
             xmult = card.ability.extra.xmult,
         }
     end
