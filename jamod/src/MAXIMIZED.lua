@@ -134,10 +134,16 @@ SMODS.Joker {
     end
 end
 }
+SMODS.Atlas {
+    key = "gund",
+    path = "Jonklers/oomfie.png",
+    px = 142,
+    py = 190 
+}
 -- space oomfie
 SMODS.Joker {
     key = "Aerial",
-    atlas = 'throne',
+    atlas = 'gund',
     pos = {x = 0, y = 0},
     rarity = 'jabong_Max',
     blueprint_compat = true,
