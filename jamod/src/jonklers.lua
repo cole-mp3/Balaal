@@ -244,10 +244,16 @@ SMODS.Joker{
     --im losing my mind the more  i make this mod'
     -- is this a curse?
 }
--- alias hurry up and make the damn sprite bro its not that hard
+--nvm
+SMODS.Atlas {
+    key = "thingy",
+    path = "Jonklers/vexcube.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker{
     key = "vexcube",
-    atlas = "Jatlas",
+    atlas = "thingy",
     pos = {x = 3, y = 1},
     rarity = 1,
     blueprint_compat = false,
