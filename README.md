@@ -1,13 +1,16 @@
 ## BalAAL
+<img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/c2622207-2f54-4e26-9cb9-35b33644858a" />
 
-Its a mod
-a balatro mod
+Its a mod.
+
+a balatro mod.
+
 you need humor to understand it
 ## REQUIREMENTS:
 - A pc
 - A brain
 - Balatro
-- Steammodded And Talisman
+- Steammodded (https://github.com/Steamodded/smods) And Talisman (https://github.com/SpectralPack/Talisman)
 -----------------------------------------
 ## To Do:
 - [ ] Finally get Editions to work
