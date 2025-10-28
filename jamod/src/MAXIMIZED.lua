@@ -95,44 +95,42 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 25,
     discovered = true,
-    config = { extra = { xmult = 4,every = 5, loyalty_remaining = 6 } },
+    -- stolen code cuz im an idiot and cant code YAY
+    config = { extra = { Xmult = 4, every = 3, loyalty_remaining = 3 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.xmult,
-                -- in order to balance it and beccause i cant think of any other way to do this.
-                -- Thanks to THE GOAT n' for
+                card.ability.extra.Xmult,
                 card.ability.extra.every + 1,
                 localize { type = 'variable', key = (card.ability.extra.loyalty_remaining == 0 and 'loyalty_active' or 'loyalty_inactive'), vars = { card.ability.extra.loyalty_remaining } }
-        }
-    }
-    end,
-   calculate = function(self, card, context)
-    if context.setting_blind  then
-        card.ability.extra.loyalty_remaining = card.ability.extra.loyalty_remaining - 1
-        message = "Charging..." 
-        if card.ability.extra.loyalty_remaining = 0 then
-            return {
-                message = "ready!",
-                colour = G.C.RED,
             }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            card.ability.extra.loyalty_remaining = (card.ability.extra.every - 1 - (G.GAME.hands_played - card.ability.hands_played_at_create)) %
+                (card.ability.extra.every + 1)
+            if not context.blueprint then
+                if card.ability.extra.loyalty_remaining == 0 then
+                    local eval = function(card) return card.ability.extra.loyalty_remaining == 0 and not G.RESET_JIGGLES end
+                    juice_card_until(card, eval, true)
+                end
+            end
+            if card.ability.extra.loyalty_remaining == card.ability.extra.every then
+                return {
+                    xmult = card.ability.extra.Xmult,
+                    eemult = 20,
+                    message = "Dispersed!"
+                }
+            else
+                return{
+                    xmult = card.ability.extra.Xmult
+                }
+                    
+            end
         end
-    end    
-    if context.joker_main and card.ability.extra.loyalty_remaining == 0 then
-        return {
-            message = "Particles Dispersed!",
-            xmult = card.ability.extra.xmult,
-            eemult = 20,
-            card.ability.extra.loyalty_remaining = 5
-        }
+        
     end
-    if context.joker_main and card.ability.extra.loyalty_remaining == card.ability.extra.every then
-        return {
-            message = "(still) Charging...",
-            xmult = card.ability.extra.xmult,
-        }
-    end
-end
 }
 SMODS.Atlas {
     key = "gund",
@@ -150,7 +148,7 @@ SMODS.Joker {
     cost = 15,
     discovered = true,
    
-    config = { extra = { xmult_gain = 50, xmult = 5 } },
+    config = { extra = { xmult_gain = 5, xmult = 5 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

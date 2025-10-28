@@ -7,7 +7,7 @@ SMODS.Atlas {
 SMODS.Enhancement {
     key = 'copper',
     atlas = 'coplas', --there its done
-    pos = { x = 6, y = 1 },
+    pos = { x = 0, y = 0 },
     config = { h_x_mult = 1.5, h_x_chips = 2.5 },
     loc_vars = function(self, info_queue, card)             -- ⌄i fixed it but why on earth was this also xmult
         return { vars = { card.ability.h_x_mult, card.ability.h_x_chips } }

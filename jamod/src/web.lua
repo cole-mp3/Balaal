@@ -3,21 +3,21 @@
 -- thanks cryptid devs
 -- oh and also thanks again to yahi for having a working twitch version of membership card
 -- you are a fucking lifesaver
-https = require "SMODS.https"
+--[[https = require "SMODS.https"
 local member_fallback = 3
 local succ, https = pcall(require, "SMODS.https")
 local last_update_time = 0
 local initial = true
 local clientid = "gp762nuuoqcoxypju8c569th9wz7q5"
 
-jabong.viewercount = member_fallbackn
-if not succ then --[[hmm yes,succ]]
+jamod.viewercount = member_fallbackn
+if not succ then
 	print("HTTP module could not be loaded. " .. tostring(https))
 end
 
 local function apply_discord_member_count(code, body, headers)
 	if body then
-		jabong.viewercount = string.match(body, '"approximate_member_count"%s*:%s*(%d+)') or jabong.viewercount
+		jamod.viewercount = string.match(body, '"approximate_member_count"%s*:%s*(%d+)') or jamod.viewercount
 	end
 end
 function recheckTwitch(please)
@@ -62,8 +62,8 @@ end
 recheckTwitch("blease")
 
 SMODS.Atlas {
-    key = 'azte'
-    path = "Jonklers/azte.png"
+    key = 'azte',
+    path = "Jonklers/azte.png",
     px = 142,
     py = 190
 }
@@ -112,3 +112,4 @@ SMODS.Joker{
     end
 end,
 }
+]]--

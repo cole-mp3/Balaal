@@ -46,14 +46,15 @@ return {
             name = "Throne Drei",
             text = {
                 "{X:red,C:white}X4{} mult after the hand scores.",
-                "{E:1,S:1.1}^^20{} mult every 4 blinds."
+                "{E:1,S:1.1}^^20{} mult every 3 hands."
             },
           },
           j_jabong_Aerial = {
             name = "Gundam Aerial",
             text = {
                 "This card gains {X:red,C:white}X#1#{} mult",
-                "Every time you {C:attention}One-Shot{} a blind."
+                "Every time you {C:attention}One-Shot{} a blind.",
+                "{C:deactivated}Currently{}{X:red,C:white}X#1#{}"
             },
           },
         },

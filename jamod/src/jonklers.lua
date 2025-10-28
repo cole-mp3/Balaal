@@ -112,7 +112,7 @@ end
 }
 SMODS.Joker {
 key = "sock",
-atlas = "Jatlas",
+atlas = "hatlas",
 pos = { x = 0, y = 1 },
 rarity = 2,
 pools = {["halfjokes"] = true},
@@ -254,7 +254,7 @@ SMODS.Atlas {
 SMODS.Joker{
     key = "vexcube",
     atlas = "thingy",
-    pos = {x = 3, y = 1},
+    pos = {x = 0, y = 0},
     rarity = 1,
     blueprint_compat = false,
     cost = 1,
@@ -396,7 +396,7 @@ SMODS.Joker {
     end,
 }
 
--- welspring
+--[[welspring
 SMODS.Joker {
     key = "Wellspring",
     blueprint_compat = false,
@@ -407,7 +407,7 @@ SMODS.Joker {
         name = "Wellspring",
         text = {
             "{C:attention}All{} numbered cards in your scoring hand ",
-            "are made gay-I mean {X:edtition,C:black}Polychrome{}."
+            "are made gay-I mean {C:edition}Polychrome{}."
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -430,10 +430,11 @@ SMODS.Joker {
             end
             if numbers > 0 then
                 return {
-                    message = "C H R O M E"
+                    message = "C H R O M E",
                     colour = G.C.MONEY
                 }
             end
         end
     end
 }
+]]--
