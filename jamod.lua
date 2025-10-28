@@ -1,7 +1,8 @@
 --  THE mod's ID is still jamod cuz im lazy and dont wanna break anything
 -- any addtiions that use the mod id do NOT go under BALAAL, they go under jamod
--- cuz that was he orginal name
+-- cuz that was the orginal name
 -- so yeah
+--A: hey i finally built aseprite from source it took forfuckingeverrrrrrrrrrrrrrrrrr
 assert(SMODS.load_file("jamod/src/blinds.lua"))()
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
