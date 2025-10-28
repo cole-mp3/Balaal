@@ -65,6 +65,12 @@ return {
                     "2 Copies of {C:attention}The Soul{}."
                 }
             },
+            b_jabong_Xboxlive = {
+                name = "Legally distinct Gaming console",
+                text = {
+                    "Start run with a random {E:1,C:attention}Maximized{} Joker",
+                }
+            },
         },
         Other = {
                jabong_mobilesuitcredit = {

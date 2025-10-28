@@ -106,7 +106,6 @@ if context.repetition and context.cardarea == G.play and context.other_card:is_f
 return {
 message = "ain!",
 repetitions = card.ability.extra.repetitions,
-sound = 'jabong_damn'
 }
 end
 end
@@ -137,7 +136,6 @@ if context.repetition and context.cardarea == G.play and not context.other_card:
 return {
 repetitions = card.ability.extra.repetitions,
 message = "Ag",
-sound = 'jabong_oh'
 }
 end
 end

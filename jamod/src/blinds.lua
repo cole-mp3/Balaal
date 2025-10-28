@@ -47,7 +47,28 @@ SMODS.Blind {
         end
     end
 }
+-- TO DO FOR THIS BLIND:
+-- Make a UIBox similar to cryptid's old version pointer
+-- Make it ask a question when a hand is played.
+-- If youre wrong, reduces levels of ALL HANDS by 1.
+-- and a special interaction on a very specific question.
+SMODS.Blind {
+    key = 'quizzer'
+    dollars = 3,
+    mult = 3,
+    pos = { x = 0, y = 1 },
+    boss = { min = 2,},
+    boss_colour = HEX("f7e948"),
+    loc_txt = {
+        name = "The Quiz",
+        text = {
+            " 'ill code this in later.' "
+            "           -jabon gratis"
 
+        },
+    },
+
+}
 -- a few references for contexts/other shit:
 -- -----------------------------------------
 --G.GAME.blind.config.blind.boss_colour

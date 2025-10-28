@@ -1,4 +1,7 @@
---  THE mod's ID si still jamod cuz im lazy and dont wanna break anything
+--  THE mod's ID is still jamod cuz im lazy and dont wanna break anything
+-- any addtiions that use the mod id do NOT go under BALAAL, they go under jamod
+-- cuz that was he orginal name
+-- so yeah
 assert(SMODS.load_file("jamod/src/blinds.lua"))()
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
@@ -13,7 +16,7 @@ SMODS.current_mod.optional_features = {
     retrigger_joker = true,
     quantum_enhancements = true,
 }
--- editions(cuz it errors me if i load file.
+-- editions(cuz it errors me if i load file so you know what)
 SMODS.Edition {
     key = "sheetapaper",
     shader = false,

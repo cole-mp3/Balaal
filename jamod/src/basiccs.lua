@@ -30,6 +30,18 @@ SMODS.Sound({
 SMODS.Sound({
     vol = 0.6,
     pitch = 0.7,
+    key = "womp",
+    path = "womp.ogg",
+})
+SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
+    key = "lepipe",
+    path = "pipe.ogg",
+})
+SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
     key = "oh",
     path = "oh.ogg",
 })
@@ -125,7 +137,7 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
             G.E_MANAGER:add_event(Event({func = function()
-                play_sound('jabong_damn')
+                play_sound('jabong_womp')
                 card:juice_up(0.3, 0.5)
                 -- i still have to code this in so uhhh
                
@@ -205,7 +217,7 @@ SMODS.Consumable {
             trigger = 'after',
             delay = 0.4,
             func = function()
-                play_sound('jabong_whatdoicallthis')
+                play_sound('jabong_lepipe')
                 SMODS.add_card({ set = 'jabong_mobilesuit'})
                 
                 card:juice_up(0.3, 0.5)

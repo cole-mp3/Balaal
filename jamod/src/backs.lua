@@ -28,3 +28,18 @@ SMODS.Back {
     end
     
 }
+SMODS.Back {
+    key = "Xboxlive"
+    atlas = "datlas",
+    pos = {x = 3, y = 0},
+    apply = function(self, back)
+            G.E_MANAGER:add_event(Event({
+                  func = function()
+                      play_sound('jabong_whatdoicallthis')
+                      SMODS.add_card({ set = 'Joker', rarity = 'jabong_max', edition = 'e_negative' })
+                    
+                      return true
+                  end
+              }))
+    end
+}
