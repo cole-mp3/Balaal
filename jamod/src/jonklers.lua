@@ -5,7 +5,12 @@ path = "Jonklers/jatlas.png",
 px = 70,
 py = 94
 }
-
+SMODS.Atlas {
+    key = "hatlas",
+    path = "Jonklers/hatlas.png",
+    px = 71,
+    py = 95
+}
 SMODS.ObjectType ({
 key = "halfjokes",
 default  = "j_joker",
@@ -77,8 +82,8 @@ end,
 }
 SMODS.Joker {
 key = "buskin",
-atlas = "Jatlas",
-pos = { x = 1, y = 0 },
+atlas = "hatlas",
+pos = { x = 1, y = 1 },
 rarity = 2,
 pools = {["halfjokes"] = true},
 blueprint_compat = true,
@@ -109,7 +114,7 @@ end
 SMODS.Joker {
 key = "sock",
 atlas = "Jatlas",
-pos = { x = 1, y = 0 },
+pos = { x = 0, y = 1 },
 rarity = 2,
 pools = {["halfjokes"] = true},
 blueprint_compat = true,
@@ -388,7 +393,7 @@ SMODS.Joker {
         name = "Wellspring",
         text = {
             "{C:attention}All{} numbered cards in your scoring hand ",
-            "are made gay- I mean {C:edtition}Polychrome{}."
+            "are made gay-I mean {X:edtition,C:black}Polychrome{}."
         }
     },
     loc_vars = function(self, info_queue, card)

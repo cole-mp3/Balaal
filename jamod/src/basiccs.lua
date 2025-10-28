@@ -276,10 +276,16 @@ SMODS.Consumable {
             (card.area == G.consumeables)
     end
 }
+SMODS.Atlas {
+    key = 'lamo',
+    path = 'crads/band.png',
+    px = 71,
+    py = 95
+}
 SMODS.Consumable {
     set = 'jabong_Material',
     key = "rubberbanding"
-    atlas = "rsatlas", --AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    atlas = "lamo", 
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {
@@ -310,6 +316,36 @@ SMODS.Consumable {
     can_use = function(self, card)
         return true
     end
+}
+SMODS.Consumable {
+    set = 'Tarot',
+    key = "notjudgement",
+    atlas = "rsatlas", --last placeholder i swear
+    pos = {x = 0, y = 0},
+    cost = 8, 
+    loc_txt = {
+        name = "ment",
+        text = {
+            "Creates a {C:attention}Half-type{} joker. "
+        }
+    },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('jabong_oh')
+                SMODS.add_card({ set = 'halfjokes'})
+                
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
 }
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {

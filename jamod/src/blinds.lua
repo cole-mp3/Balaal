@@ -8,7 +8,8 @@ SMODS.Blind {
     loc_txt = {
         name = "Spoop",
         text = {
-            "sea Aweed."
+            "sea Aweed.",
+            "(credit to vo memes)"
         },
     },
     defeat = function(self)
@@ -29,11 +30,18 @@ SMODS.Blind {
     pos = { x = 0, y = 28 },
     boss = { showdown = true,},
     boss_colour = HEX("f7e948"),
+    loc_txt = {
+        name = "The Witness",
+        text = {
+            "I have yet to code this in,",
+            "So it does nothing*."
+        },
+    },
     defeat = function(self)
         if not G.GAME.blind.disabled then
             G.FUNCS.overlay_menu{
                  -- placeholder.exe
-                definition = create_UIBox_custom_video1("spop","please watch to the end. its funny"),
+                definition = create_UIBox_custom_video1("ogre","you go little man"),
                 config = {no_esc = true}
             }
         end

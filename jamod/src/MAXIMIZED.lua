@@ -127,9 +127,7 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 15,
     discovered = true,
-    pools = {
-     
-     }
+   
     config = { extra = { xmult_gain = 50, xmult = 5 } },
     loc_vars = function(self, info_queue, card)
         return {
@@ -153,7 +151,7 @@ SMODS.Joker {
     end
 }
 SMODS.ObjectType ({
-    key = "jabong_mobilesuit",
+    key = "mobilesuit",
     default = "j_ice_cream",
     cards = {
         j_jabong_drei = true,
