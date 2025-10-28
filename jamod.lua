@@ -92,7 +92,7 @@ SMODS.PokerHand {
 
 
     end,
-
+-- i will lose it if this doesnt work
 modify_display_text = function(self, cards, scoring_hand)
         return pkr_funny
     end,

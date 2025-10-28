@@ -115,11 +115,11 @@ SMODS.Consumable {
     set = 'Spectral',
     key = 'hyperize',
     config = {
-        -- How many cards can be selected.
+    
         max_highlighted = 1,
     },
      loc_vars = function(self, info_queue, card)
-        -- Description vars
+       
         return {vars = {(card.ability or self.config).max_highlighted}}
     end,
     loc_txt = {
@@ -154,7 +154,7 @@ SMODS.Consumable {
 SMODS.Consumable {
  set = 'jabong_Material',
  key = 'coppering',
- atlas = "copperizing", --again, placeholder here
+ atlas = "copperizing", 
  pos = {x = 0, y = 0},
  cost = 4,
  loc_txt = {
@@ -174,6 +174,7 @@ SMODS.Consumable {
     set = 'Spectral',
     key = 'gundam',
     atlas = 'newtype',
+    --  *newtype shenanigans intensify*
     pos = {x = 0,y = 0},
     soul_pos = {x = 1, y = 0},
     loc_txt = {
@@ -253,7 +254,7 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
 SMODS.Consumable {
     set = 'jabong_Material',
     key = 'twine',
-    atlas = "rsatlas", --Im adding too much shit for my own good
+    atlas = "rsatlas", --Im adding too much shit for my own good this si just using MORE PLACEHOLDER
     pos = {x = 0, y = 0},
     cost = 4,
     loc_txt = {
@@ -363,6 +364,7 @@ SMODS.Consumable {
 SMODS.Atlas {
     key = 'vouch',
     path = 'voucers.png',
+    -- ^remind me to come back to this and redo this ugly ass voucher
     px = 60,
     py=90
 }
@@ -370,7 +372,7 @@ SMODS.Atlas {
 SMODS.Voucher {
     key = 'mindscape',
     atlas = 'vouch',
-    pos = {x = 1, y = 0},
+    pos = {x = 0, y = 0},
    
     loc_txt = {
         name = "mindscape",
@@ -382,7 +384,9 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                -- convinced the  below doesnt work i have to test that
+                --[[ Update: I still cant prove it works but good news is it didnt crash the  
+                game when i used it (unlike everything ELSE in this spaghetti code monster)
+                soo uhh i guess it did]]--
                 G.GAME.jabong_maximized_rate = card.ability.extra.rate
                 return true
             end

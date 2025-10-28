@@ -31,7 +31,7 @@ SMODS.Back {
 SMODS.Back {
     key = "Xboxlive"
     atlas = "datlas",
-    pos = {x = 3, y = 0},
+    pos = {x = 2, y = 0},
     apply = function(self, back)
             G.E_MANAGER:add_event(Event({
                   func = function()

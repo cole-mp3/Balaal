@@ -117,8 +117,9 @@ SMODS.Joker {
             xmult = card.ability.extra.xmult,
         }
     end
-end 
+end
 }
+-- space oomfie
 SMODS.Joker {
     key = "Aerial",
     atlas = 'throne',
@@ -150,6 +151,7 @@ SMODS.Joker {
         end
     end
 }
+-- for the hangar card
 SMODS.ObjectType ({
     key = "mobilesuit",
     default = "j_ice_cream",

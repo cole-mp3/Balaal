@@ -30,7 +30,8 @@ return {
             name = "Intelligence",
             text = {
                 "{X:red,C:white}X#1#{} Mult and {X:enhancement,C:white}X#1#{} Mult.",
-                "{C:red}SELF DESTRUCTS{} if blind's color is red or blue."
+                "{C:red}SELF DESTRUCTS{} if blind's color is red or blue,",
+                "{C:deactivated}or rather, it would if programming that was even remotely possible.{}"
             }
           },
         
@@ -73,6 +74,7 @@ return {
             },
         },
         Other = {
+            -- how tf does cryptid do custom tooltips
                jabong_mobilesuitcredit = {
                             name = "Mobile Suit",
                             text = {

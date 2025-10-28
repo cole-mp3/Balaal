@@ -11,7 +11,7 @@ local initial = true
 local clientid = "gp762nuuoqcoxypju8c569th9wz7q5"
 
 jabong.viewercount = member_fallbackn
-if not succ then
+if not succ then --[[hmm yes,succ]]
 	print("HTTP module could not be loaded. " .. tostring(https))
 end
 
@@ -63,7 +63,7 @@ recheckTwitch("blease")
 
 
 SMODS.Joker{
-    -- im so soory my man but this was too funny
+    -- im so sorry my man but this was too funny
     key = 'cross',
     loc_txt= {
         name = 'Another week boys, and another TWAB',

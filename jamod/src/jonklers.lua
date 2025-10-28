@@ -201,7 +201,7 @@ SMODS.Atlas{
     py = 95
 }
 SMODS.Joker{
-    key = "zam",
+    key = "zam", -- DAMN!!!!!!1!!
     atlas = 'bigzamn',
     pos = {x = 0, y = 0},
     rarity = 4,
@@ -241,7 +241,10 @@ SMODS.Joker{
             }
         end
     end,
+    --im losing my mind the more  i make this mod'
+    -- is this a curse?
 }
+-- alias hurry up and make the damn sprite bro its not that hard
 SMODS.Joker{
     key = "vexcube",
     atlas = "Jatlas",
@@ -361,7 +364,7 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-
+--doesnt work
 SMODS.Joker {
     key = "rockandbuskin",
     unlocked = true,
@@ -380,6 +383,7 @@ SMODS.Joker {
         end
     end,
 }
+
 -- welspring
 SMODS.Joker {
     key = "Wellspring",

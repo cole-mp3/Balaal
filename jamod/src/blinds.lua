@@ -23,6 +23,13 @@ SMODS.Blind {
         end
     end
 }
+--[[TO DO FOR THIS BLIND:
+    - Make cool hand
+    - have hand be gimmick
+    - gimmick is: hand doesnt score unless you have a card of a randomly chosen suit in your hand.
+        changes every 30 seconds.
+    -PICKS FROM YOUR DECK (im looking a you ancient joker)
+]]
 SMODS.Blind {
     key = 'witness'
     dollars = 7,

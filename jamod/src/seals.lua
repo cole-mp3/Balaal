@@ -39,3 +39,4 @@ SMODS.Seal {
 -- all seal is getting a recode.
 -- just uhh
 -- not now
+-- gotta add everyman first
