@@ -19,15 +19,24 @@ SMODS.Seal {
     end,
     atlas = "satlas",
     pos = {x=0, y=0},
+    loc_txt = {
+                name = "Stone Seal",
+                text = {
+                    "{C:blue}#50#{} extra chips,",
+                    "Considered a {C:attention}Stone Card{}."
+                },
+    },
     calculate = function(self, card, context)
             if context.main_scoring and context.cardarea == G.play then
                 return {
                     chips = self.config.extra.chips
                 }
             end
-            return {}
     end,
 
 
 }
 -- all seal is getting a recode.
+-- just uhh
+-- not now
+-- gotta add everyman first

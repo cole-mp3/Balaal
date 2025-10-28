@@ -10,7 +10,7 @@ logo = "balal.png"
 
 
 SMODS.Atlas ({
-		key = "balal",
+		key = "balatro",
 		path = logo,
 		px = 333,
 		py = 216,

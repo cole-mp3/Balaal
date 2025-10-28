@@ -6,6 +6,12 @@ SMODS.Atlas {
     py = 95
     -- is that fucking amuro ray
 }
+SMODS.Atlas {
+    key = 'copperizing',
+    path = 'crads/coper.png',
+    px = 71,
+    py = 95
+}
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
@@ -24,6 +30,18 @@ SMODS.Sound({
 SMODS.Sound({
     vol = 0.6,
     pitch = 0.7,
+    key = "womp",
+    path = "womp.ogg",
+})
+SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
+    key = "lepipe",
+    path = "pipe.ogg",
+})
+SMODS.Sound({
+    vol = 0.6,
+    pitch = 0.7,
     key = "oh",
     path = "oh.ogg",
 })
@@ -35,45 +53,50 @@ SMODS.Sound ({
 })
 
 SMODS.Consumable {
+    key = 'rockstone',
     set = 'jabong_Material',
-    key = 'RandS',
-    config = {
-        -- How many cards can be selected.
-        max_highlighted = 1,
-        -- the key of the seal to change to
-        extra = 'stone_seal',
-    },
-     loc_vars = function(self, info_queue, card)
-        -- Handle creating a tooltip with seal args.
-        info_queue[#info_queue+1] = G.P_SEALS[(card.ability or self.config).extra]
-        -- Description vars
-        return {vars = {(card.ability or self.config).max_highlighted}}
-    end,
-    loc_txt = {
-        name = 'Rock And Stone',
-        text = {
-            "Select {C:attention}#1#{} card to",
-            "apply {C:attention}Stone Seal{} to."
-        }
-    },
-    cost = 4,
     atlas = "rsatlas",
-    pos = {x=0, y=0},
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Rock And Stone",
+        text = {
+            "Adds a {C:attention}Stone Seal{} to one selected card."
+        },
+    },
+    config = { extra = { seal = 'jabong_stone_seal' }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]
+        return { vars = { card.ability.max_highlighted } }
+    end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
-            G.E_MANAGER:add_event(Event({func = function()
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
                 play_sound('jabong_damn')
                 card:juice_up(0.3, 0.5)
-                return true end }))
-            
-            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                G.hand.highlighted[i]:set_seal(card.ability.extra, nil, true)
-                return true end }))
-            
-            delay(0.5)
-        end
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:unhighlight_all(); return true end }))
-    end
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:set_seal(card.ability.extra.seal, nil, true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
 }
 SMODS.Atlas ({
     key = "rsatlas",
@@ -92,11 +115,11 @@ SMODS.Consumable {
     set = 'Spectral',
     key = 'hyperize',
     config = {
-        -- How many cards can be selected.
+    
         max_highlighted = 1,
     },
      loc_vars = function(self, info_queue, card)
-        -- Description vars
+       
         return {vars = {(card.ability or self.config).max_highlighted}}
     end,
     loc_txt = {
@@ -114,14 +137,10 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
             G.E_MANAGER:add_event(Event({func = function()
-                play_sound('jabong_damn')
+                play_sound('jabong_womp')
                 card:juice_up(0.3, 0.5)
                 -- i still have to code this in so uhhh
-                G.FUNCS.overlay_menu{
-                 -- h o n s e
-                definition = create_UIBox_custom_video1("horsef","sample text"),
-                config = {no_esc = true}
-            }
+               
                 return true end }))
             
        
@@ -135,7 +154,7 @@ SMODS.Consumable {
 SMODS.Consumable {
  set = 'jabong_Material',
  key = 'coppering',
- atlas = "rsatlas", --again, placeholder here
+ atlas = "copperizing", 
  pos = {x = 0, y = 0},
  cost = 4,
  loc_txt = {
@@ -155,6 +174,7 @@ SMODS.Consumable {
     set = 'Spectral',
     key = 'gundam',
     atlas = 'newtype',
+    --  *newtype shenanigans intensify*
     pos = {x = 0,y = 0},
     soul_pos = {x = 1, y = 0},
     loc_txt = {
@@ -169,19 +189,50 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_whatdoicallthis')
-                SSMODS.add_card {
-                            set = 'Joker',
-                            rarity = 'jabong_Max',
-                        }
+                SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
+                
                 card:juice_up(0.3, 0.5)
                 return true
             end
         }))
         delay(0.6)
     end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
 }
 SMODS.Consumable {
- set = 'jabong_Material',
+    set = 'Spectral',
+    key = 'mssummon',
+    atlas = 'newtype',
+    pos = {x = 0,y = 0},
+    soul_pos = {x = 1, y = 0},
+    loc_txt = {
+        name = 'Hangar',
+        text = {
+            "Creates 1 {C:attention}Mobile Suit{} "
+        }
+    },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('jabong_lepipe')
+                SMODS.add_card({ set = 'jabong_mobilesuit'})
+                
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+}
+SMODS.Consumable {
+ set = 'Tarot',
  key = 'slamize',
  atlas = "rsatlas", --again, again placeholder here
  pos = {x = 0, y = 0},
@@ -200,19 +251,128 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
 }
-
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = 'twine',
+    atlas = "rsatlas", --Im adding too much shit for my own good this si just using MORE PLACEHOLDER
+    pos = {x = 0, y = 0},
+    cost = 4,
+    loc_txt = {
+        name = "Twine",
+        text = {
+            "Creates {C:attention}2{} random Material cards.",
+        }
+    },
+     config = { extra = { mats = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mats } }
+    end,
+    use = function(self, card, area, copier)
+        for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    if G.consumeables.config.card_limit > #G.consumeables.cards then
+                        play_sound('timpani')
+                        SMODS.add_card({ set = 'jabong_Material' })
+                        card:juice_up(0.3, 0.5)
+                    end
+                    return true
+                end
+            }))
+        end
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return (G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit) or
+            (card.area == G.consumeables)
+    end
+}
+SMODS.Atlas {
+    key = 'lamo',
+    path = 'crads/band.png',
+    px = 71,
+    py = 95
+}
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "rubberbanding",
+    atlas = "lamo", 
+    pos = {x = 0, y = 0},
+    cost = 4, 
+    loc_txt = {
+        name = "Rubber making",
+        text = {
+            "Because I have yet to code in this {S:1.1,C:attention,E:1}Fucking enhancement{},"
+            "Doubles money, max of {C:attention}#1#{} dollars.",
+           
+        }
+    },
+    config = { extra = { max = 500 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.max } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                card:juice_up(0.3, 0.5)
+                ease_dollars(math.max(0, math.min(G.GAME.dollars, card.ability.extra.max)), true)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
+    end
+}
+SMODS.Consumable {
+    set = 'Tarot',
+    key = "notjudgement",
+    atlas = "rsatlas", --last placeholder i swear
+    pos = {x = 0, y = 0},
+    cost = 8, 
+    loc_txt = {
+        name = "ment",
+        text = {
+            "Creates a {C:attention}Half-type{} joker. "
+        }
+    },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('jabong_oh')
+                SMODS.add_card({ set = 'halfjokes'})
+                
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+}
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {
     key = 'vouch',
     path = 'voucers.png',
-    px = 69,
+    -- ^remind me to come back to this and redo this ugly ass voucher
+    px = 60,
     py=90
 }
 
 SMODS.Voucher {
     key = 'mindscape',
     atlas = 'vouch',
-    pos = {x = 1, y = 0},
+    pos = {x = 0, y = 0},
    
     loc_txt = {
         name = "mindscape",
@@ -224,11 +384,14 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                -- convinced the  below doesnt work i have to test that
+                --[[ Update: I still cant prove it works but good news is it didnt crash the  
+                game when i used it (unlike everything ELSE in this spaghetti code monster)
+                soo uhh i guess it did]]--
                 G.GAME.jabong_maximized_rate = card.ability.extra.rate
                 return true
             end
         }))
     end
 }
+
 

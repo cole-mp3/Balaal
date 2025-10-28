@@ -1,19 +1,8 @@
 SMODS.Atlas {
     key = "datlas",
     path = "deccs/datlas.png",
-    px = 73,
+    px = 71,
     py = 95
-}
-SMODS.Back {
-    key = 'fantastic',
-    atlas = 'datlas',
-     pos = {x = 3, y = 0},
-    apply = function (self, back)
-        SMODS.add_card{ -- For a random one
-        set = "Joker", 
-    }
-    end,
-    
 }
 
 
@@ -38,4 +27,19 @@ SMODS.Back {
         }))
     end
     
+}
+SMODS.Back {
+    key = "Xboxlive"
+    atlas = "datlas",
+    pos = {x = 2, y = 0},
+    apply = function(self, back)
+            G.E_MANAGER:add_event(Event({
+                  func = function()
+                      play_sound('jabong_whatdoicallthis')
+                      SMODS.add_card({ set = 'Joker', rarity = 'jabong_max', edition = 'e_negative' })
+                    
+                      return true
+                  end
+              }))
+    end
 }
