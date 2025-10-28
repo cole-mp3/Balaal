@@ -377,3 +377,44 @@ SMODS.Joker {
         end
     end,
 }
+-- welspring
+SMODS.Joker {
+    key = "Wellspring",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 7,
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Wellspring",
+        text = {
+            "{C:attention}All{} numbered cards in your scoring hand ",
+            "are made gay- I mean {C:edtition}Polychrome{}."
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local numbers = 0
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if not scored_card:is_face() then
+                    numbers = numbers + 1
+                    scored_card:set_ability('e_polychrome', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            scored_card:juice_up()
+                            return true
+                        end
+                    }))
+                end
+            end
+            if numbers > 0 then
+                return {
+                    message = "C H R O M E"
+                    colour = G.C.MONEY
+                }
+            end
+        end
+    end
+}

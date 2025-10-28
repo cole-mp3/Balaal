@@ -127,7 +127,10 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 15,
     discovered = true,
-    config = { extra = { xmult_gain = 50, xmult = 1 } },
+    pools = {
+     
+     }
+    config = { extra = { xmult_gain = 50, xmult = 5 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -136,16 +139,16 @@ SMODS.Joker {
         }
     }
     end,
-    calculate = function(self, card, context)
-        if SMODS.last_hand_oneshot then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-             message = "Upgrade!"
-        end
+    calculate = function(self, card, context) 
         if context.joker_main then
             return {
                
                 xmult = card.ability.extra.xmult,
             }
+        end
+        if SMODS.last_hand_oneshot then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+             message = "Upgrade!"
         end
     end
 }
@@ -154,6 +157,6 @@ SMODS.ObjectType ({
     default = "j_ice_cream",
     cards = {
         j_jabong_drei = true,
-      
+        j_jabong_Aerial = true,
     },
 })

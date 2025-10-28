@@ -238,7 +238,79 @@ config = { max_highlighted = 1, mod_conv = 'm_jabong_slamo' },
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
 }
-
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = 'twine',
+    atlas = "rsatlas", --Im adding too much shit for my own good
+    pos = {x = 0, y = 0},
+    cost = 4,
+    loc_txt = {
+        name = "Twine",
+        text = {
+            "Creates {C:attention}2{} random Material cards.",
+        }
+    },
+     config = { extra = { mats = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mats } }
+    end,
+    use = function(self, card, area, copier)
+        for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    if G.consumeables.config.card_limit > #G.consumeables.cards then
+                        play_sound('timpani')
+                        SMODS.add_card({ set = 'jabong_Material' })
+                        card:juice_up(0.3, 0.5)
+                    end
+                    return true
+                end
+            }))
+        end
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return (G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit) or
+            (card.area == G.consumeables)
+    end
+}
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "rubberbanding"
+    atlas = "rsatlas", --AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    pos = {x = 0, y = 0},
+    cost = 4, 
+    loc_txt = {
+        name = "Rubber making",
+        text = {
+            "Because I have yet to code in this {S:1.1,C:attention,E:1}Fucking enhancement{},"
+            "Doubles money, max of {C:attention}#1#{} dollars.",
+           
+        }
+    },
+    config = { extra = { max = 500 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.max } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                card:juice_up(0.3, 0.5)
+                ease_dollars(math.max(0, math.min(G.GAME.dollars, card.ability.extra.max)), true)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
+    end
+}
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {
     key = 'vouch',
@@ -269,4 +341,5 @@ SMODS.Voucher {
         }))
     end
 }
+
 

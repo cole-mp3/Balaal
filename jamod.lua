@@ -1,3 +1,4 @@
+--  THE mod's ID si still jamod cuz im lazy and dont wanna break anything
 assert(SMODS.load_file("jamod/src/blinds.lua"))()
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
@@ -7,7 +8,7 @@ assert(SMODS.load_file("jamod/src/jonklers.lua"))()
 assert(SMODS.load_file("jamod/src/MAXIMIZED.lua"))()
 assert(SMODS.load_file("jamod/src/enhacnements.lua"))()
 assert(SMODS.load_file("jamod/src/utube.lua"))()
-
+assert(SMODS.load_file("jamod/src/web.lua"))()
 SMODS.current_mod.optional_features = {
     retrigger_joker = true,
     quantum_enhancements = true,
@@ -89,6 +90,8 @@ SMODS.PokerHand {
 
     end,
 
-
+modify_display_text = function(self, cards, scoring_hand)
+        return pkr_funny
+    end,
   
 }

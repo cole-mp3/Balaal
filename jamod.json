@@ -2,7 +2,7 @@
   "id": "jamod",
   "name": "Balaal",
   "author": ["jabong, RandomizedAlias"],
-  "description": "help me",
+  "description": "A Balatro mod woth extremely niche refrences and jookes",
   "prefix": "jabong",
   "main_file": "jamod.lua",
   "version": "0.0.4"
