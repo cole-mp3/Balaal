@@ -302,9 +302,9 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {
-        name = "Rubber making",
+        name = "Rubber Making",
         text = {
-            "Because I have yet to code in this {S:1.1,C:attention,E:1}Fucking enhancement{},",
+            "Because I have yet to code in this {S:1.1,C:attention,E:1}fucking enhancement{},",
             "Doubles money, max of {C:attention}#1#{} dollars.",
            
         }
@@ -339,7 +339,7 @@ SMODS.Consumable {
     loc_txt = {
         name = "ment",
         text = {
-            "Creates a {C:attention}Half-type{} joker. "
+            "Creates a {C:attention}Half-Type{} joker. "
         }
     },
     use = function(self, card, area, copier)
