@@ -45,7 +45,7 @@ return {
           j_jabong_drei = {
             name = "Throne Drei",
             text = {
-                "{X:red,C:white}X4{} mult after the hand scores.",
+                "{X:red,C:white}X#4#{} mult after the hand scores.",
                 "{E:1,S:1.1}^^20{} mult every 3 hands."
             },
           },
