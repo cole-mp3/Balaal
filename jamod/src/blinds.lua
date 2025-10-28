@@ -31,7 +31,7 @@ SMODS.Blind {
     -PICKS FROM YOUR DECK (im looking a you ancient joker)
 ]]
 SMODS.Blind {
-    key = 'witness'
+    key = 'witness',
     dollars = 7,
     mult = 2,
     pos = { x = 0, y = 28 },
@@ -60,7 +60,7 @@ SMODS.Blind {
 -- If youre wrong, reduces levels of ALL HANDS by 1.
 -- and a special interaction on a very specific question.
 SMODS.Blind {
-    key = 'quizzer'
+    key = 'quizzer',
     dollars = 3,
     mult = 3,
     pos = { x = 0, y = 1 },
@@ -69,7 +69,7 @@ SMODS.Blind {
     loc_txt = {
         name = "The Quiz",
         text = {
-            " 'ill code this in later.' "
+            " 'ill code this in later.' ",
             "           -jabon gratis"
 
         },
