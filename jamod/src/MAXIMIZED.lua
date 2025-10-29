@@ -170,6 +170,42 @@ SMODS.Joker {
         end
     end
 }
+-- gundam X
+SMODS.Joker {
+    key = "gundx",
+    atlas = 'gund',
+    pos = {x = 0, y = 0},
+    rarity = 'jabong_Max',
+    blueprint_compat = true,
+    cost = 15,
+    discovered = true,
+   
+    config = { extra = { xchips_gain = 2, xchips = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xchips,
+                card.ability.extra.xchips_gain,
+        }
+    }
+    end,
+    calculate = function(self, card, context) 
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 14 then
+            return {
+              card.ability.extra.xchips = card.ability.extra.xchips * card.ability.extra.xchips_gain
+             message = "Upgrade!"
+            }
+        end
+        if context.joker_main then
+            return {
+               
+                xchips = card.ability.extra.xchips,
+            }
+        end
+        
+    end
+}
+
 -- for the hangar card
 SMODS.ObjectType ({
     key = "mobilesuit",
@@ -177,5 +213,6 @@ SMODS.ObjectType ({
     cards = {
         j_jabong_drei = true,
         j_jabong_Aerial = true,
+        j_jabong_gundx = true,
     },
 })

@@ -13,6 +13,28 @@ SMODS.Enhancement {
         return { vars = { card.ability.h_x_mult, card.ability.h_x_chips } }
     end,
 }
+SMODS.Atlas {
+    key = "purp",
+    path = "urpul.png",
+    px = 71,
+    py = 95
+}
+SMODS.Enhancement {
+    key = "ourple",
+    atlas = "purp",
+    pos = { x = 0, y = 0 },
+    config = { h_x_mult = 1.5, Emult = 2 },
+    loc_vars = function(self, info_queue, card)             
+        return { vars = { card.ability.h_x_mult, card.ability.Emult } }
+    end,
+     calculate = function(self, card, context)
+        if context.main_scoring and context.cardarea == G.play then
+            return{
+                emult = card.ability.Emult
+            }
+        end
+    end,
+}
 
 SMODS.Enhancement {
     key = 'slamo',

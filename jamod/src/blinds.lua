@@ -1,8 +1,17 @@
+SMODS.Atlas {
+    key = 'blatlas',
+    path = "blatlas.png",
+    px = 34,
+    py = 34,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 1
+}
 SMODS.Blind {
     key = "spoop",
     dollars = 5,
     mult = 2,
-    pos = { x = 0, y = 0 },
+    atlas = "blatlas"
+    pos = { y = 0 },
     boss = { min = 1 },
     boss_colour = HEX("f7e948"),
     loc_txt = {
@@ -30,7 +39,7 @@ SMODS.Blind {
         changes every 30 seconds.
     -PICKS FROM YOUR DECK (im looking a you ancient joker)
 ]]
-SMODS.Blind {
+--[[SMODS.Blind {
     key = 'witness',
     dollars = 7,
     mult = 2,
@@ -53,12 +62,13 @@ SMODS.Blind {
             }
         end
     end
-}
+}]]--
 -- TO DO FOR THIS BLIND:
 -- Make a UIBox similar to cryptid's old version pointer
 -- Make it ask a question when a hand is played.
 -- If youre wrong, reduces levels of ALL HANDS by 1.
 -- and a special interaction on a very specific question.
+--[[
 SMODS.Blind {
     key = 'quizzer',
     dollars = 3,
@@ -76,6 +86,8 @@ SMODS.Blind {
     },
 
 }
+    ]]--
+    
 -- a few references for contexts/other shit:
 -- -----------------------------------------
 --G.GAME.blind.config.blind.boss_colour

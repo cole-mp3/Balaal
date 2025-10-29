@@ -3,6 +3,8 @@
 -- thanks cryptid devs
 -- oh and also thanks again to yahi for having a working twitch version of membership card
 -- you are a fucking lifesaver
+-- Update: It didnt work and now I have to figure out what's wrong :]
+
 --[[https = require "SMODS.https"
 local member_fallback = 3
 local succ, https = pcall(require, "SMODS.https")
@@ -60,56 +62,10 @@ end
  
 
 recheckTwitch("blease")
-
+]]--
 SMODS.Atlas {
     key = 'azte',
     path = "Jonklers/azte.png",
     px = 142,
     py = 190
 }
-SMODS.Joker{
-    -- im so sorry my man but this was too funny
-    key = 'cross',
-    loc_txt= {
-        name = 'Another week boys, and another TWAB',
-    
-        text = { "{C:red}+#1#{} Mult for every",
-                    "viewer currently watching",
-                    "{C:attention}Aztecross{} on {C:dark_edition}Twitch.{}",
-                    "{C:inactive}Currently{} {C:red}+#2#{}{C:inactive} Mult{}",
-                    "                        ",
-                    "{C:inactive}PATCH NOOOTES!!!!!!!{}"
-                }
-    },
-    atlas = 'azte',
-    pos = {x = 0, y = 0},
-    soul_pos = {x = 1, y = 0},
-    rarity = 3,
-    cost = 7,
-    unlocked = true,
-    discovered = true,
-    blueprint_compat = false,
-    eternal_compat = false,
-    perishable_compat = false,
-
-    pos = {x=0, y= 0},
-    config = { extra = {perviewer = 1, viewercount = G.azteviewers/5 }},
-    
-    loc_vars = function(self, info_queue, center)
-		return { vars = { center.ability.extra.perviewer , center.ability.extra.viewercount}  }
-	end,
-
-
-    calculate = function(self, card, context)
-    recheckTwitch()
-    card.ability.extra.viewercount = G.azteviewers * card.ability.extra.perviewer/5
-    if context.joker_main then
-        return {
-            color = G.C.RED,
-            message = "+".. card.ability.extra.perviewer,
-            mult_mod = card.ability.extra.viewercount
-        }
-    end
-end,
-}
-]]--

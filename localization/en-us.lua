@@ -6,7 +6,15 @@ return {
                 name = "Copper Card",
                 text = {
                     "{X:blue,C:white}X#1#{} chips and {X:red,C:white}X#1#{}mult if held in hand,",
-                    "and {X:deactivated,C:white}^#1#{} mult if played."
+                    "and {X:inactive,C:white}^#1#{} mult if played."
+                }
+            }
+             m_jabong_ourple = {
+                name = "Purple Card",
+                text = {
+                    "{X:red,C:white}X#1#{}mult if held in hand,",
+                    "and {X:inactive,C:white}^#1#{} mult if played.",
+                    "As you can see, I've run out of ideas."
                 }
             }
         },
@@ -31,7 +39,7 @@ return {
             text = {
                 "{X:red,C:white}X#1#{} Mult and {X:enhancement,C:white}X#1#{} Mult.",
                 "{C:red}SELF DESTRUCTS{} if blind's color is red or blue,",
-                "{C:deactivated}or rather, it would if programming that was even remotely possible.{}"
+                "{C:inactive}or rather, it would if programming that was even remotely possible.{}"
             }
           },
         
@@ -54,7 +62,15 @@ return {
             text = {
                 "This card gains {X:red,C:white}X#1#{} mult",
                 "Every time you {C:attention}One-Shot{} a blind.",
-                "{C:deactivated}Currently{}{X:red,C:white}X#1#{}"
+                "{C:inactive}Currently{}{X:red,C:white}X#1#{}"
+            },
+          },
+          j_jabong_gundx = {
+            name = "Gundam X",
+            text = {
+                "This card's {X:blue,C:white}XChips{} gets multiplied by 2",
+                "For every ace card that's scored.",
+                "{C:inactive}Currently{}{X:blue,C:white}X#1#{}"
             },
           },
         },
@@ -67,12 +83,7 @@ return {
                     "2 Copies of {C:attention}The Soul{}."
                 }
             },
-            b_jabong_Xboxlive = {
-                name = "Legally distinct Gaming console",
-                text = {
-                    "Start run with a random {E:1,C:attention}Maximized{} Joker",
-                }
-            },
+
         },
         Other = {
             -- how tf does cryptid do custom tooltips

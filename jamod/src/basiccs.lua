@@ -140,7 +140,11 @@ SMODS.Consumable {
                 play_sound('jabong_womp')
                 card:juice_up(0.3, 0.5)
                 -- i still have to code this in so uhhh
-               
+                G.FUNCS.overlay_menu{
+                 --go ,my dancing ogre
+                definition = create_UIBox_custom_video1("ogre","yea"),
+                config = {no_esc = true}
+            }
                 return true end }))
             
        
@@ -219,7 +223,7 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('jabong_lepipe')
-                SMODS.add_card({ set = 'jabong_mobilesuit'})
+                SMODS.add_card({ set = 'mobilesuit'})
                 
                 card:juice_up(0.3, 0.5)
                 return true
@@ -367,6 +371,44 @@ SMODS.Consumable {
         return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
     end,
 }
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "printer",
+    atlas = "ment", --I SWEAR THIS IS THE LAST PLACEHOLDER IN THIS FILE PLEASE BELIEVE ME
+    pos = {x = 0, y = 0},
+    cost = 8, 
+    loc_txt = {
+        name = "Printer",
+        text = {
+            "Creates 4 double tags.",
+            "I cant code, so you need free space in the consumables slot to use this"
+        }
+    },
+    calculate = function(self, card, area, copier)
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    add_tag(Tag('tag_double'))
+                    add_tag(Tag('tag_double'))
+                    add_tag(Tag('tag_double'))
+                    add_tag(Tag('tag_double'))
+                    play_sound('jabong_oh', 0.9 + math.random() * 0.1, 0.8)
+                    play_sound('jabong_damn', 1.2 + math.random() * 0.1, 0.4)
+                    return true
+                end)
+            }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit or
+            (card.area == G.consumeables)
+    end
+}
+
+
+ --
+           
+
+
 -- vouchers(I dont wanna make another lua file)
 SMODS.Atlas {
     key = 'vouch',

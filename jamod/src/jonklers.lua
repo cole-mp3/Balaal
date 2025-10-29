@@ -161,7 +161,7 @@ SMODS.Joker{
             "This card gains {C:blue}+8{} Chips for every scored card",
             "with a rank below a 6, and gains {X:red,C:white}X0.1{} Mult per card",
             "scored that has a rank above 6.",
-            "{C:deactivated}(Currently{} {C:blue}X#1#{} and {C:red}+#1#{}{C:deactivated}.){} "
+            "{C:inactive}(Currently{} {C:blue}X#1#{} and {C:red}+#1#{}{C:inactive}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -214,7 +214,7 @@ SMODS.Joker{
         text = {
             "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
             "Played cards give {C:money}$10{} when  scored.",
-            "{C:deactivated}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:deactivated}.){} "
+            "{C:inactive}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:inactive}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -262,7 +262,7 @@ SMODS.Joker{
     loc_txt = {
         Name = "Vex Cube",
         text = {
-            "{C:deactivated}Does Nothing.{}"
+            "{C:inactive}Does Nothing.{}"
         }
     },
     in_pool = function(self, args)
@@ -283,7 +283,7 @@ SMODS.Joker {
         text = {
             "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
             "This card gains {X:red,C:white}X#1#{} mult per vex cube sold.",
-            "{C:deactivated}Currently{}{X:red,C:white}X#1#{}{C:deactivated}.{}",
+            "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:incative}.{}",
         }
     },
     config = { extra = {creates = 2, xmult = 1, xmult_gain = 1 }, },
@@ -395,31 +395,179 @@ SMODS.Joker {
         end
     end,
 }
-
---[[welspring
-SMODS.Joker {
-    key = "Wellspring",
-    blueprint_compat = false,
-    rarity = 2,
-    cost = 7,
-    pos = { x = 0, y = 0 },
-    loc_txt = {
-        name = "Wellspring",
-        text = {
-            "{C:attention}All{} numbered cards in your scoring hand ",
-            "are made gay-I mean {C:edition}Polychrome{}."
+SMODS.Joker{
+    -- im so sorry my man but this was too funny
+    key = 'cross',
+    loc_txt= {
+        name = 'Another week boys, and another TWAB',
+    
+        text = { 
+        "Played cards gain {C:red}+#1#{} mult",
+        "every time they are scored."
         }
+
     },
+    atlas = 'azte',
+    pos = {x = 0, y = 0},
+    soul_pos = {x = 1, y = 0},
+    rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+    eternal_compat = false,
+    perishable_compat = false,
+    config = {extra = {}}
+    config = { extra = { mult = 5 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
+                card.ability.extra.mult
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.RED
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "photo",
+    atlas = "hatlas",
+    pos = {x = 2, y = 0},
+    rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    loc_txt = {
+        name = "photo",
+        text = {
+            "All played face cards give {X:red,C:white}X#1#{} mult."
+        },
+    },
+    config = {extra = {xmult = 1.3}}
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.xmult}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+}
+SMODS.Joker {
+    key = "graph",
+    atlas = "hatlas",
+    pos = {x = 3, y = 0}
+    rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    loc_txt = {
+        name = "photo",
+        text = {
+            "All played non-face cards give {X:blue,C:white}X#1#{} chips."
+        },
+    },
+    config = {extra = {xmult = 1.3}}
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.xchips}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
+                return {
+                    xmult = card.ability.extra.xchips
+                }
+            end
+        end
+}
+SMODS.Joker {
+    key = "longasfname"
+    atlas = "sccre",
+    pos = {x = 0, y = 0}
+    rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    loc_txt = {
+        name = "Joker that's been Soaked, Crumpled, ripped, folded on one corner and kissed with coral number 4 blue lip gloss."
+        text = {
+            "This card earns {X:money,C:white}$#1#{} every time a face card is destroyed."
+            "{C;inactive}Currently{}{X:money,C:white}$#1#{}{C:inactive}.{}"
+        },
+    },
+    config = { extra = { dollars = 1, increase = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.increase, card.ability.extra.dollars } }
+    end,
+    calculate = function(self, card, context)
+        if context.remove_playing_cards and not context.blueprint then
+            local face_cards = 0
+            for _, removed_card in ipairs(context.removed) do
+                if removed_card:is_face() then face_cards = face_cards + 1 end
+            end
+            if face_cards > 0 then
+                -- See note about SMODS Scaling Manipulation on the wiki
+                card.ability.extra.dollars = card.ability.extra.dollars + face_cards * card.ability.extra.increase
+                return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
+            end
+        end
+        if context.joker_main then
+            return {
+                dollars = card.ability.extra.dollars
+            }
+        end
+    end,
+}
+SMODS.Atlas {
+    key = 'gomer',
+    path = 'Jonklers/purple.png',
+    px = 71,
+    py = 95
+}
+SMODS.Joker {
+    key = "homer",
+    atlas = 'gomer',
+    pos = {x = 0, y = 0},
+    rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    loc_txt = {
+        name = "Purple Homer",
+        text = {
+            "{C:negative}purple{}"
+        },
+    },
+    pos = { x = 0, y = 13 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_jabong_ourple
     end,
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
-            local numbers = 0
+            local numbr = 0
             for _, scored_card in ipairs(context.scoring_hand) do
-                if not scored_card:is_face() then
-                    numbers = numbers + 1
-                    scored_card:set_ability('e_polychrome', nil, true)
+                if  not scored_card:is_face() then
+                    numbr = numbr + 1 
+                    scored_card:set_ability('m_jabong_ourple', nil, true)
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             scored_card:juice_up()
@@ -428,13 +576,12 @@ SMODS.Joker {
                     }))
                 end
             end
-            if numbers > 0 then
+            if numbr > 0 then
                 return {
-                    message = "C H R O M E",
-                    colour = G.C.MONEY
+                    message = "purple"
+                    colour = G.C.TAROT
                 }
             end
         end
     end
 }
-]]--
