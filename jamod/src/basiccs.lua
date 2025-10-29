@@ -307,7 +307,7 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {
-        name = "Rubber Making",
+        name = "I can't code for shit",
         text = {
             "Because I have yet to code in this {S:1.1,C:attention,E:1}fucking enhancement{},",
             "Doubles money, max of {C:attention}#1#{} dollars.",
