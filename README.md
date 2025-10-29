@@ -5,7 +5,9 @@ Its a mod.
 
 a balatro mod.
 
-you need humor to understand it
+you need humor to understand its jokes
+
+and you also need to have general media literacy
 ## REQUIREMENTS:
 - A pc
 - A brain
@@ -13,10 +15,8 @@ you need humor to understand it
 - Steammodded (https://github.com/Steamodded/smods) And Talisman (https://github.com/SpectralPack/Talisman)
 -----------------------------------------
 ## To Do:
-- [ ] Finally get Editions to work
 - [ ] Add even more Jokers
 - [ ] vegeta
-- [ ] Maybe get shaders to work properly
 - [ ] Fishing
    - [ ] inventory was already done so nvm
 - [ ] fix bugs cuz i cant fucking code lmao
@@ -27,3 +27,4 @@ you need humor to understand it
 ## KNOWN ISSUES:
 - [ ] Descriptionss are fucked up somehow
 - [ ] I can't code for S H I T
+- [ ] HTTPS modules arent working, so the joker i had planned has to be repurposed until i can fix that.
