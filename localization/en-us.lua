@@ -66,7 +66,7 @@ return {
             },
           },
           j_jabong_gundx = {
-            name = "Gundam X",
+            name = "Gundam Double X",
             text = {
                 "This card's {X:blue,C:white}XChips{} gets multiplied by 2",
                 "For every ace card that's scored.",
