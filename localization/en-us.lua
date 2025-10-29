@@ -8,7 +8,7 @@ return {
                     "{X:blue,C:white}X#1#{} chips and {X:red,C:white}X#1#{}mult if held in hand,",
                     "and {X:inactive,C:white}^#1#{} mult if played."
                 }
-            }
+            },
              m_jabong_ourple = {
                 name = "Purple Card",
                 text = {
@@ -68,8 +68,8 @@ return {
           j_jabong_gundx = {
             name = "Gundam Double X",
             text = {
-                "This card's {X:blue,C:white}XChips{} gets multiplied by 2",
-                "For every ace card that's scored.",
+                "This card's {X:blue,C:white}XChips{} gets multiplied by {C:attention}2{}",
+                "For every {C:attention}Ace{} that's scored.",
                 "{C:inactive}Currently{}{X:blue,C:white}X#1#{}"
             },
           },

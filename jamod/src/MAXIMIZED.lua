@@ -197,8 +197,9 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context) 
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == 14 then
+           card.ability.extra.xchips = card.ability.extra.xchips * card.ability.extra.xchips_gain
             return {
-              card.ability.extra.xchips = card.ability.extra.xchips * card.ability.extra.xchips_gain
+              
              message = "Upgrade!"
             }
         end

@@ -10,7 +10,7 @@ SMODS.Blind {
     key = "spoop",
     dollars = 5,
     mult = 2,
-    atlas = "blatlas"
+    atlas = "blatlas",
     pos = { y = 0 },
     boss = { min = 1 },
     boss_colour = HEX("f7e948"),

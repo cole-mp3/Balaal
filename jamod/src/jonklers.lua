@@ -417,7 +417,6 @@ SMODS.Joker{
     blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
-    config = {extra = {}}
     config = { extra = { mult = 5 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
@@ -450,7 +449,7 @@ SMODS.Joker {
             "All played face cards give {X:red,C:white}X#1#{} mult."
         },
     },
-    config = {extra = {xmult = 1.3}}
+    config = {extra = {xmult = 1.3}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.xmult}}
     end,
@@ -466,7 +465,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "graph",
     atlas = "hatlas",
-    pos = {x = 3, y = 0}
+    pos = {x = 3, y = 0},
     rarity = 3,
     cost = 7,
     unlocked = true,
@@ -475,12 +474,12 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "photo",
+        name = "Graph",
         text = {
             "All played non-face cards give {X:blue,C:white}X#1#{} chips."
         },
     },
-    config = {extra = {xmult = 1.3}}
+    config = {extra = {xmult = 1.3}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.xchips}}
     end,
@@ -494,9 +493,9 @@ SMODS.Joker {
         end
 }
 SMODS.Joker {
-    key = "longasfname"
+    key = "longasfname",
     atlas = "sccre",
-    pos = {x = 0, y = 0}
+    pos = {x = 0, y = 0},
     rarity = 3,
     cost = 7,
     unlocked = true,
@@ -505,9 +504,9 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "Joker that's been Soaked, Crumpled, ripped, folded on one corner and kissed with coral number 4 blue lip gloss."
+        name = "Joker that's been Soaked, Crumpled, ripped, folded on one corner and kissed with coral number 4 blue lip gloss.",
         text = {
-            "This card earns {X:money,C:white}$#1#{} every time a face card is destroyed."
+            "This card earns {X:money,C:white}$#1#{} every time a face card is destroyed.",
             "{C;inactive}Currently{}{X:money,C:white}$#1#{}{C:inactive}.{}"
         },
     },
@@ -527,7 +526,7 @@ SMODS.Joker {
                 return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
             end
         end
-        if context.joker_main then
+        if context.end_of_round then
             return {
                 dollars = card.ability.extra.dollars
             }
@@ -578,7 +577,7 @@ SMODS.Joker {
             end
             if numbr > 0 then
                 return {
-                    message = "purple"
+                    message = "purple",
                     colour = G.C.TAROT
                 }
             end
