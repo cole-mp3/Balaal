@@ -171,9 +171,15 @@ SMODS.Joker {
     end
 }
 -- gundam X
+SMODS.Atlas {
+    key = "doublex",
+    path = "Jonklers/x.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
     key = "gundx",
-    atlas = 'gund',
+    atlas = 'doublex',
     pos = {x = 0, y = 0},
     rarity = 'jabong_Max',
     blueprint_compat = true,
