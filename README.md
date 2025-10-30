@@ -7,7 +7,7 @@ a balatro mod.
 
 you need humor to understand its jokes
 
-and you also need to have general media literacy
+and you also need to have general media knowledge
 ## REQUIREMENTS:
 - A pc
 - A brain
@@ -28,3 +28,12 @@ and you also need to have general media literacy
 - [ ] Descriptionss are fucked up somehow
 - [ ] I can't code for S H I T
 - [ ] HTTPS modules arent working, so the joker i had planned has to be repurposed until i can fix that.
+## WORKING ADDITIONS:
+- 20+ Jokers
+- 2 new kinds of consumables
+- [who cares] amount of consuables
+- a blind
+- 2 enhancements
+- a deck
+- and a sick asf logo
+
