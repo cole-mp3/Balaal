@@ -1,4 +1,21 @@
 -- alias i will fucking kill you
+
+--the below is commented cuz im not sure if it works or not an i refuse to gamble
+--[[
+SMODS.Sound ({
+    vol = 0.6,
+    pitch = 0.7,
+    key = "womp",
+    path = "music_vigilante.ogg",
+    if G.jokers then
+        if next(SMODS.find_card("j_jabong_gundx")) then
+            select_music_track(self) 
+                return (150)
+            end
+        end
+    end
+})
+    ]]
 SMODS.Rarity {
     key = "Max",
     pools = {
