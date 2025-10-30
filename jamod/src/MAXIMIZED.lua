@@ -41,6 +41,14 @@ SMODS.Joker {
   atlas = 'gojo',
   pos = {x = 0, y = 0},
   rarity = 'jabong_Max',
+  loc_txt ={
+    name = "Gojoker"
+    text = {
+        "{C:inactive}idk lol.{}",
+        "{C:inactive}also the pixel art is based off of a render{}",
+        "{C:inacitve}from i think the jjk game im not sure.{}"
+    },
+  },
   blueprint_compat = true,
   cost = 4,
   discovered = true,

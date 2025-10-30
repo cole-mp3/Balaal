@@ -15,6 +15,14 @@ SMODS.Atlas {
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
+    loc_txt = {
+        name = "Material Card",
+        collection = 'Material Cards',
+        undiscovered = { 
+ 			name = 'hi',
+ 			text = { 'find me :)' },
+ 		},
+    }
     key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {
@@ -194,7 +202,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_whatdoicallthis')
                 SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
-                
+                 check_for_unlock { type = 'ach_awaken' }
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -224,7 +232,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_lepipe')
                 SMODS.add_card({ set = 'mobilesuit'})
-                
+                 check_for_unlock { type = 'ach_gund' }
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -376,6 +384,14 @@ SMODS.ConsumableType({
     primary_colour = G.C.SET.Chips,
     secondary_colour = G.C.SECONDARY_SET.Blue,
     key = 'jabong_fish', 
+    loc_txt = {
+        name = "Fish",
+        collection = 'Fish',
+        undiscovered = { 
+ 			name = 'hi',
+ 			text = { 'collect my pages :)' },
+ 		},
+    }
     default = 'c_jabong_bass',
     cards = {
         
@@ -464,12 +480,11 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                --[[ Update: I still cant prove it works but good news is it didnt crash the  
-                game when i used it (unlike everything ELSE in this spaghetti code monster)
-                soo uhh i guess it did]]--
+                -- just like the last one, let's see if it works :)
                 SMODS.add_card { 
                     key = "j_jabong_fisherman",
                     edition = 'e_negative' }
+                    check_for_unlock { type = 'ach_fishing' }
                 G.GAME.jabong_Feesh_rate = card.ability.extra.rate
                 return true
             end

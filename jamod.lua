@@ -17,85 +17,252 @@ SMODS.current_mod.optional_features = {
     retrigger_joker = true,
     quantum_enhancements = true,
 }
--- editions(cuz it errors me if i load file so you know what)
-SMODS.Edition {
-    key = "sheetapaper",
-    shader = false,
+-- thanks cryptid
+local creditspage = {
+        "Jabon Gratis",
+        "(basically the whole damn mod)",
+		"",
+        "RandomizedAlias",
+        "Some art",
+		"",
+		"Vo Memes",
+        "Creator of SPOOP: SeaWEED delivery",
+		"",
+		"Bandai Namco Filmworks",
+        "Gundam ost (Vigilante)",
+		"(Please note it's not fully implimented yet so you wont hear it)",
+        "",
+        "Bungie, Inc.",
+        "Created halo and destiny 2",
+        "",
+        "And you",
+        "thanks for playing this fuckin mess"
+    }
+    --and thanks yahi too ig
+SMODS.current_mod.extra_tabs = function() --Credits tab
+    local scale = 0.5
+    return {
+        label = "Credits",
+        tab_definition_function = function()
+        return {
+            n = G.UIT.ROOT,
+            config = {
+            align = "cm",
+            padding = 0.05,
+            colour = G.C.CLEAR,
+            },
+            nodes = {
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Jabon gratis (hey its me)",
+                    shadow = false,
+                    scale = scale*2,
+                    colour = G.C.PURPLE
+                    }
+                }
+                }
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "an increasingly small amount of art from:",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.INACTIVE
+                    }
+                },
+                }
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                    padding = 0,
+                    align = "cm"
+                },
+                nodes = {
+                    {
+                    n = G.UIT.T,
+                    config = {
+                        text = "RandomizedAlias",
+                        shadow = false,
+                        scale = scale,
+                        colour = G.C.MONEY
+                    }
+                    },
+                }
+                },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Slander towards",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.INACTIVE
+                    }
+                }
+                },
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "alias (for fucking up the intial mod)",
+                    shadow = false,
+                    scale = scale,
+                    colour = G.C.GREEN
+                    }
+                }
+                } 
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Music from",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.INACTIVE
+                    }
+                }
+                } 
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Vigilante - Sawano Hiroyuki [nZK]",
+                    shadow = false,
+                    scale = scale*0.75,
+                    colour = G.C.RED
+                    }
+                }
+                } 
+            },
+			{
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Special thanks:",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.INACTIVE
+                    }
+                }
+                } 
+            },
+            {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "the GOATS at the balatro Discord",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.BLUE
+                    }
+                }
+                } 
+            }
+            }
+        }
+        end
+    }
+end
+
+
+
+SMODS.Achievement {
+    key = "fishtim"
     loc_txt = {
-        name = "Paper'd",
-        text = {
-            "This card is considered to be a{C:attention} glass card{}.",
-            "{X:red,C:white}X#1#{} Mult"
+        name = "Fishing time!"
+        description = {
+            "Obtain the fishing voucher"
         }
     },
-    config = { vars = { x_mult = 5 }},
-    sound = { sound = "jabong_oh", per = 1.2, vol = 0.4 },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.edition.x_mult } }
+    pos = { x = 1, y = 0 }, 
+    hidden_pos = { x = 0, y = 0 }
+    unlock_condition = function(self, args)
+      if args.type == "ach_fishing" then return true end
     end,
-    calculate = function(self, card, context)
-        if context.post_joker or (context.main_scoring and context.cardarea == G.play) then
-            return {
-                x_mult = card.edition.x_mult
-            }
-        end
-    end
-    
 }
-SMODS.PokerHand {
-    key = "funny",
-    mult = 69,
-    chips = 420,
-    l_mult = 1,
-    l_chips = 10,
-    example = {
-        { 'S_6', true },
-        { 'D_9', true },
-        { 'D_4', true },
-        { 'C_2', true },
-        { 'D_3', false }
-    },
+SMODS.Achievement {
+    key = "gunderm"
     loc_txt = {
-        name = "the funny",
-        description = {"i'm so fucking unfunny bro"},
+        name = "ITS A GUNDAM!!!!!!!!"
+        description = {
+            "Get a gundam"
+        }
     },
-    visible = true,
-    evaluate = function(parts, hand)
-        if #hand >= 4 then
-            local _is6 = false
-            local _is9 = false
-            local _is4 = false
-            local _is2 = false
-            local eligible_cards = {}
-            local other_hands = next(parts._flush) or next(parts._straight) or next(parts._all_pairs)
-
-            for i, card in ipairs(hand) do
-                if card:get_id() == 9 and _is9 == false then
-                    _is9 = true
-                    eligible_cards[#eligible_cards + 1] = card
-                elseif card:get_id() == 6 and _is6 == false then
-                    _has6 = true
-                    eligible_cards[#eligible_cards + 1] = card
-                elseif card:get_id() == 4 and _is4 == false then
-                    _is4 = true
-                    eligible_cards[#eligible_cards + 1] = card
-                    elseif card:get_id() == 2 and _is2 == false then
-                    _is2 = true
-                    eligible_cards[#eligible_cards + 1] = card
-                end
-            end
-
-
-            if _is9 and _is6 and _is4 and _is2 and not other_hands then
-                return{eligible_cards}
-            end
-        end
-
-
+    pos = { x = 1, y = 0 }, 
+    hidden_pos = { x = 0, y = 0 }
+    unlock_condition = function(self, args)
+      if args.type == "ach_gund" then return true end
     end,
--- i will lose it if this doesnt work
-modify_display_text = function(self, cards, scoring_hand)
-        return pkr_funny
-    end,
-  
 }
+SMODS.Achievement {
+    key = "hell"
+    loc_txt = {
+        name = "the discarding of all that is considered normal"
+        description = {
+            "Use AWAKENING once"
+        }
+    },
+    pos = { x = 1, y = 0 }, 
+    hidden_pos = { x = 0, y = 0 }
+    unlock_condition = function(self, args)
+      if args.type == "ach_awaken" then return true end
+    end,
+}
+
+

@@ -745,6 +745,13 @@ SMODS.Joker {
   blueprint_compat = true,
   cost = 10,
   discovered = true,
+  loc_txt = {
+    name = "Fisherman"
+    text = {
+        "{C:attention}On blind Selection:{}",
+        "Go fish. {C:deactivated}({}{C:green}#1# in #1#{}{C:deactivated} chance of a catch{})"
+    },
+  },
   config = { extra = { odds = 2, creates = 1}, },
   loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_fisherman')
