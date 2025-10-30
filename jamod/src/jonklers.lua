@@ -750,9 +750,15 @@ SMODS.Rarity {
         return weight
     end,
 }
+SMODS.Atlas {
+    key = "thehoooo",
+    path = "Jonklers/fisher.png",
+    px = 142,
+    py = 190
+}
 SMODS.Joker {
     key = 'fisherman',
-  atlas = 'gojo',
+  atlas = 'thehoooo',
   pos = {x = 0, y = 0},
   rarity = 'jabong_Max',
   blueprint_compat = true,
