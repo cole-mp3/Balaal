@@ -98,7 +98,7 @@ text = {
 },
 },
 loc_vars = function(self, info_queue, card)
-local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_space')
+local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_buskin')
 return { vars = { numerator, denominator } }
 end,
 calculate = function(self, card, context)
@@ -128,7 +128,7 @@ text = {
 },
 },
 loc_vars = function(self, info_queue, card)
-local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'vremade_space')
+local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_sock')
 return { vars = { numerator, denominator } }
 end,
 calculate = function(self, card, context)
@@ -417,14 +417,18 @@ SMODS.Joker{
     blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
-    config = { extra = { mult = 5 } },
+    config = { extra = {  
+        --made in jokerofgre for refrence
+        addedmult = 1,
+            perma_mult = 0
+        } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult } }
+        return { vars = { card.ability.extra.addedmult, card.ability.extra.perma_mult } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
-                card.ability.extra.mult
+            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +
+                card.ability.extra.addedmult
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.RED
@@ -583,4 +587,188 @@ SMODS.Joker {
             end
         end
     end
+}
+SMODS.Joker {
+    key = 'woker',
+    atlas = "sccre",
+    pos = { x = 0 , y = 0},
+    loc_txt = {
+        name = "WOKEr",
+        text = {
+            "All cards gain a random {C:attention}enhancement, Seal, and edition.{}"
+        },
+    },
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+             local crads = 0
+            for _, scored_card in ipairs(context.scoring_hand) do
+                      crads = crads + 1 
+                      -- jank ass code made in jokerforge cuz im very sure ill fuck it up if i manual this shit
+                local enhancement_pool = {}
+             for _, enhancement in pairs(G.P_CENTER_POOLS.Enhanced) do
+                if enhancement.key ~= 'm_stone' then
+                    enhancement_pool[#enhancement_pool + 1] = enhancement
+                end
+            end
+            local random_enhancement = pseudorandom_element(enhancement_pool, 'edit_card_enhancement')
+            context.other_card:set_ability(random_enhancement)
+            local random_seal = SMODS.poll_seal({mod = 10, guaranteed = true})
+            if random_seal then
+                context.other_card:set_seal(random_seal, true)
+            end
+            local edition = pseudorandom_element({'e_foil','e_holo','e_polychrome','e_negative'}, 'random edition')
+            if random_edition then
+                context.other_card:set_edition(random_edition, true)
+            end
+        end
+        if crads > 0 then
+                return {
+                    message = "randomized!",
+                    colour = G.C.TAROT
+                }
+            end
+        end
+    end
+}
+SMODS.Joker {
+    key = "idiot",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "Stupid Ass Joker",
+        text = {
+            "This card gains {C:blue}+#1#{} chips per card scored.",
+            "{C:inacive}Currently{}{C:blue}+#1#{}{C:incative}. WHY DID I MAKE THIS{}"
+        },
+    },
+    rarity = 1
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+     config = { extra = { chip_mod = 0.5, chips = 0  }, },
+     loc_vars = function(self, info_queue, card)
+        return {  { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }}
+     end
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play  then
+                return {
+                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+                    message = "ae"
+                    colour = G.C.BLUE
+                }
+            end
+            if context.joker_main then
+                return{
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+}
+SMODS.Joker {
+    key = "benson",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "Regular gumabll machine with no anger issues",
+        text = {
+            "{C:green}#1# in #1#{} chance to {C:attention}disable{} the boss blind.",
+            "Should this fail, {X:red,C:white}X#1#{} mult."
+        },
+    },
+    rarity = 3
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    config = { extra = { odds = 4, xmult = 100  }, },
+    loc_vars = function(self, info_queue, card)
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_benson')
+    return { vars = { numerator, denominator, card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+if context.setting_blind and not context.blueprint and context.blind.boss and SMODS.pseudorandom_probability(card, 'jabong_benson', 1, card.ability.extra.odds) then
+return {
+     G.E_MANAGER:add_event(Event({
+                func = function()
+                    -- yay im finally learning how to use G.E_MANAGER!!!!!
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME.blind:disable()
+                            play_sound('')
+                            delay(0.4)
+                            return true
+                        end
+                    }))
+                    SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
+                    return true
+                end
+            }))
+            return nil, true -- apparently this stops crazy shit from happening.
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        if G.GAME.blind and G.GAME.blind.boss and not G.GAME.blind.disabled then
+            G.GAME.blind:disable()
+            play_sound('timpani')
+         SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
+        end
+    end
+}
+end
+if context.joker_main and not G.GAME.blind.disabled then
+ return{
+    xmult = card.ability.extra.xmult
+ }
+end
+end,
+}
+SMODS.Rarity {
+    key = "Feesh",
+    pools = {
+        ["Joker"] = true
+    },
+    default_weight = 0.00,
+    badge_colour = HEX('ADD8E6'),
+    loc_txt = {
+        name = "Fishing"
+    },
+    get_weight = function(self, weight, object_type)
+        return weight
+    end,
+}
+SMODS.Joker {
+    key = 'fisherman',
+  atlas = 'gojo',
+  pos = {x = 0, y = 0},
+  rarity = 'jabong_Max',
+  blueprint_compat = true,
+  cost = 10,
+  discovered = true,
+  config = { extra = { odds = 2, creates = 1}, },
+  loc_vars = function(self, info_queue, card)
+    local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_fisherman')
+    return { vars = { numerator, denominator, card.ability.extra.creates } }
+  end,
+  calculate = function(self, card, context)
+    if context.setting_blind and SMODS.pseudorandom_probability(card, 'jabong_fisherman', 1, card.ability.extra.odds) then
+    SMODS.add_card {
+              set = "jabong_fish",
+               edition = 'e_negative' 
+         },
+        return {
+                message = "caught!",
+                colour = G.C.BLUE,
+            }
+    else
+        return{
+            play_sound('jabong_womp'),
+            message = "Nope!",
+            colour = G.C.TAROT,
+        }
+        
+    end
+  end
 }

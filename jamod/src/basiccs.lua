@@ -344,7 +344,7 @@ SMODS.Atlas {
 SMODS.Consumable {
     set = 'Tarot',
     key = "notjudgement",
-    atlas = "ment", --last placeholder i swear
+    atlas = "ment", 
     pos = {x = 0, y = 0},
     cost = 8, 
     loc_txt = {
@@ -372,8 +372,46 @@ SMODS.Consumable {
     end,
 }
 
-
- --
+SMODS.ConsumableType({
+    primary_colour = G.C.SET.Chips,
+    secondary_colour = G.C.SECONDARY_SET.Blue,
+    key = 'jabong_fish', 
+    default = 'c_jabong_bass',
+    cards = {
+        
+    },
+})
+SMODS.Consumable {
+    set = 'jabong_fish',
+    key = "bass",
+    atlas = "ment", --yes i fucking lied abt placeholders
+    pos = {x = 0, y = 0},
+    cost = 8, 
+    loc_txt = {
+        name = "Bass",
+        text = {
+            "glub"
+        }
+    },
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('jabong_oh')
+                SMODS.add_card({ set = 'joker' rarity = 3})
+                
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+}
+ 
            
 
 
@@ -405,6 +443,34 @@ SMODS.Voucher {
                 game when i used it (unlike everything ELSE in this spaghetti code monster)
                 soo uhh i guess it did]]--
                 G.GAME.jabong_maximized_rate = card.ability.extra.rate
+                return true
+            end
+        }))
+    end
+}
+SMODS.Voucher {
+    key = 'fishingtime',
+    atlas = 'vouch',
+    pos = {x = 1, y = 0},
+   
+    loc_txt = {
+        name = "Fishing...?",
+        text = {
+            "{C:attention}Fishing{} jokers and consumables can appear in the shop.",
+            "Creates {C:attention}fisherman{} joker when redeemed."
+        }
+    },
+    config = { extra = { rate = 4 } },
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                --[[ Update: I still cant prove it works but good news is it didnt crash the  
+                game when i used it (unlike everything ELSE in this spaghetti code monster)
+                soo uhh i guess it did]]--
+                SMODS.add_card { 
+                    key = "j_jabong_fisherman",
+                    edition = 'e_negative' }
+                G.GAME.jabong_Feesh_rate = card.ability.extra.rate
                 return true
             end
         }))
