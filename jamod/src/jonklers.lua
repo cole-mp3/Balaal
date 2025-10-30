@@ -588,12 +588,18 @@ SMODS.Joker {
         end
     end
 }
+SMODS.Atlas{
+    key = "woke",
+    path = "Jonklers/wokr.png",
+    px = 71, 
+    py = 95
+}
 SMODS.Joker {
     key = 'woker',
-    atlas = "sccre",
+    atlas = "woke",
     pos = { x = 0 , y = 0},
     loc_txt = {
-        name = "WOKEr",
+        name = "WOKEr!!!11!",
         text = {
             "All cards gain a random {C:attention}enhancement, Seal, and edition.{}"
         },
@@ -631,7 +637,7 @@ SMODS.Joker {
     end
 }
 SMODS.Joker {
-    key = "idiot",
+    key = "screaming",
     atlas = "sccre",
     pos = { x = 0, y = 0},
     loc_txt = {
@@ -666,9 +672,15 @@ SMODS.Joker {
             end
         end
 }
+SMODS.Atlas{
+    key = "guball",
+    path = "Jonklers/benson.png",
+    px = 71,
+    py = 95,
+}
 SMODS.Joker {
     key = "benson",
-    atlas = "sccre",
+    atlas = "guball",
     pos = { x = 0, y = 0},
     loc_txt = {
         name = "Regular gumball machine with no anger issues",
@@ -706,7 +718,6 @@ return {
                     return true
                 end
             })),
-            -- apparently this stops crazy shit from happening.
         } 
         end
         return nil, true --if this dont work get rid of it it surely wont cause any bugs
@@ -722,6 +733,7 @@ return {
 if context.joker_main and not G.GAME.blind.disabled then
  return{
     xmult = card.ability.extra.xmult
+    message = "MORDECAI AND RIGBY"
  }
 end
 SMODS.Rarity {
