@@ -706,9 +706,10 @@ return {
                     return true
                 end
             })),
-            return, nil, true -- apparently this stops crazy shit from happening.
-        } --error on return, attempt a fix please
+            -- apparently this stops crazy shit from happening.
+        } 
         end
+        return nil, true --if this dont work get rid of it it surely wont cause any bugs
     end,
     add_to_deck = function(self, card, from_debuff)
         if G.GAME.blind and G.GAME.blind.boss and not G.GAME.blind.disabled then
