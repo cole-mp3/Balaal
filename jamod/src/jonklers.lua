@@ -641,7 +641,7 @@ SMODS.Joker {
             "{C:inacive}Currently{}{C:blue}+#1#{}{C:incative}. WHY DID I MAKE THIS{}"
         },
     },
-    rarity = 1
+    rarity = 1,
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
@@ -650,12 +650,12 @@ SMODS.Joker {
      config = { extra = { chip_mod = 0.5, chips = 0  }, },
      loc_vars = function(self, info_queue, card)
         return {  { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }}
-     end
+     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then
                 return {
-                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-                    message = "ae"
+                    card.ability.extra.chips == card.ability.extra.chips + card.ability.extra.chip_mod,
+                    message = "ae",
                     colour = G.C.BLUE
                 }
             end
@@ -671,13 +671,13 @@ SMODS.Joker {
     atlas = "sccre",
     pos = { x = 0, y = 0},
     loc_txt = {
-        name = "Regular gumabll machine with no anger issues",
+        name = "Regular gumball machine with no anger issues",
         text = {
             "{C:green}#1# in #1#{} chance to {C:attention}disable{} the boss blind.",
             "Should this fail, {X:red,C:white}X#1#{} mult."
         },
     },
-    rarity = 3
+    rarity = 3,
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
@@ -705,8 +705,9 @@ return {
                     SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
                     return true
                 end
-            }))
-            return nil, true -- apparently this stops crazy shit from happening.
+            })),
+            return, nil, true -- apparently this stops crazy shit from happening.
+        } --error on return, attempt a fix please
         end
     end,
     add_to_deck = function(self, card, from_debuff)
@@ -717,14 +718,11 @@ return {
         end
     end
 }
-end
 if context.joker_main and not G.GAME.blind.disabled then
  return{
     xmult = card.ability.extra.xmult
  }
 end
-end,
-}
 SMODS.Rarity {
     key = "Feesh",
     pools = {
@@ -757,7 +755,7 @@ SMODS.Joker {
     SMODS.add_card {
               set = "jabong_fish",
                edition = 'e_negative' 
-         },
+         }
         return {
                 message = "caught!",
                 colour = G.C.BLUE,
