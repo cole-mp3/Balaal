@@ -22,7 +22,7 @@ SMODS.ConsumableType({
  			name = 'hi',
  			text = { 'find me :)' },
  		},
-    }
+    },
     key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {
@@ -150,7 +150,7 @@ SMODS.Consumable {
                 -- i still have to code this in so uhhh
                 G.FUNCS.overlay_menu{
                  --go ,my dancing ogre
-                definition = create_UIBox_custom_video1("ogre","yea"),
+                definition = create_UIBox_custom_video1("horsef","yea"),
                 config = {no_esc = true}
             }
                 return true end }))
@@ -381,8 +381,8 @@ SMODS.Consumable {
 }
 
 SMODS.ConsumableType({
-    primary_colour = G.C.SET.Chips,
-    secondary_colour = G.C.SECONDARY_SET.Blue,
+    primary_colour = G.C.SET.Tarot,
+    secondary_colour = G.C.SECONDARY_SET.Tarot,
     key = 'jabong_fish', 
     loc_txt = {
         name = "Fish",
@@ -391,7 +391,7 @@ SMODS.ConsumableType({
  			name = 'hi',
  			text = { 'collect my pages :)' },
  		},
-    }
+    },
     default = 'c_jabong_bass',
     cards = {
         
@@ -408,24 +408,7 @@ SMODS.Consumable {
         text = {
             "glub"
         }
-    },
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('jabong_oh')
-                SMODS.add_card({ set = 'joker' rarity = 3})
-                
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
-    end,
+    }
 }
  
            

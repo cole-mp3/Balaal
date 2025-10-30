@@ -223,43 +223,43 @@ end
 
 
 SMODS.Achievement {
-    key = "fishtim"
+    key = "fishtim",
     loc_txt = {
-        name = "Fishing time!"
+        name = "Fishing time!",
         description = {
             "Obtain the fishing voucher"
         }
     },
     pos = { x = 1, y = 0 }, 
-    hidden_pos = { x = 0, y = 0 }
+    hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
       if args.type == "ach_fishing" then return true end
     end,
 }
 SMODS.Achievement {
-    key = "gunderm"
+    key = "gunderm",
     loc_txt = {
-        name = "ITS A GUNDAM!!!!!!!!"
+        name = "ITS A GUNDAM!!!!!!!!",
         description = {
             "Get a gundam"
         }
     },
     pos = { x = 1, y = 0 }, 
-    hidden_pos = { x = 0, y = 0 }
+    hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
       if args.type == "ach_gund" then return true end
     end,
 }
 SMODS.Achievement {
-    key = "hell"
+    key = "hell",
     loc_txt = {
-        name = "the discarding of all that is considered normal"
+        name = "the discarding of all that is considered normal with balatro",
         description = {
             "Use AWAKENING once"
         }
     },
     pos = { x = 1, y = 0 }, 
-    hidden_pos = { x = 0, y = 0 }
+    hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
       if args.type == "ach_awaken" then return true end
     end,

@@ -606,35 +606,9 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
-             local crads = 0
-            for _, scored_card in ipairs(context.scoring_hand) do
-                      crads = crads + 1 
-                      -- jank ass code made in jokerforge cuz im very sure ill fuck it up if i manual this shit
-                local enhancement_pool = {}
-             for _, enhancement in pairs(G.P_CENTER_POOLS.Enhanced) do
-                if enhancement.key ~= 'm_stone' then
-                    enhancement_pool[#enhancement_pool + 1] = enhancement
-                end
-            end
-            local random_enhancement = pseudorandom_element(enhancement_pool, 'edit_card_enhancement')
-            context.other_card:set_ability(random_enhancement)
-            local random_seal = SMODS.poll_seal({mod = 10, guaranteed = true})
-            if random_seal then
-                context.other_card:set_seal(random_seal, true)
-            end
-            local edition = pseudorandom_element({'e_foil','e_holo','e_polychrome','e_negative'}, 'random edition')
-            if random_edition then
-                context.other_card:set_edition(random_edition, true)
-            end
-        end
-        if crads > 0 then
-                return {
-                    message = "randomized!",
-                    colour = G.C.TAROT
-                }
-            end
-        end
+           play_sound( 'jabong_womp')
     end
+end
 }
 SMODS.Joker {
     key = "screaming",
@@ -701,6 +675,12 @@ SMODS.Joker {
     return { vars = { numerator, denominator, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
+            if context.joker_main and not G.GAME.blind.disabled then
+ return{
+    xmult = card.ability.extra.xmult,
+    message = "MORDECAI AND RIGBY"
+ }
+end
 if context.setting_blind and not context.blueprint and context.blind.boss and SMODS.pseudorandom_probability(card, 'jabong_benson', 1, card.ability.extra.odds) then
 return {
      G.E_MANAGER:add_event(Event({
@@ -709,7 +689,7 @@ return {
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.GAME.blind:disable()
-                            play_sound('')
+                            play_sound('timpani')
                             delay(0.4)
                             return true
                         end
@@ -729,13 +709,10 @@ return {
          SMODS.calculate_effect({ message = localize('ph_boss_disabled') }, card)
         end
     end
+
+
 }
-if context.joker_main and not G.GAME.blind.disabled then
- return{
-    xmult = card.ability.extra.xmult
-    message = "MORDECAI AND RIGBY"
- }
-end
+
 SMODS.Rarity {
     key = "Feesh",
     pools = {
@@ -765,9 +742,9 @@ SMODS.Joker {
   cost = 10,
   discovered = true,
   loc_txt = {
-    name = "Fisherman"
+    name = "Fisherman",
     text = {
-        "{C:attention}On blind Selection:{}",
+        "{C:attention}During the scoring step:{}",
         "Go fish. {C:deactivated}({}{C:green}#1# in #1#{}{C:deactivated} chance of a catch{})"
     },
   },
@@ -777,7 +754,7 @@ SMODS.Joker {
     return { vars = { numerator, denominator, card.ability.extra.creates } }
   end,
   calculate = function(self, card, context)
-    if context.setting_blind and SMODS.pseudorandom_probability(card, 'jabong_fisherman', 1, card.ability.extra.odds) then
+    if context.joker_main and SMODS.pseudorandom_probability(card, 'jabong_fisherman', 1, card.ability.extra.odds) then
     SMODS.add_card {
               set = "jabong_fish",
                edition = 'e_negative' 
@@ -786,7 +763,7 @@ SMODS.Joker {
                 message = "caught!",
                 colour = G.C.BLUE,
             }
-    else
+        elseif context.joker_main  then
         return{
             play_sound('jabong_womp'),
             message = "Nope!",
