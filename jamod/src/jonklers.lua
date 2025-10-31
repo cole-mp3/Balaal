@@ -836,19 +836,6 @@ SMODS.Joker {
             'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult.'
         },
     },
-    config = {extra = {xmult = 2}},
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-        if context.other_consumeable and context.other_consumeable.ability.set == 'jabong_fish'  then
-            return {
-                x_mult = card.ability.extra.xmult,
-                message_card = context.other_consumeable
-            }
-            end
-        end
-    end,
+   -- ill fix him later
 
 }

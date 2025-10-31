@@ -405,6 +405,7 @@ SMODS.Booster {
         },
         group_name = "Material_Pack"
     },
+     draw_hand = true,
     group_key = "k_Material_Pack",
     config = {extra = 3, choose = 1},
     loc_vars = function(self, info_queue, card)
