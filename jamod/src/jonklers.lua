@@ -659,11 +659,11 @@ SMODS.Joker {
     loc_txt = {
         name = "Regular gumball machine with no anger issues",
         text = {
-            "{C:green}#1# in #1#{} chance to {C:attention}disable{} the boss blind.",
-            "Should this fail, {X:red,C:white}X#1#{} mult."
+            "{C:attention}Disables{} the boss blind when it's selected.",
+            "Should you not be in a disableable blind, {X:red,C:white}X#1#{} mult."
         },
     },
-    rarity = 3,
+    rarity = 4,
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
@@ -681,7 +681,7 @@ SMODS.Joker {
     message = "MORDECAI AND RIGBY"
  }
 end
-if context.setting_blind and not context.blueprint and context.blind.boss and SMODS.pseudorandom_probability(card, 'jabong_benson', 1, card.ability.extra.odds) then
+if context.setting_blind and not context.blueprint and context.blind.boss then
 return {
      G.E_MANAGER:add_event(Event({
                 func = function()
@@ -772,4 +772,59 @@ SMODS.Joker {
         
     end
   end
+}
+SMODS.Joker {
+    key = "balatroreddit",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "Credit card in the Buffoon Pack",
+        text  = {
+          "Opening a {C:attention}Booster Pack{} will create",
+          "A {C:negative}Negative{} Credit card.",
+          "{C:inactive}Blueprint ante 1 shop{}"  
+        },
+    },
+    rarity = 2,
+    blueprint_compat = true,
+    cost = 10,
+    discovered = true,
+    calculate = function(self, card, context)
+        if context.open_booster and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = (function()
+                        SMODS.add_card {
+                            key = 'j_credit_card' 
+                        }
+                        G.GAME.joker_buffer = 0
+                        return true
+                    end)
+                }))
+                return {
+                    message = "credit card",
+                    colour = G.C.PURPLE,
+                }
+            end
+
+        end
+    end,
+}
+SMODS.Joker {
+    key = "basspro", --alias go do this one
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    rarity = "jabong_Feesh",
+    blueprint_compat = true,
+    cost = 10,
+    discovered = true,
+    loc_txt = {
+        name = "Bass pro Joker"
+        text = {
+            'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult."
+        },
+    },
+    --code goes here lmao ill do that in a bit
 }

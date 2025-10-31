@@ -315,33 +315,17 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {
-        name = "I can't code for shit",
+        name = "Rubberband Ball",
         text = {
-            "Because I have yet to code in this {S:1.1,C:attention,E:1}fucking enhancement{},",
-            "Doubles money, max of {C:attention}#1#{} dollars.",
+            "Turns one card into {S:1.1,C:attention,E:1}A rubberband card{},",
            
         }
     },
-    config = { extra = { max = 500 } },
+    config = { max_highlighted = 1, mod_conv = 'm_jabong_copper' },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                card:juice_up(0.3, 0.5)
-                ease_dollars(math.max(0, math.min(G.GAME.dollars, card.ability.extra.max)), true)
-                return true
-            end
-        }))
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return true
-    end
 }
 SMODS.Atlas {
     key = 'ment',

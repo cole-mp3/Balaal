@@ -5,6 +5,22 @@ SMODS.Atlas {
     py = 95
 }
 SMODS.Enhancement {
+    key = "ruband",
+    atlas = "coplas", --p l a c e h o l d e r
+    config = {repetitions = 2, xmult = 2.1}
+    loc_vars = function(self, info_queue, card)             -- ⌄i fixed it but why on earth was this also xmult
+        return { vars = { card.ability.repetitions, card.ability.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            return{
+                repetitions = card.ability.repetitions
+                xmult = card.ability.xmult
+            }
+        end
+    end,
+}
+SMODS.Enhancement {
     key = 'copper',
     atlas = 'coplas', --there its done
     pos = { x = 0, y = 0 },
