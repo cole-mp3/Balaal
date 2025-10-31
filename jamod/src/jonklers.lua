@@ -706,7 +706,7 @@ return {
                     return true
                 end
             })),
-            return, nil, true -- apparently this stops crazy shit from happening.
+            return true -- apparently this stops crazy shit from happening.
         } --error on return, attempt a fix please
         end
     end,
