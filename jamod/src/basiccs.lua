@@ -421,8 +421,8 @@ SMODS.Booster {
         },
         group_name = "Material_Pack"
     },
-    group_key = "k_Material_Pack"
-    config = {extra = 3, choose = 1}
+    group_key = "k_Material_Pack",
+    config = {extra = 3, choose = 1},
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
         return {
@@ -474,7 +474,7 @@ SMODS.Booster {
 }
 
 
-}
+
  
            
 

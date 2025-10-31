@@ -508,7 +508,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "Joker that's been Soaked, Crumpled, ripped, folded on one corner and kissed with coral number 4 blue lip gloss.",
+        name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue #2 Semi Gloss Lipstick",
         text = {
             "This card earns {X:money,C:white}$#1#{} every time a face card is destroyed.",
             "{C;inactive}Currently{}{X:money,C:white}$#1#{}{C:inactive}.{}"
@@ -617,8 +617,8 @@ SMODS.Joker {
     loc_txt = {
         name = "Stupid Ass Joker",
         text = {
-            "This card gains {C:blue}+#1#{} chips per card scored.",
-            "{C:inacive}Currently{}{C:blue}+#1#{}{C:incative}. WHY DID I MAKE THIS{}"
+            "This card gains {C:blue}+#1#{} Chips per card scored.",
+            "{C:inacive}Currently{}{C:blue}+#1#{}{C:inactive}. WHY DID I MAKE THIS{}"
         },
     },
     rarity = 1,
@@ -657,7 +657,7 @@ SMODS.Joker {
     atlas = "guball",
     pos = { x = 0, y = 0},
     loc_txt = {
-        name = "Regular gumball machine with no anger issues",
+        name = "Regular Gumball Machine With No Anger Issues",
         text = {
             "{C:attention}Disables{} the boss blind when it's selected.",
             "Should you not be in a disableable blind, {X:red,C:white}X#1#{} mult."
@@ -779,7 +779,7 @@ SMODS.Joker {
     atlas = "sccre",
     pos = { x = 0, y = 0},
     loc_txt = {
-        name = "Credit card in the Buffoon Pack",
+        name = "Credit Card in the Buffoon Pack",
         text  = {
           "Opening a {C:attention}Booster Pack{} will create",
           "A {C:negative}Negative{} Credit card.",
