@@ -510,7 +510,8 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue #2 Semi Gloss Lipstick",
+        name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue", 
+                "#2 Semi Gloss Lipstick",
         text = {
             "Literally every card earns {X:money,C:white}$#1#{}. ",
             "Increases by {C:attention}#1#{} every time a face card is destroyed.",
