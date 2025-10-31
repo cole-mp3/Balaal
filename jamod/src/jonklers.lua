@@ -830,10 +830,24 @@ SMODS.Joker {
     cost = 10,
     discovered = true,
     loc_txt = {
-        name = "Bass pro Joker",
+        name = "Bass Pro Joker",
         text = {
             'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult.'
         },
     },
-    --code goes here lmao ill do that in a bit
+    config = {extra = {xmult = 2}},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+        if context.other_consumeable and context.other_consumeable.ability.set == 'jabong_fish'  then
+            return {
+                x_mult = card.ability.extra.xmult,
+                message_card = context.other_consumeable
+            }
+            end
+        end
+    end,
+
 }

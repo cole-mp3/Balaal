@@ -45,7 +45,7 @@ return {
             text = {
                 "{X:red,C:white}X#1#{} Mult and {X:enhancement,C:white}X#1#{} Mult.",
                 "{C:red}SELF DESTRUCTS{} if blind's color is red or blue,",
-                "{C:inactive}or rather, it would if programming that was even remotely possible.{}"
+                "{C:inactive}(or rather, it would if programming that was even remotely possible.){}"
             }
           },
         
