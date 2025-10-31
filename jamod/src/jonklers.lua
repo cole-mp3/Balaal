@@ -699,7 +699,7 @@ return {
                 end
             })),
             return true -- apparently this stops crazy shit from happening.
-        } --error on return, attempt a fix please
+        } --i think you fucked some whit dude
         end
         return nil, true --if this dont work get rid of it it surely wont cause any bugs
     end,
