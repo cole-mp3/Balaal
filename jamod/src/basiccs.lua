@@ -15,6 +15,14 @@ SMODS.Atlas {
 SMODS.ConsumableType({
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
+    loc_txt = {
+        name = "Material Card",
+        collection = 'Material Cards',
+        undiscovered = { 
+ 			name = 'hi',
+ 			text = { 'find me :)' },
+ 		},
+    },
     key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {
@@ -142,7 +150,7 @@ SMODS.Consumable {
                 -- i still have to code this in so uhhh
                 G.FUNCS.overlay_menu{
                  --go ,my dancing ogre
-                definition = create_UIBox_custom_video1("ogre","yea"),
+                definition = create_UIBox_custom_video1("horsef","yea"),
                 config = {no_esc = true}
             }
                 return true end }))
@@ -194,7 +202,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_whatdoicallthis')
                 SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
-                
+                 check_for_unlock { type = 'ach_awaken' }
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -224,7 +232,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_lepipe')
                 SMODS.add_card({ set = 'mobilesuit'})
-                
+                 check_for_unlock { type = 'ach_gund' }
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -307,33 +315,17 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {
-        name = "I can't code for shit",
+        name = "Rubberband Ball",
         text = {
-            "Because I have yet to code in this {S:1.1,C:attention,E:1}fucking enhancement{},",
-            "Doubles money, max of {C:attention}#1#{} dollars.",
+            "Turns one card into {S:1.1,C:attention,E:1}A rubberband card{},",
            
         }
     },
-    config = { extra = { max = 500 } },
+    config = { max_highlighted = 1, mod_conv = 'm_jabong_ruband' },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.max } }
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                card:juice_up(0.3, 0.5)
-                ease_dollars(math.max(0, math.min(G.GAME.dollars, card.ability.extra.max)), true)
-                return true
-            end
-        }))
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return true
-    end
 }
 SMODS.Atlas {
     key = 'ment',
@@ -373,9 +365,17 @@ SMODS.Consumable {
 }
 
 SMODS.ConsumableType({
-    primary_colour = G.C.SET.Chips,
-    secondary_colour = G.C.SECONDARY_SET.Blue,
+    primary_colour = G.C.SET.Tarot,
+    secondary_colour = G.C.SECONDARY_SET.Tarot,
     key = 'jabong_fish', 
+    loc_txt = {
+        name = "Fish",
+        collection = 'Fish',
+        undiscovered = { 
+ 			name = 'hi',
+ 			text = { 'collect my pages :)' },
+ 		},
+    },
     default = 'c_jabong_bass',
     cards = {
         
@@ -392,31 +392,15 @@ SMODS.Consumable {
         text = {
             "glub"
         }
-    },
-    use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('jabong_oh')
-                SMODS.add_card({ set = 'joker', rarity = 3})
-                
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
-    end,
+    }
 }
+ 
 SMODS.Booster {
     key = "matbooster",
-    atlas = "Jonklers/jatlas.png",
+    atlas = "purp",
     loc_txt = {
         name = "Material Pack",
-        text = {
+        description = {
             "Choose one of up to 3 {C:attetnion}Material{} cards."
         },
         group_name = "Material_Pack"
@@ -473,9 +457,6 @@ SMODS.Booster {
     end,
 }
 
-
-
- 
            
 
 
@@ -528,12 +509,11 @@ SMODS.Voucher {
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
-                --[[ Update: I still cant prove it works but good news is it didnt crash the  
-                game when i used it (unlike everything ELSE in this spaghetti code monster)
-                soo uhh i guess it did]]--
+                -- just like the last one, let's see if it works :)
                 SMODS.add_card { 
                     key = "j_jabong_fisherman",
                     edition = 'e_negative' }
+                    check_for_unlock { type = 'ach_fishing' }
                 G.GAME.jabong_Feesh_rate = card.ability.extra.rate
                 return true
             end

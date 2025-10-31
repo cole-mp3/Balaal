@@ -447,6 +447,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
+    pools = {["halfjokes"] = true},
     loc_txt = {
         name = "photo",
         text = {
@@ -477,6 +478,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
+    pools = {["halfjokes"] = true},
     loc_txt = {
         name = "Graph",
         text = {
@@ -500,7 +502,7 @@ SMODS.Joker {
     key = "longasfname",
     atlas = "sccre",
     pos = {x = 0, y = 0},
-    rarity = 3,
+    rarity = 'jabong_Max',
     cost = 7,
     unlocked = true,
     discovered = true,
@@ -510,7 +512,8 @@ SMODS.Joker {
     loc_txt = {
         name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue #2 Semi Gloss Lipstick",
         text = {
-            "This card earns {X:money,C:white}$#1#{} every time a face card is destroyed.",
+            "Literally every card earns {X:money,C:white}$#1#{}. ",
+            "Increases by {C:attention}#1#{} every time a face card is destroyed.",
             "{C;inactive}Currently{}{X:money,C:white}$#1#{}{C:inactive}.{}"
         },
     },
@@ -617,8 +620,8 @@ SMODS.Joker {
     loc_txt = {
         name = "Stupid Ass Joker",
         text = {
-            "This card gains {C:blue}+#1#{} Chips per card scored.",
-            "{C:inacive}Currently{}{C:blue}+#1#{}{C:inactive}. WHY DID I MAKE THIS{}"
+            "This card gains {C:blue}+#1#{} chips per card scored.",
+            "{C:inacive}Currently{}{C:blue}+#1#{}{C:incative}. WHY DID I MAKE THIS{}"
         },
     },
     rarity = 1,
@@ -627,14 +630,14 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-     config = { extra = { chip_mod = 0.5, chips = 0  }, },
+     config = { extra = { chip_gain = 1, chips = 0  }, },
      loc_vars = function(self, info_queue, card)
-        return {  { vars = { card.ability.extra.chip_mod, card.ability.extra.chips } }}
+        return {  { vars = { card.ability.extra.chip_gain, card.ability.extra.chips } }}
      end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then
                 return {
-                    card.ability.extra.chips == card.ability.extra.chips + card.ability.extra.chip_mod,
+                    card.ability.extra.chips == card.ability.extra.chips + card.ability.extra.chip_gain,
                     message = "ae",
                     colour = G.C.BLUE
                 }
@@ -657,7 +660,7 @@ SMODS.Joker {
     atlas = "guball",
     pos = { x = 0, y = 0},
     loc_txt = {
-        name = "Regular Gumball Machine With No Anger Issues",
+        name = "Regular gumball machine with no anger issues",
         text = {
             "{C:attention}Disables{} the boss blind when it's selected.",
             "Should you not be in a disableable blind, {X:red,C:white}X#1#{} mult."
@@ -698,8 +701,7 @@ return {
                     return true
                 end
             })),
-            return true -- apparently this stops crazy shit from happening.
-        } --i think you fucked some whit dude
+        } 
         end
         return nil, true --if this dont work get rid of it it surely wont cause any bugs
     end,
@@ -774,12 +776,18 @@ SMODS.Joker {
     end
   end
 }
+SMODS.Atlas {
+    key = "redit",
+    path = "Jonklers/credinbuffoon.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
     key = "balatroreddit",
-    atlas = "sccre",
+    atlas = "redit",
     pos = { x = 0, y = 0},
     loc_txt = {
-        name = "Credit Card in the Buffoon Pack",
+        name = "Credit card in the Buffoon Pack",
         text  = {
           "Opening a {C:attention}Booster Pack{} will create",
           "A {C:negative}Negative{} Credit card.",
@@ -798,7 +806,8 @@ SMODS.Joker {
                     delay = 0.0,
                     func = (function()
                         SMODS.add_card {
-                            key = 'j_credit_card' 
+                            key = 'j_credit_card',
+                            edition = 'e_negative'
                         }
                         G.GAME.joker_buffer = 0
                         return true
@@ -810,7 +819,6 @@ SMODS.Joker {
                 }
             end
 
-        end
     end,
 }
 SMODS.Joker {
@@ -822,9 +830,9 @@ SMODS.Joker {
     cost = 10,
     discovered = true,
     loc_txt = {
-        name = "Bass pro Joker"
+        name = "Bass pro Joker",
         text = {
-            'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult."
+            'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult.'
         },
     },
     --code goes here lmao ill do that in a bit

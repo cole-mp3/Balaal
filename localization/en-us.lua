@@ -37,7 +37,7 @@ return {
             name = "Bottle O' Souls",
             text = {
                 "On Blind Selection:",
-                "Creates 2 Negative {C:attention}legendary{}Jokers{}.",
+                "Creates 2 Negative {C:attention}legendary{} Jokers{}.",
             }
           },
         j_jabong_intelligence = {

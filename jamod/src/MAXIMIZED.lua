@@ -68,7 +68,7 @@ SMODS.Joker {
 }
 SMODS.Atlas {
     key = "soulb",
-    path = "Jonklers/soulb",
+    path = "Jonklers/soulb.png",
     px = 71,
     py = 95
 }
@@ -109,9 +109,18 @@ SMODS.Joker {
         if context.joker_main then
             message = "no effect, stupid!"
         end
+        
+
     end,
  
 }
+local smods_showman_ref = SMODS.showman
+    function SMODS.showman(card_key)
+    if next(SMODS.find_card('j_jabong_soulbottle')) then
+        return true
+    end
+    return smods_showman_ref(card_key)
+    end
 SMODS.Atlas {
     key = "throne",
     path = "Jonklers/drei.png",
