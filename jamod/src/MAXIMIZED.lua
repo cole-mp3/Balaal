@@ -41,6 +41,14 @@ SMODS.Joker {
   atlas = 'gojo',
   pos = {x = 0, y = 0},
   rarity = 'jabong_Max',
+  loc_txt ={
+    name = "Gojoker",
+    text = {
+        "{C:inactive}idk lol.{}",
+        "{C:inactive}also the pixel art is based off of a render{}",
+        "{C:inacitve}from i think the jjk game im not sure.{}"
+    },
+  },
   blueprint_compat = true,
   cost = 4,
   discovered = true,
@@ -58,9 +66,15 @@ SMODS.Joker {
     end
   end
 }
+SMODS.Atlas {
+    key = "soulb",
+    path = "Jonklers/soulb",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
   key = 'soulbottle',
-  atlas = 'sccre',
+  atlas = 'soulb',
   pos = {x = 0, y = 0},
   rarity = 'jabong_Max',
   blueprint_compat = true,

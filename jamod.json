@@ -2,10 +2,10 @@
   "id": "jamod",
   "name": "Balaal",
   "author": ["jabong, RandomizedAlias"],
-  "description": "A Balatro mod woth extremely niche refrences and jokes",
+  "description": "A Balatro mod woth extremely niche refrences and jokes. This mod is a complete fucking mess, so expect things not working cuz i cant code.",
   "prefix": "jabong",
   "main_file": "jamod.lua",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "badge_colour": "FF230A", 
 	"badge_text_colour": "FFFFFF",
   "dependencies": [

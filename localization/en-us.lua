@@ -6,7 +6,13 @@ return {
                 name = "Copper Card",
                 text = {
                     "{X:blue,C:white}X#1#{} chips and {X:red,C:white}X#1#{}mult if held in hand,",
-                    "and {X:inactive,C:white}^#1#{} mult if played."
+                }
+            },
+            m_jabong_ruband = {
+                name = "Rubberband Card",
+                text = {
+                    "This card retriggers {C:attention}Twice.{}",
+                    "{X:Red,C:white}X#1#{} mult when played."
                 }
             },
              m_jabong_ourple = {
