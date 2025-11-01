@@ -36,6 +36,7 @@ SMODS.Seal {
 
 
 }
+--also statefarm seal soon
 -- all seal is getting a recode.
 -- just uhh
 -- not now
