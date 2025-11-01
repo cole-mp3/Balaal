@@ -799,6 +799,9 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 10,
     discovered = true,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_credit_card
+    end,
     calculate = function(self, card, context)
         if context.open_booster and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
@@ -838,4 +841,76 @@ SMODS.Joker {
     },
    -- ill fix him later
 
+}
+SMODS.Joker{
+    key = "dingus",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "Stupid Dingus",
+        text = {
+            "This card gains {C:red}+#1#{} Mult and {C:blue}-#1#{} chips",
+            "Per {C:attention}non-scoring{} card played."
+        },
+    },
+    config = {extra = { mult_gain = 5, chip_gain = 2, mult = 1, chips = 0, }},
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+            card.ability.extra.mult_gain, 
+            card.ability.extra.chip_gain, 
+            card.ability.extra.mult,
+            card.ability.extra.chips
+    }}
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == "unscored" then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+            card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.chip_gain
+            return{
+                message = "Upgraded!",
+                colour = G.C.RED
+            }
+        end
+    if context.joker_main then
+        return{
+            mult = card.ability.extra.mult,
+            chips = card.ability.extra.chips
+        }
+    end
+    end
+
+}
+SMODS.Joker {
+    key = "thecringler",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "Bock and suskin",
+        text = {
+            "Retriggers all played {C:attention}face cards{}. Increases by {C:attention}#1#{} per one-shot.",
+            "{C:inacive}Currently{} {C:attention}#1#{}{C:inactive}.{}",
+            "{C:inactive}...{}",
+            "{C:inactive}hey wait-{}"
+        }
+    },
+    config = {extra = {repetitions = 1, addon = 1}},
+    loc_vars = function(self, info_queue, card)
+        return{
+            card.ability.extra.repetitions,
+            card.ability.extra.addon
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.repetitions and context.cardarea == G.play then
+            return{
+                repetitions = card.ability.extra.repetitions,
+                message = "Again!"
+            }
+        end
+        if SMODS.last_hand_oneshot then
+            card.ability.extra.repetitions = card.ability.extra.repetitions + card.ability.extra.addon
+           return{ message = "Upgrade!", colour = G.C.ATTENTION}
+           
+        end
+    end
 }
