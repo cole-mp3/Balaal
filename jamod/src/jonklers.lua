@@ -880,7 +880,7 @@ SMODS.Joker{
     end
 
 }
-SMODS.Joker {
+--[[SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",
     pos = { x = 0, y = 0},
@@ -913,4 +913,4 @@ SMODS.Joker {
            
         end
     end
-}
+} ]]--
