@@ -264,5 +264,47 @@ SMODS.Achievement {
       if args.type == "ach_awaken" then return true end
     end,
 }
+SMODS.Challenge {
+    key = 'zamnnnnn',
+    jokers = {
+        { id = 'j_jabong_zam', eternal = true },
+        { id = "j_hanging_chad", edition = "negative"},
 
+
+    },
+    loc_txt = {
+        name = "ZAMnnn!!!!"
+    },
+    restrictions = {
+        banned_other = {
+            { id = 'bl_plant', type = 'blind' },
+           
+        },
+        banned_cards = {
+             {id = "j_certificate", },
+             {id = "j_marble", },
+             {id = "c_grim"},
+             {id = "c_incantation"},
+             {id = "c_familiar"},
+             { id = 'v_magic_trick' },
+             { id = 'v_illusion' },
+             { id = 'p_standard_normal_1', ids = {
+                'p_standard_normal_1', 'p_standard_normal_2',
+                'p_standard_normal_3', 'p_standard_normal_4',
+                'p_standard_jumbo_1', 'p_standard_jumbo_2',
+                'p_standard_mega_1', 'p_standard_mega_2' }
+            },
+        },
+        banned_tags ={
+            {id = "tag_standard"},
+        }
+    },
+    deck = {
+        type = 'Challenge Deck',
+        cards = {
+            { s = 'C', r = 'K' },
+        }
+    },
+    button_colour = G.C.TAROT,
+}
 
