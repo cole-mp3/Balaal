@@ -206,7 +206,8 @@ SMODS.Joker {
         end
         if SMODS.last_hand_oneshot then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-             message = "Upgrade!"
+           return{ message = "Upgrade!", colour = G.C.RED}
+           
         end
     end
 }
