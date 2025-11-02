@@ -33,7 +33,7 @@ SMODS.Blind {
     end
 }
 SMODS.Blind {
-     key = "spoop",
+     key = "arbys",
     dollars = 5,
     mult = 2,
     atlas = "blatlas",
