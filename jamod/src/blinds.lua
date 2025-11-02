@@ -32,6 +32,23 @@ SMODS.Blind {
         end
     end
 }
+SMODS.Blind {
+     key = "spoop",
+    dollars = 5,
+    mult = 2,
+    atlas = "blatlas",
+    pos = { y = 0 },
+    boss = { min = 1 },
+    boss_colour = HEX("f7e948"),
+    loc_txt = {
+        name = "Arby's",
+        text = {
+            "sea Aweed.",
+            "(credit to vo memes)"
+        },
+    },
+   
+}
 --[[TO DO FOR THIS BLIND:
     - Make cool hand
     - have hand be gimmick

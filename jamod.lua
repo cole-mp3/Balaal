@@ -309,14 +309,14 @@ SMODS.Challenge {
 }
 SMODS.Rank {
     key = 'Zero',
-    card_key = '0',
+    card_key = '1',
     --atlas coming later
     pos = { x = 8 },
     nominal = 1,
     next = { 'Ace' },
     face = true,
     loc_txt = {
-        name = "0 of"
+        name = "0"
     }
 }
 

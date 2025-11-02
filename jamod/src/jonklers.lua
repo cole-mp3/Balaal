@@ -75,7 +75,7 @@ end
 if context.joker_main and G.GAME.current_round.hands_left >= 0 then
 return {
 message = "Smort",
-Xmult = card.ability.extra.Xmult
+x_mult = card.ability.extra.Xmult
 }
 end
 end,
@@ -155,7 +155,7 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 4,
     discovered = true,
-    config = { extra = {chips = 0, xmult = 1, chip_mod = 8,  xmult_gain = 0.1 }, },
+    config = { extra = {chips = 0, Xmult = 1, chip_mod = 8,  Xmult_gain = 0.1 }, },
     loc_txt = {
         name = 'Weenic',
         text = {
@@ -166,7 +166,7 @@ SMODS.Joker{
         },
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.xmult, card.ability.extra.xmult_gain } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() <= 6 and not context.blueprint then
@@ -179,7 +179,7 @@ SMODS.Joker{
             }
         end
         if context.individual and context.cardarea == G.play and context.other_card:get_id() >= 6 and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
 
             return {
                 message = localize('k_upgrade_ex'),
@@ -190,7 +190,7 @@ SMODS.Joker{
         if context.joker_main then
             return {
                 chips = card.ability.extra.chips,
-                xmult = card.ability.extra.xmult
+                x_mult = card.ability.extra.Xmult
             }
         end
     end,
@@ -209,22 +209,22 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 10,
     discovered = true,
-    config = { extra = {chip_mod = 150, xmult_gain = 2, chips = 0, xmult = 1,  dollars = 10 }, },
+    config = { extra = {chip_mod = 150, Xmult_gain = 2, chips = 0, Xmult = 1,  dollars = 10 }, },
     loc_txt = {
         name = 'Big Zam',
         text = {
             "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
             "Played cards give {C:money}$10{} when  scored.",
-            "{C:inactive}(Currently{} {C:red}X#1#{} and {C:blue}+#1#{}{C:inactive}.){} "
+            "{C:inactive}(Currently{} {X:red,C:white}X#1#{} and {C:blue}+#1#{}{C:inactive}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.xmult, card.ability.extra.xmult_gain } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
 
             return {
                 message = localize('k_upgrade_ex'),
@@ -238,7 +238,7 @@ SMODS.Joker{
         if context.joker_main then
             return {
                 chips = card.ability.extra.chips,
-                xmult = card.ability.extra.xmult
+                x_mult = card.ability.extra.Xmult
             }
         end
     end,
@@ -287,9 +287,9 @@ SMODS.Joker {
             "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:incative}.{}",
         }
     },
-    config = { extra = {creates = 2, xmult = 1, xmult_gain = 1 }, },
+    config = { extra = {creates = 2, Xmult = 1, Xmult_gain = 1 }, },
     loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.creates } }
+    return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain, card.ability.extra.creates } }
     end,
     calculate = function(self, card, context)
         if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
@@ -314,7 +314,7 @@ SMODS.Joker {
             }
         end
         if context.selling_card and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.ENHANCEMENT,
@@ -323,7 +323,10 @@ SMODS.Joker {
             }
         end
         if context.joker_main then
-            xmult = card.ability.extra.xmult
+            return{
+                x_mult = card.ability.extra.Xmult
+            }
+            
         end
     end,
    
@@ -356,13 +359,13 @@ cost = 20,
 discovered = true,
 config = { extra = {xmult = 100,}, },
 loc_vars = function(self, info_queue, card)
-return { vars = { card.ability.extra.xmult } }
+return { vars = { card.ability.extra.Xmult } }
 end,
 calculate = function(self, card, context)
     if context.joker_main then
         return {
             message = "Briefcase!",
-            xmult = card.ability.extra.xmult,
+            x_mult = card.ability.extra.Xmult,
             emult = 100,
         }
     end
@@ -455,15 +458,15 @@ SMODS.Joker {
             "All played face cards give {X:red,C:white}X#1#{} mult."
         },
     },
-    config = {extra = {xmult = 1.3}},
+    config = {extra = {Xmult = 1.3}},
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.xmult}}
+        return {vars = {card.ability.extra.Xmult}}
     end,
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_face() then
                 return {
-                    xmult = card.ability.extra.xmult
+                    x_mult = card.ability.extra.Xmult
                 }
             end
         end
@@ -674,15 +677,15 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    config = { extra = { odds = 4, xmult = 100  }, },
+    config = { extra = { odds = 4, Xmult = 100  }, },
     loc_vars = function(self, info_queue, card)
     local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_benson')
-    return { vars = { numerator, denominator, card.ability.extra.xmult } }
+    return { vars = { numerator, denominator, card.ability.extra.Xmult } }
     end,
     calculate = function(self, card, context)
             if context.joker_main and not G.GAME.blind.disabled then
  return{
-    xmult = card.ability.extra.xmult,
+    x_mult = card.ability.extra.Xmult,
     message = "MORDECAI AND RIGBY"
  }
 end
@@ -837,9 +840,21 @@ SMODS.Joker {
     loc_txt = {
         name = "Bass Pro Joker",
         text = {
-            'Every {C:attention}fish{} you have gives{X:red,C:white}X#1#{} mult.'
+            'Every {C:attention}fish{} you have gives {X:red,C:white}X#1#{} mult.'
         },
     },
+     config = { extra = { Xmult = 1.5 } },
+     loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_consumeable and context.other_consumeable.ability.set == 'jabong_fish' then
+            return {
+                x_mult = card.ability.extra.Xmult,
+                message_card = context.other_consumeable
+            }
+        end
+    end,
    -- ill fix him later
 
 }
@@ -881,23 +896,96 @@ SMODS.Joker{
     end
 
 }
+SMODS.Atlas {
+    key = 'lyth',
+    path = "Jonklers/60.png",
+    px = 71,
+    py = 95
+}
 SMODS.Joker {
     key = "lytherorefrence",
-    atlas = "sccre",
+    atlas = "lyth",
     pos = { x = 0, y = 0},
     loc_txt = {
         name = "60 on a Public street",
         text = {
             "If played hand contains a {C:attention}6{} and a {C:attention}0{},",
-            "Creates 4 random negative consumables."
+            "Creates #4# random {C:dark_edition}negative{} Spectral Cards."
         },
     },
     rarity = 2,
     blueprint_compat = true,
     cost = 10,
     discovered = true,
-    config = {extra = { creates = 2 }},
+    config = {extra = { creates = 4 }},
+    calculate = function(self, card, context)
+		if context.joker_main then
+            local six = false
+            local andz = false
+
+
+            for i = 1, #context.scoring_hand do
+				if context.full_hand[i]:get_id() == 6 then
+                    six = true
+                end
+                if context.full_hand[i]:get_id() == SMODS.Ranks['jabong_Zero'].id then
+                    andz = true
+                end
+            end
+
+            if six == true and andz == true then   
+                 local cards_to_create = math.min(card.ability.extra.creates,
+                G.jokers.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer))
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + cards_to_create
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    for _ = 1, cards_to_create do
+                        SMODS.add_card {
+                            set = 'Spectral', 
+                            edition = "e_negative" 
+                        }
+                        G.GAME.consumeable_buffer = 0
+                    end
+                    return true
+                end
+            }))
+           
+			return {
+				message = "60 ON A PUBLIC STREET?????"
+                
+			}
+            end
+		end
+        if context.cardarea == G.play and context.individual and context.other_card then
+            local rank = context.other_card:get_id()
+			if rank == 6 then
+				return {
+                    message = '6!',
+                }
+			end
+            if rank == SMODS.Ranks['jabong_Zero'].id then
+				return {
+                    message = '0!',
+                }
+			end
+		end
+
+    end,
+
 }
+SMODS.Joker {
+    key = "ragebait",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "Joker designed to be written badly",
+        text = {
+            "this card gives {C:red}X#1#{} mult and {X:blue,C:white}+#1#{} chips",
+            "{C:incative}why did I ever think of making this{}"
+        }
+    },
+}
+
 --[[SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",
