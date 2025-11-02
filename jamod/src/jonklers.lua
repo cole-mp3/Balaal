@@ -27,13 +27,14 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 2,
     discovered = true,
-    config = { extra = { mult = 99 }, },
+    
     loc_txt = {
     name = "Spamtongs",
     text = {
         "{C:red,s:1.1}+#99#{} Mult",
     },
 },
+config = { extra = { mult = 99 }, },
 loc_vars = function(self, info_queue, card)
 return { vars = { card.ability.extra.mult } }
 end,
@@ -62,7 +63,7 @@ cost = 2,
 discovered = true,
 config = { extra = { mult = 10, Xmult = 2, suit = "Hearts" }, },
 loc_vars = function(self, info_queue, card)
-return { vars = { card.ability.extra.xmult, card.ability.extra.mult } }
+return { vars = { card.ability.extra.Xmult, card.ability.extra.mult } }
 end,
 calculate = function(self, card, context)
 if context.individual and context.cardarea == G.play and
@@ -74,7 +75,7 @@ end
 if context.joker_main and G.GAME.current_round.hands_left >= 0 then
 return {
 message = "Smort",
-Xmult = card.ability.extra.xmult
+Xmult = card.ability.extra.Xmult
 }
 end
 end,
@@ -328,7 +329,7 @@ SMODS.Joker {
    
 }
 SMODS.Atlas {
-    key = "sccre",
+    key = "sccre",--since jatlas fucks my code for some reason, i use this as a placeholder
     path = "Jonklers/scre.png",
     px = 71,
     py = 95
@@ -879,6 +880,23 @@ SMODS.Joker{
     end
     end
 
+}
+SMODS.Joker {
+    key = "lytherorefrence",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+    loc_txt = {
+        name = "60 on a Public street",
+        text = {
+            "If played hand contains a {C:attention}6{} and a {C:attention}0{},",
+            "Creates 4 random negative consumables."
+        },
+    },
+    rarity = 2,
+    blueprint_compat = true,
+    cost = 10,
+    discovered = true,
+    config = {extra = { creates = 2 }},
 }
 --[[SMODS.Joker {
     key = "thecringler",

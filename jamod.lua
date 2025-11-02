@@ -307,4 +307,17 @@ SMODS.Challenge {
     },
     button_colour = G.C.TAROT,
 }
+SMODS.Rank {
+    key = 'Zero',
+    card_key = '0',
+    --atlas coming later
+    pos = { x = 8 },
+    nominal = 1,
+    next = { 'Ace' },
+    face = true,
+    loc_txt = {
+        name = "0 of"
+    }
+}
+
 
