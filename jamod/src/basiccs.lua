@@ -490,7 +490,7 @@ SMODS.Consumable {
     loc_txt = {
         name = "Zero-out",
         text = {
-            "Set {C:attention}#1#{} card's {C:attention}rank{}",
+            "Set up to {C:attention}#1#{} card's {C:attention}rank{}",
             "to {C:edtiton}Zero{}."
         }
     },
