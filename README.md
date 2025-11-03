@@ -1,5 +1,6 @@
 ## BalAAL
-<img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/c2622207-2f54-4e26-9cb9-35b33644858a" />
+<img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/d74344ef-f667-4749-a044-fd4a610219ea" />
+
 
 Its a mod.
 
@@ -7,7 +8,7 @@ a balatro mod.
 
 you need humor to understand its jokes
 
-and you also need to have general media knowledge
+and you also need to have general media knowledge (as denoted by the squidward)
 ## REQUIREMENTS:
 - A pc
 - A brain
