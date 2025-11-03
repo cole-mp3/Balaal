@@ -486,7 +486,7 @@ SMODS.Atlas {
 SMODS.Consumable {
     set = "Tarot",
     key = "zout",
-    atlas = "zeout"
+    atlas = "zeout",
     pos = {x = 0, y = 0},
     cost = 8, 
     loc_txt = {

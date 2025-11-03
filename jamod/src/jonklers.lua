@@ -9,14 +9,7 @@ SMODS.Sound {
     key = "getr",
     path = "music_jimbum.ogg",
      vol = 0.6,
-    pitch = 0.7,
-     if G.jokers then
-        if next(SMODS.find_card("j_jabong_jimbyramid")) then
-            select_music_track(self) 
-                return (250)
-            end
-        end
-    end
+    pitch = 0.7
 }
 SMODS.Atlas {
     key = "hatlas",
@@ -1034,7 +1027,64 @@ SMODS.Joker {
     end,
 
 
-   end
+
+}
+SMODS.Joker {
+    key = "nill",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    pos = { x = 1, y = 0 },
+    config = { extra = { mult = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks['jabong_Zero'].id then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.evaluate_poker_hand then
+           local _zcheck = 0
+        local _zcheck2 = 0
+
+        if G.hand.highlighted[1] then
+            for i = 1, #G.hand.highlighted do
+                if G.hand.highlighted[i].id == "jabong_Zero" then _zcheck = _zcheck + 1 end
+            end
+        end
+        
+        if G.play.cards[1] then
+            for i = 1, #G.play.cards do
+                if G.play.cards[i].id == "jabong_Zero" then _zcheck2 = _zcheck2 + 1 end
+            end
+        end
+
+        if _zcheck >= 5 or _zcheck2 >= 5 then
+           
+            if context.display_name == "Flush Five"  then
+                return{  
+                    replace_scoring_name = "Flush Fucking nothing"
+                }
+          
+            elseif context.display_name == "Four of a Kind"  then
+             return{  
+                    replace_scoring_name = "Four of A      "
+                }
+            elseif context.display_name == "Five of a Kind"  then
+             return{  
+                    replace_scoring_name = "Five of A      "
+                }
+            elseif context.display_name == "Three of a Kind"  then
+             return{  
+                    replace_scoring_name = "Three of A      "
+                }
+            end
+        end
+    end
+end
+    
 }
 
 --he doesnt work cuz he triggers per fucking animaton

@@ -14,7 +14,7 @@ SMODS.Atlas {
 }
 SMODS.Tag {
     key = "luchalibre",
-    atlas = "tatlas"
+    atlas = "tatlas",
     pos = { x = 0, y = 0 },
     loc_txt = {
         name = "Luchador Tag",
@@ -22,7 +22,7 @@ SMODS.Tag {
             "Creates {C:attention}Luchador{}.",
             "{C:inactive}(Must have room){}"
         }
-    }
+    },
     apply = function(self, tag, context)
          if context.type == 'new_blind_choice' then
             SMODS.add_card {
