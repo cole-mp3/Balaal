@@ -984,7 +984,7 @@ SMODS.Joker {
         name = "High school Basketball player",
         text = {
             "{X:inactive,C:white}^#1#{} chips.",
-            "This card does {C:negative,E:1,S:1.4}fucking nothing{} if played hand has a seal.",
+            "This card does {C:negative,E:1,s:1.4}fucking nothing{} if played hand has a seal.",
             "{C:inactive}why did I ever think of making this{}"
         }
     },
