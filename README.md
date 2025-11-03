@@ -8,7 +8,7 @@ a balatro mod.
 
 you need humor to understand its jokes
 
-and you also need to have general media knowledge
+and you also need to have general media knowledge (as denoted by the squidward)
 ## REQUIREMENTS:
 - A pc
 - A brain
