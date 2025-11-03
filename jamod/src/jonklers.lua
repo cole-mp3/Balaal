@@ -753,7 +753,7 @@ SMODS.Joker {
     name = "Fisherman",
     text = {
         "{C:attention}During the scoring step:{}",
-        "Go fish. {C:deactivated}({}{C:green}#1# in #1#{}{C:deactivated} chance of a catch{})"
+        "Go fish. {C:deactivated}({}{C:green}#1# in #2#{}{C:deactivated} chance of a catch{})"
     },
   },
   config = { extra = { odds = 2, creates = 1}, },
@@ -865,7 +865,7 @@ SMODS.Joker{
     loc_txt = {
         name = "Stupid Dingus",
         text = {
-            "This card gains {C:red}+#1#{} Mult and {C:blue}-#1#{} chips",
+            "This card gains {C:red}+#1#{} Mult and {C:blue}-#2#{} chips",
             "Per {C:attention}non-scoring{} card played."
         },
     },
