@@ -5,6 +5,19 @@ path = "Jonklers/jatlas.png",
 px = 70,
 py = 94
 }
+SMODS.Sound {
+    key = "getr",
+    path = "music_jimbum.ogg",
+     vol = 0.6,
+    pitch = 0.7,
+     if G.jokers then
+        if next(SMODS.find_card("j_jabong_jimbyramid")) then
+            select_music_track(self) 
+                return (250)
+            end
+        end
+    end
+}
 SMODS.Atlas {
     key = "hatlas",
     path = "Jonklers/hatlas.png",
