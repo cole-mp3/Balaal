@@ -558,6 +558,7 @@ SMODS.Consumable {
         delay(0.5)
     end,
 }
+
            
 
 
@@ -581,7 +582,7 @@ SMODS.Voucher {
             "{C:attention}MAXIMIZED{} jokers acn appear in the shop."
         }
     },
-    config = { extra = { rate = 4 } },
+    config = { extra = { rate = 0.03 } },
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -606,7 +607,7 @@ SMODS.Voucher {
             "Creates {C:attention}fisherman{} joker when redeemed."
         }
     },
-    config = { extra = { rate = 4 } },
+    config = { extra = { rate = 0.02 } },
     redeem = function(self, card)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -615,6 +616,28 @@ SMODS.Voucher {
                     key = "j_jabong_fisherman",
                     edition = 'e_negative' }
                     check_for_unlock { type = 'ach_fishing' }
+                G.GAME.jabong_Feesh_rate = card.ability.extra.rate
+                return true
+            end
+        }))
+    end
+}
+SMODS.Voucher {
+    key = 'fishingplus',
+    atlas = 'vouch',
+    pos = {x = 2, y = 0},
+   
+    loc_txt = {
+        name = "Advanced Fishing Tactics",
+        text = {
+            "{C:attention}Fishing{} jokers and consumables appear more.",
+        }
+    },
+    config = { extra = { rate = 0.07 } },
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                
                 G.GAME.jabong_Feesh_rate = card.ability.extra.rate
                 return true
             end

@@ -1032,17 +1032,12 @@ SMODS.Joker {
     calculate = function(self, card, context)
         --ill also code this in later
     end,
-    -- shmelessly stolen from cryptid
-    init = function(self)
-		G.FUNCS.notif_jimbon = function()
-			jamod_config.jamod.jimbum_music = false
-			G:save_settings()
-			G.FUNCS:exit_overlay_menu()
-		
-		end
+
+
    end
 }
---he doesnt work
+
+--he doesnt work cuz he triggers per fucking animaton
 --[[SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",

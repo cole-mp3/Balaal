@@ -107,7 +107,6 @@ return {
                 test_funny = "69420",
             },
         },
-        	c_cry_sticker_sheet_plus = "Sticker Sheet+",
 		},
 		dictionary = {
 			--Settings Menus

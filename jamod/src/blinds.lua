@@ -38,7 +38,7 @@ SMODS.Blind {
     mult = 2,
     atlas = "blatlas",
     pos = { y = 1 },
-    boss = { min = 1 },
+    boss = { min = 4 },
     boss_colour = HEX("d91920"),
     loc_txt = {
         name = "Arby's",
