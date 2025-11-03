@@ -1004,7 +1004,7 @@ SMODS.Joker {
     config = {extra = {Echips = 2}},
     loc_vars = function(self, info_queue, card)
         return {card.ability.extra.Echips}
-    end
+    end,
     calculate = function(self, card, context)
         --ill code this later
     end
@@ -1040,6 +1040,7 @@ SMODS.Joker {
 			G.FUNCS:exit_overlay_menu()
 		
 		end
+   end
 }
 --he doesnt work
 --[[SMODS.Joker {
