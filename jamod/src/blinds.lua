@@ -39,12 +39,12 @@ SMODS.Blind {
     atlas = "blatlas",
     pos = { y = 0 },
     boss = { min = 1 },
-    boss_colour = HEX("f7e948"),
+    boss_colour = HEX("d91920"),
     loc_txt = {
         name = "Arby's",
         text = {
-            "sea Aweed.",
-            "(credit to vo memes)"
+            "Every enchanced card scored will",
+            "increase this blind's requirements."
         },
     },
    

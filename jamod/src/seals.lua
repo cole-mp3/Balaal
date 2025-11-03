@@ -36,6 +36,23 @@ SMODS.Seal {
 
 
 }
+SMODS.Seal {
+    key = 'stone_seal',
+     badge_colour = HEX("1d4fd7"),
+    config = { extra = { chips = 50 } },
+    loc_vars = function(self, info_queue)
+        return { vars = { self.config.extra.chips } }
+    end,
+    atlas = "satlas",
+    pos = {x=0, y=0},
+    loc_txt = {
+                name = "Stone Seal",
+                text = {
+                    "{C:blue}#50#{} extra chips,",
+                    "Considered a {C:attention}Stone Card{}."
+                },
+    },
+}
 --also statefarm seal soon
 -- all seal is getting a recode.
 -- just uhh
