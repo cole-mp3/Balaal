@@ -24,6 +24,15 @@ SMODS.current_mod.optional_features = {
     retrigger_joker = true,
     quantum_enhancements = true,
 }
+--[[SMODS.Sound{
+     vol = 0.6,
+    pitch = 0.7, --This'll be thet title scrren music, i just gotta add config for it
+    key = "drop", -- Credit to the band WHITE ASH for making the song.
+    path = "music_Drop.ogg",
+}]]--
+SMODS.Edition {
+
+}
 local someshitTabs = function()
 	return {
 		{
