@@ -533,7 +533,7 @@ SMODS.Joker {
                 if removed_card:is_face() then face_cards = face_cards + 1 end
             end
             if face_cards > 0 then
-                -- See note about SMODS Scaling Manipulation on the wiki
+        
                 card.ability.extra.dollars = card.ability.extra.dollars + face_cards * card.ability.extra.increase
                 return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
             end
@@ -855,7 +855,7 @@ SMODS.Joker {
             }
         end
     end,
-   -- ill fix him later
+  
 
 }
 SMODS.Joker{
@@ -952,7 +952,6 @@ SMODS.Joker {
            
 			return {
 				message = "60 ON A PUBLIC STREET?????"
-                
 			}
             end
 		end
@@ -974,18 +973,54 @@ SMODS.Joker {
 
 }
 SMODS.Joker {
-    key = "ragebait",
+    key = "thebrontjame",
     atlas = "sccre",
     pos = {x = 0 , y = 0},
+    rarity = 3,
+    blueprint_compat = true,
+    cost = 6,
+    discovered = true,
     loc_txt = {
-        name = "Joker designed to be written badly",
+        name = "High school Basketball player",
         text = {
-            "this card gives {C:red}X#1#{} mult and {X:blue,C:white}+#1#{} chips",
-            "{C:incative}why did I ever think of making this{}"
+            "{X:inactive,C:white}^#1#{} chips.",
+            "This card does {C:negative,E:1,S:1.4}fucking nothing{} if played hand has a seal.",
+            "{C:inactive}why did I ever think of making this{}"
         }
     },
+    config = {extra = {Echips = 2}},
+    loc_vars = function(self, info_queue, card)
+        return {card.ability.extra.Echips}
+    end
+    calculate = function(self, card, context)
+        --ill code this later
+    end
 }
-
+SMODS.Joker {
+    key = "jimbyramid",
+    atlas = "sccre",
+    pos = { x = 0 , y = 0},
+    rarity = 3,
+    blueprint_compat = true,
+    cost = 5,
+    discovered = true,
+    config = {extra = {Xmult_gain = 0.5, Xmult = 1}},
+    loc_vars = function(self, info_queue, card)
+        return {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}
+    end
+    loc_txt = {
+        name = "Jimbonium",
+        text = {
+            "This card gains {X:red,C:white}X#1#{} Mult per",
+            "hand played with a level {C:attention}greater than 1{}.",
+            "{C:inactive}Currently{} {X:red,C:white}X#1#{}{C:inactive}.{}"
+        },
+    },
+    calculate = function(self, card, context)
+        --ill also code this in later
+    end
+}
+--he doesnt work
 --[[SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",

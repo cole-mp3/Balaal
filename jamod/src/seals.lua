@@ -27,7 +27,7 @@ SMODS.Seal {
                 },
     },
     calculate = function(self, card, context)
-            if context.main_scoring and context.cardarea == G.play then
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
                 return {
                     chips = self.config.extra.chips
                 }
@@ -36,24 +36,35 @@ SMODS.Seal {
 
 
 }
+SMODS.Atlas{
+    key = "statefa",
+    path = "Seels/sfatlas.png",
+    px = 71,
+    py = 95
+}
 SMODS.Seal {
-    key = 'stone_seal',
+    key = 'stateseal',
      badge_colour = HEX("1d4fd7"),
-    config = { extra = { chips = 50 } },
+    config = { extra = { Xmult = 1.5 } },
     loc_vars = function(self, info_queue)
-        return { vars = { self.config.extra.chips } }
+        return { vars = { self.config.extra.Xmult } }
     end,
-    atlas = "satlas",
+    atlas = "statefa",
     pos = {x=0, y=0},
     loc_txt = {
-                name = "Stone Seal",
+                name = "Statefarm Seal",
                 text = {
-                    "{C:blue}#50#{} extra chips,",
-                    "Considered a {C:attention}Stone Card{}."
+                    "{C:blue}X#1#{} Mult.",
                 },
     },
+     calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                return {
+                    x_mult = self.config.extra.Xmult
+                }
+            end
+    end,
 }
---also statefarm seal soon
 -- all seal is getting a recode.
 -- just uhh
 -- not now

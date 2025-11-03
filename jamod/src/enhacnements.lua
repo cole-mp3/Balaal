@@ -65,7 +65,7 @@ SMODS.Enhancement {
         text = {
             "{C:attention}NO +CHIPS.{}",
             "{X:blue,C:white}X#1#{} chips if played.",
-            "{X:red,C:white}X#1#{} mult if held in hand, but {X:blue,C:white}X0.5{} chips if held in hand."
+            "{X:red,C:white}X#1#{} mult if held in hand, but subequently {X:blue,C:white}X0.5{} chips."
         }
     },
     config = { h_x_mult = 3, h_x_chips = 0.5, x_chips = 2 },

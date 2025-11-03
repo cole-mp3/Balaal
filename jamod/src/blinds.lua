@@ -37,7 +37,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     atlas = "blatlas",
-    pos = { y = 0 },
+    pos = { y = 1 },
     boss = { min = 1 },
     boss_colour = HEX("d91920"),
     loc_txt = {
@@ -66,8 +66,8 @@ SMODS.Blind {
     loc_txt = {
         name = "The Witness",
         text = {
-            "I have yet to code this in,",
-            "So it does nothing*."
+            "Hand will not score unless you have",
+            "a card with the suit #1# " --the #1# is used for the suit variable
         },
     },
     defeat = function(self)

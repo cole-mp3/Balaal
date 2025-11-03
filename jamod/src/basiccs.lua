@@ -131,16 +131,15 @@ SMODS.Consumable {
         return {vars = {(card.ability or self.config).max_highlighted}}
     end,
     loc_txt = {
-        name = 'Hyperize',
+        name = 'Quazar',
         text = {
-            "Select {C:attention}#1#{} card to",
-            "{C:attention}Hyper Enhance{}.",
-            "MUST HAVE AN ENHANCEMENT.",
-            "{C:inactive}does nothing yet :( {}"
+            "Levels up{C:attention}every hand{}",
+            "by {C:attention}10{} levels.",
+            "{C:inactive}A quazar is pure mass, released by a black hole.{}"
         }
     },
     cost = 6,
-    atlas = "hyperen",
+    atlas = "hyperen", --please replace this
     pos = {x=0, y=0},
     use = function(self, card, area, copier)
         for i = 1, math.min(#G.hand.highlighted, card.ability.max_highlighted) do
@@ -148,11 +147,7 @@ SMODS.Consumable {
                 play_sound('jabong_womp')
                 card:juice_up(0.3, 0.5)
                 -- i still have to code this in so uhhh
-                G.FUNCS.overlay_menu{
-                 --go ,my dancing ogre
-                definition = create_UIBox_custom_video1("horsef","yea"),
-                config = {no_esc = true}
-            }
+    
                 return true end }))
             
        
@@ -483,7 +478,7 @@ SMODS.Booster {
     end,
 }
 SMODS.Consumable {
-    set = "Tarot",
+    set = "jabong_Material",
     key = "zout",
     pos = {x = 2, y = 0},
     cost = 8, 
