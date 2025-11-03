@@ -477,10 +477,17 @@ SMODS.Booster {
         return _card
     end,
 }
+SMODS.Atlas {
+    key = "zeout",
+    path = "crads/zout.png",
+    px = 71,
+    py = 95
+}
 SMODS.Consumable {
-    set = "jabong_Material",
+    set = "Tarot",
     key = "zout",
-    pos = {x = 2, y = 0},
+    atlas = "zeout"
+    pos = {x = 0, y = 0},
     cost = 8, 
     loc_txt = {
         name = "Zero-out",

@@ -374,10 +374,23 @@ SMODS.Challenge {
     },
     button_colour = G.C.TAROT,
 }
+SMODS.Atlas {
+    key = "hcz",
+    path = "zatlas.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = "lcz",
+    path = "zatlaslc.png",
+    px = 71,
+    py = 95
+}
 SMODS.Rank {
     key = 'Zero',
     card_key = '1',
-    --atlas coming later
+  lc_atlas = "lcz"
+  hc_atlas = "hcz"
     pos = { x = 8 },
     nominal = 1,
     next = { 'Ace' },
@@ -386,7 +399,7 @@ SMODS.Rank {
         name = "0"
     }
 }
---[[
+
 SMODS.PokerHand({
     key = "pkr_funny",
     mult = 69,
@@ -515,7 +528,7 @@ SMODS.PokerHand({
         return pkr_flfunny
     end,
 })
-    ]]--
+    
     
 --i have to check to see if this code is fine
 --[[]
