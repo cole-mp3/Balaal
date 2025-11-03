@@ -1007,7 +1007,7 @@ SMODS.Joker {
     config = {extra = {Xmult_gain = 0.5, Xmult = 1}},
     loc_vars = function(self, info_queue, card)
         return {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}
-    end
+    end,
     loc_txt = {
         name = "Jimbonium",
         text = {
@@ -1018,7 +1018,15 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         --ill also code this in later
-    end
+    end,
+    -- shmelessly stolen from cryptid
+    init = function(self)
+		G.FUNCS.notif_jimbon = function()
+			jamod_config.jamod.jimbum_music = false
+			G:save_settings()
+			G.FUNCS:exit_overlay_menu()
+		
+		end
 }
 --he doesnt work
 --[[SMODS.Joker {

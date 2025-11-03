@@ -107,4 +107,11 @@ return {
                 test_funny = "69420",
             },
         },
+        	c_cry_sticker_sheet_plus = "Sticker Sheet+",
+		},
+		dictionary = {
+			--Settings Menus
+			jabong_set_music = "Copyrighted music toggles",
+			jabong_mus_getarnd = "Jimbonium (I get Around by The Beach boys - VERY COPYRIGHTED)",
+			
 }

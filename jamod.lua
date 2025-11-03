@@ -2,6 +2,13 @@
 -- any addtiions that use the mod id do NOT go under BALAAL, they go under jabong
 -- cuz that was the orginal name
 -- so yeah
+if not jamod then
+	jamod = {}
+end
+local mod_path = "" .. SMODS.current_mod.path
+jamod.path = mod_path
+jamod_config = SMODS.current_mod.config
+
 assert(SMODS.load_file("jamod/src/blinds.lua"))()
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
@@ -12,10 +19,53 @@ assert(SMODS.load_file("jamod/src/MAXIMIZED.lua"))()
 assert(SMODS.load_file("jamod/src/enhacnements.lua"))()
 assert(SMODS.load_file("jamod/src/utube.lua"))()
 assert(SMODS.load_file("jamod/src/web.lua"))()
+assert(SMODS.load_file("config.lua"))()
 SMODS.current_mod.optional_features = {
     retrigger_joker = true,
     quantum_enhancements = true,
 }
+local someshitTabs = function()
+	return {
+		{
+			label = localize("jabong_set_music"),
+			tab_definition_function = function()
+				jabong_nodes = {
+					{
+						n = G.UIT.R,
+						config = { align = "cm" },
+						nodes = {
+							--{n=G.UIT.O, config={object = DynaText({string = "", colours = {G.C.WHITE}, shadow = true, scale = 0.4})}},
+						},
+					},
+				}
+				settings = { n = G.UIT.C, config = { align = "tl", padding = 0.05 }, nodes = {} }
+				settings.nodes[#settings.nodes + 1] = create_toggle({
+					active_colour = G.C.RED,
+					label = localize("jabong_mus_getarnd"),
+					ref_table = jamod_config.jamod,
+					ref_value = "jimbum_music",
+				})
+				config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
+				jabong_nodes[#jabong_nodes + 1] = config
+				return {
+					n = G.UIT.ROOT,
+					config = {
+						emboss = 0.05,
+						minh = 6,
+						r = 0.1,
+						minw = 10,
+						align = "cm",
+						padding = 0.2,
+						colour = G.C.BLACK,
+					},
+					nodes = jabong_nodes,
+				}
+			end,
+		},
+	}
+end
+SMODS.current_mod.extra_tabs = someshitTabs
+
 -- thanks cryptid
 local creditspage = {
         "Jabon Gratis",
@@ -51,6 +101,24 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
             colour = G.C.CLEAR,
             },
             nodes = {
+                {
+                n = G.UIT.R,
+                config = {
+                padding = 0,
+                align = "cm"
+                },
+                nodes = {
+                {
+                    n = G.UIT.T,
+                    config = {
+                    text = "Mod Director:",
+                    shadow = false,
+                    scale = scale*0.66,
+                    colour = G.C.INACTIVE
+                    }
+                },
+                }
+            },
             {
                 n = G.UIT.R,
                 config = {
@@ -219,7 +287,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
     }
 end
 
-
+-- misc
 
 SMODS.Achievement {
     key = "fishtim",
@@ -318,5 +386,170 @@ SMODS.Rank {
         name = "0"
     }
 }
+--[[
+SMODS.PokerHand({
+    key = "pkr_funny",
+    mult = 69,
+    chips = 420,
+    l_mult = 3,
+    l_chips = 30,
+    example = {
+        { 'S_6', true }, 
+        { 'D_9', true },
+        { 'H_4', true, enhancement = 'm_lucky' }, 
+        { 'S_3', true },
+        { 'D_jabong_Zero', true, seal = 'Red' } -
+    },
+    loc_txt = {
+        name = "The Funny",
+        description = {"'hello fellow children' having ass "},
+    },
+    visible = true,
+
+    evaluate = function(parts, hand)
+        if #hand >= 3 then
+            local _has9 = false
+            local _has6 = false
+            local _has4 = false
+             local _has2 = false
+              local _hasZ = false
+            local eligible_cards = {}
+            local other_hands = next(parts._flush) or next(parts._straight) or next(parts._all_pairs)
+
+            for i, card in ipairs(hand) do
+                if card:get_id() == 9 and _has9 == false then
+                    _has9 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                elseif card:get_id() == 6 and _has6 == false then
+                    _has6 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                elseif card:get_id() == 4 and _has4 == false then
+                    _has4 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+                elseif card:get_id() == 2 and _has2 == false then
+                    _has2 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+                elseif card:get_id() == SMODS.Ranks['jabong_Zero'].id and _hasz == false then
+                    _hasz = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+            end
 
 
+            if _has9 and _has6 and _has4 and _has2 and _hasZ and not other_hands then
+                return{eligible_cards}
+            end
+        end
+
+
+    end,
+
+
+    modify_display_text = function(self, cards, scoring_hand)
+        return pkr_funny
+    end,
+})
+SMODS.PokerHand({
+    key = "pkr_flfunny",
+    mult = 60,
+    chips = 90,
+    l_mult = 3,
+    l_chips = 30,
+    example = {
+        { 'S_6', true }, 
+        { 'S_9', true },
+        { 'S_4', true, enhancement = 'm_lucky' }, 
+        { 'S_3', true },
+        { 'S_jabong_Zero', true, seal = 'Red' } -
+    },
+    loc_txt = {
+        name = "Flush Funny",
+        description = {"making these hands was a mistake"},
+    },
+    visible = true,
+
+    evaluate = function(parts, hand)
+        if #hand >= 3 then
+            local _has9 = false
+            local _has6 = false
+            local _has4 = false
+             local _has2 = false
+              local _hasZ = false
+            local eligible_cards = {}
+            local other_hands =  or next(parts._straight) or next(parts._all_pairs)
+
+            for i, card in ipairs(hand) do
+                if card:get_id() == 9 and _has9 == false then
+                    _has9 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                elseif card:get_id() == 6 and _has6 == false then
+                    _has6 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                elseif card:get_id() == 4 and _has4 == false then
+                    _has4 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+                elseif card:get_id() == 2 and _has2 == false then
+                    _has2 = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+                elseif card:get_id() == SMODS.Ranks['jabong_Zero'].id and _hasz == false then
+                    _hasz = true
+                    eligible_cards[#eligible_cards + 1] = card
+                end
+            end
+
+
+            if _has9 and _has6 and _has4 and _has2 and _hasZ and next(parts._flush) and not other_hands then
+                return{eligible_cards}
+            end
+        end
+
+
+    end,
+
+
+    modify_display_text = function(self, cards, scoring_hand)
+        return pkr_flfunny
+    end,
+})
+    ]]--
+    
+--i have to check to see if this code is fine
+--[[]
+      local _zcheck = 0
+        local _zcheck2 = 0
+
+        if G.hand.highlighted[1] then
+            for i = 1, #G.hand.highlighted do
+                if G.hand.highlighted[i].id == "jabong_Zero" then _zcheck = _zcheck + 1 end
+            end
+        end
+        
+        if G.play.cards[1] then
+            for i = 1, #G.play.cards do
+                if G.play.cards[i].id == "jabong_Zero" then _zcheck2 = _zcheck2 + 1 end
+            end
+        end
+
+        if _zcheck >= 5 or _zcheck2 >= 5 then
+            G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            blocking = false,
+            blockable = false,
+            delay = 0.7,
+            func = function()
+                if  G.GAME.current_round.current_hand.handname == "Flush Five" then
+                G.GAME.current_round.current_hand.handname = "Flush Fucking nothing"
+                end
+                if  G.GAME.current_round.current_hand.handname == "Five Of A Kind" then
+                G.GAME.current_round.current_hand.handname = "Five of A      ""
+                end
+                if G.GAME.current_round.current_hand.handname == "Flush Fucking nothing" or G.GAME.current_round.current_hand.handname == "Five of A      " then return true end
+            end
+            }))
+        end
+
+]]
