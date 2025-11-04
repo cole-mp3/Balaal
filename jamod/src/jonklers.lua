@@ -1031,18 +1031,26 @@ SMODS.Joker {
 }
 SMODS.Joker {
     key = "nill",
+    loc_txt = {
+        name = "Nil Joker",
+        text = {
+            "Every played {C:attention}0{} gives",
+            "{C:red}+#1#{} Mult."
+        }
+    },
     blueprint_compat = true,
     rarity = 1,
     cost = 4,
-    pos = { x = 1, y = 0 },
-    config = { extra = { mult = 5 } },
+    atlas = "sccre",
+    pos = { x = 0, y = 0 },
+    config = { extra = { Mult = 5 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult } }
+        return { vars = { card.ability.extra.Mult } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == SMODS.Ranks['jabong_Zero'].id then
             return {
-                mult = card.ability.extra.mult
+                mult = card.ability.extra.Mult
             }
         end
         if context.evaluate_poker_hand then

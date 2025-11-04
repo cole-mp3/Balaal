@@ -322,6 +322,36 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
 }
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "soapment",
+    atlas = "lamo", 
+    pos = {x = 0, y = 0},
+    cost = 4, 
+    loc_txt = {
+        name = "Balaalment",
+        text = {
+            "Creates a {s:1.1,C:attention,E:1}Balaal{} joker.",
+           
+        }
+    },
+     use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                SMODS.add_card({ set = 'balaaljonklers' })
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end
+}
 SMODS.Atlas {
     key = 'ment',
     path = 'crads/ment.png',
@@ -432,7 +462,6 @@ SMODS.Booster {
         local cfg = (card and card.ability) or self.config
         return {
             vars = { cfg.choose, cfg.extra },
-            key = self.key:sub(1, -3), -- This uses the description key of the booster without the number at the end
         }
     end,
     ease_background_colour = function(self)
