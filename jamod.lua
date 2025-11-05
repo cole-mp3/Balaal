@@ -8,8 +8,13 @@ end
 local mod_path = "" .. SMODS.current_mod.path
 jamod.path = mod_path
 jamod_config = SMODS.current_mod.config
-
-assert(SMODS.load_file("jamod/src/blinds.lua"))()
+SMODS.current_mod.ui_config = {
+	colour = G.C.BLUE, 
+	author_colour = G.C.WHITE, 
+	back_colour = G.C.RED 
+	tab_button_colour = G.C.BLUE 
+	collection_back_colour = G.C.RED 
+}
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
 assert(SMODS.load_file("jamod/src/backs.lua"))()
@@ -65,8 +70,9 @@ SMODS.ObjectType {
     path = "music_Drop.ogg",
 }]]--
 
-local someshitTabs = function()
-	return {
+
+SMODS.current_mod.config_tab = function()
+    return {
 		{
 			label = localize("jabong_set_music"),
 			tab_definition_function = function()
@@ -105,7 +111,6 @@ local someshitTabs = function()
 		},
 	}
 end
-SMODS.current_mod.extra_tabs = someshitTabs
 
 -- thanks cryptid
 local creditspage = {

@@ -239,8 +239,11 @@ SMODS.Consumable {
     end,
 }
 SMODS.Consumable {
- set = 'Tarot',
+ set = 'jabong_Material',
  key = 'slamize',
+ hidden = true,
+ soul_set = 'Tarot',
+ can_repeat_soul = true,
  atlas = "rsatlas", --again, again placeholder here
  pos = {x = 0, y = 0},
  cost = 4,
@@ -608,7 +611,7 @@ SMODS.Voucher {
     loc_txt = {
         name = "mindscape",
         text = {
-            "{C:attention}MAXIMIZED{} jokers acn appear in the shop."
+            "{C:attention}MAXIMIZED{} jokers can appear in the shop."
         }
     },
     config = { extra = { rate = 0.03 } },
@@ -654,7 +657,7 @@ SMODS.Voucher {
 SMODS.Voucher {
     key = 'fishingplus',
     atlas = 'vouch',
-    pos = {x = 2, y = 0},
+    pos = {x = 1, y = 0},
    
     loc_txt = {
         name = "Advanced Fishing Tactics",

@@ -46,7 +46,7 @@ SMODS.Atlas {
     py = 32
 }
 SMODS.Tag {
-    key = "luchalibre",
+    key = "luchatag",
     atlas = "tatlas",
     pos = { x = 0, y = 0 },
     loc_txt = {
@@ -101,3 +101,32 @@ SMODS.Tag {
     end
 }
 
+SMODS.Tag {
+    key = "jonktag",
+    atlas = "tatlas",
+    pos = { x = 1, y = 1 },
+    loc_txt = {
+        name = "Idiotic Tag",
+        text = {
+            "The next shop has a",
+            "Free {C:attention}Balaal Joker{}."
+        }
+    },
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+            local card = SMODS.create_card {
+                set = "balaaljonklers"
+            }
+            create_shop_card_ui(card, 'Joker', context.area)
+            card.states.visible = false
+            tag:yep('+', G.C.GREEN, function()
+                card:start_materialize()
+                card.ability.couponed = true
+                card:set_cost()
+                return true
+            end)
+            tag.triggered = true
+            return card
+        end
+    end
+}

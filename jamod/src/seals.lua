@@ -39,8 +39,8 @@ SMODS.Seal {
 SMODS.Atlas{
     key = "statefa",
     path = "Seels/sfatlas.png",
-    px = 71,
-    py = 95
+    px = 35,
+    py = 48
 }
 SMODS.Seal {
     key = 'stateseal',
@@ -55,6 +55,7 @@ SMODS.Seal {
                 name = "Statefarm Seal",
                 text = {
                     "{C:blue}X#1#{} Mult.",
+                    "{C:inactive}pleasedontsuemepleasedontsuemePLEASE{}"
                 },
     },
      calculate = function(self, card, context)

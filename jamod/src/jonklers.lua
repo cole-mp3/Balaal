@@ -490,7 +490,7 @@ SMODS.Joker {
     perishable_compat = false,
     pools = {["halfjokes"] = true},
     loc_txt = {
-        name = "Graph",
+        name = "{E:1}Graph{}",
         text = {
             "All played non-face cards give {X:blue,C:white}X#1#{} chips."
         },
@@ -523,7 +523,7 @@ SMODS.Joker {
         name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue", 
                 "#2 Semi Gloss Lipstick",
         text = {
-            "Literally every card earns {X:money,C:white}$#1#{}. ",
+            "This card earns {X:money,C:white}$#1#{}. ",
             "Increases by {C:attention}#1#{} every time a face card is destroyed.",
             "{C;inactive}Currently{}{X:money,C:white}$#1#{}{C:inactive}.{}"
         },
@@ -544,11 +544,12 @@ SMODS.Joker {
                 return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
             end
         end
-        if context.end_of_round then
-            return {
+        if context.end_of_round and context.main_eval and context.game_over == false then -- The game_over check is optional but recommended
+   return {
                 dollars = card.ability.extra.dollars
             }
-        end
+end
+     
     end,
 }
 SMODS.Atlas {
@@ -1094,9 +1095,56 @@ SMODS.Joker {
 end
     
 }
+SMODS.Atlas {
+    key = "mrbalala",
+    path = "Jonklers/quatro.png",
+    px = 71,
+    py = 95
+}
+SMODS.Joker {
+    key = "espanol"
+    loc_txt = {
+        name = "balatro bala{C:attention,s:1.2}Cuatro{}"
+        text = {
+            "{C:inactive}(get it? cuz balatro balaTREZ?){}",
+            "Este comodin obtiene un multiplicador de {X:inactive,C:white}^#1#{}, compuesto,",
+            "por cada carta puntuada.",
+            "(actualmente ^#2#)"
+        }
+    },
+    config = {extra = {Emult_mod = 2, Emult = 2}}
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Emult_mod, card.ability.extra.Emult } }
+    end,
+    blueprint_compat = true,
+    rarity = "jabong_Max",
+    cost = 25,
+    atlas = "mrbalala",
+    pos = { x = 0, y = 0 },
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and not context.blueprint then
+            card.ability.extra.Emult = card.ability.extra.Emult * card.ability.extra.Emult_mod
 
---he doesnt work cuz he triggers per fucking animaton
---[[SMODS.Joker {
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.ENHANCEMENT,
+                message_card = card
+                
+            }
+            
+        end
+        if context.joker_main then
+            return {
+                emult = card.ability.extra.Emult
+                
+            }
+        end
+    end,
+
+}
+
+--maybe i fixed it, we shall see
+SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",
     pos = { x = 0, y = 0},
@@ -1123,10 +1171,10 @@ end
                 message = "Again!"
             }
         end
-        if SMODS.last_hand_oneshot then
+        if SMODS.last_hand_oneshot and context.end_of_round and context.main_eval and context.game_over == false then
             card.ability.extra.repetitions = card.ability.extra.repetitions + card.ability.extra.addon
            return{ message = "Upgrade!", colour = G.C.ATTENTION}
            
         end
     end
-} ]]--
+} 

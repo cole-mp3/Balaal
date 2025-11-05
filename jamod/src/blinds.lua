@@ -47,6 +47,54 @@ SMODS.Blind {
             "increase this blind's requirements."
         },
     },
+    
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.press_play then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        for i = 1, #G.play.cards do
+                            local has_enhancement = next(SMODS.get_enhancements(card))
+                            if not has_enhancement == nil then
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.play.cards[i]:juice_up()
+                                    return true
+                                end,
+                            }))
+                            G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
+                            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                            delay(0.23)
+                        end
+                        return true
+                    end
+                }))
+                blind.triggered = true 
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = (function()
+                        SMODS.juice_up_blind()
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.06 * G.SETTINGS.GAMESPEED,
+                            blockable = false,
+                            blocking = false,
+                            func = function()
+                                play_sound('tarot2', 0.76, 0.4)
+                                return true
+                            end
+                        }))
+                        play_sound('tarot2', 1, 0.4)
+                        return true
+                    end)
+                }))
+                delay(0.4)
+            end
+        end
+    end
+ end,
    
 }
 --[[TO DO FOR THIS BLIND:
