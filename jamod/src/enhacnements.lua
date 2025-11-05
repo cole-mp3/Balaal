@@ -4,9 +4,15 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+SMODS.Atlas {
+    key = "rublas",
+    path = "rubber.png",
+    px = 71,
+    py = 95
+}
 SMODS.Enhancement {
     key = "ruband",
-    atlas = "coplas", --p l a c e h o l d e r
+    atlas = "rublas", 
     config = {repetitions = 2, xmult = 2.1},
     loc_vars = function(self, info_queue, card)             -- ⌄i fixed it but why on earth was this also xmult
         return { vars = { card.ability.repetitions, card.ability.xmult } }

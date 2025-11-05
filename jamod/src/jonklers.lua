@@ -69,6 +69,7 @@ cost = 2,
 discovered = true,
 config = { extra = { mult = 10, Xmult = 2, suit = "Hearts" }, },
 loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'hc_vegeta_comment', set = 'Other' }
 return { vars = { card.ability.extra.Xmult, card.ability.extra.mult } }
 end,
 calculate = function(self, card, context)
@@ -105,6 +106,7 @@ text = {
 },
 },
 loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
 local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_buskin')
 return { vars = { numerator, denominator } }
 end,
@@ -135,6 +137,7 @@ text = {
 },
 },
 loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
 local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jabong_sock')
 return { vars = { numerator, denominator } }
 end,
@@ -225,6 +228,7 @@ SMODS.Joker{
         },
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
     end,
     calculate = function(self, card, context)
@@ -388,6 +392,7 @@ SMODS.Atlas {
 }
 --doesnt work
 SMODS.Joker {
+
     key = "rockandbuskin",
     unlocked = true,
     blueprint_compat = true,
@@ -396,6 +401,9 @@ SMODS.Joker {
     atlas = 'rocks',
     pos = { x = 0, y = 0 },
     config = { extra = { repetitions = 1 } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
+    end
     calculate = function(self, card, context)
   
         if context.repetition and context.cardarea == G.play then
@@ -461,11 +469,12 @@ SMODS.Joker {
     loc_txt = {
         name = "photo",
         text = {
-            "All played face cards give {X:red,C:white}X#1#{} mult."
+            "All played face cards give {X:red,C:white}X#1#{} Mult."
         },
     },
     config = {extra = {Xmult = 1.3}},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
         return {vars = {card.ability.extra.Xmult}}
     end,
 
@@ -497,6 +506,7 @@ SMODS.Joker {
     },
     config = {extra = {xmult = 1.3}},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
         return {vars = {card.ability.extra.xchips}}
     end,
 
@@ -520,8 +530,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "Joker That's Been Crumpled Up, Torn Slightly, Soaked In The Lagoon And Kissed With Coral Blue", 
-                "#2 Semi Gloss Lipstick",
+        name = "JTBCUTSSITLAKWCB#2SGL", 
         text = {
             "This card earns {X:money,C:white}$#1#{}. ",
             "Increases by {C:attention}#1#{} every time a face card is destroyed.",
@@ -530,6 +539,8 @@ SMODS.Joker {
     },
     config = { extra = { dollars = 1, increase = 5 } },
     loc_vars = function(self, info_queue, card)
+        
+        info_queue[#info_queue + 1] = { key = 'hc_longass_comment', set = 'Other' }
         return { vars = { card.ability.extra.increase, card.ability.extra.dollars } }
     end,
     calculate = function(self, card, context)
@@ -1147,6 +1158,9 @@ SMODS.Joker {
 SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",
+    blueprint_compat = true,
+    rarity = "4",
+    cost = 25,
     pos = { x = 0, y = 0},
     loc_txt = {
         name = "Bock and suskin",
@@ -1154,7 +1168,7 @@ SMODS.Joker {
             "Retriggers all played {C:attention}face cards{}. Increases by {C:attention}#1#{} per one-shot.",
             "{C:inacive}Currently{} {C:attention}#1#{}{C:inactive}.{}",
             "{C:inactive}...{}",
-            "{C:inactive}hey wait-{}"
+            "{C:inactive}hey wait a fucking minute-{}"
         }
     },
     config = {extra = {repetitions = 1, addon = 1}},
@@ -1178,3 +1192,14 @@ SMODS.Joker {
         end
     end
 } 
+SMODS.Joker {
+    key = "thecreator"
+    loc_txt = {
+        name = "{E:1,C:red,s:1.2}Jabon Gratis{}"
+        text = {
+            "Creates {C:attention}3{} random {C:edition}Balaal jokers{},",
+            "Every {C:edition}Balaal joker{} gives {X:red,C:white}X#1#{} Mult.",
+            "{C:inactive}the obligatory self-insert card{}"
+        }
+    },
+}

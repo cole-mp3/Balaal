@@ -138,7 +138,9 @@ SMODS.Joker {
     -- stolen code cuz im an idiot and cant code YAY
     config = { extra = { Xmult = 4, every = 3, loyalty_remaining = 3 } },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return {
+
             vars = {
                 card.ability.extra.Xmult,
                 card.ability.extra.every + 1,
@@ -190,6 +192,7 @@ SMODS.Joker {
    
     config = { extra = { xmult_gain = 5, xmult = 5 } },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return {
             vars = {
                 card.ability.extra.xmult,
@@ -228,6 +231,7 @@ SMODS.Joker {
     discovered = true,
    
     config = { extra = { xchips_gain = 2, xchips = 2 } },
+    info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

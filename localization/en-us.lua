@@ -93,13 +93,62 @@ return {
         },
         Other = {
             -- how tf does cryptid do custom tooltips
-               jabong_mobilesuitcredit = {
-                            name = "Mobile Suit",
-                            text = {
-                                "This card is from",
-                                "{C:Attention,E:2,S:1.1}Mobile Suit Gundam!{}"
-                            },
-                        },
+              },
+        Other = {
+            hc_longass_comment = {
+                name = {
+                    "This Joker's full name is:",
+                    "{s:0.7}(*ahem*){}"
+                },
+                text = {
+                    "Joker That's Been Crumpled Up, ",
+                    "{E:1}Torn Slightly{}, Soaked In The Lagoon" 
+                    "And Kissed With {X:blue,C:white}1Coral Blue{} #2 Semi Gloss Lipstick","
+                }
+            },
+            hc_ms_comment = {
+                name = {
+                    "Mobile Suit",
+                },
+                text = {
+                    "This card comes from the",
+                    "{E:1,s:1.3,C:dark_edition}Mobile Suit Gundam{}",
+                    "franchise" 
+
+                }
+            },
+            hc_slander_comment = {
+                name = {
+                    "Slandering Myself",
+                },
+                text = {
+                    "This card doesnt work properly because",
+                    "{E:1,s:1.3,C:attention}I cant fucking code!!! :3{}",
+                    "{C:inactive}                  -jabon Gratis{}" 
+
+                }
+            },
+            hc_vegeta_comment = {
+                name = {
+                    "vegeta",
+                },
+                text = {
+                    "vegeta",
+
+                }
+            },
+    hc_half_comment = {
+                name = {
+                    "Half Joker",
+                },
+                text = {
+                    "This card is half of a joker.",
+                    "...somehow i feel like this",
+                    "is just plain illegal."
+
+                }
+            },
+
         }
     },
      misc = {
