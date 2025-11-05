@@ -29,7 +29,7 @@ SMODS.Back {
     
 }
 SMODS.Back {
-    key = "xboxlive"
+    key = "xboxlive",
     atlas = 'datlas',
      pos = {x = 2, y = 0},
      apply = function()
@@ -43,8 +43,8 @@ SMODS.Back {
 }
 SMODS.Back {
     key = "luchalibre",
-    loc_txt {
-        name = "lucha Lucha libre"
+    loc_txt = {
+        name = "lucha Lucha libre",
         text = {
             "Creates a {C:attention}Luchador Tag{} after defeating a blind.",
             "{C:inactive}basically its bad anaglyph deck{}"
@@ -69,16 +69,16 @@ SMODS.Back {
     end,
 }
 SMODS.Back{
-    key = "fantastic"
-    loc_txt {
-        name = "Fantastic deck"
+    key = "fantastic",
+    loc_txt = {
+        name = "Fantastic deck",
         text = {
             "Start the run with {C:attention}Marble joker{},",
             "{C:attention}Burnt joker{},{C:attention}Invisible joker{},",
             "and every face card as a {C:attention}Rubberband card{}"
         }
     },
-    atlas = "datlas"
+    atlas = "datlas",
     pos = { x = 3, y = 0 },
     apply = function()
       SMODS.add_card {key = "j_marble",edition = "e_negative"}
@@ -88,7 +88,7 @@ SMODS.Back{
             func = function()
                 local card_id = playing_card:get_id() == 13 
                 for i = #G.playing_cards, 1, -1 do
-                    if card_id >+10 and not card_id <=10 then
+                    if card_id >=10 and not card_id <=10 then
                     G.playing_cards[i]:set_ability(G.P_CENTERS.m_jabong_ruband)
                     end
                 end

@@ -403,7 +403,7 @@ SMODS.Joker {
     config = { extra = { repetitions = 1 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
-    end
+    end,
     calculate = function(self, card, context)
   
         if context.repetition and context.cardarea == G.play then
@@ -552,7 +552,7 @@ SMODS.Joker {
             if face_cards > 0 then
         
                 card.ability.extra.dollars = card.ability.extra.dollars + face_cards * card.ability.extra.increase
-                return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
+                return { message = "Upgraded!"}
             end
         end
         if context.end_of_round and context.main_eval and context.game_over == false then -- The game_over check is optional but recommended
@@ -1113,9 +1113,9 @@ SMODS.Atlas {
     py = 95
 }
 SMODS.Joker {
-    key = "espanol"
+    key = "espanol",
     loc_txt = {
-        name = "balatro bala{C:attention,s:1.2}Cuatro{}"
+        name = "balatro bala{C:attention,s:1.2}Cuatro{}",
         text = {
             "{C:inactive}(get it? cuz balatro balaTREZ?){}",
             "Este comodin obtiene un multiplicador de {X:inactive,C:white}^#1#{}, compuesto,",
@@ -1123,7 +1123,7 @@ SMODS.Joker {
             "(actualmente ^#2#)"
         }
     },
-    config = {extra = {Emult_mod = 2, Emult = 2}}
+    config = {extra = {Emult_mod = 2, Emult = 2}},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.Emult_mod, card.ability.extra.Emult } }
     end,
@@ -1153,13 +1153,13 @@ SMODS.Joker {
     end,
 
 }
-
+--[[]
 --maybe i fixed it, we shall see
 SMODS.Joker {
     key = "thecringler",
     atlas = "sccre",
     blueprint_compat = true,
-    rarity = "4",
+    rarity = 4,
     cost = 25,
     pos = { x = 0, y = 0},
     loc_txt = {
@@ -1193,13 +1193,13 @@ SMODS.Joker {
     end
 } 
 SMODS.Joker {
-    key = "thecreator"
+    key = "thecreator",
     loc_txt = {
-        name = "{E:1,C:red,s:1.2}Jabon Gratis{}"
+        name = "{E:1,C:red,s:1.2}Jabon Gratis{}",
         text = {
             "Creates {C:attention}3{} random {C:edition}Balaal jokers{},",
             "Every {C:edition}Balaal joker{} gives {X:red,C:white}X#1#{} Mult.",
             "{C:inactive}the obligatory self-insert card{}"
         }
     },
-}
+} ]]

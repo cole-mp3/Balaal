@@ -51,26 +51,7 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.press_play then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.2,
-                    func = function()
-                        for i = 1, #G.play.cards do
-                            local has_enhancement = next(SMODS.get_enhancements(card))
-                            if not has_enhancement == nil then
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    G.play.cards[i]:juice_up()
-                                    return true
-                                end,
-                            }))
-                            G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
-                            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-                            delay(0.23)
-                        end
-                        return true
-                    end
-                }))
+               
                 blind.triggered = true 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
@@ -93,7 +74,6 @@ SMODS.Blind {
                 delay(0.4)
             end
         end
-    end
  end,
    
 }

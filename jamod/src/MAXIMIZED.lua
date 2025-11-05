@@ -231,8 +231,9 @@ SMODS.Joker {
     discovered = true,
    
     config = { extra = { xchips_gain = 2, xchips = 2 } },
-    info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
+
     loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return {
             vars = {
                 card.ability.extra.xchips,

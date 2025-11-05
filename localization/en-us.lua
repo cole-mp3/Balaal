@@ -92,9 +92,6 @@ return {
 
         },
         Other = {
-            -- how tf does cryptid do custom tooltips
-              },
-        Other = {
             hc_longass_comment = {
                 name = {
                     "This Joker's full name is:",
@@ -102,10 +99,11 @@ return {
                 },
                 text = {
                     "Joker That's Been Crumpled Up, ",
-                    "{E:1}Torn Slightly{}, Soaked In The Lagoon" 
-                    "And Kissed With {X:blue,C:white}1Coral Blue{} #2 Semi Gloss Lipstick","
-                }
-            },
+                    "{E:1}Torn Slightly{}, Soaked In The Lagoon" ,
+                    "And Kissed With {X:blue,C:white}Coral Blue{}",
+                    "#2 Semi Gloss Lipstick"
+                },
+    
             hc_ms_comment = {
                 name = {
                     "Mobile Suit",
@@ -164,4 +162,5 @@ return {
 }
 
 		}
+    }
 		

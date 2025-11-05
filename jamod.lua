@@ -11,8 +11,8 @@ jamod_config = SMODS.current_mod.config
 SMODS.current_mod.ui_config = {
 	colour = G.C.BLUE, 
 	author_colour = G.C.WHITE, 
-	back_colour = G.C.RED 
-	tab_button_colour = G.C.BLUE 
+	back_colour = G.C.RED ,
+	tab_button_colour = G.C.BLUE ,
 	collection_back_colour = G.C.RED 
 }
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
