@@ -8,13 +8,7 @@ end
 local mod_path = "" .. SMODS.current_mod.path
 jamod.path = mod_path
 jamod_config = SMODS.current_mod.config
-SMODS.current_mod.ui_config = {
-	colour = G.C.BLUE, 
-	author_colour = G.C.WHITE, 
-	back_colour = G.C.RED ,
-	tab_button_colour = G.C.BLUE ,
-	collection_back_colour = G.C.RED 
-}
+
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
 assert(SMODS.load_file("jamod/src/backs.lua"))()
@@ -71,46 +65,7 @@ SMODS.ObjectType {
 }]]--
 
 
-SMODS.current_mod.config_tab = function()
-    return {
-		{
-			label = localize("jabong_set_music"),
-			tab_definition_function = function()
-				jabong_nodes = {
-					{
-						n = G.UIT.R,
-						config = { align = "cm" },
-						nodes = {
-							--{n=G.UIT.O, config={object = DynaText({string = "", colours = {G.C.WHITE}, shadow = true, scale = 0.4})}},
-						},
-					},
-				}
-				settings = { n = G.UIT.C, config = { align = "tl", padding = 0.05 }, nodes = {} }
-				settings.nodes[#settings.nodes + 1] = create_toggle({
-					active_colour = G.C.RED,
-					label = localize("jabong_mus_getarnd"),
-					ref_table = jamod_config.jamod,
-					ref_value = "jimbum_music",
-				})
-				config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
-				jabong_nodes[#jabong_nodes + 1] = config
-				return {
-					n = G.UIT.ROOT,
-					config = {
-						emboss = 0.05,
-						minh = 6,
-						r = 0.1,
-						minw = 10,
-						align = "cm",
-						padding = 0.2,
-						colour = G.C.BLACK,
-					},
-					nodes = jabong_nodes,
-				}
-			end,
-		},
-	}
-end
+
 
 -- thanks cryptid
 local creditspage = {

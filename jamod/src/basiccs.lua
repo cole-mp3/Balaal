@@ -1,4 +1,10 @@
 -- Basic consumables
+SMODS.Atlas{
+    key = "him",
+    path = "crads/balel.png",
+    px = 71,
+    py = 95
+}
 SMODS.Atlas {
     key = 'newtype',
     path = 'crads/gundam.png',
@@ -328,7 +334,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Material',
     key = "soapment",
-    atlas = "lamo", 
+    atlas = "him", 
     pos = {x = 0, y = 0},
     cost = 4, 
     loc_txt = {

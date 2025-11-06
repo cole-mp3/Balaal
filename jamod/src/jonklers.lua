@@ -598,7 +598,6 @@ SMODS.Joker {
             "{C:negative}purple{}"
         },
     },
-    pos = { x = 0, y = 13 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_jabong_ourple
     end,
@@ -611,6 +610,7 @@ SMODS.Joker {
                     scored_card:set_ability('m_jabong_ourple', nil, true)
                     G.E_MANAGER:add_event(Event({
                         func = function()
+                            play_sound( 'jabong_urpe')
                             scored_card:juice_up()
                             return true
                         end
@@ -619,7 +619,7 @@ SMODS.Joker {
             end
             if numbr > 0 then
                 return {
-                    play_sound( 'jabong_urpe')
+                    
                     message = "purple",
                     colour = G.C.TAROT
                 }
@@ -648,6 +648,12 @@ SMODS.Joker {
            play_sound( 'jabong_womp')
     end
 end
+}
+SMODS.Atlas{
+    key = "ipod",
+    path = "Jonklers/dingus.png",
+    px = 71,
+    py = 95
 }
 SMODS.Joker {
     key = "screaming",
@@ -891,7 +897,7 @@ SMODS.Joker {
 }
 SMODS.Joker{
     key = "dingus",
-    atlas = "sccre",
+    atlas = "ipod",
     pos = { x = 0, y = 0},
     loc_txt = {
         name = "Stupid Dingus",

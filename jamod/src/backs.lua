@@ -31,11 +31,17 @@ SMODS.Back {
 SMODS.Back {
     key = "xboxlive",
     atlas = 'datlas',
+    loc_txt = {
+        name = "XBOX LIVE!!!!!!",
+        text = {
+            "Start the run with a {C:attention}MAXIMIZED{} Joker."
+        }
+    },
      pos = {x = 2, y = 0},
      apply = function()
         G.E_MANAGER:add_event(Event({
             func = function()
-               
+               SMODS.add_card {set = 'Joker', rarity = "jabong_Max"}
                 return true
             end
         }))
@@ -67,33 +73,4 @@ SMODS.Back {
             }))
         end
     end,
-}
-SMODS.Back{
-    key = "fantastic",
-    loc_txt = {
-        name = "Fantastic deck",
-        text = {
-            "Start the run with {C:attention}Marble joker{},",
-            "{C:attention}Burnt joker{},{C:attention}Invisible joker{},",
-            "and every face card as a {C:attention}Rubberband card{}"
-        }
-    },
-    atlas = "datlas",
-    pos = { x = 3, y = 0 },
-    apply = function()
-      SMODS.add_card {key = "j_marble",edition = "e_negative"}
-      SMODS.add_card {key = "j_burnt",edition = "e_negative"}
-          SMODS.add_card {key = "j_invisible",edition = "e_negative"}
-           G.E_MANAGER:add_event(Event({
-            func = function()
-                local card_id = playing_card:get_id() == 13 
-                for i = #G.playing_cards, 1, -1 do
-                    if card_id >=10 and not card_id <=10 then
-                    G.playing_cards[i]:set_ability(G.P_CENTERS.m_jabong_ruband)
-                    end
-                end
-                return true
-            end
-        }))
-    end
 }

@@ -155,9 +155,7 @@ return {
             },
         },
         dictionary = {
-			--Settings Menus
-			jabong_set_music = "Copyrighted music toggles",
-			jabong_mus_getarnd = "Jimbonium (I get Around by The Beach boys - VERY COPYRIGHTED)",
+	
 			
 }
 
