@@ -223,7 +223,7 @@ SMODS.Joker{
         name = 'Big Zam',
         text = {
             "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
-            "Played cards give {C:money}$10{} when  scored.",
+            "Played cards give {C:money}$10{} when scored.",
             "{C:inactive}(Currently{} {X:red,C:white}X#1#{} and {C:blue}+#1#{}{C:inactive}.){} "
         },
     },
@@ -262,7 +262,7 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-SMODS.Joker{
+SMODS.Joker{ --this joker quite literally does nothing
     key = "vexcube",
     atlas = "thingy",
     pos = {x = 0, y = 0},
@@ -293,7 +293,7 @@ SMODS.Joker {
         name = "Oracle",
         text = {
             "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
-            "This card gains {X:red,C:white}X#1#{} mult per vex cube sold.",
+            "This card gains {X:red,C:white}X#1#{} Mult per {C:Attention}Vex Cube{} sold.",
             "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:incative}.{}",
         }
     },
@@ -436,7 +436,7 @@ SMODS.Joker{
     eternal_compat = false,
     perishable_compat = false,
     config = { extra = {  
-        --made in jokerofgre for refrence
+        --made in jokerforge for refrence
         addedmult = 1,
             perma_mult = 0
         } },
@@ -467,7 +467,7 @@ SMODS.Joker {
     perishable_compat = false,
     pools = {["halfjokes"] = true},
     loc_txt = {
-        name = "photo",
+        name = "Photo",
         text = {
             "All played face cards give {X:red,C:white}X#1#{} Mult."
         },
