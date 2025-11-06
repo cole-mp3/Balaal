@@ -12,6 +12,7 @@ jamod_config = SMODS.current_mod.config
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
 assert(SMODS.load_file("jamod/src/backs.lua"))()
+assert(SMODS.load_file("jamod/src/blinds.lua"))()
 assert(SMODS.load_file("jamod/src/basiccs.lua"))()
 assert(SMODS.load_file("jamod/src/jonklers.lua"))()
 assert(SMODS.load_file("jamod/src/MAXIMIZED.lua"))()
