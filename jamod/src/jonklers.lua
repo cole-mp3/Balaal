@@ -11,6 +11,18 @@ SMODS.Sound {
      vol = 0.6,
     pitch = 0.7
 }
+SMODS.Sound {
+    key = "boop",
+    path = "boop.ogg",
+     vol = 0.6,
+    pitch = 0.7
+}
+SMODS.Sound {
+    key = "urpe",
+    path = "purple.ogg",
+     vol = 0.6,
+    pitch = 0.7
+}
 SMODS.Atlas {
     key = "hatlas",
     path = "Jonklers/hatlas.png",
@@ -607,6 +619,7 @@ SMODS.Joker {
             end
             if numbr > 0 then
                 return {
+                    play_sound( 'jabong_urpe')
                     message = "purple",
                     colour = G.C.TAROT
                 }

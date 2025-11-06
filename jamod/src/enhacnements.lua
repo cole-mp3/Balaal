@@ -52,6 +52,7 @@ SMODS.Enhancement {
      calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
             return{
+                play_sound( 'jabong_boop')
                 emult = card.ability.Emult
             }
         end
