@@ -12,8 +12,8 @@ SMODS.Edition {
         text = {
             "{C:blue}+#1#{} Chips and {C:red}+#2#{} Mult,",
             "As well as {X:red,C:white}X#3#{} Mult.",
-            "{C:inactive}it sucks, but i just really wanted to have an edition{}",
-            "{C:inactive}                                        -jabon gratis{}",
+            "{C:inactive}i know it sucks, but i just really wanted to have an edition{}",
+            "{C:inactive}                                              -jabon gratis{}",
         }
     },
     sound = { sound = "foil1", per = 1.2, vol = 0.4 },
