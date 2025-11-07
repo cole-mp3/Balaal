@@ -1,5 +1,6 @@
 ## BalAAL 
-<img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/d74344ef-f667-4749-a044-fd4a610219ea" />
+<img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/b1e6c69b-fd86-4798-8dfa-09df6043eb80" />
+
 
 
 Its a mod.
