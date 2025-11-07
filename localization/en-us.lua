@@ -25,6 +25,12 @@ return {
             }
         },
         Joker = {
+            j_joker = {
+                name = "jimbo",
+                text = {
+                    "{X:red,C:white}X#1#{} Mult."
+                }
+            },
             j_jabong_vegeta = {
                 name = 'Intelligent Joker',
                 text = {
@@ -122,7 +128,7 @@ return {
                 text = {
                     "This card doesnt work properly because",
                     "{E:1,s:1.3,C:attention}I cant fucking code!!! :3{}",
-                    "{C:inactive}                  -jabon Gratis{}" 
+                    "{C:inactive}                 -jabon Gratis{}" 
 
                 }
             },
@@ -131,7 +137,7 @@ return {
                     "vegeta",
                 },
                 text = {
-                    "vegeta",
+                    "vegeta :)",
 
                 }
             },

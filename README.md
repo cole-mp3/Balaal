@@ -1,4 +1,4 @@
-## BalAAL (currently broken)
+## BalAAL 
 <img width="666" height="432" alt="balal" src="https://github.com/user-attachments/assets/d74344ef-f667-4749-a044-fd4a610219ea" />
 
 

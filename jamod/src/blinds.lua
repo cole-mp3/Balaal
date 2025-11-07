@@ -44,14 +44,34 @@ SMODS.Blind {
         name = "Arby's",
         text = {
             "Every enchanced card scored will",
-            "increase this blind's requirements."
+            "increase this blind's requirements",
+            "by a whopping 25%."
         },
     },
     
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.press_play then
-               
+               G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        for i = 1, #G.play.cards do
+                            if not next(SMODS.get_enhancements(card)) == nil then
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.play.cards[i]:juice_up()
+                                    return true
+                                end,
+                            }))
+                           G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
+                            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                            delay(0.23)
+                        end
+                    end
+                        return true
+                    end
+                }))
                 blind.triggered = true 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',

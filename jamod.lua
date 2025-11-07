@@ -65,7 +65,13 @@ SMODS.ObjectType {
     path = "music_Drop.ogg",
 }]]--
 
+SMODS.current_mod.config_tab = function()
+	return {n = G.UIT.ROOT, config = {
+		
+	}, nodes = {
 
+    }}
+end
 
 
 -- thanks cryptid

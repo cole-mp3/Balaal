@@ -47,6 +47,12 @@ SMODS.Back {
         }))
     end
 }
+SMODS.Atlas {
+    key = "spanish",
+    path = "deccs/lucha.png",
+    px = 71,
+    py = 95
+}
 SMODS.Back {
     key = "luchalibre",
     loc_txt = {
@@ -56,13 +62,14 @@ SMODS.Back {
             "{C:inactive}basically its bad anaglyph deck{}"
         }
     },
+    atlas = "spanish"
     pos = { x = 2, y = 4 },
     unlocked = false,
     loc_vars = function(self, info_queue, back)
         return { vars = { localize { type = 'name_text', key = 'jabong_tag_luchatag', set = 'Tag' } } }
     end,
     calculate = function(self, back, context)
-        if context.round_eval and G.GAME.last_blind and G.GAME.last_blind.boss then
+        if context.round_eval and G.GAME.last_blind then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     add_tag(Tag('jabong_tag_luchatag'))

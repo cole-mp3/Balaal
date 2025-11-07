@@ -9,7 +9,13 @@ SMODS.Sound {
     key = "getr",
     path = "music_jimbum.ogg",
      vol = 0.6,
-    pitch = 0.7
+    pitch = 0.7,
+ if next(SMODS.find_card("j_jabong_jimbyramid")) then -- jimbo pyramid
+    select_music_track(self)
+        return 650
+    end
+end
+    
 }
 SMODS.Sound {
     key = "boop",
@@ -178,12 +184,12 @@ SMODS.Joker{
     discovered = true,
     config = { extra = {chips = 0, Xmult = 1, chip_mod = 8,  Xmult_gain = 0.1 }, },
     loc_txt = {
-        name = 'Weenic',
+        name = '{E:1,s:0.9}Weenic{}',
         text = {
-            "This card gains {C:blue}+8{} Chips for every scored card",
-            "with a rank below a 6, and gains {X:red,C:white}X0.1{} Mult per card",
+            "This card gains {C:blue}+#3#{} Chips for every scored card",
+            "with a rank below a 6, and gains {X:red,C:white}X#4#{} Mult per card",
             "scored that has a rank above 6.",
-            "{C:inactive}(Currently{} {C:blue}X#1#{} and {C:red}+#1#{}{C:inactive}.){} "
+            "{C:inactive}(Currently{} {C:blue}+#1#{} and {X:red,C:white}X#2#{}{C:inactive}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -1021,16 +1027,26 @@ SMODS.Joker {
         name = "High school Basketball player",
         text = {
             "{X:inactive,C:white}^#1#{} chips.",
-            "This card does {C:negative,E:1,s:1.4}fucking nothing{} if played hand has a seal.",
+            "This card instead does {C:negative,E:1,s:1.4}fucking nothing{} if played hand has a seal.",
             "{C:inactive}why did I ever think of making this{}"
         }
     },
-    config = {extra = {Echips = 2}},
+    config = {extra = {Echips = 5}},
     loc_vars = function(self, info_queue, card)
         return {card.ability.extra.Echips}
     end,
     calculate = function(self, card, context)
-        --ill code this later
+        if context.individual and context.cardarea == G.play then
+            if card.seal == nil then
+                return{
+                    echips = card.ability.extra.Echips
+                }
+            elseif not card.seal == nil then
+                return {
+                    message = "Nope!",
+                }
+            end
+        end
     end
 }
 SMODS.Joker {
@@ -1055,6 +1071,10 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
         --ill also code this in later
+        --so placeholder code
+        if context.before then
+            SMODS.smart_level_up_hand(card, "Flush", nil, 3) 
+        end
     end,
 
 
@@ -1084,45 +1104,8 @@ SMODS.Joker {
                 mult = card.ability.extra.Mult
             }
         end
-        if context.evaluate_poker_hand then
-           local _zcheck = 0
-        local _zcheck2 = 0
-
-        if G.hand.highlighted[1] then
-            for i = 1, #G.hand.highlighted do
-                if G.hand.highlighted[i].id == "jabong_Zero" then _zcheck = _zcheck + 1 end
-            end
-        end
         
-        if G.play.cards[1] then
-            for i = 1, #G.play.cards do
-                if G.play.cards[i].id == "jabong_Zero" then _zcheck2 = _zcheck2 + 1 end
-            end
-        end
-
-        if _zcheck >= 5 or _zcheck2 >= 5 then
-           
-            if context.display_name == "Flush Five"  then
-                return{  
-                    replace_scoring_name = "Flush Fucking nothing"
-                }
-          
-            elseif context.display_name == "Four of a Kind"  then
-             return{  
-                    replace_scoring_name = "Four of A      "
-                }
-            elseif context.display_name == "Five of a Kind"  then
-             return{  
-                    replace_scoring_name = "Five of A      "
-                }
-            elseif context.display_name == "Three of a Kind"  then
-             return{  
-                    replace_scoring_name = "Three of A      "
-                }
-            end
-        end
-    end
-end
+end,
     
 }
 SMODS.Atlas {
@@ -1134,12 +1117,12 @@ SMODS.Atlas {
 SMODS.Joker {
     key = "espanol",
     loc_txt = {
-        name = "balatro bala{C:attention,s:1.2}Cuatro{}",
+        name = "balatro bala{C:attention,s:1.1,E:1}Cuatro{}",
         text = {
             "{C:inactive}(get it? cuz balatro balaTREZ?){}",
             "Este comodin obtiene un multiplicador de {X:inactive,C:white}^#1#{}, compuesto,",
             "por cada carta puntuada.",
-            "(actualmente ^#2#)"
+            "(actualmente {X:incative,C:white}^#2#){}"
         }
     },
     config = {extra = {Emult_mod = 2, Emult = 2}},
@@ -1156,7 +1139,7 @@ SMODS.Joker {
             card.ability.extra.Emult = card.ability.extra.Emult * card.ability.extra.Emult_mod
 
             return {
-                message = localize('k_upgrade_ex'),
+                message = "Mejorado!"
                 colour = G.C.ENHANCEMENT,
                 message_card = card
                 
@@ -1171,7 +1154,80 @@ SMODS.Joker {
         end
     end,
 
+    
 }
+SMODS.Joker {
+    key = "thecreator",
+    loc_txt = {
+        name = "{E:1,C:edition,s:1.2}Jabon Gratis{}",
+        text = {
+            "Creates {C:attention}#2#{} random Jjkers on blind selection",
+            "{C:dark_edition}Every joker and fucking consumable{} gives {X:inactive,C:white}^#1#{} Mult.",
+            "{C:inactive}the obligatory self-insert card{}"
+        }
+    },
+     rarity = 'jabong_Max',
+     blueprint_compat = true,
+    cost = 4,
+    discovered = true,
+    config = {extra = {Emult = 5, creates = 3}}
+    loc_vars = function(self, info_queue, card)
+        return{
+            card.ability.extra.Emult,
+            card.ability.extra.creates
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.other_consumeable then
+            return {
+                emult = card.ability.extra.Emult,
+                message_card = context.other_consumeable
+            }
+        end
+        if context.other_joker then
+            return {
+                emult = card.ability.extra.Emult,
+                message_card = context.other_joker
+            }
+        end
+        if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+            local jokers_to_create = math.min(card.ability.extra.creates,
+                G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
+            G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    for _ = 1, jokers_to_create do
+                        SMODS.add_card {
+                            set = 'Joker',
+                            edition = "e_negative" 
+                        }
+                        G.GAME.joker_buffer = 0
+                    end
+                    return true
+                end
+            }))
+            return {
+                message = localize('k_plus_joker'),
+                colour = G.C.BLUE,
+            }
+        end
+    end,
+}
+SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just a test for take_ownership
+    { 
+	cost = 5,
+    config = {extra = {Xmult = 50}}
+	calculate = function(self, card, context)
+        if context.joker_main then
+            return{
+        x_mult = card.ability.extra.Xmult
+            }
+           
+        end
+	end
+    },
+    true 
+)
 --[[]
 --maybe i fixed it, we shall see
 SMODS.Joker {
@@ -1211,14 +1267,4 @@ SMODS.Joker {
         end
     end
 } 
-SMODS.Joker {
-    key = "thecreator",
-    loc_txt = {
-        name = "{E:1,C:red,s:1.2}Jabon Gratis{}",
-        text = {
-            "Creates {C:attention}3{} random {C:edition}Balaal jokers{},",
-            "Every {C:edition}Balaal joker{} gives {X:red,C:white}X#1#{} Mult.",
-            "{C:inactive}the obligatory self-insert card{}"
-        }
-    },
-} ]]
+ ]]
