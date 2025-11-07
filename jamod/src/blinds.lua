@@ -104,7 +104,7 @@ SMODS.Blind {
         changes every 30 seconds.
     -PICKS FROM YOUR DECK (im looking a you ancient joker)
 ]]
---[[SMODS.Blind {
+SMODS.Blind {
     key = 'witness',
     dollars = 7,
     mult = 2,
@@ -127,7 +127,7 @@ SMODS.Blind {
             }
         end
     end
-}]]--
+}
 -- TO DO FOR THIS BLIND:
 -- Make a UIBox similar to cryptid's old version pointer
 -- Make it ask a question when a hand is played.
