@@ -107,7 +107,7 @@ return {
                     "Joker That's Been Crumpled Up, ",
                     "{E:1}Torn Slightly{}, Soaked In The Lagoon" ,
                     "And Kissed With {X:blue,C:white}Coral Blue{}",
-                    "2 Semi Gloss Lipstick"
+                    "Number 2 Semi Gloss Lipstick"
                 },
             },
             hc_ms_comment = {

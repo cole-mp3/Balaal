@@ -543,7 +543,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "JTBCUTSSITLAKWCB2SGL", 
+        name = "JTBCUTSSITLAKWCBN2SGL", 
         text = {
             "This card earns {X:money,C:white}$#1#{}. ",
             "Increases by {C:attention}#1#{} every time a face card is destroyed.",
