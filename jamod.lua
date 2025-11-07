@@ -353,6 +353,8 @@ SMODS.Challenge {
     restrictions = {
         banned_other = {
             { id = 'bl_plant', type = 'blind' },
+            { id = 'bl_psychic', type = 'blind' },
+              { id = 'bl_club', type = 'blind' },
            
         },
         banned_cards = {

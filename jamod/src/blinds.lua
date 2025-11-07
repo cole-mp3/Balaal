@@ -52,26 +52,8 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.press_play then
-               G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.2,
-                    func = function()
-                        for i = 1, #G.play.cards do
-                            if not next(SMODS.get_enhancements(card)) == nil then
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    G.play.cards[i]:juice_up()
-                                    return true
-                                end,
-                            }))
-                           G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
+               G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
                             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-                            delay(0.23)
-                        end
-                    end
-                        return true
-                    end
-                }))
                 blind.triggered = true 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
@@ -122,7 +104,7 @@ SMODS.Blind {
         if not G.GAME.blind.disabled then
             G.FUNCS.overlay_menu{
                  -- placeholder.exe
-                definition = create_UIBox_custom_video1("ogre","you go little man"),
+                definition = create_UIBox_custom_video1("spop","you go little man"),
                 config = {no_esc = true}
             }
         end

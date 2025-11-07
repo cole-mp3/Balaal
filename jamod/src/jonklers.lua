@@ -10,11 +10,6 @@ SMODS.Sound {
     path = "music_jimbum.ogg",
      vol = 0.6,
     pitch = 0.7,
- if next(SMODS.find_card("j_jabong_jimbyramid")) then -- jimbo pyramid
-    select_music_track(self)
-        return 650
-    end
-end
     
 }
 SMODS.Sound {
@@ -548,7 +543,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = false,
     loc_txt = {
-        name = "JTBCUTSSITLAKWCB#2SGL", 
+        name = "JTBCUTSSITLAKWCB2SGL", 
         text = {
             "This card earns {X:money,C:white}$#1#{}. ",
             "Increases by {C:attention}#1#{} every time a face card is destroyed.",
@@ -1139,7 +1134,7 @@ SMODS.Joker {
             card.ability.extra.Emult = card.ability.extra.Emult * card.ability.extra.Emult_mod
 
             return {
-                message = "Mejorado!"
+                message = "Mejorado!",
                 colour = G.C.ENHANCEMENT,
                 message_card = card
                 
@@ -1161,7 +1156,7 @@ SMODS.Joker {
     loc_txt = {
         name = "{E:1,C:edition,s:1.2}Jabon Gratis{}",
         text = {
-            "Creates {C:attention}#2#{} random Jjkers on blind selection",
+            "Creates {C:attention}#2#{} random Jokers on blind selection",
             "{C:dark_edition}Every joker and fucking consumable{} gives {X:inactive,C:white}^#1#{} Mult.",
             "{C:inactive}the obligatory self-insert card{}"
         }
@@ -1170,7 +1165,7 @@ SMODS.Joker {
      blueprint_compat = true,
     cost = 4,
     discovered = true,
-    config = {extra = {Emult = 5, creates = 3}}
+    config = {extra = {Emult = 5, creates = 3}},
     loc_vars = function(self, info_queue, card)
         return{
             card.ability.extra.Emult,
@@ -1216,7 +1211,7 @@ SMODS.Joker {
 SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just a test for take_ownership
     { 
 	cost = 5,
-    config = {extra = {Xmult = 50}}
+    config = {extra = {Xmult = 50}},
 	calculate = function(self, card, context)
         if context.joker_main then
             return{
@@ -1228,7 +1223,7 @@ SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just
     },
     true 
 )
---[[]
+
 --maybe i fixed it, we shall see
 SMODS.Joker {
     key = "thecringler",
@@ -1254,7 +1249,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.repetitions and context.cardarea == G.play then
+        if context.repetitions and context.cardarea == G.play and context.other_card:is_face() then
             return{
                 repetitions = card.ability.extra.repetitions,
                 message = "Again!"
@@ -1267,4 +1262,4 @@ SMODS.Joker {
         end
     end
 } 
- ]]
+ 

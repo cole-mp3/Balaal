@@ -62,8 +62,8 @@ SMODS.Back {
             "{C:inactive}basically its bad anaglyph deck{}"
         }
     },
-    atlas = "spanish"
-    pos = { x = 2, y = 4 },
+    atlas = "spanish",
+    pos = { x = 0, y = 0 },
     unlocked = false,
     loc_vars = function(self, info_queue, back)
         return { vars = { localize { type = 'name_text', key = 'jabong_tag_luchatag', set = 'Tag' } } }
