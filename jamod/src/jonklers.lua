@@ -1053,23 +1053,40 @@ SMODS.Joker {
     discovered = true,
     config = {extra = {Xmult_gain = 0.5, Xmult = 1}},
     loc_vars = function(self, info_queue, card)
+          info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
         return {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}
     end,
     loc_txt = {
         name = "Jimbonium",
         text = {
             "This card gains {X:red,C:white}X#1#{} Mult per",
-            "hand played with a level {C:attention}greater than 1{}.",
+            "hand played with a level {C:attention}less than or equal to 1{}.",
             "{C:inactive}Currently{} {X:red,C:white}X#1#{}{C:inactive}.{}"
         },
     },
     calculate = function(self, card, context)
-        --ill also code this in later
-        --so placeholder code
+    
         if context.before then
-            SMODS.smart_level_up_hand(card, "Flush", nil, 3) 
+            local passed = false
+                for k, v in pairs(G.GAME.hands) do
+                    if SMODS.is_poker_hand_visible(k) and v.level > G.GAME.hands[context.scoring_name].level then
+                    passed = true
+                    end
+                end
+        if passed then
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
+            return{
+                message = "Upgraded!",
+                colour = G.C.RED
+            }
         end
-    end,
+    end
+    if context.individual and context.cardarea == G.play then
+            return{
+                x_mult = card.ability.extra.xmult
+            }
+        end
+end,
 
 
 
@@ -1211,6 +1228,11 @@ SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just
     { 
 	cost = 5,
     config = {extra = {Xmult = 50}},
+    loc_vars = function (self, info_queue, card)
+        return{
+            card.ability.extra.Xmult
+        }
+    end,
 	calculate = function(self, card, context)
         if context.joker_main then
             return{
@@ -1222,6 +1244,36 @@ SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just
     },
     true 
 )
+SMODS.Joker:take_ownership('midas_mask', 
+    { 
+	cost = 5,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local numbr = 0
+            for _, scored_card in ipairs(context.scoring_hand) do
+                    numbr = numbr + 1 
+                    scored_card:set_ability('m_gold', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound( 'jabong_damn')
+                            scored_card:juice_up()
+                            return true
+                        end
+                    }))
+                end
+            end
+        end
+    },
+    true 
+)
+SMODS.Joker:take_ownership('midas_mask', 
+    { 
+	cost = 5,
+  
+    },
+    true 
+)
+
 
 --maybe i fixed it, we shall see
 SMODS.Joker {
@@ -1242,6 +1294,7 @@ SMODS.Joker {
     },
     config = {extra = {repetitions = 1, addon = 1}},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
         return{
             card.ability.extra.repetitions,
             card.ability.extra.addon

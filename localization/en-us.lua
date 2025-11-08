@@ -25,6 +25,15 @@ return {
             }
         },
         Joker = {
+            j_midas_mask = {
+                name = "Midas Mask",
+                text = {
+                    "Turns {C:edition}ALL played cards{}",
+                    "into {C:money}Gold{} Cards.",
+                    "{C:inactive}I love Takeownership{}",
+                    "{C:inactive}           --jabong{}"
+                }
+            },
             j_joker = {
                 name = "jimbo",
                 text = {

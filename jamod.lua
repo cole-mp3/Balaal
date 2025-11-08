@@ -74,12 +74,16 @@ SMODS.ObjectType {
         j_jabong_soulbottle = true,
     },
 }
---[[SMODS.Sound{
+SMODS.Sound{
      vol = 0.6,
-    pitch = 0.7, --This'll be thet title scrren music, i just gotta add config for it
-    key = "drop", -- Credit to the band WHITE ASH for making the song.
+    pitch = 1.0, 
+    key = "music_drop", 
     path = "music_Drop.ogg",
-}]]--
+    select_music_track = function() 
+        return SMODS.Mods.jamod.config.drop and G.STAGE == G.STAGES.MAIN_MENU
+
+         end
+}
 
 SMODS.current_mod.config_tab = function()
 	return {n = G.UIT.ROOT, config = {

@@ -207,7 +207,7 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if SMODS.last_hand_oneshot then
+        if SMODS.last_hand_oneshot and context.end_of_round and context.main_eval and context.game_over == false then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
            return{ message = "Upgrade!", colour = G.C.RED}
            

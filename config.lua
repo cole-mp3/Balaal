@@ -4,9 +4,8 @@
 -- (or i can just steal it from cryptid idk)
 -- so for now, just set whatever  songs you want to either true or false.
 return {
-	["copyrighted_music"] = {
-		["drop"] = true,
+		["drop"] = false,
 		["vigilante"] = false,
 		["get_around"] = true,
-	}
+	
 }
