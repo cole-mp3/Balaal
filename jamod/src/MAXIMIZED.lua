@@ -264,7 +264,7 @@ SMODS.ObjectType ({
     key = "mobilesuit",
     default = "j_ice_cream",
     cards = {
-        j_jabong_zam = true,
+
         j_jabong_drei = true,
         j_jabong_Aerial = true,
         j_jabong_gundx = true,

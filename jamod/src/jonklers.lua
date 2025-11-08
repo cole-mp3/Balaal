@@ -233,7 +233,7 @@ SMODS.Joker{
     discovered = true,
     config = { extra = {chip_mod = 150, Xmult_gain = 2, chips = 0, Xmult = 1,  dollars = 10 }, },
     loc_txt = {
-        name = 'Big Zam',
+        name = 'bala{C:chips}DAMN!!!!!!{}',
         text = {
             "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
             "Played cards give {C:money}$10{} when scored.",
@@ -241,7 +241,6 @@ SMODS.Joker{
         },
     },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod, card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
     end,
     calculate = function(self, card, context)

@@ -5,6 +5,22 @@
 if not jamod then
 	jamod = {}
 end
+local game_main_menu_ref = Game.main_menu
+
+function Game:main_menu()
+
+
+   local ret = game_main_menu_ref(self)
+   
+   
+    
+ G.title_top.cards[1]:remove()
+    
+    print("Welcome to hell")
+
+    return ret
+   
+end
 local mod_path = "" .. SMODS.current_mod.path
 jamod.path = mod_path
 jamod_config = SMODS.current_mod.config
@@ -67,9 +83,9 @@ SMODS.ObjectType {
 
 SMODS.current_mod.config_tab = function()
 	return {n = G.UIT.ROOT, config = {
-		
+		align = "cm", padding = 0.1
 	}, nodes = {
-
+ {n = G.UIT.T, config = {text = "im workin on it ok be patient", colour = G.C.UI.TEXT_LIGHT, scale = 1.1}}
     }}
 end
 
@@ -155,7 +171,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                 {
                     n = G.UIT.T,
                     config = {
-                    text = "an increasingly small amount of art from:",
+                    text = "Art dudes:",
                     shadow = false,
                     scale = scale*0.66,
                     colour = G.C.INACTIVE
@@ -173,7 +189,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     {
                     n = G.UIT.T,
                     config = {
-                        text = "RandomizedAlias",
+                        text = "RandomizedAlias, MrCr33ps(the garbshit guy)",
                         shadow = false,
                         scale = scale,
                         colour = G.C.MONEY
