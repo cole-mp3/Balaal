@@ -258,7 +258,43 @@ SMODS.Joker {
         
     end
 }
-
+SMODS.Joker {
+    key = "thegober",
+    atlas = "sccre",
+    pos = { x = 0, y = 0},
+     rarity = 3,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = false,
+    eternal_compat = true,
+    perishable_compat = false,
+    loc_txt = {
+        name = "{C:chips,s:1.1}Astro{} (from the {C:dark_edition}balatro discord{})",
+        text = {
+            "Every scored card/joker gives {C:red}+#1#{} Mult"
+        }
+    },
+    config = {extra = {mult = 60}},
+    loc_vars = function (self, info_queue, card)
+        return {
+            card.ability.extra.mult
+        }
+    end,
+    calculate = function (self, card, context)
+         if context.other_joker then
+            return {
+                mult = card.ability.extra.mult,
+                message_card = context.other_joker
+            }
+        end
+        if context.individual and context.cardarea == G.play then
+            return {
+                mult = card.ability.extra.mult,
+            }
+        end
+    end
+}
 -- for the hangar card
 SMODS.ObjectType ({
     key = "mobilesuit",
