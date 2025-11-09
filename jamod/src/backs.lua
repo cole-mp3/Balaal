@@ -69,7 +69,7 @@ SMODS.Back {
         return { vars = { localize { type = 'name_text', key = 'jabong_tag_luchatag', set = 'Tag' } } }
     end,
     calculate = function(self, back, context)
-        if context.round_eval and G.GAME.last_blind then
+        if context.end_of_round and context.main_eval and context.beat_boss then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     add_tag(Tag('jabong_tag_luchatag'))
