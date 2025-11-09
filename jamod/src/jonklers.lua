@@ -1266,13 +1266,7 @@ SMODS.Joker:take_ownership('midas_mask',
     },
     true 
 )
-SMODS.Joker:take_ownership('midas_mask', 
-    { 
-	cost = 5,
-  
-    },
-    true 
-)
+
 
 
 --maybe i fixed it, we shall see
