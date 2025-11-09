@@ -231,13 +231,13 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 10,
     discovered = true,
-    config = { extra = {chip_mod = 150, Xmult_gain = 2, chips = 0, Xmult = 1,  dollars = 10 }, },
+    config = { extra = {chip_mod = 150, Xmult_gain = 1.5, chips = 1, Xmult = 1,  dollars = 10 }, },
     loc_txt = {
         name = 'bala{C:chips}DAMN!!!!!!{}',
         text = {
-            "This card gains {C:blue}+#1#{} Chips and {X:red,C:white}X#1#{} Mult for every scored card.",
+            "This card gains {C:blue}+#2#{} Chips and {X:red,C:white}X#4#{} Mult for every scored card.",
             "Played cards give {C:money}$10{} when scored.",
-            "{C:inactive}(Currently{} {X:red,C:white}X#1#{} and {C:blue}+#1#{}{C:inactive}.){} "
+            "{C:inactive}(Currently{} {X:red,C:white}X#3#{} and {C:blue}+#1#{}{C:inactive}.){} "
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -1229,6 +1229,7 @@ SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just
 	cost = 5,
     config = {extra = {Xmult = 50}},
     loc_vars = function (self, info_queue, card)
+                  info_queue[#info_queue + 1] = { key = 'hc_bee_comment', set = 'Other' }
         return{
             card.ability.extra.Xmult
         }

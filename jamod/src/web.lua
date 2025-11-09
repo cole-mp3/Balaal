@@ -58,12 +58,14 @@ SMODS.Tag {
     },
     apply = function(self, tag, context)
          if context.type == 'new_blind_choice' then
+             tag:yep('+', G.C.GREEN, function()
             SMODS.add_card {
             key = "j_luchador",                       
                          }
             tag.triggered = true
             return true
-        end
+        end)
+    end
     end
 }
 SMODS.Tag {
