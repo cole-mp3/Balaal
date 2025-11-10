@@ -5,12 +5,12 @@
 SMODS.Sound ({
     vol = 0.6,
     pitch = 0.7,
-    key = "womp",
+    key = "music_vigil",
     path = "music_vigilante.ogg",
     if G.jokers then
         if next(SMODS.find_card("j_jabong_gundx")) then
             select_music_track(self) 
-                return (150)
+                return 150
             end
         end
     end

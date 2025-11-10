@@ -224,7 +224,7 @@ SMODS.Atlas{
     py = 95
 }
 SMODS.Joker{
-    key = "zam", -- DAMN!!!!!!1!!
+    key = "dam", -- DAMN!!!!!!1!!
     atlas = 'bigzamn',
     pos = {x = 0, y = 0},
     rarity = 4,
@@ -1229,7 +1229,6 @@ SMODS.Joker:take_ownership('joker', -- make jimbo great(er) this is def not just
 	cost = 5,
     config = {extra = {Xmult = 50}},
     loc_vars = function (self, info_queue, card)
-                  info_queue[#info_queue + 1] = { key = 'hc_bee_comment', set = 'Other' }
         return{
             card.ability.extra.Xmult
         }
@@ -1309,4 +1308,34 @@ SMODS.Joker {
         end
     end
 } 
+SMODS.Joker{
+    key = "beemovie",
+    atlas = "sccre",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Movie Script",
+        text = {
+            "{X:red,C:white}X#1#{} Mult, but this card has",
+            "an {C:dark_edition}Absoultley fucking absurd{} tooltip.",
+            "{C:inactive}you are not ready :3{}"
+        }
+    },
+    cost = 5,
+    rarity = 2,
+    config = {extra = {Xmult = 500}},
+    loc_vars = function (self, info_queue, card)
+    info_queue[#info_queue + 1] = { key = 'hc_bee_comment', set = 'Other' } --according to all known laws of
+        return{
+            card.ability.extra.Xmult
+        }
+    end,
+	calculate = function(self, card, context)
+        if context.joker_main then
+            return{
+        x_mult = card.ability.extra.Xmult
+            }
+           
+        end
+	end
+}
  

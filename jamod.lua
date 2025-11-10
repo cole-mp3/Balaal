@@ -46,7 +46,7 @@ SMODS.ObjectType {
     cards = {
         j_jabong_tongs = true,
         j_jabong_lildude = true,
-        j_jabong_zam = true,
+        j_jabong_dam = true,
         j_jabong_drei = true,
         j_jabong_Aerial = true,
         j_jabong_gundx = true,
@@ -72,6 +72,8 @@ SMODS.ObjectType {
         j_jabong_nill = true,
         j_jabong_gojoker = true,
         j_jabong_soulbottle = true,
+        j_jabong_thegober = true,
+        j_jabong_beemovie = true,
     },
 }
 SMODS.Sound{
@@ -193,7 +195,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     {
                     n = G.UIT.T,
                     config = {
-                        text = "RandomizedAlias, MrCr33ps(the garbshit guy)",
+                        text = "RandomizedAlias, MrCr33ps(the garbshit textures guy)",
                         shadow = false,
                         scale = scale,
                         colour = G.C.MONEY
@@ -362,13 +364,13 @@ SMODS.Achievement {
 SMODS.Challenge {
     key = 'zamnnnnn',
     jokers = {
-        { id = 'j_jabong_zam', eternal = true },
+        { id = 'j_jabong_dam', eternal = true },
         { id = "j_hanging_chad", edition = "negative"},
 
 
     },
     loc_txt = {
-        name = "ZAMnnn!!!!"
+        name = "damnnn!!!!"
     },
     restrictions = {
         banned_other = {
@@ -422,7 +424,7 @@ SMODS.Rank {
   lc_atlas = "lcz",
   hc_atlas = "hcz",
     pos = { x = 0 },
-    nominal = 1,
+    nominal = 13.5,
     next = { 'Ace' },
     face = true,
     loc_txt = {
