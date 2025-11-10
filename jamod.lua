@@ -16,7 +16,7 @@ function Game:main_menu()
     
  G.title_top.cards[1]:remove()
     
-    print("Welcome to hell")
+    print("Welcome to hell, I hope you like this mess")
 
     return ret
    
@@ -74,6 +74,8 @@ SMODS.ObjectType {
         j_jabong_soulbottle = true,
         j_jabong_thegober = true,
         j_jabong_beemovie = true,
+        j_jabong_hanging = true,
+        j_jabong_chard = true,
     },
 }
 SMODS.Sound{
@@ -82,7 +84,7 @@ SMODS.Sound{
     key = "music_drop", 
     path = "music_Drop.ogg",
     select_music_track = function() 
-        return SMODS.Mods.jamod.config.drop and G.STAGE == G.STAGES.MAIN_MENU
+        return SMODS.Mods.jamod.config.whiteash and G.STAGE == G.STAGES.MAIN_MENU
 
          end
 }
@@ -197,7 +199,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     config = {
                         text = "RandomizedAlias, MrCr33ps(the garbshit textures guy)",
                         shadow = false,
-                        scale = scale,
+                        scale = scale*2,
                         colour = G.C.MONEY
                     }
                     },
@@ -231,9 +233,9 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                 {
                     n = G.UIT.T,
                     config = {
-                    text = "alias (for fucking up the intial mod)",
+                    text = "Myself (cuz i cant code)",
                     shadow = false,
-                    scale = scale,
+                    scale = scale*2,
                     colour = G.C.GREEN
                     }
                 }
@@ -269,7 +271,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     config = {
                     text = "Vigilante - Sawano Hiroyuki [nZK]",
                     shadow = false,
-                    scale = scale*0.75,
+                    scale = scale*2,
                     colour = G.C.RED
                     }
                 }
@@ -305,7 +307,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     config = {
                     text = "the GOATS at the balatro Discord",
                     shadow = false,
-                    scale = scale*0.66,
+                    scale = scale*2,
                     colour = G.C.BLUE
                     }
                 }

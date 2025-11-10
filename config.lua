@@ -4,7 +4,7 @@
 -- (or i can just steal it from cryptid idk)
 -- so for now, just set whatever  songs you want to either true or false.
 return {
-		["drop"] = false,
+		["whiteash"] = false,
 		["vigilante"] = false,
 		["get_around"] = true,
 	

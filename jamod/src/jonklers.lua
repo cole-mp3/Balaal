@@ -1338,4 +1338,87 @@ SMODS.Joker{
         end
 	end
 }
- 
+SMODS.Joker{
+key = "hanging",
+    atlas = "hatlas",
+    pos = {x = 0, y = 0},
+    rarity = 2,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    pools = {["halfjokes"] = true},
+    loc_txt = {
+        name = "Hanging",
+        text = {
+            "Retriggers the {C:attention}first and last{}",
+            "played cards in a hand {C:attention}#1#{} time"
+        },
+    },
+    config = {extra = {repetitions = 1}},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return {vars = {card.ability.extra.repetitions}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+            return {
+                repetitions = card.ability.extra.repetitions
+                message = "Ag"
+            }
+        end
+        if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] then
+            return {
+                repetitions = card.ability.extra.repetitions
+                message = "Ag"
+            }
+        end
+    end
+}
+SMODS.Joker{
+key = "chard",
+    atlas = "hatlas",
+    pos = {x = 1, y = 0},
+    rarity = 2,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    pools = {["halfjokes"] = true},
+    loc_txt = {
+        name = "Chad",
+        text = {
+            "Retriggers the played cards in a hand that ARENT",
+            "the {C:attention}first and last{} {C:attention}#1#{} time"
+        },
+    },
+    config = {extra = {repetitions = 1}},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return {vars = {card.ability.extra.repetitions}}
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and not context.other_card == context.scoring_hand[1] then
+            return {
+                repetitions = card.ability.extra.repetitions
+                message = "ain!"
+            }
+        end
+        if context.repetition and context.cardarea == G.play and not context.other_card == context.scoring_hand[#context.scoring_hand] then
+            return {
+                repetitions = card.ability.extra.repetitions
+                message = "ain!"
+            }
+        end
+    end
+} 
+--next joker: DIVER
+-- ^20 mult 
+-- changes the boss blind music to DIVER by nico touches the walls
+-- designed for naneinf motivation (and to see who can time it to the drop)
