@@ -1167,10 +1167,18 @@ SMODS.Joker {
 
     
 }
+SMODS.Atlas {
+    key = "flash",
+    path = "flash.png",
+    px = 71,
+    py = 95,
+}
 SMODS.Joker {
     key = "thecreator",
+    atlas = "flash",
+    pos = {x = 0, y = 0}
     loc_txt = {
-        name = "{E:1,C:edition,s:1.2}Jabon Gratis{}",
+        name = "{E:1,C:edition,s:1.2}FLASH{} {s:0.8}(its actually me jabon ggratis)",
         text = {
             "Creates {C:attention}#2#{} random Jokers on blind selection",
             "{C:dark_edition}Every joker and fucking consumable{} gives {X:inactive,C:white}^#1#{} Mult.",
