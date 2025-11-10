@@ -97,7 +97,7 @@ SMODS.Sound{
     key = "music_drop", 
     path = "music_Drop.ogg",
     select_music_track = function() 
-        return SMODS.Mods.jamod.config.whiteash and G.STAGE == G.STAGES.MAIN_MENU
+        return SMODS.Mods.jamod.config.Drop and G.STAGE == G.STAGES.MAIN_MENU
 
          end
 }

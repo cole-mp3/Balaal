@@ -469,7 +469,7 @@ SMODS.Joker{
 SMODS.Joker {
     key = "photo",
     atlas = "hatlas",
-    pos = {x = 2, y = 0},
+    pos = {x = 3, y = 0},
     rarity = 3,
     cost = 7,
     unlocked = true,
@@ -501,7 +501,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "graph",
     atlas = "hatlas",
-    pos = {x = 3, y = 0},
+    pos = {x = 2, y = 0},
     rarity = 3,
     cost = 7,
     unlocked = true,
@@ -525,7 +525,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
                 return {
-                    xmult = card.ability.extra.xchips
+                    xchips = card.ability.extra.xchips
                 }
             end
         end
@@ -1176,7 +1176,7 @@ SMODS.Atlas {
 SMODS.Joker {
     key = "thecreator",
     atlas = "flash",
-    pos = {x = 0, y = 0}
+    pos = {x = 0, y = 0},
     loc_txt = {
         name = "{E:1,C:edition,s:1.2}FLASH{} {s:0.8}(its actually me jabon ggratis)",
         text = {
@@ -1220,6 +1220,7 @@ SMODS.Joker {
                             set = 'Joker',
                             edition = "e_negative" 
                         }
+                                   play_sound('jabong_oh')
                         G.GAME.joker_buffer = 0
                     end
                     return true
@@ -1374,13 +1375,13 @@ key = "hanging",
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
                 message = "Ag"
             }
         end
         if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
                 message = "Ag"
             }
         end
@@ -1408,19 +1409,20 @@ key = "chard",
     config = {extra = {repetitions = 1}},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+              info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
         return {vars = {card.ability.extra.repetitions}}
     end,
 
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and not context.other_card == context.scoring_hand[1] then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
                 message = "ain!"
             }
         end
         if context.repetition and context.cardarea == G.play and not context.other_card == context.scoring_hand[#context.scoring_hand] then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
                 message = "ain!"
             }
         end

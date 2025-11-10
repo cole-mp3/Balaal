@@ -43,18 +43,23 @@ SMODS.Blind {
     loc_txt = {
         name = "Arby's",
         text = {
-            "Every enchanced card scored will",
             "increase this blind's requirements",
-            "by a whopping 25%."
+            "by a whopping 25% if an",
+            "enhanced card is played"
         },
     },
     
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.press_play then
-               G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
+                    if context.before then
+                    local found = false
+                        for _,v in ipairs(G.hand.cards) do
+                         if next(SMODS.get_enhancements(v)) then found = true end
+                                end
+                            if found then
+                          G.GAME.blind.chips = math.floor(G.GAME.blind.chips + G.GAME.blind.chips * 0.25)
                             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-                blind.triggered = true 
+                              blind.triggered = true 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
                     func = (function()
@@ -75,7 +80,10 @@ SMODS.Blind {
                 }))
                 delay(0.4)
             end
-        end
+                             end
+                        end
+             
+              
  end,
    
 }
