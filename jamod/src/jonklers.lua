@@ -9,7 +9,7 @@ SMODS.Atlas {
     key = "jimble",
     path - "jimbonium.png",
     px = 142,
-    py = 190,
+    py = 171,
     atlas_table = 'ANIMATION_ATLAS',
     frames = 70
 
