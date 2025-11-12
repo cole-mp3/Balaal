@@ -1320,7 +1320,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.repetitions and context.cardarea == G.play and context.other_card:is_face() then
+        if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
             return{
                 repetitions = card.ability.extra.repetitions,
                 message = "Again!"
