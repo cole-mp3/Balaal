@@ -14,7 +14,7 @@ SMODS.Enhancement {
     key = "ruband",
     atlas = "rublas", 
     config = {repetitions = 2, xmult = 2.1},
-    loc_vars = function(self, info_queue, card)             -- ⌄i fixed it but why on earth was this also xmult
+    loc_vars = function(self, info_queue, card)            
         return { vars = { card.ability.repetitions, card.ability.xmult } }
     end,
     calculate = function(self, card, context)

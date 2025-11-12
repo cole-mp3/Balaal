@@ -53,6 +53,7 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+--[[
 SMODS.Back {
     key = "luchalibre",
     loc_txt = {
@@ -80,4 +81,4 @@ SMODS.Back {
             }))
         end
     end,
-}
+}]]

@@ -4,16 +4,16 @@
 --[[
 SMODS.Sound ({
     vol = 0.6,
-    pitch = 0.7,
-    key = "music_vigil",
+    pitch = 1,
+    key = "music_vigilante",
     path = "music_vigilante.ogg",
+    selectmusictrack = function()
     if G.jokers then
         if next(SMODS.find_card("j_jabong_gundx")) then
-            select_music_track(self) 
-                return 150
-            end
+                return true
         end
     end
+end
 })
     ]]
 SMODS.Rarity {

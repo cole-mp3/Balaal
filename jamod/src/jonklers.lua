@@ -5,11 +5,27 @@ path = "Jonklers/jatlas.png",
 px = 70,
 py = 94
 }
+SMODS.Atlas {
+    key = "jimble",
+    path - "jimbonium.png",
+    px = 142,
+    py = 190,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 70
+
+}
 SMODS.Sound {
-    key = "getr",
+    key = "music_getr",
     path = "music_jimbum.ogg",
-     vol = 0.6,
+    vol = 0.6,
     pitch = 0.7,
+    selectmusictrack = function()
+        if G.jokers then
+            if next(SMODS.find_card("j_jabong_jimbyramid")) then
+                return true
+            end
+        end
+    end
     
 }
 SMODS.Sound {
@@ -1045,8 +1061,8 @@ SMODS.Joker {
 }
 SMODS.Joker {
     key = "jimbyramid",
-    atlas = "sccre",
-    pos = { x = 0 , y = 0},
+    atlas = "jimble",
+    pos = {x = 0, y = 0},
     rarity = 3,
     blueprint_compat = true,
     cost = 5,
@@ -1061,7 +1077,7 @@ SMODS.Joker {
         text = {
             "This card gains {X:red,C:white}X#1#{} Mult per",
             "hand played with a level {C:attention}less than or equal to 1{}.",
-            "{C:inactive}Currently{} {X:red,C:white}X#1#{}{C:inactive}.{}"
+            "{C:inactive}Currently{} {X:red,C:white}X#2#{}{C:inactive}.{}"
         },
     },
     calculate = function(self, card, context)
@@ -1073,17 +1089,17 @@ SMODS.Joker {
                     passed = true
                     end
                 end
-        if passed then
-            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
-            return{
-                message = "Upgraded!",
-                colour = G.C.RED
-            }
-        end
+            if passed then
+                card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
+                return{
+                    message = "Upgraded!",
+                    colour = G.C.RED
+                }
+            end
     end
-    if context.individual and context.cardarea == G.play then
+    if context.joker_main then
             return{
-                x_mult = card.ability.extra.xmult
+                xmult = card.ability.extra.Xmult
             }
         end
 end,
