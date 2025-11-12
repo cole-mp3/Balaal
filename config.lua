@@ -6,6 +6,6 @@
 return {
 		["Drop"] = true,
 		["vigilante"] = false,
-		["get_around"] = true,
+		["getr"] = true,
 	
 }

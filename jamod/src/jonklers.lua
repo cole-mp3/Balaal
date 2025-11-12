@@ -7,22 +7,21 @@ py = 94
 }
 SMODS.Atlas {
     key = "jimble",
-    path - "jimbonium.png",
-    px = 142,
-    py = 171,
-    atlas_table = 'ANIMATION_ATLAS',
-    frames = 70
+    path = "jimbonium.png",
+    px = 300,
+    py = 381,
 
 }
+
 SMODS.Sound {
     key = "music_getr",
     path = "music_jimbum.ogg",
     vol = 0.6,
-    pitch = 0.7,
-    selectmusictrack = function()
+    pitch = 1,
+    select_music_track = function()
         if G.jokers then
             if next(SMODS.find_card("j_jabong_jimbyramid")) then
-                return true
+                return SMODS.Mods.jamod.config.getr
             end
         end
     end
@@ -1197,7 +1196,7 @@ SMODS.Joker {
         name = "{E:1,C:edition,s:1.2}FLASH{} {s:0.8}(its actually me jabon ggratis)",
         text = {
             "Creates {C:attention}#2#{} random Jokers on blind selection",
-            "{C:dark_edition}Every joker and fucking consumable{} gives {X:inactive,C:white}^#1#{} Mult.",
+            "{C:dark_edition}Every joker and fucking consumable{} gives {X:inactive,C:white}^^#1#{} Mult.",
             "{C:inactive}the obligatory self-insert card{}"
         }
     },
@@ -1205,7 +1204,7 @@ SMODS.Joker {
      blueprint_compat = true,
     cost = 4,
     discovered = true,
-    config = {extra = {Emult = 5, creates = 3}},
+    config = {extra = {Emult = 1.11, creates = 3}},
     loc_vars = function(self, info_queue, card)
         return{
             card.ability.extra.Emult,
@@ -1221,7 +1220,7 @@ SMODS.Joker {
         end
         if context.other_joker then
             return {
-                emult = card.ability.extra.Emult,
+                eemult = card.ability.extra.Emult,
                 message_card = context.other_joker
             }
         end
