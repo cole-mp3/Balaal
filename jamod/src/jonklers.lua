@@ -1289,13 +1289,18 @@ SMODS.Joker:take_ownership('midas_mask',
     },
     true 
 )
-
+SMODS.Atlas {
+    key = "sockandhuh"
+    path = "Jonklers/evilsb.png",
+    px = 71,
+    py = 95
+}
 
 
 --maybe i fixed it, we shall see
 SMODS.Joker {
     key = "thecringler",
-    atlas = "sccre",
+    atlas = "sockandhuh",
     blueprint_compat = true,
     rarity = 4,
     cost = 25,
