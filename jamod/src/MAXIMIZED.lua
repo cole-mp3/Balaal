@@ -306,9 +306,15 @@ SMODS.ObjectType ({
         j_jabong_gundx = true,
     },
 })
+SMODS.Atlas {
+    key = "ccaref",
+    path = "Jonklers/axis.png",
+    px = 142,
+    py = 190
+}
 SMODS.Joker {
     key = "charisafuckingsimp",
-    atlas = "sccre",
+    atlas = "ccaref",
     rarity = 'jabong_Max',
     pos = { x = 0, y = 0 },                        --⌄ using Emult as the variable for simplicity and cuz im not sure abt EEmult adn EEmult_mod
     config = {extra = {repetitions = 1, creates = 2, Emult = 1.02, Emult_mod = 0.01}}
