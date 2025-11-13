@@ -7,7 +7,7 @@ SMODS.Sound ({
     pitch = 1,
     key = "music_vigilante",
     path = "music_vigilante.ogg",
-    selectmusictrack = function()
+    select_music_track = function()
     if G.jokers then
         if next(SMODS.find_card("j_jabong_gundx")) then
                 return true
@@ -309,6 +309,7 @@ SMODS.ObjectType ({
 SMODS.Joker {
     key = "charisafuckingsimp",
     atlas = "sccre",
+    rarity = 'jabong_Max',
     pos = { x = 0, y = 0 },                        --⌄ using Emult as the variable for simplicity and cuz im not sure abt EEmult adn EEmult_mod
     config = {extra = {repetitions = 1, creates = 2, Emult = 1.02, Emult_mod = 0.01}}
     loc_vars = function(self, info_queue, card)
