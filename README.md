@@ -16,6 +16,7 @@ this is completly fucking unbalanced, and any joker with a raity higher than unc
 - A brain
 - Balatro
 - Steammodded (https://github.com/Steamodded/smods) And Talisman (https://github.com/SpectralPack/Talisman)
+- IF YOU ARE A STREAMER OR SOME SHIT, GO INTO ```config.lua``` AND SET EVERYTHING TO FALSE, TS IS COPYRIGHTED MUSIC 
 -----------------------------------------
 ## To Do:
 - [ ] vegeta
@@ -27,11 +28,11 @@ this is completly fucking unbalanced, and any joker with a raity higher than unc
 - [ ] I can't code for S H I T
 - [ ] HTTPS modules arent working, so the joker i had planned has to be repurposed until i can fix that.
 ## WORKING ADDITIONS:
-- 20+ Jokers
+- 30+ Jokers
 - 2 new kinds of consumables
-- [who cares] amount of consuables
-- a blind
-- 2 enhancements
-- a deck
+- [who cares] amount of normal consuables
+- 2 blinds
+- 4(i think) enhancements
+- 2 decks
 - and a sick asf logo
 
