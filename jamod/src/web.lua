@@ -9,7 +9,7 @@ SMODS.Edition {
     extra_cost = 2,
     loc_txt = {
         name = "Radiant",
-        label = ""
+        label = "Radiant"
         text = {
             "{C:blue}+#1#{} Chips and {C:red}+#2#{} Mult,",
             "As well as {X:red,C:white}X#3#{} Mult.",
