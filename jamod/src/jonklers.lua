@@ -464,7 +464,7 @@ SMODS.Joker{
     perishable_compat = false,
     config = { extra = {  
         --made in jokerforge for refrence
-        addedmult = 1,
+        addedmult = 7,
             perma_mult = 0
         } },
     loc_vars = function(self, info_queue, card)
