@@ -190,13 +190,13 @@ SMODS.Joker {
     cost = 15,
     discovered = true,
    
-    config = { extra = { xmult_gain = 5, xmult = 5 } },
+    config = { extra = { Emult_mod = 5, Emult = 5 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = 'hc_ms_comment', set = 'Other' }
         return {
             vars = {
-                card.ability.extra.xmult,
-                card.ability.extra.xmult_gain,
+                card.ability.extra.Emult,
+                card.ability.extra.Emult_mod,
         }
     }
     end,
@@ -204,11 +204,11 @@ SMODS.Joker {
         if context.joker_main then
             return {
                
-                xmult = card.ability.extra.xmult,
+                emult = card.ability.extra.Emult,
             }
         end
         if SMODS.last_hand_oneshot and context.end_of_round and context.main_eval and context.game_over == false then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+            card.ability.extra.Emult = card.ability.extra.Emult + card.ability.extra.Emult_mod
            return{ message = "Upgrade!", colour = G.C.RED}
            
         end

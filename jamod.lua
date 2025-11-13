@@ -43,7 +43,7 @@ SMODS.current_mod.optional_features = {
 --[[
 SMODS.Stake {
     name = "Spob Stake", --i need to make the sticker this uses first
-    key = "spob",
+    key = "spobe",
     applied_stakes = { "gold" },
     pos = { x = 2, y = 1 },
     sticker_pos = { x = 3, y = 1 },
@@ -53,6 +53,11 @@ SMODS.Stake {
     colour = G.C.GOLD,
     shiny = true,
 }]]
+    --[[
+    SMODS.Sticker {
+    key = "spob"
+    }
+    ]]
 SMODS.ObjectType {
      key = "balaaljonklers",
     default = "j_ice_cream",

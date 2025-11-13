@@ -9,7 +9,7 @@ a balatro mod.
 
 you need humor to understand its jokes
 
-and you also need to have general media knowledge
+this was made by 3 bored students who cant code for shit so this is basically a jokerforge mod with extra steps
 ## REQUIREMENTS:
 - A pc
 - A brain

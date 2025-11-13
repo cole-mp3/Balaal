@@ -116,8 +116,19 @@ return {
                 text = {
                     "Joker That's Been Crumpled Up, ",
                     "{E:1}Torn Slightly{}, Soaked In The Lagoon" ,
-                    "And Kissed With {X:blue,C:white}Coral Blue{}",
+                    "And Kissed With {C:blue}Coral Blue{}",
                     "Number 2 Semi Gloss Lipstick"
+                },
+            },
+            hc_jimble_comment = {
+                name = {
+                    "Important:"
+                },
+                text = {
+                    "For whatever the damn reason, you need",
+                    "to have at least one level 2+ hand",
+                    "for this joker to work properly.",
+                    "dont even ask me "
                 },
             },
             hc_ms_comment = {

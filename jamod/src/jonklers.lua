@@ -8,8 +8,8 @@ py = 94
 SMODS.Atlas {
     key = "jimble",
     path = "jimbonium.png",
-    px = 300,
-    py = 381,
+    px = 172,
+    py = 230,
 
 }
 
@@ -321,7 +321,7 @@ SMODS.Joker {
         text = {
             "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
             "This card gains {X:red,C:white}X#1#{} Mult per {C:Attention}Vex Cube{} sold.",
-            "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:incative}.{}",
+            "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:inactive}.{}",
         }
     },
     config = { extra = {creates = 2, Xmult = 1, Xmult_gain = 1 }, },
@@ -499,7 +499,7 @@ SMODS.Joker {
             "All played face cards give {X:red,C:white}X#1#{} Mult."
         },
     },
-    config = {extra = {Xmult = 1.3}},
+    config = {extra = {Xmult = 1.5}},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
         return {vars = {card.ability.extra.Xmult}}
@@ -508,7 +508,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_face() then
                 return {
-                    x_mult = card.ability.extra.Xmult
+                    xmult = card.ability.extra.Xmult
                 }
             end
         end
@@ -678,7 +678,7 @@ SMODS.Joker {
         name = "Stupid Ass Joker",
         text = {
             "This card gains {C:blue}+#1#{} chips per card scored.",
-            "{C:inacive}Currently{}{C:blue}+#1#{}{C:incative}. WHY DID I MAKE THIS{}"
+            "{C:inacive}Currently{}{C:blue}+#1#{}{C:inactive}. WHY DID I MAKE THIS{}"
         },
     },
     rarity = 1,
@@ -1035,8 +1035,8 @@ SMODS.Joker {
     loc_txt = {
         name = "High school Basketball player",
         text = {
-            "{X:inactive,C:white}^#1#{} chips.",
-            "This card instead does {C:negative,E:1,s:1.4}fucking nothing{} if played hand has a seal.",
+            "Every played card gives {X:inactive,C:white}^#1#{} chips.",
+            "This card instead does {C:negative,E:1,s:1.4}fucking nothing{} if played card has a seal.",
             "{C:inactive}why did I ever think of making this{}"
         }
     },
@@ -1066,9 +1066,9 @@ SMODS.Joker {
     blueprint_compat = true,
     cost = 5,
     discovered = true,
-    config = {extra = {Xmult_gain = 0.5, Xmult = 1}},
+    config = {extra = {Xmult_gain = 1.5, Xmult = 1.5}},
     loc_vars = function(self, info_queue, card)
-          info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
+          info_queue[#info_queue + 1] = { key = 'hc_jimble_comment', set = 'Other' }
         return {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}
     end,
     loc_txt = {
@@ -1146,12 +1146,12 @@ SMODS.Joker {
         name = "balatro bala{C:attention,s:1.1,E:1}Cuatro{}",
         text = {
             "{C:inactive}(get it? cuz balatro balaTREZ?){}",
-            "Este comodin obtiene un multiplicador de {X:inactive,C:white}^#1#{}, compuesto,",
+            "Este comodin obtiene un multiplicador de {X:inactive,C:white}^^#1#{}, compuesto,",
             "por cada carta puntuada.",
-            "(actualmente {X:incative,C:white}^#2#){}"
+            "{C:inactive}(actualmente{} {X:inactive,C:white}^^#2#{}{C:inactive}){}"
         }
     },
-    config = {extra = {Emult_mod = 2, Emult = 2}},
+    config = {extra = {Emult_mod = 0.05, Emult = 2}},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.Emult_mod, card.ability.extra.Emult } }
     end,
@@ -1174,7 +1174,7 @@ SMODS.Joker {
         end
         if context.joker_main then
             return {
-                emult = card.ability.extra.Emult
+                eemult = card.ability.extra.Emult
                 
             }
         end
@@ -1279,7 +1279,6 @@ SMODS.Joker:take_ownership('midas_mask',
                     scored_card:set_ability('m_gold', nil, true)
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            play_sound( 'jabong_damn')
                             scored_card:juice_up()
                             return true
                         end
@@ -1301,18 +1300,17 @@ SMODS.Joker {
     rarity = 4,
     cost = 25,
     pos = { x = 0, y = 0},
+     config = {extra = {repetitions = 1, addon = 1}},
     loc_txt = {
         name = "Bock and suskin",
         text = {
-            "Retriggers all played {C:attention}face cards{}. Increases by {C:attention}#1#{} per one-shot.",
+            "Retriggers all played {C:attention}face cards{}. Increases by {C:attention}#2#{} per one-shot.",
             "{C:inacive}Currently{} {C:attention}#1#{}{C:inactive}.{}",
             "{C:inactive}...{}",
             "{C:inactive}hey wait a fucking minute-{}"
         }
     },
-    config = {extra = {repetitions = 1, addon = 1}},
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = { key = 'hc_slander_comment', set = 'Other' }
         return{
             card.ability.extra.repetitions,
             card.ability.extra.addon
