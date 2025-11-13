@@ -10,6 +10,7 @@ a balatro mod.
 you need humor to understand its jokes
 
 this was made by 3 bored students who cant code for shit so this is basically a jokerforge mod with extra steps
+this is completly fucking unbalanced, and any joker with a raity higher than uncommon will garuntee you a win (if it works correctly)
 ## REQUIREMENTS:
 - A pc
 - A brain

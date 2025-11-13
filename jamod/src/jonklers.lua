@@ -987,7 +987,7 @@ SMODS.Joker {
 
             if six == true and andz == true then   
                  local cards_to_create = math.min(card.ability.extra.creates,
-                G.jokers.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer))
+                G.consumables.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer))
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + cards_to_create
             G.E_MANAGER:add_event(Event({
                 func = function()

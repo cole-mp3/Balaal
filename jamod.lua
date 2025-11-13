@@ -94,6 +94,7 @@ SMODS.ObjectType {
         j_jabong_beemovie = true,
         j_jabong_hanging = true,
         j_jabong_chard = true,
+        j_jabong_charisafuckingsimp = true,
     },
 }
 SMODS.Sound{

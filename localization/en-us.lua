@@ -1555,8 +1555,13 @@ return {
         dictionary = {
 	
 			
-}
+},
+        labels = {
+            jabong_radiant = "Radiant",
+            jabong_stone_seal = "Stone Seal",
+            jabong_stateseal = "Statefarm :)"
+        },
 
-		}
+	}
     
 		
