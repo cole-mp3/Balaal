@@ -1290,7 +1290,7 @@ SMODS.Joker:take_ownership('midas_mask',
     true 
 )
 SMODS.Atlas {
-    key = "sockandhuh"
+    key = "sockandhuh",
     path = "Jonklers/evilsb.png",
     px = 71,
     py = 95
