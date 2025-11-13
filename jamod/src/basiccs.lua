@@ -344,6 +344,9 @@ SMODS.Consumable {
            
         }
     },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_balament_comment', set = 'Other' }
+    end,
      use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
@@ -594,6 +597,27 @@ SMODS.Consumable {
             end
         }))
         delay(0.5)
+    end,
+}
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "tungstenqube",
+    atlas = "rsatlas",
+    pos = {x = 0, y = 0}
+    loc_txt = {
+        name = "Tungsten Cube"
+        text = {
+            "Turns #1# Selected {C:attention}Metal Enhanced{} card",
+            "Into an {C:attention}Alloy{} Card.",
+            "{C:inactive}But i cant code so it just turns 1 selected card for now{}",
+            "{C:inactive}and yes i know tungsten is a fucking element{}"
+        }
+    },
+     config = { max_highlighted = 2, mod_conv = 'm_jabong_alloy'},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        info_queue[#info_queue + 1] = { key = 'hc_metals_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv  } } }
     end,
 }
 

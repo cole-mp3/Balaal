@@ -27,6 +27,43 @@ SMODS.Enhancement {
     end,
 }
 SMODS.Enhancement {
+    key = "alloy",
+    atlas = "rublas", 
+    config = {h_x_mult = 1.5, bonus = 50, h_dollars = 3, h_x_chips = 2.5  },
+    loc_vars = function(self, info_queue, card)            
+        info_queue[#info_queue + 1] = { key = 'hc_metals_comment', set = 'Other' }
+        return { 
+            colours = {
+                    HEX("353e43"), -- im hoping this works eperate from the OTHER {V:1}
+                },
+            vars = {
+                card.ability.h_x_mult,
+                card.ability.bonus, 
+                card.ability.h_dollars,
+                card.ability.h_x_chips
+
+            } 
+        }
+    end,
+    loc_txt = {
+        name = "Alloy card",
+        text = {
+            "Treated as {C:inactive}(and has the effects of){}",
+            "All {V:1}Metal Enhanced{} Cards."
+        }
+    },
+    calculate = function(self, card, context)
+        if context.check_enhancement then
+    return {
+        m_gold = true,
+        m_steel = true,
+        m_stone = true,
+        m_jabong_copper = true
+    }
+end
+    end
+}
+SMODS.Enhancement {
     key = 'copper',
     atlas = 'coplas', --there its done
     pos = { x = 0, y = 0 },
@@ -71,8 +108,8 @@ SMODS.Enhancement {
         -- slamo
         text = {
             "{C:attention}NO +CHIPS.{}",
-            "{X:blue,C:white}X#1#{} chips if played.",
-            "{X:red,C:white}X#1#{} mult if held in hand, but subequently {X:blue,C:white}X0.5{} chips."
+            "{X:blue,C:white}X#3#{} chips if played.",
+            "{X:red,C:white}X#1#{} mult if held in hand, but subequently {X:blue,C:white}X#2#{} chips."
         }
     },
     config = { h_x_mult = 3, h_x_chips = 0.5, x_chips = 2 },

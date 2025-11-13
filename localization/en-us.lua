@@ -128,7 +128,28 @@ return {
                     "For whatever the damn reason, you need",
                     "to have at least one level 2+ hand",
                     "for this joker to work properly.",
-                    "dont even ask me "
+                    "dont even ask me, i know nothing"
+                },
+            },
+            hc_metals_comment = {
+                name = {
+                    "Metal Enhancements"
+                },
+                text = {
+                    "Includes {C:enhanced}Steel Cards{},",
+                    "{C:money}Gold cards,{}",
+                    "{C:diamonds}Copper Cards,{}",
+                    "And just because, {X:inactive,C:white}Stone{} {X:inactive,C:white}Cards{}"
+                },
+            },
+            hc_balament_comment = {
+                name = {
+                    "Pro Tip:"
+                },
+                text = {
+                    "you have a chance to get a MAXIMIZED joker.",
+                    "",
+                    "go gambling.",
                 },
             },
             hc_ms_comment = {
