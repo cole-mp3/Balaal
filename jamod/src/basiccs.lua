@@ -603,9 +603,9 @@ SMODS.Consumable {
     set = 'jabong_Material',
     key = "tungstenqube",
     atlas = "rsatlas",
-    pos = {x = 0, y = 0}
+    pos = {x = 0, y = 0},
     loc_txt = {
-        name = "Tungsten Cube"
+        name = "Tungsten Cube",
         text = {
             "Turns #1# Selected {C:attention}Metal Enhanced{} card",
             "Into an {C:attention}Alloy{} Card.",

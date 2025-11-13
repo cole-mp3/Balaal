@@ -33,9 +33,7 @@ SMODS.Enhancement {
     loc_vars = function(self, info_queue, card)            
         info_queue[#info_queue + 1] = { key = 'hc_metals_comment', set = 'Other' }
         return { 
-            colours = {
-                    HEX("353e43"), -- im hoping this works eperate from the OTHER {V:1}
-                },
+
             vars = {
                 card.ability.h_x_mult,
                 card.ability.bonus, 
@@ -49,7 +47,7 @@ SMODS.Enhancement {
         name = "Alloy card",
         text = {
             "Treated as {C:inactive}(and has the effects of){}",
-            "All {V:1}Metal Enhanced{} Cards."
+            "All {C:attention}Metal Enhanced{} Cards."
         }
     },
     calculate = function(self, card, context)
@@ -57,7 +55,6 @@ SMODS.Enhancement {
     return {
         m_gold = true,
         m_steel = true,
-        m_stone = true,
         m_jabong_copper = true
     }
 end

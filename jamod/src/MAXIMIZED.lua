@@ -317,23 +317,19 @@ SMODS.Joker {
     atlas = "ccaref",
     rarity = 'jabong_Max',
     pos = { x = 0, y = 0 },                        --⌄ using Emult as the variable for simplicity and cuz im not sure abt EEmult adn EEmult_mod
-    config = {extra = {repetitions = 1, creates = 2, Emult = 1.02, Emult_mod = 0.01}}
+    config = {extra = {repetitions = 1, creates = 2, Emult = 1.02, Emult_mod = 0.01}},
     loc_vars = function(self, info_queue, card)
         return {
-            colours = {
-                    HEX("9acd32"), -- color text (hopefully) formatted as {V:1}
-                },
-        card.ability.extra.repetitions
-        card.ability.extra.creates
-        card.ability.extra.Emult
+        card.ability.extra.repetitions,
+        card.ability.extra.creates,
+        card.ability.extra.Emult,
         card.ability.extra.Emult_mod
             }
     end,
         
     loc_txt = {
-        name = "{s:1.1,C:green,E:2}BEYOND THE TIME{} {B:1,C:white,s:0.8}(Axis Shock){}",
+        name = "{s:1.1,C:green,E:2}BEYOND THE TIME{} {X:green,C:white,s:0.8}(Axis Shock){}",
         text = {
-            "Creates {C:attention}#2#{} consumables on blind selection.",
             "All Jokers are retriggered {C:attention}#1#{} time",
             "and give {X:inactive,C:white}^^#3#{} mult.",
             "Increases by {X:inactive,C:white}^^#4#{} per consumable used."
@@ -341,26 +337,7 @@ SMODS.Joker {
     },
         
     calculate = function(self, card, context)
-        if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-            G.consumables.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer))
-            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + cards_to_create
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    for _ = 1, cards_to_create do
-                        SMODS.add_card {
-                            set = 'Consumeables', 
-                            edition = "e_negative" 
-                        }
-                        G.GAME.consumeable_buffer = 0
-                    end
-                    return true
-                end
-            }))
-            return {
-                message = "Consumables!",
-                colour = G.C.BLUE,
-            }
-        end
+        
         if context.using_consumeable and not context.blueprint then
             card.ability.extra.Emult = card.ability.extra.Emult + card.ability.extra.Emult_mod
             return {
