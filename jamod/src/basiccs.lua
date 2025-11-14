@@ -619,7 +619,39 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv  } } }
     end,
 }
-
+SMODS.Consumable {
+    set = 'jabong_Material',
+    key = "NaCl",
+    atlas = "rsatlas",
+    pos = {x = 0, y = 0},
+    loc_txt = {
+        name = "Chemical Synthesis",
+        text = {
+            "Destroys {C:attention}ALL{} of your consumables, and",
+            "Creates a skip tag per one destroyed.",
+            "{C:inactive}But i cant code so its a copy of balaalment{}"
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_balament_comment', set = 'Other' }
+    end,
+     use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                SMODS.add_card({ set = 'balaaljonklers' })
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end
+}
            
 
 
