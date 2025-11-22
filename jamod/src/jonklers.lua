@@ -791,7 +791,7 @@ SMODS.Joker {
     key = 'fisherman',
   atlas = 'thehoooo',
   pos = {x = 0, y = 0},
-  rarity = 'jabong_Max',
+  rarity = 4,
   blueprint_compat = true,
   cost = 10,
   discovered = true,
@@ -1631,6 +1631,7 @@ SMODS.Joker {
     key = "dishbait",
     atlas = "sccre",
     pos = {x = 0 , y = 0},
+    rarity = 2,
     loc_txt = {
         name = "FISH BAIT {f:jabong_emomomo}🐟{}",
         text = {
@@ -1638,18 +1639,64 @@ SMODS.Joker {
             "{C:inactive}Currently{} {C:money}$#2#{}{C:inactive}.{}"
         }
     },
-
+     config = { extra = { dollars = 1 } },
+    loc_vars = function(self, info_queue, card)
+        local fish_tally = 0
+        if G.consumeables then
+            for _, consumeable in ipairs(G.consumeables.cards) do
+                if consumeable.config.center.key == "c_jabong_tuna" or
+                consumeable.config.center.key == "c_jabong_trout" or 
+                consumeable.config.center.key == "c_jabong_bass" then 
+                     fish_tally = fish_tally + 1
+                end
+            end
+        end
+        return { vars = { card.ability.extra.dollars, card.ability.extra.dollars * fish_tally } }
+    end,
+    calc_dollar_bonus = function(self, card)
+        local fish_tally = 0
+        for _, consumeable in ipairs(G.consumeables.cards) do
+                if consumeable.config.center.key == "c_jabong_tuna" or
+                consumeable.config.center.key == "c_jabong_trout" or 
+                consumeable.config.center.key == "c_jabong_bass" then 
+                     fish_tally = fish_tally + 1
+                end
+            end
+        return fish_tally > 0 and card.ability.extra.dollars * fish_tally or nil
+    end
 }
 SMODS.Joker {
     key = "Fisheal",
     atlas = "sccre",
+    rarity = 3,
     pos = {x = 0 , y = 0},
     loc_txt = {
         name = "Maximum Fishing",
         text = {
             "Played {C:attention}face cards{} are given a {C:attention}Bass Pro Seal{},",
-            "Played {C:attention}number cards{} create either a fish or a spectral card.",
         }
     },
-    --code soon lemme just make the sprites first
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local faces = 0
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if scored_card:is_face() then
+                    faces = faces + 1
+                    scored_card:set_seal('jabong_Bassp', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            scored_card:juice_up()
+                            return true
+                        end
+                    }))
+                end
+            end
+            if faces > 0 then
+                return {
+                    message = "fish!",
+                    colour = G.C.MONEY
+                }
+            end
+        end
+    end
 }

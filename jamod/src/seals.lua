@@ -83,7 +83,7 @@ SMODS.Seal {
                     "{X:incative,C:white}^^#1#{} Mult,",
                     "{C:money}+$#2#{}"
                 },
-                label = "{f:jabong_turn}Ɐ{}"
+                label = "Turn A"
     },
     calculate = function(self, card, context)
             if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
@@ -91,6 +91,31 @@ SMODS.Seal {
                     eemult = self.config.extra.Emult,
                     dollars = self.config.extra.dollars
                 }
+            end
+    end,
+
+
+}
+SMODS.Seal {
+    key = 'Bassp', 
+     badge_colour = HEX("00ffff"),
+    loc_vars = function(self, info_queue)
+    end,
+    atlas = "satlas",
+    pos = {x=0, y=0},
+    loc_txt = {
+                name = "Bass Pro Seal",
+                text = {
+                   "Creates a {C:attention}Fish{} when scored."
+                },
+                label = "Bass Pro Seal"
+    },
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                  SMODS.add_card {
+                            set = 'jabong_fish', 
+                            edition = "e_negative" 
+                        }
             end
     end,
 

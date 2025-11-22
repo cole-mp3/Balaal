@@ -104,7 +104,7 @@ SMODS.Sound{
 
          end
 }
---[[
+
 SMODS.current_mod.config_tab = function()
 	return {n = G.UIT.ROOT, config = {align = "cm", padding = 0.1}, nodes = {
  {n = G.UIT.C, config = {align = "cm", colour = G.C.UI.TEXT_LIGHT, scale = 1.1}},
@@ -115,7 +115,7 @@ SMODS.current_mod.config_tab = function()
 
  }}
 end
-]]--
+
 
 -- thanks cryptid
 local creditspage = {

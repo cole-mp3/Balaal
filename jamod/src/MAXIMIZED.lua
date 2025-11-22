@@ -42,7 +42,7 @@ SMODS.Joker {
   pos = {x = 0, y = 0},
   rarity = 'jabong_Max',
   loc_txt ={
-    name = "{f:jabong_japan}gojo joka{}",
+    name = "{f:5}五条ジョーカー{}",
     text = {
         "{C:inactive}idk lol.{}",
         "{C:inactive}also the pixel art is based off of a render{}",

@@ -445,12 +445,11 @@ SMODS.Booster {
     loc_txt = {
         name = "Material Pack",
         description = {
-            "Choose one of up to 3 {C:attetnion}Material{} cards."
+            "Choose one of up to 3 {C:attention}Material{} cards."
         },
-        group_name = "Material_Pack"
+        group_name = "Material Pack"
     },
      draw_hand = true,
-    group_key = "k_Material_Pack",
     config = {extra = 3, choose = 1},
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -507,9 +506,9 @@ SMODS.Booster {
     loc_txt = {
         name = "Mega Material Pack",
         description = {
-            "Choose #2# of up to #1# {C:attetnion}Material{} cards."
+            "Choose #2# of up to #1# {C:attention}Material{} cards."
         },
-        group_name = "Material_Pack"
+        group_name = "Material Pack"
     },
      draw_hand = true,
     config = {extra = 5, choose = 2},
@@ -573,9 +572,9 @@ SMODS.Booster {
      loc_txt = {
         name = "Balaal Pack",
         description = {
-            "Choose #2# of up to #1# {C:attetnion}Balaal{} jokers."
+            "Choose #2# of up to #1# {C:attention}Balaal{} jokers."
         },
-        group_name = "Balaal_Pack"
+        group_name = "Balaal Pack"
     },
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -602,9 +601,9 @@ SMODS.Booster {
      loc_txt = {
         name = "Mega Balaal Pack",
         description = {
-            "Choose #2# of up to #1# {C:attetnion}Balaal{} jokers."
+            "Choose #2# of up to #1# {C:attention}Balaal{} jokers."
         },
-        group_name = "Balaal_Pack"
+        group_name = "Balaal Pack"
     },
     loc_vars = function(self, info_queue, card)
         local cfg = (card and card.ability) or self.config
@@ -730,28 +729,53 @@ SMODS.Consumable {
         name = "Chemical Synthesis",
         text = {
             "Destroys {C:attention}ALL{} of your consumables, and",
-            "Creates a skip tag per one destroyed.",
-            "{C:inactive}But i cant code so its a copy of balaalment{}"
+            "Creates a {C:attention}Spectral{} card per one destroyed.",
         }
     },
-    loc_vars = function(self, info_queue, card)--▽ i dont even think thisll show
-        info_queue[#info_queue + 1] = { key = 'hc_walter_comment', set = 'Other' }
+    config = { extra = { mats = 1 } },
+    loc_vars = function(self, info_queue, card)
+          info_queue[#info_queue + 1] = { key = 'hc_walter_comment', set = 'Other' }
+          if G.consumeables then
+            local tally = 0
+        for _, consumeable in ipairs(G.consumeables.cards) do
+                
+                     tally = tally + 1
+
+            end
+          end
+        return { vars = { card.ability.extra.mats, } }
     end,
      use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'balaaljonklers' })
-                card:juice_up(0.3, 0.5)
-                return true
+        local tally = 0
+        for _, consumeable in ipairs(G.consumeables.cards) do
+                
+                     tally = tally + 1
+
             end
-        }))
+      for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    if G.consumeables.config.card_limit > #G.consumeables.cards then
+                        while tally > 0 do
+                            tally = tally - 1
+                            play_sound('timpani')
+                        SMODS.add_card({ set = 'Spectral', edition = "e_negative" })
+                        card:juice_up(0.3, 0.5)
+                        end
+                        
+                    end
+                    return true
+                end
+            }))
+        end
         delay(0.6)
+        SMODS.destroy_cards(G.consumeables.cards)
     end,
-    can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+     can_use = function(self, card)
+        return (G.consumeables and #G.consumeables.cards <= G.consumeables.config.card_limit and not G.consumeables and #G.consumeables.cards == 0) or
+            (card.area == G.consumeables)
     end
 }
 
