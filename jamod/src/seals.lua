@@ -106,12 +106,12 @@ SMODS.Seal {
     loc_txt = {
                 name = "Bass Pro Seal",
                 text = {
-                   "Creates a {C:attention}Fish{} when scored."
+                   "Creates a {C:attention}Fish{} when initially scored."
                 },
                 label = "Bass Pro Seal"
     },
     calculate = function(self, card, context)
-            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+            if context.main_scoring and context.cardarea == G.play then
                   SMODS.add_card {
                             set = 'jabong_fish', 
                             edition = "e_negative" 
