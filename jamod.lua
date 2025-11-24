@@ -369,6 +369,7 @@ SMODS.Achievement {
             "(i gotta code this in just gimme a sec)"
         }
     },
+        atlas = "ahl",
     pos = { x = 1, y = 0 }, 
     hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args) 
@@ -384,6 +385,7 @@ SMODS.Achievement {
             "(i gotta code this in just gimme a sec)"
         }
     },
+        atlas = "ahl",
     pos = { x = 0, y = 1 }, 
     hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args) 
@@ -398,6 +400,7 @@ SMODS.Achievement {
             "Use AWAKENING once"
         }
     },
+        atlas = "ahl",
     pos = { x = 3, y = 0}, 
     hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
@@ -414,6 +417,7 @@ SMODS.Achievement {
     },
     pos = { x = 1, y = 1 }, 
     hidden_pos = { x = 0, y = 0 },
+        atlas = "ahl",
     unlock_condition = function(self, args)
       if args.type == "ach_trolin" then return true end
     end,
