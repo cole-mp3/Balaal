@@ -177,7 +177,7 @@ SMODS.Consumable {
             func = function()
                 play_sound('jabong_whatdoicallthis')
                 SMODS.add_card({ set = 'Joker', rarity = "jabong_Max"})
-                 check_for_unlock { type = 'ach_awaken' }
+                  check_for_unlock({ type = "ach_awaken" })
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -353,7 +353,7 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 8, 
     loc_txt = {
-        name = "ment",
+        name = "-ment",
         text = {
             "Creates a {C:attention}Half-Type{} joker. "
         }
@@ -1035,7 +1035,7 @@ SMODS.Voucher {
                 SMODS.add_card { 
                     key = "j_jabong_fisherman",
                     edition = 'e_negative', eternal = true, }
-                    check_for_unlock { type = 'ach_fishing' }
+                    check_for_unlock({ type = "ach_fishing" })
 
                 return true
             end

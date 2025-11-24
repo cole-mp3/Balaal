@@ -339,7 +339,12 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
 end
 
 -- misc
-
+SMODS.Atlas {
+    key = "ahl",
+    path = "achlas.png",
+    px = 62,
+    py = 62
+}
 SMODS.Achievement {
     key = "fishtim",
     loc_txt = {
@@ -348,24 +353,41 @@ SMODS.Achievement {
             "Obtain the fishing voucher"
         }
     },
-    pos = { x = 1, y = 0 }, 
+    atlas = "ahl",
+    pos = { x = 2, y = 0 }, 
     hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
       if args.type == "ach_fishing" then return true end
     end,
 }
 SMODS.Achievement {
-    key = "gunderm",
+    key = "mathemacc",
     loc_txt = {
-        name = "ITS A GUNDAM!!!!!!!!",
+        name = "PEMDAS",
         description = {
-            "Get a gundam"
+            "Have a card with every (applicable) Operator",
+            "(i gotta code this in just gimme a sec)"
         }
     },
     pos = { x = 1, y = 0 }, 
     hidden_pos = { x = 0, y = 0 },
-    unlock_condition = function(self, args)
-      if args.type == "ach_gund" then return true end
+    unlock_condition = function(self, args) 
+      if args.type == "ach_fishing" then return true end
+    end,
+}
+SMODS.Achievement {
+    key = "halfach",
+    loc_txt = {
+        name = "Judge-",
+        description = {
+            "Have 2 halves of what would be a full joker.",
+            "(i gotta code this in just gimme a sec)"
+        }
+    },
+    pos = { x = 0, y = 1 }, 
+    hidden_pos = { x = 0, y = 0 },
+    unlock_condition = function(self, args) 
+      if args.type == "ach_fishing" then return true end
     end,
 }
 SMODS.Achievement {
@@ -376,10 +398,24 @@ SMODS.Achievement {
             "Use AWAKENING once"
         }
     },
-    pos = { x = 1, y = 0 }, 
+    pos = { x = 3, y = 0}, 
     hidden_pos = { x = 0, y = 0 },
     unlock_condition = function(self, args)
       if args.type == "ach_awaken" then return true end
+    end,
+}
+SMODS.Achievement {
+    key = "MsGh",
+    loc_txt = {
+        name = "Trolling",
+        description = {
+            "there's no way to get this cuz i cant think of anyhting"
+        }
+    },
+    pos = { x = 1, y = 1 }, 
+    hidden_pos = { x = 0, y = 0 },
+    unlock_condition = function(self, args)
+      if args.type == "ach_trolin" then return true end
     end,
 }
 SMODS.Challenge {

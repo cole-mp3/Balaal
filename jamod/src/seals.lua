@@ -68,6 +68,12 @@ SMODS.Seal {
             end
     end,
 }
+SMODS.Atlas {
+    key = "turs",
+    path = "Seels/tseal.png",
+    px = 142,
+    py = 190
+}
 SMODS.Seal {
     key = 'butterlfy', --turn a, gundam
      badge_colour = HEX("00ffff"),
@@ -75,7 +81,7 @@ SMODS.Seal {
     loc_vars = function(self, info_queue)
         return { vars = { self.config.extra.Emult, self.config.extra.dollars } }
     end,
-    atlas = "satlas",
+    atlas = "turs",
     pos = {x=0, y=0},
     loc_txt = {
                 name = "{f:jabong_turn}Ɐ{} Seal",
