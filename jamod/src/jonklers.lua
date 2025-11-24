@@ -47,7 +47,7 @@ SMODS.Atlas {
 }
 SMODS.ObjectType ({
 key = "halfjokes",
-default  = "j_joker",
+default  = "j_half",
 cards = {},
 inject = function(self)
 SMODS.ObjectType.inject(self)
