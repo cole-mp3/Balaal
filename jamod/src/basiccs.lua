@@ -13,6 +13,35 @@ SMODS.Atlas {
     -- is that fucking amuro ray
 }
 SMODS.Atlas {
+    key = 'm1',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
+    key = 'm2',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+
+SMODS.Atlas {
+    key = 'm3',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
+    key = 'm4',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
     key = "tung", --dont you fucking say it
     path = "crads/tungs.png",
     px = 71,
@@ -785,7 +814,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m1",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic",
@@ -835,7 +864,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m2",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic II",
@@ -886,7 +915,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m3",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic III",
@@ -937,7 +966,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m4,
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic IV",
