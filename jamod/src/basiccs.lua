@@ -966,7 +966,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "m4,
+    atlas = "m4",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic IV",

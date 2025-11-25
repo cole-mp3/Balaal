@@ -1319,7 +1319,6 @@ SMODS.Joker:take_ownership('half',
 	config = { 
         extra_slots_used = -0.5,
         extra = { mult = 20, size = 3 } },
-    pixel_size = { h = 95 / 1.7 },
     pools = {["halfjokes"] = true},
     loc_vars = function(self, info_queue, card)
          info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
@@ -1727,7 +1726,7 @@ SMODS.Joker {
     atlas = "sccre",
     pos = {x = 0 , y = 0},
     loc_txt = {
-        name = "{C:inactive}(other){}Half Joker"
+        name = "{C:inactive}(other){}Half Joker",
         text = {
             "{C:red}+#1#{} Mult if played hand",
             "has greater than Or equal to #2# cards."
@@ -1736,7 +1735,6 @@ SMODS.Joker {
     config = { 
         extra_slots_used = -0.5,
         extra = { mult = 20, size = 3 } },
-    pixel_size = { h = 95 / 1.7 },
     pools = {["halfjokes"] = true},
     loc_vars = function(self, info_queue, card)
          info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
