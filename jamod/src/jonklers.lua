@@ -1314,6 +1314,28 @@ SMODS.Joker:take_ownership('ticket',
     },
     true 
 )
+SMODS.Joker:take_ownership('half', 
+    { 
+	config = { 
+        extra_slots_used = -0.5,
+        extra = { mult = 20, size = 3 } },
+    pixel_size = { h = 95 / 1.7 },
+    pools = {["halfjokes"] = true},
+    loc_vars = function(self, info_queue, card)
+         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return { vars = { card.ability.extra.mult, card.ability.extra.size } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and #context.full_hand <= card.ability.extra.size then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+    },
+    true 
+)
+
 SMODS.Atlas {
     key = "sockandhuh",
     path = "Jonklers/evilsb.png",
@@ -1697,6 +1719,34 @@ SMODS.Joker {
                     colour = G.C.MONEY
                 }
             end
+        end
+    end
+}
+SMODS.Joker {
+    key = "otherhalfjonkler",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "{C:inactive}(other){}Half Joker"
+        text = {
+            "{C:red}+#1#{} Mult if played hand",
+            "has greater than Or equal to #2# cards."
+        }
+    },
+    config = { 
+        extra_slots_used = -0.5,
+        extra = { mult = 20, size = 3 } },
+    pixel_size = { h = 95 / 1.7 },
+    pools = {["halfjokes"] = true},
+    loc_vars = function(self, info_queue, card)
+         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return { vars = { card.ability.extra.mult, card.ability.extra.size } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and #context.full_hand >= card.ability.extra.size then
+            return {
+                mult = card.ability.extra.mult
+            }
         end
     end
 }
