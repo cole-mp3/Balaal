@@ -1786,13 +1786,13 @@ SMODS.Joker {
         text = {
             "{X:red,C:white}X#1#{} Mult.",
             "Increases by {X:red,C:white}X#2#{} at the end of round.",
-            "All {C:attention}____ Of Jimbodia{} jokers you possess"
+            "All {C:attention}____ Of Jimbodia{} jokers you possess",
             "also give {X:red,C:white}X#1#{} Mult."
         }
     },
     rarity = 4,
     config = { 
-        extra = { Xmult = 15, Xmult_gain = 15,} },
+        extra = { Xmult = 15, Xmult_gain = 20,} },
     loc_vars = function(self, info_queue, card)
          info_queue[#info_queue + 1] = { key = 'hc_jod_comment', set = 'Other' }
         return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
@@ -1800,7 +1800,30 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.other_joker then
             return {
-                Xmult = card.ability.extra.mult
+                xmult = card.ability.extra.Xmult
+            }
+        end
+        if context.end_of_round and context.main_eval and context.game_over == false then
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
+           return{ message = "Upgrade!", colour = G.C.RED}
+           
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+    if next(SMODS.find_card("j_jabong_cjimbod")) and 
+    next(SMODS.find_card("j_jabong_lajim")) and 
+    next(SMODS.find_card("j_jabong_rajim")) and 
+    next(SMODS.find_card("j_jabong_rlejim")) and 
+    next(SMODS.find_card("j_jabong_llejim")) 
+    then
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_cjimbod"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_lajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rlejim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_llejim"))
+        SMODS.add_card{ key = "j_jabong_Jimbodiafull" }
+        return{
+                play_sound('jabong_boop'),
             }
         end
     end
@@ -1872,7 +1895,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                Xchips = card.ability.extra.Xchips
+                xchips = card.ability.extra.Xchips
             }
         end
     end
@@ -1901,12 +1924,9 @@ SMODS.Joker {
     key = "redbrc",
     atlas = "sccre",
     pos = {x = 0, y = 0},
-    config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}}
+    config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult, 
-        card.ability.extra.Xmult_gain, 
-        card.ability.extra.Xchips, 
-        card.ability.extra.Xchips_gain} }
+        return { vars = { card.ability.extra.Xmult,  card.ability.extra.Xmult_gain,  card.ability.extra.Xchips,  card.ability.extra.Xchips_gain, key = card.edition and card.edition.negative and "j_jabong_redbrc_alte" or nil} }
     end,
      calculate = function(self, card, context)
         if context.joker_main then
@@ -1916,4 +1936,58 @@ SMODS.Joker {
         end
     end
     
+}
+SMODS.Rarity {
+    key = "roundabout",
+    pools = {
+        ["Joker"] = true
+    },
+    default_weight = 0.00,
+    badge_colour = HEX('FFC100'),
+    loc_txt = {
+        name = "Jimbodia"
+    },
+    get_weight = function(self, weight, object_type)
+        return weight
+    end,
+}
+SMODS.Joker {
+    key = "Jimbodiafull",
+    atlas = "sccre",
+    pos = {x = 0, y = 0},
+    rarity = "jabong_roundabout",
+    loc_txt = {
+        name = "{C:dark_edition}Jimbodia, The Forbidden One{}",
+        text = {
+            "Win the run when this joker is obtained.",
+            "This Joker gives {X:inactive,C:white}^^#1#{} Mult and Chips, played cards only give the mult",
+            "and retriggers all jokers {C:attention}#2#{} times, BUT it takes up 5 joker slots."
+        }
+    },
+    config = { 
+        extra_slots_used = 4,
+        extra = { Emult = 2, repetitions = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Emult, card.ability.extra.repetitions } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and context.other_joker.config.center.key == "j_jabong_Jimbodiafull" then
+            return {
+             eemult = card.ability.extra.Emult,
+             eechips = card.ability.extra.Emult
+            }
+        end
+        if context.individual and context.cardarea == G.play then
+            return {
+             eemult = card.ability.extra.Emult,
+            }
+         end
+         if context.retrigger_joker_check then
+            return { repetitions = card.ability.extra.repetitions }
+        end
+        
+    end,
+    in_pool = function(self, args)
+            return not args or args.source ~= "jud"
+     end
 }

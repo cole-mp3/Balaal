@@ -39,7 +39,7 @@ SMODS.Back {
                 return true
             end
         }))
-    end
+    end,
      locked_loc_vars = function(self, info_queue, back)
         local other_name = localize('k_unknown')
         if G.P_CENTERS['b_red'].unlocked then

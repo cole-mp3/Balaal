@@ -492,7 +492,24 @@ SMODS.Rank {
         name = "0"
     }
 }
-
+if G.jokers then
+    if next(SMODS.find_card("j_jabong_cjimbod")) and 
+    next(SMODS.find_card("j_jabong_lajim")) and 
+    next(SMODS.find_card("j_jabong_rajim")) and 
+    next(SMODS.find_card("j_jabong_rlejim")) and 
+    next(SMODS.find_card("j_jabong_llejim")) 
+    then
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_cjimbod"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_lajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rlejim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_llejim"))
+        SMODS.add_card{ key = "j_jabong_Jimbodiafull" }
+        return{
+                play_sound('jabong_boop'),
+            }
+    end
+end
 
 
     

@@ -112,6 +112,138 @@ return {
                     "hodor {C:attention}slamo{}."
                 }
             },
+             b_abandoned = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_anaglyph = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_black = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_blue = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_checkered = {
+               name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_erratic = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_ghost = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_green = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_magic = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_nebula = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_painted = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_plasma = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_red = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+            },
+            b_yellow = {
+                 name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
+            b_zodiac = {
+                name = "hodor",
+                text = {
+                    "hodor"
+                },
+                unlock = {
+                 "hodor"
+                }
+            },
             b_jabong_xboxlive = {
                 name = "Hodor",
                 text = {

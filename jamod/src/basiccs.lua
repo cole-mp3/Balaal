@@ -803,8 +803,7 @@ SMODS.Consumable {
         SMODS.destroy_cards(G.consumeables.cards)
     end,
      can_use = function(self, card)
-        return (G.consumeables and #G.consumeables.cards <= G.consumeables.config.card_limit and not G.consumeables and #G.consumeables.cards == 0) or
-            (card.area == G.consumeables)
+        return true
     end
 }
 

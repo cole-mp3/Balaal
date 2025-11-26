@@ -57,15 +57,15 @@ return {
             }
           },
           j_jabong_redbrc = {
-            name = "Red",
+            name = "Red {s:0.8,C:inactive}{felix){}",
             text = {
                 "{X:red,C:white}X#1#{} Mult.",
                 "Gains {X:red,C:white}X#2#{} Per scored,",
                 "{C:attention}Retriggering{} card.",
             }
           },
-            j_jabong_redbrc_alt = {
-            name = "Felix",
+            j_jabong_redbrc_alte = {
+            name = "{s:0.8,C:inactive}{red){} Felix",
             text = {
                 "{X:blue,C:white}X#3#{} Chips.",
                 "Gains {X:blue,C:white}X#4#{} Per scored,",
@@ -98,7 +98,7 @@ return {
           j_jabong_Aerial = {
             name = "Gundam Aerial",
             text = {
-                "This card gains {X:red,C:white}X#1#{} mult",
+                "This card gains {X:inactive,C:white}^#1#{} mult",
                 "Every time you {C:attention}One-Shot{} a blind.",
                 "{C:inactive}Currently{}{X:red,C:white}X#1#{}"
             },
