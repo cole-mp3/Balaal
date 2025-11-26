@@ -31,12 +31,6 @@ SMODS.Back {
 SMODS.Back {
     key = "xboxlive",
     atlas = 'datlas',
-    loc_txt = {
-        name = "XBOX LIVE!!!!!!",
-        text = {
-            "Start the run with a {C:attention}MAXIMIZED{} Joker."
-        }
-    },
      pos = {x = 2, y = 0},
      apply = function()
         G.E_MANAGER:add_event(Event({
@@ -45,6 +39,17 @@ SMODS.Back {
                 return true
             end
         }))
+    end
+     locked_loc_vars = function(self, info_queue, back)
+        local other_name = localize('k_unknown')
+        if G.P_CENTERS['b_red'].unlocked then
+            other_name = localize { type = 'name_text', set = 'Back', key = 'b_jabong_slamo' }
+        end
+
+        return { vars = { other_name } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_jabong_slamo') and true
     end
 }
 SMODS.Atlas {

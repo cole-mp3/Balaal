@@ -312,3 +312,8 @@ SMODS.Sticker {
     end,
 
 }
+SMODS.Language {
+    key = "hodor"
+    label = "Hodor"
+    font = 1
+}

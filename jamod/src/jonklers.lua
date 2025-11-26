@@ -1748,3 +1748,172 @@ SMODS.Joker {
         end
     end
 }
+SMODS.Joker {
+    key = "rolly",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "Sony Rolly",
+        text = {
+            "Earn {C:money}$#1#{} per card in the deck.",
+            "Currently {C:money}$#2#{}"
+        }
+    },
+    config = { extra = { dollars = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local ca_tally = 0
+        if G.playing_cards then
+            for _, playing_card in ipairs(G.playing_cards) do
+                ca_tally = ca_tally + 1 
+            end
+        end
+        return { vars = { card.ability.extra.dollars, card.ability.extra.dollars * ca_tally } }
+    end,
+    calc_dollar_bonus = function(self, card)
+        local ca_tally = 0
+        for _, playing_card in ipairs(G.playing_cards) do
+         ca_tally = ca_tally + 1 
+        end
+        return ca_tally > 0 and card.ability.extra.dollars * ca_tally or nil
+    end
+}
+SMODS.Joker {
+    key = "cjimbod",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "Jimbodia",
+        text = {
+            "{X:red,C:white}X#1#{} Mult.",
+            "Increases by {X:red,C:white}X#2#{} at the end of round.",
+            "All {C:attention}____ Of Jimbodia{} jokers you possess"
+            "also give {X:red,C:white}X#1#{} Mult."
+        }
+    },
+    rarity = 4,
+    config = { 
+        extra = { Xmult = 15, Xmult_gain = 15,} },
+    loc_vars = function(self, info_queue, card)
+         info_queue[#info_queue + 1] = { key = 'hc_jod_comment', set = 'Other' }
+        return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker then
+            return {
+                Xmult = card.ability.extra.mult
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "lajim",
+    pos = { x = 0, y = 0 },
+     loc_txt = {
+        name = "Left Arm Of Jimbodia",
+        text = {
+            "{C:red}+#1#{} Mult.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { mult = 20 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "rajim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Right Arm Of Jimbodia",
+        text = {
+            "{C:chips}+#1#{} Chips.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { chips = 200 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "rlejim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Right Leg Of Jimbodia",
+        text = {
+            "{C:chips}X#1#{} Chips.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { Xchips = 200 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xchips } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                Xchips = card.ability.extra.Xchips
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "llejim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Left Leg Of Jimbodia",
+        text = {
+            "{C:money}$#1#{} At the end of the round.",
+        }
+    },
+    rarity = 3,
+    blueprint_compat = true,
+    cost = 2,
+     config = { extra = { dollars = 200 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars} }
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars or nil
+    end
+}
+SMODS.Joker {
+    key = "redbrc",
+    atlas = "sccre",
+    pos = {x = 0, y = 0},
+    config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}}
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult, 
+        card.ability.extra.Xmult_gain, 
+        card.ability.extra.Xchips, 
+        card.ability.extra.Xchips_gain} }
+    end,
+     calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                Xchips = card.ability.extra.Xchips
+            }
+        end
+    end
+    
+}
