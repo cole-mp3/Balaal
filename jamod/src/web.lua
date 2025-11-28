@@ -317,3 +317,4 @@ SMODS.Language {
     label = "Hodor",
     font = 1
 }
+-- thanks yahimod for this

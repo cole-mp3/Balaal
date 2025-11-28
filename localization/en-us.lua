@@ -103,6 +103,14 @@ return {
                 "{C:inactive}Currently{}{X:red,C:white}X#1#{}"
             },
           },
+          j_jabong_Jimbodiafull = {
+            name = "{C:dark_edition}Jimbodia, The Forbidden One{}",
+                text = {
+            "Win the run when this joker is obtained.",
+            "This Joker gives {X:inactive,C:white}^^#1#{} Mult and Chips, played cards only give the mult",
+            "and retriggers all jokers {C:attention}#2#{} times, BUT it takes up 5 joker slots."
+                }
+          },
           j_jabong_jimbyramid = {
             name = "Jimbonium",
         text = {

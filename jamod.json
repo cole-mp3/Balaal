@@ -2,7 +2,7 @@
   "id": "jamod",
   "name": "Balaal",
   "author": ["jabong, RandomizedAlias"],
-  "description": "A Balatro mod woth extremely niche refrences and jokes. This mod is a complete fucking mess, so expect things not working cuz i cant code.",
+  "description": "A Balatro mod woth extremely niche refrences and jokes. This mod is a complete fucking mess, so expect things not working cuz i cant code. Most of the code is borrowed, and the stuff I code in myself looks like a fucking warzone",
   "prefix": "jabong",
   "main_file": "jamod.lua",
   "version": "0.6.2",

@@ -324,7 +324,7 @@ SMODS.Joker {
         name = "Oracle",
         text = {
             "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
-            "This card gains {X:red,C:white}X#1#{} Mult per {C:Attention}Vex Cube{} sold.",
+            "This card gains {X:red,C:white}X#2#{} Mult per {C:Attention}Vex Cube{} sold.",
             "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:inactive}.{}",
         }
     },
@@ -1787,17 +1787,46 @@ SMODS.Joker {
             "{X:red,C:white}X#1#{} Mult.",
             "Increases by {X:red,C:white}X#2#{} at the end of round.",
             "All {C:attention}____ Of Jimbodia{} jokers you possess",
-            "also give {X:red,C:white}X#1#{} Mult."
+            "also give {X:red,C:white}X#1#{} Mult.",
+            "{C:inactive}#3# left.....{} "
         }
     },
     rarity = 4,
     config = { 
-        extra = { Xmult = 15, Xmult_gain = 20,} },
+        extra = { Xmult = 15, Xmult_gain = 20, lefts = 1} },
     loc_vars = function(self, info_queue, card)
+         local left = 4
+        if G.jokers then
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.key == "j_jabong_llejim" or joker.config.center.key == "j_jabong_rlejim" or joker.config.center.key == "j_jabong_lajim" or joker.config.center.key == "j_jabong_rajim" then
+                    left = left - 1
+                end
+            end
+        end
          info_queue[#info_queue + 1] = { key = 'hc_jod_comment', set = 'Other' }
-        return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain } }
+        return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain, card.ability.extra.lefts * left  } }
     end,
     calculate = function(self, card, context)
+        if context.setting_blind then
+            if next(SMODS.find_card("j_jabong_lajim")) and  next(SMODS.find_card("j_jabong_rajim")) and next(SMODS.find_card("j_jabong_rlejim")) and next(SMODS.find_card("j_jabong_llejim")) then
+  
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_cjimbod"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_lajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rlejim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_llejim"))
+
+        
+        SMODS.add_card{ key = "j_jabong_Jimbodiafull" }
+        if  next(SMODS.find_card("j_jabong_Jimbodiafull")) then
+            print ("summon successful")
+        else print ("nope")
+        end
+        return{
+                play_sound('jabong_boop'),
+            }
+        end
+        end
         if context.other_joker then
             return {
                 xmult = card.ability.extra.Xmult
@@ -1809,24 +1838,6 @@ SMODS.Joker {
            
         end
     end,
-    add_to_deck = function(self, card, from_debuff)
-    if next(SMODS.find_card("j_jabong_cjimbod")) and 
-    next(SMODS.find_card("j_jabong_lajim")) and 
-    next(SMODS.find_card("j_jabong_rajim")) and 
-    next(SMODS.find_card("j_jabong_rlejim")) and 
-    next(SMODS.find_card("j_jabong_llejim")) 
-    then
-        SMODS.destroy_cards(SMODS.find_card("j_jabong_cjimbod"))
-        SMODS.destroy_cards(SMODS.find_card("j_jabong_rajim"))
-        SMODS.destroy_cards(SMODS.find_card("j_jabong_lajim"))
-        SMODS.destroy_cards(SMODS.find_card("j_jabong_rlejim"))
-        SMODS.destroy_cards(SMODS.find_card("j_jabong_llejim"))
-        SMODS.add_card{ key = "j_jabong_Jimbodiafull" }
-        return{
-                play_sound('jabong_boop'),
-            }
-        end
-    end
 }
 SMODS.Joker {
     key = "lajim",
@@ -1956,19 +1967,11 @@ SMODS.Joker {
     atlas = "sccre",
     pos = {x = 0, y = 0},
     rarity = "jabong_roundabout",
-    loc_txt = {
-        name = "{C:dark_edition}Jimbodia, The Forbidden One{}",
-        text = {
-            "Win the run when this joker is obtained.",
-            "This Joker gives {X:inactive,C:white}^^#1#{} Mult and Chips, played cards only give the mult",
-            "and retriggers all jokers {C:attention}#2#{} times, BUT it takes up 5 joker slots."
-        }
-    },
     config = { 
         extra_slots_used = 4,
-        extra = { Emult = 2, repetitions = 2 } },
+        extra = { Emult = 2, repetitions = 2} },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Emult, card.ability.extra.repetitions } }
+        return { vars = { card.ability.extra.Emult, card.ability.extra.repetitions, } }
     end,
     calculate = function(self, card, context)
         if context.other_joker and context.other_joker.config.center.key == "j_jabong_Jimbodiafull" then
