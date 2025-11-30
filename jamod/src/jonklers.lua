@@ -1654,7 +1654,7 @@ SMODS.Joker {
     pos = {x = 0 , y = 0},
     rarity = 2,
     loc_txt = {
-        name = "FISH BAIT {f:jabong_emomomo}🐟{}",
+        name = "FISH BAIT {f:jabong_emomomo,C:blue}🐟{}",
         text = {
             "Earn {C:money}$#1#{} per fish at the end of the round.",
             "{C:inactive}Currently{} {C:money}$#2#{}{C:inactive}.{}"
@@ -1937,12 +1937,12 @@ SMODS.Joker {
     pos = {x = 0, y = 0},
     config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult,  card.ability.extra.Xmult_gain,  card.ability.extra.Xchips,  card.ability.extra.Xchips_gain, key = card.edition and card.edition.negative and "j_jabong_redbrc_alte" or nil} }
+        return { vars = { card.ability.extra.Xmult,  card.ability.extra.Xmult_gain,  card.ability.extra.Xchips,  card.ability.extra.Xchips_gain, key = card.edition and card.edition.negative and "j_jabong_redbrc_alt" or nil} }
     end,
      calculate = function(self, card, context)
         if context.joker_main then
             return {
-                Xchips = card.ability.extra.Xchips
+                xchips = card.ability.extra.xchips
             }
         end
     end
