@@ -1,3 +1,45 @@
+local dok = love.draw
+function love.draw()
+    dok()
+    function loadem(fn)
+        local full_path = (jamod.path 
+        .. "customimages/" .. fn)
+        local file_data = assert(NFS.newFileData(full_path),("a"))
+        local tempimagedata = assert(love.image.newImageData(file_data),("e"))
+        --print ("LTFNI: Successfully loaded " .. fn)
+        return (assert(love.graphics.newImage(tempimagedata),("sadsadas")))
+        
+    end
+     local _xscale = love.graphics.getWidth()/1920
+    local _yscale = love.graphics.getHeight()/1080
+
+  if G.quidward and (G.quidward > 0) then
+        if jamod.squig == nil then jamod.squig = loadem("Squid.jpg") end
+        love.graphics.setColor(1, 1, 1, 1) 
+        love.graphics.draw(jamod.squig, 0*_xscale*3, 0*_yscale*3,0,_xscale*3*2,_yscale*3*2)
+    end
+end
+
+
+
+local upd = Game.update
+function Game:update(dt)
+    upd(self, dt)
+
+    -- tick based events
+    if jamod.ticks == nil then jamod.ticks = 0 end
+    if jamod.dtcounter == nil then jamod.dtcounter = 0 end
+    jamod.dtcounter = jamod.dtcounter+dt
+    jamod.dt = dt
+
+    while jamod.dtcounter >= 0.010 do
+        jamod.ticks = jamod.ticks + 1
+        jamod.dtcounter = jamod.dtcounter - 0.010
+        if G.quidward and G.quidward > 0 then G.quidward = G.quidward - 1 
+        end
+
+    end
+end
 SMODS.Atlas {
     key = 'blatlas',
     path = "blatlas.png",
@@ -81,6 +123,33 @@ SMODS.Blind {
                 delay(0.4)
             end
                              end
+                        end
+             
+              
+ end,
+   
+}
+SMODS.Blind {
+     key = "quid",
+    dollars = 5,
+    mult = 2,
+    atlas = "blatlas",
+    pos = { y = 1 },
+    boss = { min = 4 },
+    boss_colour = HEX("d91920"),
+    -- effect: every time a card is triggered ii plays a random gif 
+    loc_txt = {
+        name = "Skodwarde",
+        text = {
+            "pain",
+        },
+    },
+    
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+                    if context.individual and context.cardarea == G.play then
+                       G.quidward = 12
+                    end
                         end
              
               

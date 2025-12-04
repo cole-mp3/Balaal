@@ -324,7 +324,7 @@ SMODS.Joker {
         name = "Oracle",
         text = {
             "Creates 2 {C:attention}Vex Cube{} jokers on blind selection.",
-            "This card gains {X:red,C:white}X#1#{} Mult per {C:Attention}Vex Cube{} sold.",
+            "This card gains {X:red,C:white}X#2#{} Mult per {C:Attention}Vex Cube{} sold.",
             "{C:inactive}Currently{}{X:red,C:white}X#1#{}{C:inactive}.{}",
         }
     },
@@ -1314,6 +1314,27 @@ SMODS.Joker:take_ownership('ticket',
     },
     true 
 )
+SMODS.Joker:take_ownership('half', 
+    { 
+	config = { 
+        extra_slots_used = -0.5,
+        extra = { mult = 20, size = 3 } },
+    pools = {["halfjokes"] = true},
+    loc_vars = function(self, info_queue, card)
+         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return { vars = { card.ability.extra.mult, card.ability.extra.size } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and #context.full_hand <= card.ability.extra.size then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+    },
+    true 
+)
+
 SMODS.Atlas {
     key = "sockandhuh",
     path = "Jonklers/evilsb.png",
@@ -1633,7 +1654,7 @@ SMODS.Joker {
     pos = {x = 0 , y = 0},
     rarity = 2,
     loc_txt = {
-        name = "FISH BAIT {f:jabong_emomomo}🐟{}",
+        name = "FISH BAIT {f:jabong_emomomo,C:blue}🐟{}",
         text = {
             "Earn {C:money}$#1#{} per fish at the end of the round.",
             "{C:inactive}Currently{} {C:money}$#2#{}{C:inactive}.{}"
@@ -1699,4 +1720,277 @@ SMODS.Joker {
             end
         end
     end
+}
+SMODS.Joker {
+    key = "otherhalfjonkler",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "{C:inactive}(other){}Half Joker",
+        text = {
+            "{C:red}+#1#{} Mult if played hand",
+            "has greater than Or equal to #2# cards."
+        }
+    },
+    config = { 
+        extra_slots_used = -0.5,
+        extra = { mult = 20, size = 3 } },
+    pools = {["halfjokes"] = true},
+    loc_vars = function(self, info_queue, card)
+         info_queue[#info_queue + 1] = { key = 'hc_half_comment', set = 'Other' }
+        return { vars = { card.ability.extra.mult, card.ability.extra.size } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and #context.full_hand >= card.ability.extra.size then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "rolly",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "Sony Rolly",
+        text = {
+            "Earn {C:money}$#1#{} per card in the deck.",
+            "Currently {C:money}$#2#{}"
+        }
+    },
+    config = { extra = { dollars = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local ca_tally = 0
+        if G.playing_cards then
+            for _, playing_card in ipairs(G.playing_cards) do
+                ca_tally = ca_tally + 1 
+            end
+        end
+        return { vars = { card.ability.extra.dollars, card.ability.extra.dollars * ca_tally } }
+    end,
+    calc_dollar_bonus = function(self, card)
+        local ca_tally = 0
+        for _, playing_card in ipairs(G.playing_cards) do
+         ca_tally = ca_tally + 1 
+        end
+        return ca_tally > 0 and card.ability.extra.dollars * ca_tally or nil
+    end
+}
+SMODS.Joker {
+    key = "cjimbod",
+    atlas = "sccre",
+    pos = {x = 0 , y = 0},
+    loc_txt = {
+        name = "Jimbodia",
+        text = {
+            "{X:red,C:white}X#1#{} Mult.",
+            "Increases by {X:red,C:white}X#2#{} at the end of round.",
+            "All {C:attention}____ Of Jimbodia{} jokers you possess",
+            "also give {X:red,C:white}X#1#{} Mult.",
+            "{C:inactive}#3# left.....{} "
+        }
+    },
+    rarity = 4,
+    config = { 
+        extra = { Xmult = 15, Xmult_gain = 20, lefts = 1} },
+    loc_vars = function(self, info_queue, card)
+         local left = 4
+        if G.jokers then
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.key == "j_jabong_llejim" or joker.config.center.key == "j_jabong_rlejim" or joker.config.center.key == "j_jabong_lajim" or joker.config.center.key == "j_jabong_rajim" then
+                    left = left - 1
+                end
+            end
+        end
+         info_queue[#info_queue + 1] = { key = 'hc_jod_comment', set = 'Other' }
+        return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult_gain, card.ability.extra.lefts * left  } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            if next(SMODS.find_card("j_jabong_lajim")) and  next(SMODS.find_card("j_jabong_rajim")) and next(SMODS.find_card("j_jabong_rlejim")) and next(SMODS.find_card("j_jabong_llejim")) then
+  
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_cjimbod"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_lajim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_rlejim"))
+        SMODS.destroy_cards(SMODS.find_card("j_jabong_llejim"))
+
+        
+        SMODS.add_card{ key = "j_jabong_Jimbodiafull" }
+        if  next(SMODS.find_card("j_jabong_Jimbodiafull")) then
+            print ("summon successful")
+        else print ("nope")
+        end
+        return{
+                play_sound('jabong_boop'),
+            }
+        end
+        end
+        if context.other_joker then
+            return {
+                xmult = card.ability.extra.Xmult
+            }
+        end
+        if context.end_of_round and context.main_eval and context.game_over == false then
+            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
+           return{ message = "Upgrade!", colour = G.C.RED}
+           
+        end
+    end,
+}
+SMODS.Joker {
+    key = "lajim",
+    pos = { x = 0, y = 0 },
+     loc_txt = {
+        name = "Left Arm Of Jimbodia",
+        text = {
+            "{C:red}+#1#{} Mult.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { mult = 20 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "rajim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Right Arm Of Jimbodia",
+        text = {
+            "{C:chips}+#1#{} Chips.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { chips = 200 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "rlejim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Right Leg Of Jimbodia",
+        text = {
+            "{C:chips}X#1#{} Chips.",
+        }
+    },
+    rarity = 1,
+    blueprint_compat = true,
+    cost = 2,
+    config = { extra = { Xchips = 200 }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xchips } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.Xchips
+            }
+        end
+    end
+}
+SMODS.Joker {
+    key = "llejim",
+    pos = { x = 0, y = 0 },
+    loc_txt = {
+        name = "Left Leg Of Jimbodia",
+        text = {
+            "{C:money}$#1#{} At the end of the round.",
+        }
+    },
+    rarity = 3,
+    blueprint_compat = true,
+    cost = 2,
+     config = { extra = { dollars = 200 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars} }
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars or nil
+    end
+}
+SMODS.Joker {
+    key = "redbrc",
+    atlas = "sccre",
+    pos = {x = 0, y = 0},
+    config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult,  card.ability.extra.Xmult_gain,  card.ability.extra.Xchips,  card.ability.extra.Xchips_gain, key = card.edition and card.edition.negative and "j_jabong_redbrc_alt" or nil} }
+    end,
+     calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end
+    
+}
+SMODS.Rarity {
+    key = "roundabout",
+    pools = {
+        ["Joker"] = true
+    },
+    default_weight = 0.00,
+    badge_colour = HEX('FFC100'),
+    loc_txt = {
+        name = "Jimbodia"
+    },
+    get_weight = function(self, weight, object_type)
+        return weight
+    end,
+}
+SMODS.Joker {
+    key = "Jimbodiafull",
+    atlas = "sccre",
+    pos = {x = 0, y = 0},
+    rarity = "jabong_roundabout",
+    config = { 
+        extra_slots_used = 4,
+        extra = { Emult = 2, repetitions = 2} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Emult, card.ability.extra.repetitions, } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and context.other_joker.config.center.key == "j_jabong_Jimbodiafull" then
+            return {
+             eemult = card.ability.extra.Emult,
+             eechips = card.ability.extra.Emult
+            }
+        end
+        if context.individual and context.cardarea == G.play then
+            return {
+             eemult = card.ability.extra.Emult,
+            }
+         end
+         if context.retrigger_joker_check then
+            return { repetitions = card.ability.extra.repetitions }
+        end
+        
+    end,
+    in_pool = function(self, args)
+            return not args or args.source ~= "jud"
+     end
 }

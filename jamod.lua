@@ -152,7 +152,9 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
             colour = G.C.CLEAR,
             },
             nodes = {
-                {
+               
+ {n = G.UIT.C, config = {align = "cm", colour = G.C.CLEAR, scale = 1.1}, nodes = {
+   {
                 n = G.UIT.R,
                 config = {
                 padding = 0,
@@ -234,7 +236,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                 {
                     n = G.UIT.T,
                     config = {
-                    text = "Slander towards",
+                    text = "Borrowed Code:",
                     shadow = false,
                     scale = scale*0.66,
                     colour = G.C.INACTIVE
@@ -252,7 +254,7 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                 {
                     n = G.UIT.T,
                     config = {
-                    text = "Myself (cuz i cant code)",
+                    text = "Yahimod, Vanillaremade, and uhh i think hotpot",
                     shadow = false,
                     scale = scale*2,
                     colour = G.C.GREEN
@@ -331,9 +333,15 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                     }
                 }
                 } 
+            } 
+ }},
+ {n = G.UIT.C, config = {align = "cm", colour = G.C.CLEAR, scale = 1.1},nodes ={
+     {n=G.UIT.R, config={align = "cm", colour = G.C.CLEAR,}, nodes={}}, -- 3
+    {n=G.UIT.R, config={align = "cm", colour = G.C.CLEAR,}, nodes={}}  -- 4
+  }}
+
+ }
             }
-            }
-        }
         end
     }
 end

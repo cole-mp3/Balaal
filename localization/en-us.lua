@@ -56,6 +56,22 @@ return {
                 "Creates 2 Negative {C:attention}legendary{} Jokers{}.",
             }
           },
+          j_jabong_redbrc = {
+            name = "Red {s:0.6,C:inactive}(felix){}",
+            text = {
+                "{X:red,C:white}X#1#{} Mult.",
+                "Gains {X:red,C:white}X#2#{} Per scored,",
+                "{C:attention}Retriggering{} card.",
+            }
+          },
+            j_jabong_redbrc_alt = {
+            name = "{s:0.6,C:inactive}(red){} felix",
+            text = {
+                "{X:blue,C:white}X#3#{} Mult.",
+                "Gains {X:blue,C:white}X#4#{} Per scored,",
+                "{C:attention}Retriggering{} card.",
+            }
+          },
         j_jabong_intelligence = {
             name = "Intelligence",
             text = {
@@ -82,10 +98,18 @@ return {
           j_jabong_Aerial = {
             name = "Gundam Aerial",
             text = {
-                "This card gains {X:red,C:white}X#1#{} mult",
+                "This card gains {X:inactive,C:white}^#1#{} mult",
                 "Every time you {C:attention}One-Shot{} a blind.",
                 "{C:inactive}Currently{}{X:red,C:white}X#1#{}"
             },
+          },
+          j_jabong_Jimbodiafull = {
+            name = "{C:dark_edition}Jimbodia, The Forbidden One{}",
+                text = {
+            "Win the run when this joker is obtained.",
+            "This Joker gives {X:inactive,C:white}^^#1#{} Mult and Chips, played cards only give the mult",
+            "and retriggers all jokers {C:attention}#2#{} times, BUT it takes up 5 joker slots."
+                }
           },
           j_jabong_jimbyramid = {
             name = "Jimbonium",
@@ -121,6 +145,17 @@ return {
                     "{C:attention}-1{} hands and discards, start with ",
                     "1 Copies of {C:attention}The fool{}.",
                     "Every card is a {C:attention}slamo{}."
+                }
+            },
+            b_jabong_xboxlive = {
+                name = "Legally Distinct Xbox Deck",
+                text = {
+                     "Start the run with a random {C:attention}MAXIMIZED{} Joker."
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on any difficulty",
                 }
             },
 
@@ -259,6 +294,16 @@ return {
                 },
                 text = {
                     "vegeta :)",
+
+                }
+            },
+            hc_jod_comment = {
+                name = {
+                    "Pieces Of Jimbodia",
+                },
+                text = {
+                    "Collect all the pieces of Jimbodia",
+                    "to unleash it's TRUE POWER."
 
                 }
             },

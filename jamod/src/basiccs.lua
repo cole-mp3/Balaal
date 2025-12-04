@@ -13,6 +13,35 @@ SMODS.Atlas {
     -- is that fucking amuro ray
 }
 SMODS.Atlas {
+    key = 'm1',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
+    key = 'm2',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+
+SMODS.Atlas {
+    key = 'm3',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
+    key = 'm4',
+    path = 'crads/a1.png',
+    px = 71,
+    py = 95
+    -- is that fucking amuro ray
+}
+SMODS.Atlas {
     key = "tung", --dont you fucking say it
     path = "crads/tungs.png",
     px = 71,
@@ -774,8 +803,7 @@ SMODS.Consumable {
         SMODS.destroy_cards(G.consumeables.cards)
     end,
      can_use = function(self, card)
-        return (G.consumeables and #G.consumeables.cards <= G.consumeables.config.card_limit and not G.consumeables and #G.consumeables.cards == 0) or
-            (card.area == G.consumeables)
+        return true
     end
 }
 
@@ -785,7 +813,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m1",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic",
@@ -835,7 +863,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m2",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic II",
@@ -886,7 +914,7 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m3",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic III",
@@ -937,7 +965,58 @@ SMODS.Consumable {
      hidden = true,
  soul_set = 'jabong_Material',
  can_repeat_soul = true,
-    atlas = "rsatlas",
+    atlas = "m4",
+    pos = {x = 0, y = 0},
+    loc_txt = {
+        name = "Arithmetic IV",
+        text = {
+            "Gives {C:attention}1{} selected card the",
+            "{C:green}Squaring{} {X:tarot,C:white,E:1}Operator{}",
+            "{C:inactive}swaws{}"
+        }
+    },
+     config = { extra = { }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
+    end,
+    use = function(self, card, area, copier)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_opersquare", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+}
+SMODS.Consumable{
+     set = 'Spectral',
+    key = "math4",
+     hidden = true,
+ soul_set = 'jabong_Material',
+ can_repeat_soul = true,
+    atlas = "m4",
     pos = {x = 0, y = 0},
     loc_txt = {
         name = "Arithmetic IV",
