@@ -21,6 +21,212 @@ return {
                 }
             }
         },
+        Blind = {
+            bl_small = {
+                name = "Hodor",
+                text = {
+                },
+            },
+            bl_big = {
+                name = "hodor",
+                text = {
+                },
+            },
+            bl_hook = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_ox = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_house = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_wall = {
+               name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_wheel = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_arm = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_club = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_fish = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_psychic = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_goad = {
+               name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_water = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_window = {
+               name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_manacle = {
+               name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_eye = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_mouth = {
+                name = "hodor",
+                text = {
+                    "Hodor",
+                    "Hodor"
+                },
+            },
+            bl_plant = {
+                name = "The Plant",
+                text = {
+                    "All face cards",
+                    "are debuffed",
+                },
+            },
+            bl_serpent = {
+                name = "The Serpent",
+                text = {
+                    "After Play or Discard,",
+                    "always draw 3 cards",
+                },
+            },
+            bl_pillar = {
+                name = "The Pillar",
+                text = {
+                    "Cards played previously",
+                    "this Ante are debuffed",
+                },
+            },
+            bl_needle = {
+                name = "The Needle",
+                text = {
+                    "Play only 1 hand",
+                },
+            },
+            bl_head = {
+                name = "The Head",
+                text = {
+                    "All Heart cards",
+                    "are debuffed",
+                },
+            },
+            bl_tooth = {
+                name = "The Tooth",
+                text = {
+                    "Lose $1 per",
+                    "card played",
+                },
+            },
+            bl_flint = {
+                name = "The Flint",
+                text = {
+                    "Base Chips and",
+                    "Mult are halved",
+                },
+            },
+            bl_mark = {
+                name = "The Mark",
+                text = {
+                    "All face cards are",
+                    "drawn face down",
+                },
+            },
+            bl_final_acorn = {
+                name = "Amber Acorn",
+                text = {
+                    "Flips and shuffles",
+                    "all Joker cards",
+                },
+            },
+            bl_final_leaf = {
+                name = "Verdant Leaf",
+                text = {
+                    "All cards debuffed",
+                    "until 1 Joker sold",
+                },
+            },
+            bl_final_vessel = {
+                name = "Violet Vessel",
+                text = {
+                    "Very large blind",
+                },
+            },
+            bl_final_heart = {
+                name = "Crimson Heart",
+                text = {
+                    "One random Joker",
+                    "disabled every hand",
+                },
+            },
+            bl_final_bell = {
+                name = "Cerulean Bell",
+                text = {
+                    "Forces 1 card to",
+                    "always be selected",
+                },
+            },
+        },
         Joker = {
              j_jabong_redbrc = {
             name = "hodor",
