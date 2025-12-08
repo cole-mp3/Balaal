@@ -1931,23 +1931,6 @@ SMODS.Joker {
         return card.ability.extra.dollars or nil
     end
 }
-SMODS.Joker {
-    key = "redbrc",
-    atlas = "sccre",
-    pos = {x = 0, y = 0},
-    config = {extra = {Xmult = 2, Xmult_gain = 2, Xchips = 2, Xchips_gain = 2}},
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult,  card.ability.extra.Xmult_gain,  card.ability.extra.Xchips,  card.ability.extra.Xchips_gain, key = card.edition and card.edition.negative and "j_jabong_redbrc_alt" or nil} }
-    end,
-     calculate = function(self, card, context)
-        if context.joker_main then
-            return {
-                xchips = card.ability.extra.xchips
-            }
-        end
-    end
-    
-}
 SMODS.Rarity {
     key = "roundabout",
     pools = {

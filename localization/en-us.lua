@@ -56,22 +56,6 @@ return {
                 "Creates 2 Negative {C:attention}legendary{} Jokers{}.",
             }
           },
-          j_jabong_redbrc = {
-            name = "Red {s:0.6,C:inactive}(felix){}",
-            text = {
-                "{X:red,C:white}X#1#{} Mult.",
-                "Gains {X:red,C:white}X#2#{} Per scored,",
-                "{C:attention}Retriggering{} card.",
-            }
-          },
-            j_jabong_redbrc_alt = {
-            name = "{s:0.6,C:inactive}(red){} felix",
-            text = {
-                "{X:blue,C:white}X#3#{} Mult.",
-                "Gains {X:blue,C:white}X#4#{} Per scored,",
-                "{C:attention}Retriggering{} card.",
-            }
-          },
         j_jabong_intelligence = {
             name = "Intelligence",
             text = {
