@@ -1,6 +1,37 @@
 return {
     descriptions = {
-      
+        Edition = {
+            e_foil = {
+                name = "Hodor",
+                text = {
+                    "{C:chips}Hodor{}",
+                },
+            },
+            e_holo = {
+                name = "Hodor",
+                text = {
+                    "{C:mult}Hodor{}",
+                },
+            },
+            e_negative = {
+                name = "Hodor",
+                text = {
+                    "{C:dark_edition}Hodor{} Hodor",
+                },
+            },
+            e_negative_consumable = {
+                name = "Hodor",
+                text = {
+                    "{C:dark_edition}Hodor{} Hodor",
+                },
+            },
+            e_polychrome = {
+                name = "Hodor",
+                text = {
+                    "{X:mult,C:white} Hodor {}",
+                },
+            },
+        },
         Enhanced = {
             m_jabong_copper = {
                 name = "hodor",
@@ -138,92 +169,94 @@ return {
                 },
             },
             bl_plant = {
-                name = "The Plant",
+                name = "hodor",
                 text = {
-                    "All face cards",
-                    "are debuffed",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_serpent = {
-                name = "The Serpent",
+                name = "hodor",
                 text = {
-                    "After Play or Discard,",
-                    "always draw 3 cards",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_pillar = {
-                name = "The Pillar",
+                name = "hodor",
                 text = {
-                    "Cards played previously",
-                    "this Ante are debuffed",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_needle = {
-                name = "The Needle",
+                name = "hodor",
                 text = {
-                    "Play only 1 hand",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_head = {
-                name = "The Head",
+                name = "hodor",
                 text = {
-                    "All Heart cards",
-                    "are debuffed",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_tooth = {
-                name = "The Tooth",
+                name = "hodor",
                 text = {
-                    "Lose $1 per",
-                    "card played",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_flint = {
-                name = "The Flint",
+                name = "hodor",
                 text = {
-                    "Base Chips and",
-                    "Mult are halved",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_mark = {
-                name = "The Mark",
+                name = "hodor",
                 text = {
-                    "All face cards are",
-                    "drawn face down",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_final_acorn = {
-                name = "Amber Acorn",
+                name = "hodor",
                 text = {
-                    "Flips and shuffles",
-                    "all Joker cards",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_final_leaf = {
-                name = "Verdant Leaf",
+                name = "hodor",
                 text = {
-                    "All cards debuffed",
-                    "until 1 Joker sold",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_final_vessel = {
-                name = "Violet Vessel",
+               name = "hodor",
                 text = {
-                    "Very large blind",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_final_heart = {
-                name = "Crimson Heart",
+                name = "hodor",
                 text = {
-                    "One random Joker",
-                    "disabled every hand",
+                    "Hodor",
+                    "Hodor"
                 },
             },
             bl_final_bell = {
-                name = "Cerulean Bell",
+                name = "hodor",
                 text = {
-                    "Forces 1 card to",
-                    "always be selected",
+                    "Hodor",
+                    "Hodor"
                 },
             },
         },
