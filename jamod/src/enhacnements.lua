@@ -115,9 +115,4 @@ SMODS.Enhancement {
         return { vars = { card.ability.h_x_mult, card.ability.h_x_mult, card.ability.x_chips } }
     end,
 }
-SMODS.Enhancement:take_ownership('bonus', 
-    {
- --aeiou
-    },
-    true 
-)
+
