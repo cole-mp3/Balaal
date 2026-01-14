@@ -15,7 +15,8 @@ SMODS.Sound ({
         end
     end
 })
-    
+
+
 SMODS.Rarity {
     key = "Max",
     pools = {

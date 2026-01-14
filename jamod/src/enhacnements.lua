@@ -10,16 +10,7 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-SMODS.Enhancement {
-    key = "soap"
-    atlas = "purp",
-    loc_txt = {
-        name = "Clean card",
-        text = {
-            "This card can't be {C:attention}debuffed{}."
-        }
-    },
-}
+
 SMODS.Enhancement {
     key = "ruband",
     atlas = "rublas", 

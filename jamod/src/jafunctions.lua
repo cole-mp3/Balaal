@@ -1,4 +1,10 @@
---Port button
+Jafunc = {} --you should be global, now!!!!!!*lightning*
+--fishing token stuff
+
+
+--#endregion
+
+--To Port button
 local function fishop_ui(card)
   return UIBox {
     definition = {
@@ -27,7 +33,7 @@ local function fishop_ui(card)
                 {
                   n = G.UIT.T,
                   config = {
-                    text = "Port",
+                    text = "To Port",
                     colour = G.C.UI.TEXT_LIGHT, -- color of the button text
                     scale = 0.4,
                   }
@@ -84,7 +90,7 @@ SMODS.draw_ignore_keys.jabong_fih = true
 --aaaand now we do
 local highlight_ref = Card.highlight
 function Card.highlight(self, is_highlighted)
-  if is_highlighted and self.ability.set == "Joker" and self.area == G.jokers then
+  if is_highlighted and self.ability.set == "Joker" and self.area == G.jokers and self.config.center.key == "j_jabong_fisherman" then
     self.children.jabong_fih = fishop_ui(self)
   elseif self.children.jabong_fih then
     self.children.jabong_fih:remove()

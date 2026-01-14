@@ -114,10 +114,18 @@ local jabongConfigTab = function()
 	config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} } } }
 	jabong_nodes[#jabong_nodes + 1] = config
 	jabong_nodes[#jabong_nodes + 1] = create_toggle({
-		label = "Get around",
+		label = "Le Config (this edits no value i just dont wanna fuck formatting)",
 		active_colour = HEX("40c76d"),
 		ref_table = jaConfig,
-		ref_value = "jabong_Drop",
+		ref_value = "doesnothing",
+		callback = function()
+		end,
+	})
+    jabong_nodes[#jabong_nodes + 1] = create_toggle({
+		label = "Drop",
+		active_colour = HEX("40c76d"),
+		ref_table = jaConfig,
+		ref_value = "Drop",
 		callback = function()
 		end,
 	})
@@ -125,7 +133,15 @@ local jabongConfigTab = function()
 		label = "Get Around",
 		active_colour = HEX("40c76d"),
 		ref_table = jaConfig,
-		ref_value = "jabong_getr",
+		ref_value = "getr",
+		callback = function()
+		end
+	})
+    jabong_nodes[#jabong_nodes + 1] = create_toggle({
+		label = "Vigilante",
+		active_colour = HEX("40c76d"),
+		ref_table = jaConfig,
+		ref_value = "vigilante",
 		callback = function()
 		end
 	})
@@ -144,18 +160,10 @@ local jabongConfigTab = function()
 	}
 end
 jamod.config_tab = jabongConfigTab
---[[
-SMODS.current_mod.config_tab = function()
-	return {n = G.UIT.ROOT, config = {align = "cm", padding = 0.1}, nodes = {
- {n = G.UIT.C, config = {align = "cm", colour = G.C.UI.TEXT_LIGHT, scale = 1.1}},
- {n = G.UIT.C, config = {align = "cm", colour = G.C.UI.TEXT_LIGHT, scale = 1.1},nodes ={
-     {n=G.UIT.R, config={align = "cm", colour = G.C.UI.TEXT_LIGHT,}, nodes={}}, -- 3
-    {n=G.UIT.R, config={align = "cm", colour = G.C.UI.TEXT_LIGHT,}, nodes={}}  -- 4
-  }}
 
- }}
-end
-]]--
+SMODS.current_mod.config_tab = jabongConfigTab
+
+
 
 
 -- thanks cryptid

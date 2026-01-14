@@ -1,8 +1,10 @@
+
 -- thanks to hotpot for having custom shop and currency code 
 -- so i can be unable to understand how it works with style
 Bullshit = {
     shop_scale = 0.85
 }
+
 -- ...I have to do patches dont i
 -- wait why dont i just make it like hpots ads
 --[[
