@@ -148,7 +148,7 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if not blind.disabled then
                     if context.individual and context.cardarea == G.play then
-                       G.quidward = 12
+                     
                     end
                         end
              

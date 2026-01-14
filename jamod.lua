@@ -24,7 +24,7 @@ end
 local mod_path = "" .. SMODS.current_mod.path
 jamod.path = mod_path
 jamod_config = SMODS.current_mod.config
-
+-- load all the files manually cuz why not
 assert(SMODS.load_file("jamod/src/balatroicon.lua"))()
 assert(SMODS.load_file("jamod/src/seals.lua"))()
 assert(SMODS.load_file("jamod/src/backs.lua"))()
@@ -35,6 +35,8 @@ assert(SMODS.load_file("jamod/src/MAXIMIZED.lua"))()
 assert(SMODS.load_file("jamod/src/enhacnements.lua"))()
 assert(SMODS.load_file("jamod/src/utube.lua"))()
 assert(SMODS.load_file("jamod/src/web.lua"))()
+assert(SMODS.load_file("jamod/src/shops.lua"))()
+assert(SMODS.load_file("jamod/src/jafunctions.lua"))()
 assert(SMODS.load_file("config.lua"))()
 SMODS.current_mod.optional_features = {
     retrigger_joker = true,
@@ -104,7 +106,45 @@ SMODS.Sound{
 
          end
 }
+if not jaConfig then jaConfig = {} end
+jaConfig = SMODS.current_mod.config
 
+local jabongConfigTab = function()
+	jabong_nodes = {}
+	config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} } } }
+	jabong_nodes[#jabong_nodes + 1] = config
+	jabong_nodes[#jabong_nodes + 1] = create_toggle({
+		label = "Get around",
+		active_colour = HEX("40c76d"),
+		ref_table = jaConfig,
+		ref_value = "jabong_Drop",
+		callback = function()
+		end,
+	})
+	jabong_nodes[#jabong_nodes + 1] = create_toggle({
+		label = "Get Around",
+		active_colour = HEX("40c76d"),
+		ref_table = jaConfig,
+		ref_value = "jabong_getr",
+		callback = function()
+		end
+	})
+	return {
+		n = G.UIT.ROOT,
+		config = {
+			emboss = 0.05,
+			minh = 6,
+			r = 0.1,
+			minw = 10,
+			align = "cm",
+			padding = 0.2,
+			colour = G.C.BLACK,
+		},
+		nodes = jabong_nodes,
+	}
+end
+jamod.config_tab = jabongConfigTab
+--[[
 SMODS.current_mod.config_tab = function()
 	return {n = G.UIT.ROOT, config = {align = "cm", padding = 0.1}, nodes = {
  {n = G.UIT.C, config = {align = "cm", colour = G.C.UI.TEXT_LIGHT, scale = 1.1}},
@@ -115,6 +155,7 @@ SMODS.current_mod.config_tab = function()
 
  }}
 end
+]]--
 
 
 -- thanks cryptid

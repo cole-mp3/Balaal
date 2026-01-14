@@ -5,9 +5,9 @@
 -- so for now, just set whatever  songs you want to either true or false.
 -- Drops config doesnt work right so just put it in the ae area
 return {
-		["Drop"] = false,
+		["jabong_Drop"] = false,
 		
-		["getr"] = true,
+		["jabong_getr"] = true,
 		["ae"] = {
 			["vigilante"] = true,
 		},
