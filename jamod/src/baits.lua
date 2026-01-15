@@ -17,6 +17,7 @@ SMODS.ConsumableType({
     },
     text_colour = HEX('000000')
     shop_rate = 0.01
+    collection_rows = { 3, 3, 3, 3, 3 }
     key = 'jabong_Modules', 
     default = 'c_jabong_trade1',
     cards = {
