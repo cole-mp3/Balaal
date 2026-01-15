@@ -4,6 +4,31 @@ Jafunc = {} --you should be global, now!!!!!!*lightning*
 
 --#endregion
 
+--[[The fishing shop
+local fop = UIBox({
+   definition = fishingfunction(The Port),
+   config = {type = "cm", }
+})
+function fishingfunction(menu_name)
+   return {n=G.UIT.ROOT, config={align = "cm", instance_type = MOVEABLE, juice = true,}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+         {n=G.UIT.C, config={align = "cm"}, nodes={
+            {n=G.UIT.T, config={text = menu_name, colour = G.C.UI.TEXT_LIGHT, scale = 0.5}}
+         }},
+         {n=G.UIT.C, config={align = "cm"}, nodes={
+            -- add the port token count
+            {n=G.UIT.T, config={text = "You have [idk] Port Tokens.", colour = G.C.UI.TEXT_LIGHT, scale = 0.5}, }
+         }},
+         {n=G.UIT.C, config={align = "cm"}, nodes={
+            -- i'on even knoe
+         }},
+         -- Etc...
+      }}
+   }}
+end
+local fishingnode = {n=G.UIT.O, config={object = fop}}
+--]]
+
 --To Port button
 local function fishop_ui(card)
   return UIBox {
@@ -61,8 +86,16 @@ local function fishop_ui(card)
 end
 -- Will be called whenever the button is clicked
 G.FUNCS.jabong_fishop_click = function(e)
+  local portopen = false
   local card = e.config.ref_table 
-  --placeholder
+  if portopen = false then
+    portopen = true
+
+  end,
+  if portopen then 
+    portopen = false
+  end
+  print("Port State is currently".. portopen) --for debugging
   SMODS.calculate_effect({ message = "Hi!" }, card)
 end
 

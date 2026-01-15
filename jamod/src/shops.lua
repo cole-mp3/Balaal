@@ -6,7 +6,7 @@ Bullshit = {
 }
 
 -- ...I have to do patches dont i
--- wait why dont i just make it like hpots ads
+-- ok new idea, movable uibox, the Port tokens will need patching tho :(
 --[[
 Bullshit.Shop = {}
 
