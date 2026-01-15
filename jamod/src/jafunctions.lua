@@ -5,6 +5,7 @@ Jafunc = {} --you should be global, now!!!!!!*lightning*
 --#endregion
 
 --[[The fishing shop
+-- well theres the basics, now how do I make it show up
 local fop = UIBox({
    definition = fishingfunction(The Port),
    config = {type = "cm", }

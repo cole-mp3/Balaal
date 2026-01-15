@@ -13,11 +13,11 @@ function love.draw()
      local _xscale = love.graphics.getWidth()/1920
     local _yscale = love.graphics.getHeight()/1080
 
-  if G.quidward and (G.quidward > 0) then
-        if jamod.squig == nil then jamod.squig = loadem("Squid.jpg") end
-        love.graphics.setColor(1, 1, 1, 1) 
-        love.graphics.draw(jamod.squig, 0*_xscale*3, 0*_yscale*3,0,_xscale*3*2,_yscale*3*2)
-    end
+  --if G.quidward and (G.quidward > 0) then
+    --    if jamod.squig == nil then jamod.squig = loadem("Squid.jpg") end
+      --  love.graphics.setColor(1, 1, 1, 1) 
+        --love.graphics.draw(jamod.squig, 0*_xscale*3, 0*_yscale*3,0,_xscale*3*2,_yscale*3*2)
+    --end
 end
 
 
@@ -130,31 +130,64 @@ SMODS.Blind {
    
 }
 SMODS.Blind {
-     key = "quid",
-    dollars = 5,
+    key = 'odder',
+    dollars = 7,
     mult = 2,
-    atlas = "blatlas",
-    pos = { y = 1 },
-    boss = { min = 4 },
-    boss_colour = HEX("d91920"),
-    -- effect: every time a card is triggered ii plays a random gif 
+    pos = { x = 0, y = 28 },
+    boss = {min = 5,},
+    boss_colour = HEX("f7e948"),
     loc_txt = {
-        name = "Skodwarde",
+        name = "The Good(?)",
         text = {
-            "pain",
+            "Scored cards with Even ranks",
+            "do not trigger any effects" 
         },
     },
-    
-    calculate = function(self, blind, context)
-        if not blind.disabled then
-                    if context.individual and context.cardarea == G.play then
-                     
-                    end
-                        end
-             
-              
- end,
-   
+    defeat = function(self)
+        if not G.GAME.blind.disabled then
+
+        end
+    end
+}
+SMODS.Blind {
+    key = 'evener',
+    dollars = 7,
+    mult = 2,
+    pos = { x = 0, y = 28 },
+    boss = { min = 3},
+    boss_colour = HEX("f7e948"),
+    loc_txt = {
+        name = "The Bad(?)",
+        text = {
+            "Scored cards with odd ranks",
+            "do not trigger jokers." 
+        },
+    },
+    defeat = function(self)
+        if not G.GAME.blind.disabled then
+            
+        end
+    end
+}
+SMODS.Blind {
+    key = 'thefuck',
+    dollars = 7,
+    mult = 2,
+    pos = { x = 0, y = 28 },
+    boss = { showdown = true,},
+    boss_colour = HEX("f7e948"),
+    loc_txt = {
+        name = "The Ugly",
+        text = {
+            "Scored cards with ANY MODIFICATION",
+            "do not trigger any effects." 
+        },
+    },
+    defeat = function(self)
+        if not G.GAME.blind.disabled then
+            
+        end
+    end
 }
 --[[TO DO FOR THIS BLIND:
     - Make cool hand

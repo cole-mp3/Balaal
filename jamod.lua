@@ -37,6 +37,7 @@ assert(SMODS.load_file("jamod/src/utube.lua"))()
 assert(SMODS.load_file("jamod/src/web.lua"))()
 assert(SMODS.load_file("jamod/src/shops.lua"))()
 assert(SMODS.load_file("jamod/src/jafunctions.lua"))()
+assert(SMODS.load_file("jamod/src/baits.lua"))()
 assert(SMODS.load_file("config.lua"))()
 SMODS.current_mod.optional_features = {
     retrigger_joker = true,

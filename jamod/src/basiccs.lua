@@ -70,6 +70,7 @@ SMODS.ConsumableType({
  			text = { 'find me :)' },
  		},
     },
+    shop_rate = 0.07
     key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {
@@ -749,6 +750,7 @@ SMODS.Consumable {
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv  } } }
     end,
 }
+-- this is the worst yet most effective way i know how to do this.
 SMODS.Consumable {
     set = 'jabong_Material',
     key = "NaCl",
@@ -1077,7 +1079,7 @@ SMODS.Voucher {
     pos = {x = 0, y = 0},
    
     loc_txt = {
-        name = "mindscape",
+        name = "Shitpost Expansion: Mindscape",
         text = {
             "{C:attention}MAXIMIZED{} jokers can appear in the shop."
         }
@@ -1101,9 +1103,9 @@ SMODS.Voucher {
     pos = {x = 1, y = 0},
    
     loc_txt = {
-        name = "Fishing...?",
+        name = "Shitpost Expansion: Fish and Chips",
         text = {
-            "{C:attention}Fishing{} consumables can appear in the shop.",
+            "{C:attention}Modules{} appear in the shop more.",
             "Creates {C:attention}fisherman{} joker when redeemed."
         }
     },
@@ -1115,10 +1117,24 @@ SMODS.Voucher {
                     key = "j_jabong_fisherman",
                     edition = 'e_negative', eternal = true, }
                     check_for_unlock({ type = "ach_fishing" })
-
+                G.GAME.jabong_Modules_rate = card.ability.extra.rate
                 return true
             end
         }))
+    end
+}
+SMODS.Voucher {
+    key = 'sauce',
+    atlas = 'vouch',
+    pos = {x = 1, y = 0},
+    loc_txt = {
+        name = "Shitpost Expansion: The Secret Sauce",
+        text = {
+            "{C:inactive}Does'nt{}",
+        }
+    },
+    redeem = function(self, card)
+        
     end
 }
 

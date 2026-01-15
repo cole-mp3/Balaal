@@ -312,6 +312,40 @@ SMODS.Sticker {
     end,
 
 }
+--[[
+SMODS.Sticker {
+    key = "joel",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name ="Best Value!",
+                text = {
+                    "The card this is applied to loses $#1#",
+                    "in sell value at the end of the round",
+                    "and adds it to your funds.",
+                    "(CAN GO NEGATIVE)"
+                },
+                label = "Addition"
+    },
+   atlas = "sticklas",
+   sets = {
+    Joker = true
+   },
+    pos = { x = 0, y = 0 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     calculate = function(self, card, context)
+            if  then
+                local current_hand_chips = hand_chips
+                return {
+                    chips = hand_chips
+                }
+            end
+    end,
+
+}
+]]--
 SMODS.Language {
     key = "hodor",
     label = "Hodor",

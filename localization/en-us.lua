@@ -38,7 +38,14 @@ return {
                 name = "jimbo",
                 text = {
                     "{X:red,C:white}X#1#{} Mult.",
-                    "{C:inactive}i put a tooltip here i think youll like it{}"
+                    
+                }
+            },
+            j_jabong_factorio = {
+                name = 'Rumble pak',
+                text = {
+                    "On {C:attention}Blind Select{}:",
+                    "Create a {C:attention}Module{}"
                 }
             },
             j_jabong_vegeta = {
