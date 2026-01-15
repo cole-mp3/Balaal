@@ -140,7 +140,7 @@ SMODS.Blind {
         name = "The Good(?)",
         text = {
             "Scored cards with Even ranks",
-            "do not trigger any effects" 
+            "do not trigger any card effects" 
         },
     },
     defeat = function(self)

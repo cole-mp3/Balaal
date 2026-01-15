@@ -370,7 +370,7 @@ SMODS.Sticker {
             if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
                 local current_hand_chips = hand_chips * 0.15
                 return {
-                    mult = current_hand_chips
+                    mult = current_hand_chips,
                     message =  "+"..current_hand_chips.."",
                     colour = G.C.BLUE
                 }
@@ -402,7 +402,7 @@ SMODS.Sticker {
             if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
                 local current_hand_chips = hand_chips * 0.15
                 return {
-                    mult = current_hand_chips
+                    mult = current_hand_chips,
                     message =  "+"..current_hand_chips.."",
                     colour = G.C.BLUE
                 }
@@ -434,7 +434,7 @@ SMODS.Sticker {
             if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
                 local current_hand_chips = hand_chips * 0.15
                 return {
-                    mult = current_hand_chips
+                    mult = current_hand_chips,
                     message =  "+"..current_hand_chips.."",
                     colour = G.C.BLUE
                 }

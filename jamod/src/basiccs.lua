@@ -70,7 +70,7 @@ SMODS.ConsumableType({
  			text = { 'find me :)' },
  		},
     },
-    shop_rate = 0.07
+    shop_rate = 0.07,
     key = 'jabong_Material', 
     default = 'c_jabong_RandS',
     cards = {

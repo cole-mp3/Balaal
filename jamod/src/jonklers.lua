@@ -1848,7 +1848,7 @@ SMODS.Joker {
             "{C:red}+#1#{} Mult.",
         }
     },
-    rarity = 1,
+    rarity = 3,
     blueprint_compat = true,
     cost = 2,
     config = { extra = { mult = 20 }, },
@@ -1872,7 +1872,7 @@ SMODS.Joker {
             "{C:chips}+#1#{} Chips.",
         }
     },
-    rarity = 1,
+    rarity = 3,
     blueprint_compat = true,
     cost = 2,
     config = { extra = { chips = 200 }, },
@@ -1896,7 +1896,7 @@ SMODS.Joker {
             "{C:chips}X#1#{} Chips.",
         }
     },
-    rarity = 1,
+    rarity = 3,
     blueprint_compat = true,
     cost = 2,
     config = { extra = { Xchips = 200 }, },
@@ -1978,7 +1978,7 @@ SMODS.Joker {
      end
 }
 SMODS.Joker {
-    key = "factorio"
+    key = "factorio",
     blueprint_compat = true,
     rarity = 3,
     cost = 6,
