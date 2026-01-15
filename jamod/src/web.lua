@@ -346,6 +346,102 @@ SMODS.Sticker {
 
 }
 ]]--
+SMODS.Sticker {
+    key = "tr1s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Trading I",
+                text = {
+                    "+#1# {C:blue}Port Tokens{} on initial trigger.",
+                },
+                label = "Active Module (T1)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
+}
+SMODS.Sticker {
+    key = "tr2s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Trading II",
+                text = {
+                    "+#1# {C:blue}Port Tokens{} for {C:attention}#2#{} triggers.",
+                },
+                label = "Active Module (T2)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2, triggers = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
+}
+SMODS.Sticker {
+    key = "tr3s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Trading III",
+                text = {
+                    "+#1# {C:blue}Port Tokens{} Per trigger.",
+                },
+                label = "Active Module (T3)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2, triggers = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
+}
 SMODS.Language {
     key = "hodor",
     label = "Hodor",

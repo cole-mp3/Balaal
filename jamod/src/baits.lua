@@ -31,7 +31,7 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4,
     loc_txt = {
-        name = "Trading (I)",
+        name = "Trading Module",
         text = {
             "Pick any 1 card/joker;",
             "The next trigger of that card will give #1# {C:blue}fishing tokens{}.",
@@ -39,27 +39,40 @@ SMODS.Consumable {
         }
     },
     -- delete all this later, CUz you should be able to attach this to a joker or card.
-     config = { extra = { mats = 2 } },
+     config = { extra = { }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mats } }
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
     end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                        play_sound('timpani')
-                        card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-        end
-        delay(0.6)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr1s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
     end,
-    can_use = function(self, card)
-        return true
-    end
 }
 SMODS.Consumable {
     set = 'jabong_Modules',
@@ -68,35 +81,47 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4,
     loc_txt = {
-        name = "Trading (II)",
+        name = "Trading Module (T2)",
         text = {
             "Pick any 1 card/joker;",
             "The next trigger of that card will give #1# {C:blue}fishing tokens{}.",
             "Lasts for only {C:attention}three{} triggers."
         }
     },
-    -- delete all this later, CUz you should be able to attach this to a joker or card.
-     config = { extra = { mats = 2 } },
+    config = { extra = { }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mats } }
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
     end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                        play_sound('timpani')
-                        card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-        end
-        delay(0.6)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr2s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
     end,
-    can_use = function(self, card)
-        return true
-    end
 }
 SMODS.Consumable {
     set = 'jabong_Modules',
@@ -105,32 +130,44 @@ SMODS.Consumable {
     pos = {x = 0, y = 0},
     cost = 4,
     loc_txt = {
-        name = "Trading (III)",
+        name = "Trading Module (T3)",
         text = {
             "Pick any 1 card/joker;",
             "Every trigger of that card will give #1# {C:blue}fishing tokens{}.",
         }
     },
-    -- delete all this later, CUz you should be able to attach this to a joker or card.
-     config = { extra = { mats = 2 } },
+    config = { extra = { }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mats } }
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
     end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(card.ability.extra.mats, G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                        play_sound('timpani')
-                        card:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-        end
-        delay(0.6)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr3s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
     end,
-    can_use = function(self, card)
-        return true
-    end
 }
