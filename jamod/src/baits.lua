@@ -171,3 +171,151 @@ SMODS.Consumable {
         }))
     end,
 }
+SMODS.Consumable {
+    set = 'jabong_Modules',
+    key = 'en1',
+    atlas = "rsatlas", 
+    pos = {x = 0, y = 0},
+    cost = 4,
+    loc_txt = {
+        name = "Engine",
+        text = {
+            "Pick any 1 :",
+            "This card will copy the leftmost joker",
+            "on it's first trigger."
+        }
+    },
+    config = { extra = { }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
+    end,
+    use = function(self, card, area, copier)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr3s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+}
+SMODS.Consumable {
+    set = 'jabong_Modules',
+    key = 'en2',
+    atlas = "rsatlas", 
+    pos = {x = 0, y = 0},
+    cost = 4,
+    loc_txt = {
+        name = "Engine (T2)",
+        text = {
+            "Pick any 1 card:",
+            "This card will copy the leftmost joker",
+            "Every time it is triggered."
+        }
+    },
+    config = { extra = { }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
+    end,
+    use = function(self, card, area, copier)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr3s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+}
+SMODS.Consumable {
+    set = 'jabong_Modules',
+    key = 'en3',
+    atlas = "rsatlas", 
+    pos = {x = 0, y = 0},
+    cost = 4,
+    loc_txt = {
+        name = "Engine (T3)",
+        text = {
+            "Pick any 1 card:",
+            "This card will add the the leftmost joker",
+            "to the deck the first time it is triggered.",
+            "Destroys the card when the effect is activated."
+        }
+    },
+    config = { extra = { }, max_highlighted = 1 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'hc_math_comment', set = 'Other' }
+        return { vars = { card.ability.max_highlighted} }
+    end,
+    use = function(self, card, area, copier)
+        local conv_card = G.hand.highlighted[1]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                play_sound('jabong_damn')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                conv_card:add_sticker("jabong_tr3s", true)
+                return true
+            end
+        }))
+
+        delay(0.5)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+    end,
+}

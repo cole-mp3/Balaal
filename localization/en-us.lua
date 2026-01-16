@@ -1705,7 +1705,7 @@ return {
 			
 },
 v_dictionary = {
-    
+    jabong_fokens_cashout = "Port tokens (#1# per round)"
         },
     
         labels = {

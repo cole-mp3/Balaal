@@ -137,42 +137,7 @@ SMODS.Tag {
 } --theres one mmore after this but ive scrapped it
 -- i think i know how this works
 --update: i did
-SMODS.Font {
-  key = "Ariana", 
-  path = "ArianaVioleta-dz2K.ttf"
-}
-SMODS.Font {
-    key = "japan",
-    path = "Firstgundam-8aVg.ttf"
-}
-SMODS.Font {
-    key = "goog",
-    path = "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
-}
-SMODS.Font {
-    key = "ascii",
-    path = "NotoSansSymbols2-Regular.ttf"
-}
-SMODS.Font {
-    key = "wawa",
-    path = "Angels.ttf"
-}
-SMODS.Font {
-    key = "emomomo",
-    path = "NotoEmoji-Regular.ttf"
-}
-SMODS.Font {
-    key = "fire",
-    path = "SupporterpersonaluseRegular-EazBz.otf"
-}
-SMODS.Font {
-    key = "gundamit",
-    path = "SerpentineRegular.ttf"
-}
-SMODS.Font {
-    key = "turn",
-    path = "NotoSans-Regular.ttf"
-}
+
 SMODS.Gradient {
     key = 'maxient',
     colours = {G.C.MONEY, G.C.RED},
@@ -442,9 +407,102 @@ SMODS.Sticker {
     end,
 
 }
-SMODS.Language {
-    key = "hodor",
-    label = "Hodor",
-    font = 1
+SMODS.Sticker {
+    key = "en1s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Engine I",
+                text = {
+                    "Copies the leftmost joker on first trigger.",
+                },
+                label = "Active Module (T1)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2, triggers = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips,
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
 }
+SMODS.Sticker {
+    key = "en2s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Engine II",
+                text = {
+                    "Copies the leftmost joker.",
+                },
+                label = "Active Module (T2)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2, triggers = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips,
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
+}
+SMODS.Sticker {
+    key = "en3s",
+    badge_colour = HEX 'fda200',
+    loc_txt = {
+                name = "Engine III",
+                text = {
+                    "Adds the leftmost joker to the deck.",
+                    "{C:red}Destroys this card.{}"
+                },
+                label = "Active Module (T3)"
+    },
+   atlas = "sticklas",
+    pos = { x = 0, y = 4 },
+    rate = 0,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+     config = {extra = {Xmult = 2, triggers = 2}},
+ loc_vars = function(self, info_queue, card)            
+    end,
+   
+    calculate = function(self, card, context)
+            if context.main_scoring and context.cardarea == G.play or context.repetiton and context.cardarea == G.play then
+                local current_hand_chips = hand_chips * 0.15
+                return {
+                    mult = current_hand_chips,
+                    message =  "+"..current_hand_chips.."",
+                    colour = G.C.BLUE
+                }
+            end
+    end,
+
+}
+
 -- thanks yahimod for this

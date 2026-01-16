@@ -1,0 +1,134 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# stolen from hotpot, im so sorry but i'm not capable of this
+# Add me fokens
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "at"
+pattern = "add_round_eval_row({name = 'bottom', dollars = dollars})"
+payload = """
+    for _, area in ipairs(SMODS.get_card_areas('jokers')) do
+        for _, _card in ipairs(area.cards) do
+            local ret = _card:calculate_foken_bonus()
+    
+            -- TARGET: calc_foken_bonus per card
+            if ret then
+                i = i+1
+                add_round_eval_fokens({name='fokens', fokens = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card})
+\t\t\t\tfokens = fokens + ret
+                pitch = pitch + 0.06
+            end
+        end
+    end    
+\t\tfokens = fokens + 1
+    for _, area in ipairs(SMODS.get_card_areas('jokers')) do
+            for _, _card in ipairs(area.cards) do
+            local ret = _card:calculate_foken_bonus_delayed(dollars)
+    
+            -- TARGET: calc_foken_bonus_delayed per card
+            if ret then
+                i = i+1
+                add_round_eval_fokens({name='fokens', fokens = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card})
+\t\t\t\tfokens = fokens + ret
+                pitch = pitch + 0.06
+            end
+        end
+    end
+\tadd_round_eval_row({name = 'bottom', dollars = dollars, fokens = fokens, })
+"""
+match_indent = true
+overwrite = false
+
+# Patch add_round_eval_row to handle decks
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+position = "before"
+pattern = "elseif string.find(config.name, 'joker') then"
+payload = """
+    elseif string.find(config.name, 'deck') then
+      table.insert(left_text, {n=G.UIT.O, config={object = DynaText({string = config.card.loc_name, colours = {G.C.FILTER}, shadow = true, pop_in = 0, scale = 0.6*scale, silent = true})}})
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+position = "at"
+pattern = "if config.card then config.card:juice_up(0.7, 0.46) end"
+payload = """
+if config.card and config.card.juice_up then config.card:juice_up(0.7, 0.46) end
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local dollars = 0"
+position = "after"
+payload = """
+local fokens = 0
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """
+{n=G.UIT.T, config={text = localize('b_cash_out')..\": \", scale = 1, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
+{n=G.UIT.T, config={text = localize('$')..format_ui_value(config.dollars), scale = 1.2*scale, colour = G.C.WHITE, shadow = true, juice = true}}"""
+position = "at"
+payload = "unpack(payouts)"
+match_indent = true
+overwrite = false
+
+[[patches]]
+
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = """
+                UIBox{
+                    definition = {n=G.UIT.ROOT, config={align = 'cm', colour = G.C.CLEAR}, nodes={
+                        {n=G.UIT.R, config={id = 'cash_out_button', align = \"cm\", padding = 0.1, minw = 7, r = 0.15, colour = G.C.ORANGE, shadow = true, hover = true, one_press = true, button = 'cash_out', focus_args = {snap_to = true}}, nodes={"""
+position = "before"
+payload = """
+local payouts = {}
+local separator = \"\"
+if config.dollars ~= 0 then
+\tpayouts[#payouts + 1] = {n=G.UIT.T, config={text = localize('$')..format_ui_value(config.dollars), scale = 1.2*scale, colour = G.C.WHITE, shadow = true, juice = true}}
+end
+if config.fokens ~= 0 then
+\tif next(payouts) then separator = \", \" end
+\tpayouts[#payouts + 1] = {n=G.UIT.T, config={text = separator .. localize('$')..format_ui_value(config.fokens), scale = 1.2*scale, colour = G.C.WHITE, shadow = true, juice = true, font = SMODS.Fonts.jabong_turns}}
+end
+if #payouts < 4 then
+\ttable.insert(payouts, 1, {n=G.UIT.T, config={text = localize('b_cash_out')..\": \", scale = 1, colour = G.C.UI.TEXT_LIGHT, shadow = true}})
+end"""
+match_indent = true
+overwrite = false
+
+# Add fokens on cashout
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+position = "before"
+pattern = "add_round_eval_row({name = 'bottom', dollars = dollars})"
+payload = """
+if G.GAME.fokens_per_round and G.GAME.fokens_per_round > 0 then
+  -- Add fokens
+  add_round_eval_fokens({name='fokens', pitch = pitch, fokens = G.GAME.fokens_per_round})
+  fokens = fokens + 1
+end
+
+"""
+match_indent = true
+overwrite = false

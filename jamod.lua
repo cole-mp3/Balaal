@@ -44,6 +44,47 @@ SMODS.current_mod.optional_features = {
     quantum_enhancements = true,
     post_trigger = true,
 }
+SMODS.Font {
+  key = "Ariana", 
+  path = "ArianaVioleta-dz2K.ttf"
+}
+SMODS.Font {
+    key = "japan",
+    path = "Firstgundam-8aVg.ttf"
+}
+SMODS.Font {
+    key = "goog",
+    path = "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
+}
+SMODS.Font {
+    key = "ascii",
+    path = "NotoSansSymbols2-Regular.ttf"
+}
+SMODS.Font {
+    key = "wawa",
+    path = "Angels.ttf"
+}
+SMODS.Font {
+    key = "emomomo",
+    path = "NotoEmoji-Regular.ttf"
+}
+SMODS.Font {
+    key = "fire",
+    path = "SupporterpersonaluseRegular-EazBz.otf"
+}
+SMODS.Font {
+    key = "gundamit",
+    path = "SerpentineRegular.ttf"
+}
+SMODS.Font {
+    key = "turn",
+    path = "NotoSans-Regular.ttf"
+}
+SMODS.Language {
+    key = "hodor",
+    label = "Hodor",
+    font = 1
+}
 --[[
 SMODS.Stake {
     name = "Spob Stake", --i need to make the sticker this uses first
