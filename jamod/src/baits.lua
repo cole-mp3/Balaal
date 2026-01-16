@@ -24,12 +24,17 @@ SMODS.ConsumableType({
         
     },
 })
-
+SMODS.Atlas {
+    key = "modplas",
+    path = "packuals.png",
+    px = 71,
+    py = 95
+}
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade1',
     atlas = "rsatlas", -- the real sprites for this will be lil boosters :]
-    pos = {x = 0, y = 0},
+    pos = {x = 1, y = 0},
     cost = 4,
     loc_txt = {
         name = "Trading Module",
@@ -79,7 +84,7 @@ SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade2',
     atlas = "rsatlas", 
-    pos = {x = 0, y = 0},
+    pos = {x = 1, y = 1},
     cost = 4,
     loc_txt = {
         name = "Trading Module (T2)",
@@ -128,7 +133,7 @@ SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade3',
     atlas = "rsatlas", 
-    pos = {x = 0, y = 0},
+    pos = {x = 1, y = 2},
     cost = 4,
     loc_txt = {
         name = "Trading Module (T3)",
@@ -225,7 +230,7 @@ SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'en2',
     atlas = "rsatlas", 
-    pos = {x = 0, y = 0},
+    pos = {x = 0, y = 1},
     cost = 4,
     loc_txt = {
         name = "Engine (T2)",
@@ -274,7 +279,7 @@ SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'en3',
     atlas = "rsatlas", 
-    pos = {x = 0, y = 0},
+    pos = {x = 0, y = 2},
     cost = 4,
     loc_txt = {
         name = "Engine (T3)",
