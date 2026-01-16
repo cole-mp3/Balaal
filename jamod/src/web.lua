@@ -311,6 +311,12 @@ SMODS.Sticker {
 
 }
 ]]--
+SMODS.Atlas {
+    key = "modlas",
+    path = "modulas.png",
+    px = 213,
+    py = 95
+}
 SMODS.Sticker {
     key = "tr1s",
     badge_colour = HEX 'fda200',
@@ -321,8 +327,8 @@ SMODS.Sticker {
                 },
                 label = "Active Module (T1)"
     },
-   atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+   atlas = "modlas",
+    pos = { x = 0, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -353,8 +359,8 @@ SMODS.Sticker {
                 },
                 label = "Active Module (T2)"
     },
-   atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+   atlas = "modlas",
+    pos = { x = 0, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -385,8 +391,8 @@ SMODS.Sticker {
                 },
                 label = "Active Module (T3)"
     },
-   atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+   atlas = "modlas",
+    pos = { x = 0, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -417,8 +423,8 @@ SMODS.Sticker {
                 },
                 label = "Active Module (T1)"
     },
-   atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+   atlas = "modlas",
+    pos = { x = 1, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -450,7 +456,7 @@ SMODS.Sticker {
                 label = "Active Module (T2)"
     },
    atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+    pos = { x = 1, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -483,7 +489,7 @@ SMODS.Sticker {
                 label = "Active Module (T3)"
     },
    atlas = "sticklas",
-    pos = { x = 0, y = 4 },
+    pos = { x = 1, y = 0 },
     rate = 0,
     apply = function(self, card, val)
         card.ability[self.key] = val

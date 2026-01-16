@@ -24,6 +24,7 @@ SMODS.ConsumableType({
         
     },
 })
+
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade1',
