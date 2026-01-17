@@ -314,7 +314,7 @@ SMODS.Sticker {
 SMODS.Atlas {
     key = "modlas",
     path = "modulas.png",
-    px = 213,
+    px = 71,
     py = 95
 }
 SMODS.Sticker {

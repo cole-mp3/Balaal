@@ -33,7 +33,7 @@ SMODS.Atlas {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade1',
-    atlas = "rsatlas", -- the real sprites for this will be lil boosters :]
+    atlas = "modplas", -- the real sprites for this will be lil boosters :]
     pos = {x = 1, y = 0},
     cost = 4,
     loc_txt = {
@@ -83,8 +83,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade2',
-    atlas = "rsatlas", 
-    pos = {x = 1, y = 1},
+    atlas = "modplas", 
+    pos = {x = 1, y = 0.77},
     cost = 4,
     loc_txt = {
         name = "Trading Module (T2)",
@@ -104,7 +104,7 @@ SMODS.Consumable {
         G.E_MANAGER:add_event(Event({
             func = function()
                 play_sound('jabong_damn')
-                card:juice_up(0.3, 0.5)
+                card:juice_up(0.3, 0.65)
                 return true
             end
         }))
@@ -132,8 +132,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'trade3',
-    atlas = "rsatlas", 
-    pos = {x = 1, y = 2},
+    atlas = "modplas", 
+    pos = {x = 1, y = 1.55},
     cost = 4,
     loc_txt = {
         name = "Trading Module (T3)",
@@ -180,7 +180,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'en1',
-    atlas = "rsatlas", 
+    atlas = "modplas", 
     pos = {x = 0, y = 0},
     cost = 4,
     loc_txt = {
@@ -229,8 +229,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'en2',
-    atlas = "rsatlas", 
-    pos = {x = 0, y = 1},
+    atlas = "modplas", 
+    pos = {x = 0, y = 0.77},
     cost = 4,
     loc_txt = {
         name = "Engine (T2)",
@@ -278,8 +278,8 @@ SMODS.Consumable {
 SMODS.Consumable {
     set = 'jabong_Modules',
     key = 'en3',
-    atlas = "rsatlas", 
-    pos = {x = 0, y = 2},
+    atlas = "modplas", 
+    pos = {x = 0, y = 1.55},
     cost = 4,
     loc_txt = {
         name = "Engine (T3)",
